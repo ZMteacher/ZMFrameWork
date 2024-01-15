@@ -1,0 +1,378 @@
+{
+  "bundleInfoList": [
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/5zhang.png",
+      "crc": 27295561,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "5zhang.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/13zhang.png",
+      "crc": 701905586,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "13zhang.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/Bank.png",
+      "crc": 1962239680,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "Bank.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/Box.png",
+      "crc": 4177593694,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "Box.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/Down.png",
+      "crc": 245155897,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "Down.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/Gold.png",
+      "crc": 2746361123,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "Gold.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/kou.png",
+      "crc": 1538571680,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "kou.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/level.png",
+      "crc": 4095577657,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "level.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/Logo200x200.png",
+      "crc": 3395344678,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "Logo200x200.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/majiang.png",
+      "crc": 2264490443,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "majiang.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/niuniu.png",
+      "crc": 3284851723,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "niuniu.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/Pregress.png",
+      "crc": 3454044279,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "Pregress.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/Server.png",
+      "crc": 602267980,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "Server.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/Setting.png",
+      "crc": 1163743957,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "Setting.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/Share.png",
+      "crc": 791308025,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "Share.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/Shop.png",
+      "crc": 2366662544,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "Shop.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/UP.png",
+      "crc": 2949351446,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "UP.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/zhizun.png",
+      "crc": 559223056,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "zhizun.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/代理.png",
+      "crc": 3907624602,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "代理.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/大厅 1.jpg",
+      "crc": 873708853,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "大厅 1.jpg",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/大厅.jpg",
+      "crc": 3691734933,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "大厅.jpg",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/背景 1.png",
+      "crc": 1399367156,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "背景 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/背景.png",
+      "crc": 180583213,
+      "bundleName": "majiang_hall.unity",
+      "assetName": "背景.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Loading/LoginButton.png",
+      "crc": 2848726925,
+      "bundleName": "majiang_loading.unity",
+      "assetName": "LoginButton.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Loading/图层 11.png",
+      "crc": 2887897117,
+      "bundleName": "majiang_loading.unity",
+      "assetName": "图层 11.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Loading/圆角矩形 1 拷贝.png",
+      "crc": 842653877,
+      "bundleName": "majiang_loading.unity",
+      "assetName": "圆角矩形 1 拷贝.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Loading/圆角矩形 1.png",
+      "crc": 11811907,
+      "bundleName": "majiang_loading.unity",
+      "assetName": "圆角矩形 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Loading/圆角矩形 3.png",
+      "crc": 2054450979,
+      "bundleName": "majiang_loading.unity",
+      "assetName": "圆角矩形 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Loading/弹窗.png",
+      "crc": 3137430218,
+      "bundleName": "majiang_loading.unity",
+      "assetName": "弹窗.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Loading/椭圆 3.png",
+      "crc": 3186604375,
+      "bundleName": "majiang_loading.unity",
+      "assetName": "椭圆 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Loading/背景 1.png",
+      "crc": 175015293,
+      "bundleName": "majiang_loading.unity",
+      "assetName": "背景 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Loading/背景.png",
+      "crc": 3348248208,
+      "bundleName": "majiang_loading.unity",
+      "assetName": "背景.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/LoginButton.png",
+      "crc": 3732130336,
+      "bundleName": "majiang_login.unity",
+      "assetName": "LoginButton.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/POp.png",
+      "crc": 3483824000,
+      "bundleName": "majiang_login.unity",
+      "assetName": "POp.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/PopBox.png",
+      "crc": 2980417736,
+      "bundleName": "majiang_login.unity",
+      "assetName": "PopBox.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/xb_0000_退-出-中.png",
+      "crc": 1431899732,
+      "bundleName": "majiang_login.unity",
+      "assetName": "xb_0000_退-出-中.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/xb_0001_更-新-中.png",
+      "crc": 2896003323,
+      "bundleName": "majiang_login.unity",
+      "assetName": "xb_0001_更-新-中.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/图层 11.png",
+      "crc": 4106214954,
+      "bundleName": "majiang_login.unity",
+      "assetName": "图层 11.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/圆角矩形 1 拷贝.png",
+      "crc": 370560780,
+      "bundleName": "majiang_login.unity",
+      "assetName": "圆角矩形 1 拷贝.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/圆角矩形 1.png",
+      "crc": 1988455744,
+      "bundleName": "majiang_login.unity",
+      "assetName": "圆角矩形 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/椭圆 3.png",
+      "crc": 1269669738,
+      "bundleName": "majiang_login.unity",
+      "assetName": "椭圆 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/背景 1.png",
+      "crc": 4230783808,
+      "bundleName": "majiang_login.unity",
+      "assetName": "背景 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/背景 2.png",
+      "crc": 3146570128,
+      "bundleName": "majiang_login.unity",
+      "assetName": "背景 2.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/背景.png",
+      "crc": 330860239,
+      "bundleName": "majiang_login.unity",
+      "assetName": "背景.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Prefab/MajiangWindow.prefab",
+      "crc": 1202384967,
+      "bundleName": "majiang_majiangwindow.unity",
+      "assetName": "MajiangWindow.prefab",
+      "bundleDependce": [
+        "majiang_hall.unity",
+        "majiang_login.unity"
+      ]
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Shop/图层 6.png",
+      "crc": 2553960058,
+      "bundleName": "majiang_shop.unity",
+      "assetName": "图层 6.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Shop/左列表.png",
+      "crc": 600095924,
+      "bundleName": "majiang_shop.unity",
+      "assetName": "左列表.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Shop/未选中 金币赠送.png",
+      "crc": 2574141706,
+      "bundleName": "majiang_shop.unity",
+      "assetName": "未选中 金币赠送.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Shop/矩形 1 拷贝 6.png",
+      "crc": 3239520050,
+      "bundleName": "majiang_shop.unity",
+      "assetName": "矩形 1 拷贝 6.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Shop/矩形 1.png",
+      "crc": 731435317,
+      "bundleName": "majiang_shop.unity",
+      "assetName": "矩形 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Shop/组 145 拷贝 4.png",
+      "crc": 2634159590,
+      "bundleName": "majiang_shop.unity",
+      "assetName": "组 145 拷贝 4.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Shop/返回.png",
+      "crc": 232866455,
+      "bundleName": "majiang_shop.unity",
+      "assetName": "返回.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Shop/选中 银行存款.png",
+      "crc": 833120260,
+      "bundleName": "majiang_shop.unity",
+      "assetName": "选中 银行存款.png",
+      "bundleDependce": []
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "fileName": "Android",
+    "md5": "43FE66A452F4D49C1E853AFD877319F0",
+    "size": 1.0
+  },
+  {
+    "fileName": "fish3dbundleconfig.unity",
+    "md5": "79D815ECCBE337C87BA20BB56E8BED89",
+    "size": 2.0
+  },
+  {
+    "fileName": "fish3d_cfgdata.unity",
+    "md5": "B7CE6AC6BEED991CF4E5434C4B9F4DD2",
+    "size": 1.0
+  },
+  {
+    "fileName": "fish3d_examplewindow.unity",
+    "md5": "28D029FFC23A4340190798B2000F88B1",
+    "size": 9.0
+  },
+  {
+    "fileName": "fish3d_exshopitem.unity",
+    "md5": "AFF8A7CA270E587E28C4D9F0595447BB",
+    "size": 4.0
+  },
+  {
+    "fileName": "fish3d_exshopwindow.unity",
+    "md5": "A77C037D012F8AA4030C779FC3C32D38",
+    "size": 12.0
+  },
+  {
+    "fileName": "fish3d_hall.unity",
+    "md5": "0BBAC044F3F5A418EA20D649F526ACF7",
+    "size": 1034.0
+  },
+  {
+    "fileName": "fish3d_hallwindow.unity",
+    "md5": "DC8ACF09B0B282B72878B7693989AE29",
+    "size": 22.0
+  },
+  {
+    "fileName": "fish3d_loading.unity",
+    "md5": "9315939A036B4AF3B557CBB53DC48595",
+    "size": 237.0
+  },
+  {
+    "fileName": "fish3d_login.unity",
+    "md5": "255A7A208E8537C18EEA8E6802FEBAC3",
+    "size": 1044.0
+  },
+  {
+    "fileName": "fish3d_loginwindow.unity",
+    "md5": "7BCD640BC02FE351CE170143045C570D",
+    "size": 12.0
+  },
+  {
+    "fileName": "fish3d_shop.unity",
+    "md5": "11AB677101CFF599F45CB0DAE2213476",
+    "size": 166.0
+  },
+  {
+    "fileName": "fish3d_testobj.unity",
+    "md5": "F9F3FC0F14FCA67954C2543C9E2CCCD8",
+    "size": 3.0
+  }
+]

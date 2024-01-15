@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbe8e28d5930e6469e6bfe476c18b7e, type: 3}
+  m_Name: BuildBundleConfigura
+  m_EditorClassIdentifier: 
+  AssetBundleConfig:
+  - bundleid: 0
+    moduleName: Hall
+    isBuild: 0
+    lastClickBtnTime: 3.8035805
+    prefabPathArr:
+    - Assets/BundleDemo/Hall/Prefab
+    rootFolderPathArr:
+    - Assets/BundleDemo/Hall/Textures
+    signFolderPathArr:
+    - abName: hallData
+      bundlePath: Assets/BundleDemo/Hall/Data
+  - bundleid: 0
+    moduleName: Majiang
+    isBuild: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Assets/BundleDemo/Majiang/Prefab
+    rootFolderPathArr:
+    - Assets/BundleDemo/Majiang/Textures
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: NiuNiu
+    isBuild: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Assets/BundleDemo/NiuNiu/Prefab
+    rootFolderPathArr:
+    - Assets/BundleDemo/NiuNiu/Textures
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: ShiSanShui
+    isBuild: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Assets/BundleDemo/ShiSanShui/Prefab
+    rootFolderPathArr:
+    - Assets/BundleDemo/ShiSanShui/Textures
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: ShuangKou
+    isBuild: 0
+    lastClickBtnTime: 7.613889
+    prefabPathArr:
+    - Assets/GameData/ShuangKou/Prefabs
+    rootFolderPathArr:
+    - Assets/GameData/ShuangKou/Textures
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: WuZhang
+    isBuild: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Assets/BundleDemo/WuZhang/Prefab
+    rootFolderPathArr:
+    - Assets/BundleDemo/WuZhang/Textures
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: ZhiZun
+    isBuild: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Assets/BundleDemo/ZhiZun/Prefab
+    rootFolderPathArr:
+    - Assets/BundleDemo/ZhiZun/Textures
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: Game
+    isBuild: 0
+    lastClickBtnTime: 83.87675
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr:
+    - Assets/BundleDemo/GameItem
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: GameItem
+    isBuild: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr:
+    - Assets/BundleDemo/GameItem
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: Test
+    isBuild: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr:
+    - Assets/BundleDemo/GameItem
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: Fish3d
+    isBuild: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Assets/BundleDemo/Hall/Prefab
+    rootFolderPathArr:
+    - Assets/BundleDemo/Hall/Textures
+    signFolderPathArr:
+    - abName: cfgdata
+      bundlePath: Assets/BundleDemo/Hall/Data

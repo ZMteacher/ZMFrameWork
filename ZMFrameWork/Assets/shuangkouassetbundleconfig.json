@@ -1,0 +1,504 @@
+{
+  "bundleInfoList": [
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/5zhang.png",
+      "crc": 295866911,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "5zhang.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/13zhang.png",
+      "crc": 2882456734,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "13zhang.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/Bank.png",
+      "crc": 4006749800,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "Bank.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/Box.png",
+      "crc": 1643256799,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "Box.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/Down.png",
+      "crc": 2495318161,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "Down.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/Gold.png",
+      "crc": 966092171,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "Gold.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/kou.png",
+      "crc": 3276251937,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "kou.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/level.png",
+      "crc": 747274915,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "level.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/Logo200x200.png",
+      "crc": 274775191,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "Logo200x200.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/majiang.png",
+      "crc": 81893351,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "majiang.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/niuniu.png",
+      "crc": 3553112413,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "niuniu.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/Pregress.png",
+      "crc": 4290444386,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "Pregress.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/Server.png",
+      "crc": 870779930,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "Server.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/Setting.png",
+      "crc": 3343230201,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "Setting.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/Share.png",
+      "crc": 4156385891,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "Share.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/Shop.png",
+      "crc": 389490488,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "Shop.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/UP.png",
+      "crc": 2398467412,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "UP.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/zhizun.png",
+      "crc": 827849798,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "zhizun.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/代理.png",
+      "crc": 4176180172,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "代理.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/大厅 1.jpg",
+      "crc": 105498912,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "大厅 1.jpg",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/大厅 2.jpg",
+      "crc": 1105834992,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "大厅 2.jpg",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/大厅 3.jpg",
+      "crc": 2089392704,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "大厅 3.jpg",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/大厅.jpg",
+      "crc": 3423177411,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "大厅.jpg",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/背景 1.png",
+      "crc": 1630720481,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "背景 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/背景 2.png",
+      "crc": 647146289,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "背景 2.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/背景 3.png",
+      "crc": 468877953,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "背景 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Hall/背景.png",
+      "crc": 448894587,
+      "bundleName": "shuangkou_hall.unity",
+      "assetName": "背景.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/LoginButton.png",
+      "crc": 1977226386,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "LoginButton.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/图层 11.png",
+      "crc": 278745954,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "图层 11.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/圆角矩形 1 拷贝.png",
+      "crc": 2961110416,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "圆角矩形 1 拷贝.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/圆角矩形 1.png",
+      "crc": 15643720,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "圆角矩形 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/圆角矩形 3.png",
+      "crc": 2049894184,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "圆角矩形 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/弹窗.png",
+      "crc": 3605978197,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "弹窗.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/椭圆 3.png",
+      "crc": 1743772902,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "椭圆 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/背景 1.png",
+      "crc": 3496927436,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "背景 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/背景 2.png",
+      "crc": 2546899484,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "背景 2.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/背景 3.png",
+      "crc": 2863575980,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "背景 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/背景 4.png",
+      "crc": 411987900,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "背景 4.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/背景 5.png",
+      "crc": 636372492,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "背景 5.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/背景 6.png",
+      "crc": 1649294556,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "背景 6.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/背景 7.png",
+      "crc": 1596855660,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "背景 7.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/背景 8.png",
+      "crc": 3716055741,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "背景 8.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/背景 9.png",
+      "crc": 3760106253,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "背景 9.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/背景 10.png",
+      "crc": 2695798604,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "背景 10.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Loading/背景.png",
+      "crc": 2860353551,
+      "bundleName": "shuangkou_loading.unity",
+      "assetName": "背景.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/LoginButton.png",
+      "crc": 1657751903,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "LoginButton.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/POp.png",
+      "crc": 1434562344,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "POp.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/PopBox.png",
+      "crc": 868050660,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "PopBox.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/xb_0000_退-出-中.png",
+      "crc": 568871708,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "xb_0000_退-出-中.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/xb_0001_更-新-中.png",
+      "crc": 3626812851,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "xb_0001_更-新-中.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/图层 11.png",
+      "crc": 2489499457,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "图层 11.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/圆角矩形 1 拷贝.png",
+      "crc": 671108015,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "圆角矩形 1 拷贝.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/圆角矩形 1.png",
+      "crc": 4216420030,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "圆角矩形 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/椭圆 3.png",
+      "crc": 641868277,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "椭圆 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/背景 1.png",
+      "crc": 2445483487,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "背景 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/背景 2.png",
+      "crc": 3596838671,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "背景 2.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/背景 3.png",
+      "crc": 3942862527,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "背景 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/背景 4.png",
+      "crc": 1495503535,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "背景 4.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Login/背景.png",
+      "crc": 2443210979,
+      "bundleName": "shuangkou_login.unity",
+      "assetName": "背景.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Shop/图层 6.png",
+      "crc": 2858426991,
+      "bundleName": "shuangkou_shop.unity",
+      "assetName": "图层 6.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Shop/图层 7.png",
+      "crc": 2533362655,
+      "bundleName": "shuangkou_shop.unity",
+      "assetName": "图层 7.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Shop/左列表.png",
+      "crc": 1311441451,
+      "bundleName": "shuangkou_shop.unity",
+      "assetName": "左列表.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Shop/未选中 金币赠送.png",
+      "crc": 2809679273,
+      "bundleName": "shuangkou_shop.unity",
+      "assetName": "未选中 金币赠送.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Shop/矩形 1 拷贝 6.png",
+      "crc": 3243093817,
+      "bundleName": "shuangkou_shop.unity",
+      "assetName": "矩形 1 拷贝 6.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Shop/矩形 1.png",
+      "crc": 432186656,
+      "bundleName": "shuangkou_shop.unity",
+      "assetName": "矩形 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Shop/组 145 拷贝 4.png",
+      "crc": 3347717862,
+      "bundleName": "shuangkou_shop.unity",
+      "assetName": "组 145 拷贝 4.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Shop/返回.png",
+      "crc": 501460929,
+      "bundleName": "shuangkou_shop.unity",
+      "assetName": "返回.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Textures/Shop/选中 银行存款.png",
+      "crc": 826260103,
+      "bundleName": "shuangkou_shop.unity",
+      "assetName": "选中 银行存款.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/背景.png",
+      "crc": 180583213,
+      "bundleName": "shuangkou_shuangkouwindow.unity",
+      "assetName": "背景.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/xb_0000_退-出-中.png",
+      "crc": 1431899732,
+      "bundleName": "shuangkou_shuangkouwindow.unity",
+      "assetName": "xb_0000_退-出-中.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ShuangKou/Prefab/ShuangKouWindow.prefab",
+      "crc": 422801514,
+      "bundleName": "shuangkou_shuangkouwindow.unity",
+      "assetName": "ShuangKouWindow.prefab",
+      "bundleDependce": [
+        "shuangkou_shop.unity",
+        "shuangkou_shuangkouwindow.unity"
+      ]
+    }
+  ]
+}

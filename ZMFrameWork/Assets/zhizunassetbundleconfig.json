@@ -1,0 +1,531 @@
+{
+  "bundleInfoList": [
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/5zhang.png",
+      "crc": 2335963034,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "5zhang.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/13zhang.png",
+      "crc": 914760276,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "13zhang.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/Bank.png",
+      "crc": 3788573528,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "Bank.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/Box.png",
+      "crc": 1646665622,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "Box.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/Down.png",
+      "crc": 2612569505,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "Down.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/Gold.png",
+      "crc": 915818683,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "Gold.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/kou.png",
+      "crc": 3230902120,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "kou.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/level.png",
+      "crc": 173846818,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "level.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/Logo200x200.png",
+      "crc": 485647787,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "Logo200x200.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/majiang.png",
+      "crc": 2578020653,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "majiang.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/niuniu.png",
+      "crc": 1230066904,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "niuniu.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/Pregress.png",
+      "crc": 2224463650,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "Pregress.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/Server.png",
+      "crc": 2843634079,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "Server.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/Setting.png",
+      "crc": 1510820403,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "Setting.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/Share.png",
+      "crc": 3513473506,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "Share.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/Shop.png",
+      "crc": 406063624,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "Shop.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/UP.png",
+      "crc": 3960729814,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "UP.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/zhizun.png",
+      "crc": 2882443715,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "zhizun.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/代理.png",
+      "crc": 1651643977,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "代理.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/大厅 1.jpg",
+      "crc": 2103814752,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "大厅 1.jpg",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/大厅 2.jpg",
+      "crc": 986042544,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "大厅 2.jpg",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/大厅 3.jpg",
+      "crc": 128317696,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "大厅 3.jpg",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/大厅.jpg",
+      "crc": 1452339014,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "大厅.jpg",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/背景 1.png",
+      "crc": 438219425,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "背景 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/背景 2.png",
+      "crc": 1572784241,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "背景 2.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/背景 3.png",
+      "crc": 1625219521,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "背景 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Hall/背景.png",
+      "crc": 2153313278,
+      "bundleName": "zhizun_hall.unity",
+      "assetName": "背景.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/LoginButton.png",
+      "crc": 374375508,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "LoginButton.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/图层 11.png",
+      "crc": 1073659196,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "图层 11.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/圆角矩形 1 拷贝.png",
+      "crc": 2012153378,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "圆角矩形 1 拷贝.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/圆角矩形 1.png",
+      "crc": 3923820285,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "圆角矩形 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/圆角矩形 3.png",
+      "crc": 2468408733,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "圆角矩形 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/弹窗.png",
+      "crc": 2689184166,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "弹窗.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/椭圆 3.png",
+      "crc": 1803355610,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "椭圆 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 1.png",
+      "crc": 3707517424,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 2.png",
+      "crc": 2606514976,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 2.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 3.png",
+      "crc": 2788977296,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 4.png",
+      "crc": 337426048,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 4.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 5.png",
+      "crc": 696033072,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 5.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 6.png",
+      "crc": 1859970528,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 6.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 7.png",
+      "crc": 1404882000,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 7.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 8.png",
+      "crc": 3521928065,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 8.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 9.png",
+      "crc": 3968627249,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 9.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 10.png",
+      "crc": 2412605714,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 10.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 11.png",
+      "crc": 2997704866,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 11.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景 12.png",
+      "crc": 4111278706,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景 12.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Loading/背景.png",
+      "crc": 3705333244,
+      "bundleName": "zhizun_loading.unity",
+      "assetName": "背景.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/LoginButton.png",
+      "crc": 1303160577,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "LoginButton.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/POp.png",
+      "crc": 1518502424,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "POp.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/PopBox.png",
+      "crc": 2935326766,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "PopBox.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/xb_0000_退-出-中.png",
+      "crc": 4280988291,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "xb_0000_退-出-中.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/xb_0001_更-新-中.png",
+      "crc": 116276268,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "xb_0001_更-新-中.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/图层 11.png",
+      "crc": 2963323786,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "图层 11.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/圆角矩形 1 拷贝.png",
+      "crc": 448284928,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "圆角矩形 1 拷贝.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/圆角矩形 1.png",
+      "crc": 2301991851,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "圆角矩形 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/椭圆 3.png",
+      "crc": 1357204486,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "椭圆 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/背景 1.png",
+      "crc": 3882119212,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "背景 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/背景 2.png",
+      "crc": 2697202428,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "背景 2.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/背景 3.png",
+      "crc": 2644779852,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "背景 3.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/背景 4.png",
+      "crc": 797245276,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "背景 4.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/背景 5.png",
+      "crc": 316987116,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "背景 5.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/背景 6.png",
+      "crc": 1430563900,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "背景 6.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Login/背景.png",
+      "crc": 216571433,
+      "bundleName": "zhizun_login.unity",
+      "assetName": "背景.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Shop/图层 6.png",
+      "crc": 3511435567,
+      "bundleName": "zhizun_shop.unity",
+      "assetName": "图层 6.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Shop/图层 7.png",
+      "crc": 3962333343,
+      "bundleName": "zhizun_shop.unity",
+      "assetName": "图层 7.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Shop/左列表.png",
+      "crc": 948727768,
+      "bundleName": "zhizun_shop.unity",
+      "assetName": "左列表.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Shop/未选中 金币赠送.png",
+      "crc": 2512408326,
+      "bundleName": "zhizun_shop.unity",
+      "assetName": "未选中 金币赠送.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Shop/矩形 1 拷贝 6.png",
+      "crc": 675521932,
+      "bundleName": "zhizun_shop.unity",
+      "assetName": "矩形 1 拷贝 6.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Shop/矩形 1.png",
+      "crc": 1659815520,
+      "bundleName": "zhizun_shop.unity",
+      "assetName": "矩形 1.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Shop/组 145 拷贝 4.png",
+      "crc": 2854592224,
+      "bundleName": "zhizun_shop.unity",
+      "assetName": "组 145 拷贝 4.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Shop/返回.png",
+      "crc": 2272971332,
+      "bundleName": "zhizun_shop.unity",
+      "assetName": "返回.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Textures/Shop/选中 银行存款.png",
+      "crc": 1213784170,
+      "bundleName": "zhizun_shop.unity",
+      "assetName": "选中 银行存款.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Hall/背景.png",
+      "crc": 180583213,
+      "bundleName": "zhizun_zhizunwindow.unity",
+      "assetName": "背景.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/Majiang/Textures/Login/xb_0000_退-出-中.png",
+      "crc": 1431899732,
+      "bundleName": "zhizun_zhizunwindow.unity",
+      "assetName": "xb_0000_退-出-中.png",
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/BundleDemo/ZhiZun/Prefab/ZhiZunWindow.prefab",
+      "crc": 2964463191,
+      "bundleName": "zhizun_zhizunwindow.unity",
+      "assetName": "ZhiZunWindow.prefab",
+      "bundleDependce": [
+        "zhizun_zhizunwindow.unity"
+      ]
+    }
+  ]
+}
