@@ -151,11 +151,22 @@ namespace ZM.AssetFrameWork
         /// <summary>
         /// 加载Text资源
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="path">绝对路径</param>
         /// <returns></returns>
-        public static TextAsset LoadTextAsset(string path)
+        public static TextAsset LoadTextAsset(string fullPath )
         {
-            return Instance.mResource.LoadTextAsset(path);
+            return Instance.mResource.LoadTextAsset(fullPath);
+        }
+ 
+        /// <summary>
+        /// 加载可编写脚本对象
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path">绝对路径</param>
+        /// <returns></returns>
+        public static T LoadScriptableObject<T>(string fullPath) where T : UnityEngine.Object
+        {
+            return Instance.mResource.LoadScriptableObject<T>(fullPath);
         }
         /// <summary>
         /// 从图集中加载指定的图片
@@ -167,7 +178,17 @@ namespace ZM.AssetFrameWork
         {
            return Instance.mResource.LoadAtlasSprite(atlasPath, spriteName);
         }
-   
+        /// <summary>
+        /// 从tpsheet(TexturePacker)图集中加载指定的图片
+        /// </summary>
+        /// <param name="atlasPath"></param>
+        /// <param name="spriteName"></param>
+        /// <returns></returns>
+        public static Sprite LoadPNGAtlasSprite(string atlasPath, string spriteName)
+        {
+            return Instance.mResource.LoadPNGAtlasSprite(atlasPath, spriteName);
+        }
+
         /// <summary>
         /// 异步加载图片
         /// </summary>

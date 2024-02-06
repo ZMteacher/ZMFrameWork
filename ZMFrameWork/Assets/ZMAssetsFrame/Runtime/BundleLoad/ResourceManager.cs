@@ -93,7 +93,10 @@ namespace ZM.AssetFrameWork
         /// 等待加载的资源列表
         /// </summary>
         private List<HotFileInfo> mWaitLoadAssetsList = new List<HotFileInfo>();
-
+        /// <summary>
+        /// 所有图集图片的集合
+        /// </summary>
+        protected readonly Dictionary<string, UnityEngine.Object[]> mAllAssetObjectDic = new Dictionary<string, UnityEngine.Object[]>();
         public void Initlizate()
         {
             HotAssetsManager.DownLoadBundleFinish += AssetsDownLoadFinish;
@@ -361,6 +364,10 @@ namespace ZM.AssetFrameWork
         #endregion
 
         #region 资源加载
+        public T LoadScriptableObject<T>(string path) where T : UnityEngine.Object
+        {
+            return LoadResource<T>(path);
+        }
         /// <summary>
         /// 同步加载资源，外部直接调用，仅仅加载不需要实例化的资源
         /// </summary>
@@ -423,6 +430,67 @@ namespace ZM.AssetFrameWork
             return obj;
         }
 
+        /// <summary>
+        /// 同步加载所有资源，外部直接调用，仅仅加载不需要实例化的资源
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public T[] LoadAllResource<T>(string path) where T : UnityEngine.Object
+        {
+
+            if (string.IsNullOrEmpty(path))
+            {
+                Debug.LogError("path is Null , return null!");
+                return null;
+            }
+            uint crc = Crc32.GetCrc32(path);
+            //从缓存中获取我们Bundleitem
+            BundleItem item = GetCacheItemFormAssetDic(crc);
+
+            //如果BundleItem中的对象已经加载过，就直接返回该对象
+            if (item.obj != null)
+            {
+                return item.objArr as T[];
+            }
+
+            //声明新对象
+            UnityEngine.Object[] objArr = null;
+#if UNITY_EDITOR
+            if (BundleSettings.Instance.loadAssetType == LoadAssetEnum.Editor)
+            {
+                objArr = UnityEditor.AssetDatabase.LoadAllAssetsAtPath(path);
+            }
+#endif
+            if (objArr == null)
+            {
+                //加载该路径对应的AssetBundle
+                item = AssetBundleManager.Instance.LoadAssetBundle(crc);
+                if (item != null)
+                {
+                    if (item.assetBundle != null)
+                    {
+                        objArr = item.objArr != null ? item.objArr : item.assetBundle.LoadAllAssets<T>();
+                    }
+                    else
+                    {
+                        Debug.LogError("item.AssetBundle Is Null!");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("item is null ...Path:" + path);
+                    return null;
+                }
+            }
+
+            item.objArr = objArr;
+            item.path = path;
+            //缓存已经加载过的资源
+            mAlreayLoadAssetsDic.Add(crc, item);
+
+            return objArr as T[];
+        }
         /// <summary>
         /// 异步加载资源，外部直接调用，仅仅加载不需要实例化的资源
         /// </summary>
@@ -544,7 +612,7 @@ namespace ZM.AssetFrameWork
         /// <param name="destroy"></param>
         public void Release(GameObject obj, bool destroy = false)
         {
-        
+
             CacheObejct cacheObejct = null;
             int insid = obj.GetInstanceID();
             mAllObjectDic.TryGetValue(insid, out cacheObejct);
@@ -581,7 +649,7 @@ namespace ZM.AssetFrameWork
                     {
                         AssetBundleManager.Instance.ReleaseAssets(item, true);
                         mAlreayLoadAssetsDic.Remove(cacheObejct.crc);
-                     }
+                    }
                     else
                     {
                         Debug.LogError("mAlreayLoadAssetsDic not find BundleItem Path:" + cacheObejct.path + " isnid:" + insid);
@@ -690,6 +758,7 @@ namespace ZM.AssetFrameWork
                 Debug.LogError("Not find spriteAtlas Name:" + name);
                 return null;
             }
+            
             //从图集中获取指定名称的图片
             Sprite sprite = spriteAtlas.GetSprite(name);
             if (sprite != null)
@@ -699,6 +768,55 @@ namespace ZM.AssetFrameWork
             Debug.LogError("Not find Sprite  Name:" + name);
             return null;
         }
+
+
+        /// <summary>
+        /// 加载tpsheet图集
+        /// </summary>
+        /// <param name="path"></param>
+        public Sprite LoadPNGAtlasSprite(string path, string name)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return null;
+            }
+            if (!path.EndsWith(".png"))
+            {
+                path += ".png";
+            }
+            UnityEngine.Object[] objectArr = null;
+            //优先从缓存中读取
+            if (mAllAssetObjectDic.TryGetValue(path,out objectArr)&& objectArr!=null)
+            {
+                return LoadSpriteFormAltas(objectArr, name);
+            }
+            //通过Asset Bundle加载该文件中的所有资源
+            UnityEngine.Object[] objects = LoadAllResource<UnityEngine.Object>(path);
+            //缓存至图集列表中
+            mAllAssetObjectDic.Add(path, objects);
+            return LoadSpriteFormAltas(objects, name);
+        }
+        /// <summary>
+        /// 从图集中加载图片
+        /// </summary>
+        /// <param name="objects"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private Sprite LoadSpriteFormAltas(UnityEngine.Object[] objects, string name)
+        {
+            for (int i = 0; i < objects.Length; i++)
+            {
+                if (string.Equals(name, objects[i].name))
+                {
+                    return objects[i] as Sprite;
+                }
+            }
+            Debug.LogError("没有找到名字为" + name + "的图片 请检查图片名称是否正确！");
+            return null;
+        }
+
+
+
         /// <summary>
         /// 异步加载图片
         /// </summary>
@@ -834,6 +952,7 @@ namespace ZM.AssetFrameWork
             //清理列表
             mLoadObjectCallBackDic.Clear();
             mAlreayLoadAssetsDic.Clear();
+            mAllAssetObjectDic.Clear();
             //释放未使用的资源 (未使用的资源指的是 没有被引用的资源)
             Resources.UnloadUnusedAssets();
             //触发GC垃圾回收

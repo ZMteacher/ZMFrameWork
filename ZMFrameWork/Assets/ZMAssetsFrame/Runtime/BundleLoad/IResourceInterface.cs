@@ -43,8 +43,11 @@ public interface IResourceInterface
     AudioClip LoadAudio(string path);
 
     TextAsset LoadTextAsset(string path);
+    T LoadScriptableObject<T>(string path) where T : UnityEngine.Object;
+ 
+    UnityEngine.Sprite LoadAtlasSprite(string atlasPath, string spriteName);
 
-    Sprite LoadAtlasSprite(string atlasPath, string spriteName);
+    UnityEngine.Sprite LoadPNGAtlasSprite(string atlasPath, string spriteName);
 
     long LoadTextureAsync(string path, Action<Texture, object> loadAsync, object param1 = null);
 

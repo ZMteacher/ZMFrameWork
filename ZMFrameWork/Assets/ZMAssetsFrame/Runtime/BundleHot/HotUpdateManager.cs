@@ -130,6 +130,7 @@ namespace ZM.AssetFrameWork
         {
             for (int i = 0; i < 100; i++)
             {
+                mHotAssetsWindow.SetLoadGameEvn();
                 mHotAssetsWindow.progressSlider.value = i / 100.0f;
                 if (i==1)
                 {
@@ -142,7 +143,7 @@ namespace ZM.AssetFrameWork
                 else if (i == 70)
                 {
                     mHotAssetsWindow.progressText.text = "加载AssetBUndle配置文件...";
-                    //AssetBundleManager.Instance.LoadAssetBundleConfig(BundleModuleEnum.Game);
+                    //举例： AssetBundleManager.Instance.LoadAssetBundleConfig(BundleModuleEnum.Game);
                 }
                 else if (i == 90)
                 {

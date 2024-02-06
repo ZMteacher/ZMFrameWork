@@ -52,6 +52,10 @@ namespace ZM.AssetFrameWork
         /// 通过AssetBundle加载出的对象
         /// </summary>
         public UnityEngine.Object obj;
+        /// <summary>
+        /// 通过AssetBundle加载出的对象数组
+        /// </summary>
+        public UnityEngine.Object[] objArr;
     }
 
     /// <summary>
@@ -117,7 +121,7 @@ namespace ZM.AssetFrameWork
         public bool GeneratorBundleConfigPath(BundleModuleEnum bundleModule)
         {
             mAssetsBundleConfigName = bundleModule.ToString().ToLower() + "assetbundleconfig";
-            mBundleConfigName = bundleModule.ToString().ToLower() + "bundleconfig.unity";
+            mBundleConfigName = bundleModule.ToString().ToLower() + "bundleconfig"+ BundleSettings.ABSUFFIX;
             mBundleConfigPath = BundleSettings.Instance.GetHotAssetsPath(bundleModule) + mBundleConfigName;
             //如果配置文件 存在，return true，如果不存，我们就直接从内嵌解压的资源中去加载。
             //如果内嵌解压的文件中不存在，说明用户网络有问题
@@ -329,6 +333,10 @@ namespace ZM.AssetFrameWork
                 if (assetitem.obj!=null)
                 {
                     assetitem.obj = null;
+                }
+                if (assetitem.objArr!=null)
+                {
+                    assetitem.objArr = null;
                 }
 
                 ReleaseAssetBundle(assetitem,unLoad);

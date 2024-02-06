@@ -15,15 +15,15 @@ MonoBehaviour:
   AssetBundleConfig:
   - bundleid: 0
     moduleName: Hall
-    isBuild: 0
-    lastClickBtnTime: 3.8035805
+    isBuild: 1
+    lastClickBtnTime: 43.063713
     prefabPathArr:
-    - Assets/BundleDemo/Hall/Prefab
+    - Assets/GameData/Hall/Prefabs
     rootFolderPathArr:
-    - Assets/BundleDemo/Hall/Textures
+    - Assets/GameData/Hall/Textures
     signFolderPathArr:
     - abName: hallData
-      bundlePath: Assets/BundleDemo/Hall/Data
+      bundlePath: Assets/GameData/Hall/CfgData
   - bundleid: 0
     moduleName: Majiang
     isBuild: 0

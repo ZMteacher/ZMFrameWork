@@ -1,412 +1,412 @@
 {
   "bundleInfoList": [
     {
-      "path": "Assets/BundleDemo/Hall/Prefab/ExampleWindow.prefab",
-      "crc": 1609895852,
-      "bundleName": "hall_examplewindow.unity",
+      "path": "Assets/GameData/Hall/Prefabs/Window/ExampleWindow.prefab",
+      "crc": 3082594063,
+      "bundleName": "hall_examplewindow",
       "assetName": "ExampleWindow.prefab",
       "bundleDependce": [
-        "hall_hall.unity",
-        "hall_shop.unity"
+        "hall_shop",
+        "hall_hall"
       ]
     },
     {
-      "path": "Assets/BundleDemo/Hall/Prefab/ExShopItem.prefab",
-      "crc": 671806349,
-      "bundleName": "hall_exshopitem.unity",
+      "path": "Assets/GameData/Hall/Prefabs/DynamicItem/ExShopItem.prefab",
+      "crc": 595189068,
+      "bundleName": "hall_exshopitem",
       "assetName": "ExShopItem.prefab",
       "bundleDependce": [
-        "hall_shop.unity"
+        "hall_shop"
       ]
     },
     {
-      "path": "Assets/BundleDemo/Hall/Prefab/ExShopWindow.prefab",
-      "crc": 1580322638,
-      "bundleName": "hall_exshopwindow.unity",
+      "path": "Assets/GameData/Hall/Prefabs/Window/ExShopWindow.prefab",
+      "crc": 2941083401,
+      "bundleName": "hall_exshopwindow",
       "assetName": "ExShopWindow.prefab",
       "bundleDependce": [
-        "hall_hall.unity",
-        "hall_shop.unity"
+        "hall_shop",
+        "hall_hall"
       ]
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/5zhang.png",
-      "crc": 2392209011,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/5zhang.png",
+      "crc": 1216028367,
+      "bundleName": "hall_hall",
       "assetName": "5zhang.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/13zhang.png",
-      "crc": 4015379785,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/13zhang.png",
+      "crc": 759482310,
+      "bundleName": "hall_hall",
       "assetName": "13zhang.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/Bank.png",
-      "crc": 279153202,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/Bank.png",
+      "crc": 4013271161,
+      "bundleName": "hall_hall",
       "assetName": "Bank.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/BG.jpg",
-      "crc": 982460091,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/BG.jpg",
+      "crc": 2078623160,
+      "bundleName": "hall_hall",
       "assetName": "BG.jpg",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/Box.png",
-      "crc": 3292870471,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/Box.png",
+      "crc": 1561136286,
+      "bundleName": "hall_hall",
       "assetName": "Box.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/Down.png",
-      "crc": 1791632587,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/Down.png",
+      "crc": 2505836160,
+      "bundleName": "hall_hall",
       "assetName": "Down.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/Gold.png",
-      "crc": 3353659857,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/Gold.png",
+      "crc": 947055514,
+      "bundleName": "hall_hall",
       "assetName": "Gold.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/kou.png",
-      "crc": 1727041465,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/kou.png",
+      "crc": 4290294880,
+      "bundleName": "hall_hall",
       "assetName": "kou.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/level.png",
-      "crc": 2815052773,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/level.png",
+      "crc": 1178289631,
+      "bundleName": "hall_hall",
       "assetName": "level.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/Logo200x200.png",
-      "crc": 1527804688,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/Logo200x200.png",
+      "crc": 3610977007,
+      "bundleName": "hall_hall",
       "assetName": "Logo200x200.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/majiang.png",
-      "crc": 1081773616,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/majiang.png",
+      "crc": 2188090559,
+      "bundleName": "hall_hall",
       "assetName": "majiang.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/niuniu.png",
-      "crc": 1291621681,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/niuniu.png",
+      "crc": 2316418445,
+      "bundleName": "hall_hall",
       "assetName": "niuniu.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/Pregress.png",
-      "crc": 3880329228,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/Pregress.png",
+      "crc": 2592911279,
+      "bundleName": "hall_hall",
       "assetName": "Pregress.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/Server.png",
-      "crc": 2899552374,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/Server.png",
+      "crc": 1782481098,
+      "bundleName": "hall_hall",
       "assetName": "Server.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/Setting.png",
-      "crc": 2212412718,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/Setting.png",
+      "crc": 1104129953,
+      "bundleName": "hall_hall",
       "assetName": "Setting.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/Share.png",
-      "crc": 2096997157,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/Share.png",
+      "crc": 2634853663,
+      "bundleName": "hall_hall",
       "assetName": "Share.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/Shop.png",
-      "crc": 3913714530,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/Shop.png",
+      "crc": 382773545,
+      "bundleName": "hall_hall",
       "assetName": "Shop.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/UP.png",
-      "crc": 862733939,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/UP.png",
+      "crc": 1913005424,
+      "bundleName": "hall_hall",
       "assetName": "UP.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/zhizun.png",
-      "crc": 2925746218,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/zhizun.png",
+      "crc": 1754165398,
+      "bundleName": "hall_hall",
       "assetName": "zhizun.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/代理.png",
-      "crc": 1742722976,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/代理.png",
+      "crc": 2704473884,
+      "bundleName": "hall_hall",
       "assetName": "代理.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Hall/大厅.jpg",
-      "crc": 1396518575,
-      "bundleName": "hall_hall.unity",
+      "path": "Assets/GameData/Hall/Textures/Hall/大厅.jpg",
+      "crc": 2513438227,
+      "bundleName": "hall_hall",
       "assetName": "大厅.jpg",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Data/PrefabConfig.txt",
-      "crc": 2530304511,
-      "bundleName": "hall_halldata.unity",
+      "path": "Assets/GameData/Hall/CfgData/PrefabConfig.txt",
+      "crc": 4172947302,
+      "bundleName": "hall_halldata",
       "assetName": "PrefabConfig.txt",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Prefab/HallWindow.prefab",
-      "crc": 3170687078,
-      "bundleName": "hall_hallwindow.unity",
+      "path": "Assets/GameData/Hall/Prefabs/Window/HallWindow.prefab",
+      "crc": 2837863627,
+      "bundleName": "hall_hallwindow",
       "assetName": "HallWindow.prefab",
       "bundleDependce": [
-        "hall_hall.unity"
+        "hall_hall"
       ]
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Loading/LoginButton.png",
-      "crc": 2378670945,
-      "bundleName": "hall_loading.unity",
+      "path": "Assets/GameData/Hall/Textures/Loading/LoginButton.png",
+      "crc": 1011024469,
+      "bundleName": "hall_loading",
       "assetName": "LoginButton.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Loading/图层 11.png",
-      "crc": 1661613358,
-      "bundleName": "hall_loading.unity",
+      "path": "Assets/GameData/Hall/Textures/Loading/图层 11.png",
+      "crc": 1317335538,
+      "bundleName": "hall_loading",
       "assetName": "图层 11.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Loading/圆角矩形 1 拷贝.png",
-      "crc": 3610197786,
-      "bundleName": "hall_loading.unity",
+      "path": "Assets/GameData/Hall/Textures/Loading/圆角矩形 1 拷贝.png",
+      "crc": 345720003,
+      "bundleName": "hall_loading",
       "assetName": "圆角矩形 1 拷贝.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Loading/圆角矩形 1.png",
-      "crc": 2146315679,
-      "bundleName": "hall_loading.unity",
+      "path": "Assets/GameData/Hall/Textures/Loading/圆角矩形 1.png",
+      "crc": 21342963,
+      "bundleName": "hall_loading",
       "assetName": "圆角矩形 1.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Loading/圆角矩形 3.png",
-      "crc": 86933247,
-      "bundleName": "hall_loading.unity",
+      "path": "Assets/GameData/Hall/Textures/Loading/圆角矩形 3.png",
+      "crc": 2072377747,
+      "bundleName": "hall_loading",
       "assetName": "圆角矩形 3.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Loading/弹窗.png",
-      "crc": 2096915414,
-      "bundleName": "hall_loading.unity",
+      "path": "Assets/GameData/Hall/Textures/Loading/弹窗.png",
+      "crc": 861819915,
+      "bundleName": "hall_loading",
       "assetName": "弹窗.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Loading/椭圆 3.png",
-      "crc": 748622689,
-      "bundleName": "hall_loading.unity",
+      "path": "Assets/GameData/Hall/Textures/Loading/椭圆 3.png",
+      "crc": 2696168094,
+      "bundleName": "hall_loading",
       "assetName": "椭圆 3.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Loading/背景.png",
-      "crc": 7288716,
-      "bundleName": "hall_loading.unity",
+      "path": "Assets/GameData/Hall/Textures/Loading/背景.png",
+      "crc": 1338835025,
+      "bundleName": "hall_loading",
       "assetName": "背景.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Login/Login.spriteatlas",
-      "crc": 2403262902,
-      "bundleName": "hall_login.unity",
+      "path": "Assets/GameData/Hall/Textures/Login/Login.spriteatlas",
+      "crc": 1052393602,
+      "bundleName": "hall_login",
       "assetName": "Login.spriteatlas",
       "bundleDependce": [
-        "hall_login.unity"
+        "hall_login"
       ]
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Login/LoginButton.png",
-      "crc": 290991891,
-      "bundleName": "hall_login.unity",
+      "path": "Assets/GameData/Hall/Textures/Login/LoginButton.png",
+      "crc": 1020718031,
+      "bundleName": "hall_login",
       "assetName": "LoginButton.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Login/LoginPOp.png",
-      "crc": 3762929238,
-      "bundleName": "hall_login.unity",
+      "path": "Assets/GameData/Hall/Textures/Login/LoginPOp.png",
+      "crc": 2951448971,
+      "bundleName": "hall_login",
       "assetName": "LoginPOp.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Login/LoginPopBox.png",
-      "crc": 2880719513,
-      "bundleName": "hall_login.unity",
+      "path": "Assets/GameData/Hall/Textures/Login/LoginPopBox.png",
+      "crc": 2251984453,
+      "bundleName": "hall_login",
       "assetName": "LoginPopBox.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Login/Login图层 11.png",
-      "crc": 2292619216,
-      "bundleName": "hall_login.unity",
+      "path": "Assets/GameData/Hall/Textures/Login/Login图层 11.png",
+      "crc": 2846091204,
+      "bundleName": "hall_login",
       "assetName": "Login图层 11.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Login/Login圆角矩形 1 拷贝.png",
-      "crc": 3632657648,
-      "bundleName": "hall_login.unity",
+      "path": "Assets/GameData/Hall/Textures/Login/Login圆角矩形 1 拷贝.png",
+      "crc": 1511664932,
+      "bundleName": "hall_login",
       "assetName": "Login圆角矩形 1 拷贝.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Login/Login圆角矩形 1.png",
-      "crc": 39885838,
-      "bundleName": "hall_login.unity",
+      "path": "Assets/GameData/Hall/Textures/Login/Login圆角矩形 1.png",
+      "crc": 1986779864,
+      "bundleName": "hall_login",
       "assetName": "Login圆角矩形 1.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Login/Login椭圆 3.png",
-      "crc": 2383139492,
-      "bundleName": "hall_login.unity",
+      "path": "Assets/GameData/Hall/Textures/Login/Login椭圆 3.png",
+      "crc": 1066365840,
+      "bundleName": "hall_login",
       "assetName": "Login椭圆 3.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Login/Login背景.png",
-      "crc": 162094238,
-      "bundleName": "hall_login.unity",
+      "path": "Assets/GameData/Hall/Textures/Login/Login背景.png",
+      "crc": 606574658,
+      "bundleName": "hall_login",
       "assetName": "Login背景.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Login/xb_0000_退-出-中.png",
-      "crc": 162355589,
-      "bundleName": "hall_login.unity",
+      "path": "Assets/GameData/Hall/Textures/Login/xb_0000_退-出-中.png",
+      "crc": 2108038995,
+      "bundleName": "hall_login",
       "assetName": "xb_0000_退-出-中.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Login/xb_0001_更-新-中.png",
-      "crc": 4033468202,
-      "bundleName": "hall_login.unity",
+      "path": "Assets/GameData/Hall/Textures/Login/xb_0001_更-新-中.png",
+      "crc": 2221052412,
+      "bundleName": "hall_login",
       "assetName": "xb_0001_更-新-中.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Prefab/LoginWindow.prefab",
-      "crc": 3985631010,
-      "bundleName": "hall_loginwindow.unity",
+      "path": "Assets/GameData/Hall/Prefabs/Window/LoginWindow.prefab",
+      "crc": 1174266611,
+      "bundleName": "hall_loginwindow",
       "assetName": "LoginWindow.prefab",
       "bundleDependce": [
-        "hall_login.unity",
-        "hall_hall.unity"
+        "hall_login",
+        "hall_hall"
       ]
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Shop/Loading.png",
-      "crc": 2873889609,
-      "bundleName": "hall_shop.unity",
+      "path": "Assets/GameData/Hall/Textures/Shop/Loading.png",
+      "crc": 1767702982,
+      "bundleName": "hall_shop",
       "assetName": "Loading.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Shop/图层 6.png",
-      "crc": 2996043265,
-      "bundleName": "hall_shop.unity",
+      "path": "Assets/GameData/Hall/Textures/Shop/图层 6.png",
+      "crc": 3478548898,
+      "bundleName": "hall_shop",
       "assetName": "图层 6.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Shop/左列表.png",
-      "crc": 3828989352,
-      "bundleName": "hall_shop.unity",
+      "path": "Assets/GameData/Hall/Textures/Shop/左列表.png",
+      "crc": 2879097461,
+      "bundleName": "hall_shop",
       "assetName": "左列表.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Shop/未选中 金币赠送.png",
-      "crc": 4097975799,
-      "bundleName": "hall_shop.unity",
+      "path": "Assets/GameData/Hall/Textures/Shop/未选中 金币赠送.png",
+      "crc": 3164592064,
+      "bundleName": "hall_shop",
       "assetName": "未选中 金币赠送.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Shop/矩形 1 拷贝 6.png",
-      "crc": 3192731374,
-      "bundleName": "hall_shop.unity",
+      "path": "Assets/GameData/Hall/Textures/Shop/矩形 1 拷贝 6.png",
+      "crc": 3236344194,
+      "bundleName": "hall_shop",
       "assetName": "矩形 1 拷贝 6.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Shop/矩形 1.png",
-      "crc": 20019534,
-      "bundleName": "hall_shop.unity",
+      "path": "Assets/GameData/Hall/Textures/Shop/矩形 1.png",
+      "crc": 2096428781,
+      "bundleName": "hall_shop",
       "assetName": "矩形 1.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Shop/组 145 拷贝 4.png",
-      "crc": 2904453802,
-      "bundleName": "hall_shop.unity",
+      "path": "Assets/GameData/Hall/Textures/Shop/组 145 拷贝 4.png",
+      "crc": 3085280167,
+      "bundleName": "hall_shop",
       "assetName": "组 145 拷贝 4.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Shop/返回.png",
-      "crc": 2195131309,
-      "bundleName": "hall_shop.unity",
+      "path": "Assets/GameData/Hall/Textures/Shop/返回.png",
+      "crc": 1144660753,
+      "bundleName": "hall_shop",
       "assetName": "返回.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Textures/Shop/选中 银行存款.png",
-      "crc": 1989524927,
-      "bundleName": "hall_shop.unity",
+      "path": "Assets/GameData/Hall/Textures/Shop/选中 银行存款.png",
+      "crc": 3422679356,
+      "bundleName": "hall_shop",
       "assetName": "选中 银行存款.png",
       "bundleDependce": []
     },
     {
-      "path": "Assets/BundleDemo/Hall/Prefab/TestObj.prefab",
-      "crc": 947139261,
-      "bundleName": "hall_testobj.unity",
+      "path": "Assets/GameData/Hall/Prefabs/DynamicItem/TestObj.prefab",
+      "crc": 239473143,
+      "bundleName": "hall_testobj",
       "assetName": "TestObj.prefab",
       "bundleDependce": [
-        "hall_hall.unity"
+        "hall_hall"
       ]
     }
   ]

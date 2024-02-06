@@ -48,6 +48,8 @@ public class BundleSettings : ScriptableObject
             return _instance;
         } 
     }
+    //AssetBundle后缀 例：.ab 建议不加后缀，防止内嵌时Unity读取出错
+    public const string ABSUFFIX = "";
 
     [TitleGroup("资源加载热更设置"),LabelText("AssetBundle下载地址")]
     public string AssetBundleDownLoadUrl;

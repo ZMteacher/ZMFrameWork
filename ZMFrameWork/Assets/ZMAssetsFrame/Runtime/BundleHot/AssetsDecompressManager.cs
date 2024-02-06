@@ -10,14 +10,15 @@
 *
 * Modify: 
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
-using Newtonsoft.Json;
+ 
+ 
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
-
+using Newtonsoft.Json;
 namespace ZM.AssetFrameWork
 {
     public class AssetsDecompressManager : IDecompressAssets
@@ -90,7 +91,7 @@ namespace ZM.AssetFrameWork
                     if (!File.Exists(localFilePath)||MD5.GetMd5FromFile(localFilePath)!=info.md5)
                     {
                         mNeedDecompressFileList.Add(info.fileName);
-                        TotalSizem += info.size / 1024f;
+                        TotalSizem += info.size / 1024.0f;
                     }
                 }
             }
@@ -105,7 +106,7 @@ namespace ZM.AssetFrameWork
         }
         public override float GetDecompressProgress()
         {
-            return AlreadyDecompressSizem/TotalSizem;
+            return AlreadyDecompressSizem==0? 0: AlreadyDecompressSizem /TotalSizem;
         }
         /// <summary>
         /// 解压文件到持久化目录

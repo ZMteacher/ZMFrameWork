@@ -1,0 +1,37 @@
+[
+  {
+    "fileName": "Android",
+    "md5": "AC78E046E81D00F1D0B2D335B8582CC4",
+    "size": 1.0
+  },
+  {
+    "fileName": "shuangkoubundleconfig",
+    "md5": "4FA85205751A03E121E97A404AB1F2E4",
+    "size": 3.0
+  },
+  {
+    "fileName": "shuangkou_hall",
+    "md5": "11A7D42948002271A899E742AB689A35",
+    "size": 4620.0
+  },
+  {
+    "fileName": "shuangkou_loading",
+    "md5": "B58B8F11D636BF622655F50796CB73E6",
+    "size": 1499.0
+  },
+  {
+    "fileName": "shuangkou_login",
+    "md5": "A738413666B98BF1E62F2E68CF3FAFDD",
+    "size": 4987.0
+  },
+  {
+    "fileName": "shuangkou_shop",
+    "md5": "2D37C5AF9B766DE1465ECFCC8E2C7647",
+    "size": 258.0
+  },
+  {
+    "fileName": "shuangkou_skwindow",
+    "md5": "0DD9EF200D8DFB79A75B8574F9FC25F7",
+    "size": 790.0
+  }
+]

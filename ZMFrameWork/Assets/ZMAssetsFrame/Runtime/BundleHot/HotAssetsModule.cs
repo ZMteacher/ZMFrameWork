@@ -329,7 +329,8 @@ namespace ZM.AssetFrameWork
 #region 资源下载回调
         public void DownLoadAssetBundleSuccess(HotFileInfo hotFile)
         {
-            string abName = hotFile.abName.Replace(".unity", "");
+
+            string abName = hotFile.abName.Contains(".")? hotFile.abName.Replace(BundleSettings.ABSUFFIX, "") : hotFile.abName;
             if (hotFile.abName.Contains("bundleconfig"))
             {
                 OnDownLoadABConfigListener?.Invoke(abName);
