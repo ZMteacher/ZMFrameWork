@@ -10,6 +10,7 @@ public class UIWindowEditor : EditorWindow
     private string scriptContent;
     private string filePath;
     private Vector2 scroll = new Vector2();
+    private Dictionary<string, string> mMethodDic = new Dictionary<string, string>();
     /// <summary>
     /// 显示代码展示窗口
     /// </summary>
@@ -20,20 +21,33 @@ public class UIWindowEditor : EditorWindow
         window.scriptContent = content;
         window.filePath = filePath;
         //处理代码新增
-        if (File.Exists(filePath) && insterDic != null)
+        window.mMethodDic = insterDic;
+        string originScript = string.Empty;
+        bool isInsterSuccess = false;
+        if (File.Exists(window.filePath)&&insterDic!=null)
         {
-            //获取原始代码
-            string originScript = File.ReadAllText(filePath);
-            foreach (var item in insterDic)
+            originScript = File.ReadAllText(window.filePath);
+            if (string.IsNullOrEmpty(originScript) == false)
             {
-                //如果老代码中没有这个代码就进行插入操作
-                if (!originScript.Contains(item.Key))
+                foreach (var item in insterDic)
                 {
-                    int index = window.GetInserIndex(originScript);
-                    originScript= window.scriptContent = originScript.Insert(index, item.Value + "\t\t");
+                    if (!originScript.Contains(item.Key))
+                    {
+                        int insterIndex = window.GetInserIndex(originScript);
+                        //插入新增的数据
+                        originScript = window.scriptContent = originScript.Insert(insterIndex, item.Value + "\t\t");
+                        isInsterSuccess = true;
+                    }
                 }
             }
+            if (isInsterSuccess == false)
+            {
+                window.scriptContent = originScript;
+            }
         }
+
+        originScript = null;
+        insterDic = null;
         window.Show();
     }
     public void OnGUI()
@@ -62,19 +76,23 @@ public class UIWindowEditor : EditorWindow
     }
     public void ButtonClick()
     {
+
         if (File.Exists(filePath))
-        {
             File.Delete(filePath);
-        }
         StreamWriter writer = File.CreateText(filePath);
         writer.Write(scriptContent);
         writer.Close();
+        writer.Dispose();
+        mMethodDic = null;
+        scriptContent = string.Empty;
+         
+        Debug.Log("Create Code finish! Cs path:" + filePath);
         AssetDatabase.Refresh();
-        if (EditorUtility.DisplayDialog("自动化生成工具","生成脚本成功！","确定"))
+        if (EditorUtility.DisplayDialog("自动化工具", "生成脚本成功！", "确定"))
         {
             Close();
-        }
-    }
+        } 
+     }
     /// <summary>
     /// 获取插入代码的下标
     /// </summary>
@@ -83,17 +101,17 @@ public class UIWindowEditor : EditorWindow
     public int GetInserIndex(string content)
     {
         //找到UI事件组件下面的第一个public 所在的位置 进行插入
-        Regex regex = new Regex("UI组件事件");
+        Regex regex = new Regex("UI组件事件()");
         Match match = regex.Match(content);
-
         Regex regex1 = new Regex("public");
-        MatchCollection matchCollection = regex1.Matches(content);
+        MatchCollection matchColltion = regex1.Matches(content);
 
-        for (int i = 0; i < matchCollection.Count; i++)
+        for (int i = 0; i < matchColltion.Count; i++)
         {
-            if (matchCollection[i].Index > match.Index)
+            if (matchColltion[i].Index > match.Index)
             {
-                return matchCollection[i].Index;
+                //Debug.Log(matchColltion[i].Index);
+                return matchColltion[i].Index;
             }
         }
         return -1;
