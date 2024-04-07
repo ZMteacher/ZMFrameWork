@@ -13,8 +13,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using ZM.AssetFrameWork;
 
 public interface IResourceInterface  
 {
@@ -22,19 +24,22 @@ public interface IResourceInterface
 
     void PreLoadObj(string path,int count=1);
 
+    Task PreLoadObjAsync(string path, int count = 1);
+
     void PreLoadResource<T>(string path) where T : UnityEngine.Object;
 
     GameObject Instantiate(string path, Transform parent, Vector3 localPoition, Vector3 localScale, Quaternion quaternion);
-
     void InstantiateAsync(string path, Action<GameObject, object, object> loadAsync, object param1, object param2);
-
+    Task<AssetsRequest> InstantiateAsync(string path,  object param1, object param21, object param2);
     long InstantiateAndLoad(string path, Action<GameObject, object, object> loadAsync, Action loading, object param1, object param2);
-
+    Task<T> LoadResourceAsync<T>(string path) where T : UnityEngine.Object;
     void RemoveObjectLoadCallBack(long loadid);
 
     void Release(GameObject obj, bool destroy = false);
 
     void Release(Texture texture);
+
+    void Release(AssetsRequest request);
 
     Sprite LoadSprite(string path);
 

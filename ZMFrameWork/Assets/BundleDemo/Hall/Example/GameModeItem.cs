@@ -57,20 +57,20 @@ public class GameModeItem : MonoBehaviour
     }
     public void OnGameButtonClick()
     {
-        ZMAssetsFrame.CheckAssetsVersion(gameType, CheckAssetCallBack);
+        ZMAsset.CheckAssetsVersion(gameType, CheckAssetCallBack);
     }
     public void CheckAssetCallBack(bool isHot,float sizem)
     {
         //如果说需要热更，我们就去下载该模块的热更资源
         if (isHot)
         {
-            ZMAssetsFrame.HotAssets(gameType, OnStartHotAssets, OnHotAssetsFinish, OnHotAssetsWait);
+            ZMAsset.HotAssets(gameType, OnStartHotAssets, OnHotAssetsFinish, OnHotAssetsWait);
         }
         else
         {
             //如果不需要热更，就可以直接加载对应模块资源进入游戏
             UIModule.Instance.DestroyAllWindow();
-            ZMAssetsFrame.ClearResourcesAssets(true);
+            ZMAsset.ClearResourcesAssets(true);
             //不销毁大厅，大厅一般常驻内存
             if (gameType== BundleModuleEnum.ShuangKou)
             {
@@ -86,7 +86,7 @@ public class GameModeItem : MonoBehaviour
     {
         updateRoot.SetActive(true);
         downLoadTips.text = "正在更新";
-        mHotModule = ZMAssetsFrame.GetHotAssetsModule(moduleType);
+        mHotModule = ZMAsset.GetHotAssetsModule(moduleType);
     }
     /// <summary>
     /// 热更完成

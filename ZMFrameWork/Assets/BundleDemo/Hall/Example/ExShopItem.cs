@@ -14,6 +14,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZM.AssetFrameWork;
+/// <summary>
+/// 当前脚本演示 资源下载中加载流程，加载资源-出现转圈动画-等待资源加载-加载完成-显示资源。
+/// </summary>
 public class ExShopItem : MonoBehaviour
 {
     public Transform gameItemParent;
@@ -24,7 +27,7 @@ public class ExShopItem : MonoBehaviour
     public void SetData(int itemid)
     {
         mItemId = itemid;
-        ZMAssetsFrame.InstantiateAndLoad("Assets/BundleDemo/GameItem/" + itemid + "/" + itemid, LoadItemObjComplete, ItemObjLoading);
+        ZMAsset.InstantiateAndLoad(AssetsPathConfig.GAME_DATA_PATH + "GameItem/" + itemid + "/" + itemid, LoadItemObjComplete, ItemObjLoading);
     }
     /// <summary>
     /// 加载游戏道具完成
@@ -44,7 +47,6 @@ public class ExShopItem : MonoBehaviour
             itemObj.transform.localScale = Vector3.one;
             itemObj.transform.rotation = Quaternion.identity;
             mItemObj = itemObj;
-
         }
         else
         {
@@ -61,9 +63,9 @@ public class ExShopItem : MonoBehaviour
     {
         if (mItemObj != null)
         {
-            ZMAssetsFrame.Release(mItemObj, true);
+            ZMAsset.Release(mItemObj, false);
         }
-        ZMAssetsFrame.Release(gameObject, true);
-    }
+        ZMAsset.Release(gameObject,false);
+     }
 
 }

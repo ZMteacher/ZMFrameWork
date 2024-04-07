@@ -101,7 +101,7 @@ public class UIWindowEditor : EditorWindow
     public int GetInserIndex(string content)
     {
         //找到UI事件组件下面的第一个public 所在的位置 进行插入
-        Regex regex = new Regex("UI组件事件()");
+        Regex regex = new Regex("UI组件事件");
         Match match = regex.Match(content);
         Regex regex1 = new Regex("public");
         MatchCollection matchColltion = regex1.Matches(content);

@@ -13,12 +13,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace ZM.AssetFrameWork
 {
-    public partial class ZMAssetsFrame
+    public partial class ZMAsset
     {
         /// <summary>
         /// 同步克隆物体
@@ -59,6 +60,10 @@ namespace ZM.AssetFrameWork
         {
             Instance.mResource.InstantiateAsync(path,loadAsync,param1,param2);
         }
+        public static async Task<AssetsRequest> InstantiateAsync(string path, object param1 = null, object param2 = null, object param3 = null)
+        {
+          return await Instance.mResource.InstantiateAsync(path, param1, param2, param3);
+        }
         /// <summary>
         /// 克隆并且等待资源下载完成克隆
         /// </summary>
@@ -82,6 +87,11 @@ namespace ZM.AssetFrameWork
         {
              Instance.mResource.PreLoadObj(path,count);
         }
+        public static async Task PreLoadObjAsync<T>(string path, int count = 1) 
+        {
+            await Instance.mResource.PreLoadObjAsync(path, count);
+        }
+
         /// <summary>
         /// 预加载资源
         /// </summary>
@@ -92,9 +102,11 @@ namespace ZM.AssetFrameWork
             Instance.mResource.PreLoadResource<T>(path);
         }
 
- 
+        public static async Task<T> PreLoadResourceAsync<T>(string path) where T : UnityEngine.Object
+        {
+          return await Instance.mResource.LoadResourceAsync<T>(path);
+        }
 
- 
 
         /// <summary>
         /// 移除对象加载回调
@@ -114,12 +126,16 @@ namespace ZM.AssetFrameWork
             Instance.mResource.Release(obj,destroy);
         }
         /// <summary>
-        /// 释放图片所占用的内存
+        /// 释放图片所占用的内存(存在危险性，确定该图片资源不用时进行调用)
         /// </summary>
         /// <param name="texture"></param>
         public static void Release(Texture texture)
         {
             Instance.mResource.Release(texture);
+        }
+        public static void Release(AssetsRequest request)
+        {
+            Instance.mResource.Release(request);
         }
         /// <summary>
         /// 加载图片资源
@@ -137,6 +153,10 @@ namespace ZM.AssetFrameWork
         /// <returns></returns>
         public static Texture LoadTexture(string path)
         {
+            if (!path.EndsWith(".jpg"))
+            {
+                path += ".jpg";
+            }
             return Instance.mResource.LoadTexture(path);
         }
         /// <summary>
@@ -157,7 +177,16 @@ namespace ZM.AssetFrameWork
         {
             return Instance.mResource.LoadTextAsset(fullPath);
         }
- 
+        /// <summary>
+        /// 可能等待的异步加载Text资源
+        /// </summary>
+        /// <param name="path">绝对路径</param>
+        /// <returns></returns>
+        public static async Task<TextAsset> LoadTextAssetAsync(string fullPath)
+        {
+            return await Instance.mResource.LoadResourceAsync<TextAsset>(fullPath);
+        }
+     
         /// <summary>
         /// 加载可编写脚本对象
         /// </summary>
@@ -201,6 +230,19 @@ namespace ZM.AssetFrameWork
             return Instance.mResource.LoadTextureAsync(path,loadAsync,param1);
         }
         /// <summary>
+        /// 可通过await进行等待的异步加载Sprite
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static async Task<Texture> LoadTextureAsync(string path)
+        {
+            if (!path.EndsWith(".jpg"))
+            {
+                path += ".jpg";
+            }
+            return await Instance.mResource.LoadResourceAsync<Texture>(path);
+        }
+        /// <summary>
         /// 异步加载Sprite
         /// </summary>
         /// <param name="path">加载路径</param>
@@ -213,6 +255,19 @@ namespace ZM.AssetFrameWork
             return Instance.mResource.LoadSpriteAsync(path, image, setNativeSize,loadAsync);
         }
         /// <summary>
+        /// 可通过await进行等待的异步加载Sprite
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static async Task<Sprite> LoadSpriteAsync(string path)
+        {
+            if (!path.EndsWith(".png"))
+            {
+                path += ".png";
+            }
+            return await Instance.mResource.LoadResourceAsync<Sprite>(path);
+        }
+        /// <summary>
         /// 清理所有异步加载任务
         /// </summary>
         public static void ClearAllAsyncLoadTask()
@@ -222,8 +277,8 @@ namespace ZM.AssetFrameWork
         /// <summary>
         /// 清理加载的资源，释放内存
         /// </summary>
-        /// <param name="absoluteCleaning">深度清理：true：销毁所有由AssetBUnle加载和生成的对象，彻底释放内存占用
-        /// 深度清理 false：销毁对象池中的对象，但不销毁由AssetBundle克隆出并在使用的对象，具体的内存释放根据内存引用计数选择性释放</param>
+        /// <param name="absoluteCleaning">深度清理：true：销毁所有由AssetBUnle加载和生成的对象(物体和资源)，彻底释放内存占用
+        /// 深度清理 false：销毁对象池中的对象，但不销毁由AssetBundle克隆出并在使用的物体和资源对象，具体的内存释放根据内存引用计数选择性释放</param>
         public static void ClearResourcesAssets(bool absoluteCleaning)
         {
             Instance.mResource.ClearResourcesAssets(absoluteCleaning);

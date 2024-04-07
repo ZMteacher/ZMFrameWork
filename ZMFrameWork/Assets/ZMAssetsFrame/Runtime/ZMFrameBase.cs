@@ -18,21 +18,21 @@ namespace ZM.AssetFrameWork
 {
     public class ZMFrameBase : MonoBehaviour
     {
-        protected static ZMAssetsFrame _Instance = null;
+        protected static ZMAsset _Instance = null;
 
-        public static ZMAssetsFrame Instance
+        public static ZMAsset Instance
         {
             get
             {
                 if (_Instance==null)
                 {
-                   _Instance= Object.FindObjectOfType<ZMAssetsFrame>();
+                   _Instance= Object.FindObjectOfType<ZMAsset>();
                     if (_Instance==null)
                     {
-                        GameObject obj = new GameObject(typeof(ZMAssetsFrame).Name);
+                        GameObject obj = new GameObject(typeof(ZMAsset).Name);
                         //禁止销毁这个物体
                         DontDestroyOnLoad(obj);
-                        _Instance=obj.AddComponent<ZMAssetsFrame>();
+                        _Instance=obj.AddComponent<ZMAsset>();
                         _Instance.OnInitlizate();
                     }
                 }

@@ -9,7 +9,8 @@ using UnityEngine.UI;
 using UnityEngine;
 using ZMUIFrameWork;
 using ZM.AssetFrameWork;
-
+using UnityEditor.UIElements;
+using UnityEditor;
 
 public class HallWindow : WindowBase
 {
@@ -57,7 +58,7 @@ public class HallWindow : WindowBase
     #region UI组件事件
     public void OnShopButtonClick()
     {
-
+        PopUpWindow<ExShopWindow>();
     }
     public void OnServiceButtonClick()
     {
@@ -75,13 +76,10 @@ public class HallWindow : WindowBase
     {
 
     }
-    public void OnExShopButtonClick()
-    {
-        ZMAssetsFrame.Instantiate(AssetsPathConfig.HALL_PREFAB_PATH + "ExShopWindow", null);
-    }
+ 
     public void OnExampleButtonClick()
     {
-        ZMAssetsFrame.Instantiate(AssetsPathConfig.HALL_PREFAB_PATH + "ExampleWindow", null);
+        ZMAsset.Instantiate(AssetsPathConfig.HALL_PREFABS_PATH + "ExampleWindow", null);
     }
     #endregion
 }

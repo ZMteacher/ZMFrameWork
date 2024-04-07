@@ -31,7 +31,7 @@ namespace ZM.AssetFrameWork
             }
             mHotAssetsWindow = InstantiateResourcesObj<HotAssetsWindow>("HotAssetsWindow");
             //开始解压游戏内嵌资源
-           IDecompressAssets decompress= ZMAssetsFrame.StartDeCompressBuiltinFile(bundleModule,()=> {
+           IDecompressAssets decompress= ZMAsset.StartDeCompressBuiltinFile(bundleModule,()=> {
                //说明资源开启解压了
                if (Application.internetReachability == NetworkReachability.NotReachable)
                {
@@ -44,7 +44,7 @@ namespace ZM.AssetFrameWork
                         CheckAssetsVersion(bundleModule);
                    else
                    {
-                       //如果不需要热更，说明用户已经热更过了，资源是最新的，直接进入游戏 TODO
+                       //如果不需要热更，说明用户已经热更过了，资源是最新的，直接进入游戏 
                        OnHotFinishCallBack(bundleModule);
                    }
                 }
@@ -68,7 +68,7 @@ namespace ZM.AssetFrameWork
         }
         public void CheckAssetsVersion(BundleModuleEnum bundleModule)
         {
-            ZMAssetsFrame.CheckAssetsVersion(bundleModule,(isHot,sizem)=> {
+            ZMAsset.CheckAssetsVersion(bundleModule,(isHot,sizem)=> {
                 if (isHot )
                 {
                     //当用户使用是流量的时候呢，需要询问用户是否需要更新资源
@@ -104,9 +104,9 @@ namespace ZM.AssetFrameWork
         /// <param name="bundleModule"></param>
         public void StartHotAssets(BundleModuleEnum bundleModule)
         {
-            ZMAssetsFrame.HotAssets(bundleModule, OnStartHotAssetsCallBack, OnHotFinishCallBack,null,false);
+            ZMAsset.HotAssets(bundleModule, OnStartHotAssetsCallBack, OnHotFinishCallBack,null,false);
             //更新热更进度
-            mHotAssetsWindow.ShowHotAssetsProgress(ZMAssetsFrame.GetHotAssetsModule(bundleModule));
+            mHotAssetsWindow.ShowHotAssetsProgress(ZMAsset.GetHotAssetsModule(bundleModule));
         }
         /// <summary>
         /// 热更完成回调

@@ -98,7 +98,7 @@ namespace ZM.AssetFrameWork
             }
             else
             {
-                assetsModule = new HotAssetsModule(bundleModule,ZMAssetsFrame.Instance);
+                assetsModule = new HotAssetsModule(bundleModule,ZMAsset.Instance);
                 mAllAssetsModuleDic.Add(bundleModule, assetsModule);
             }
             return assetsModule;

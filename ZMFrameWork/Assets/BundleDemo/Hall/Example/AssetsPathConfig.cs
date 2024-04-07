@@ -12,13 +12,21 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class AssetsPathConfig  
 {
-    public const string HALL_PREFAB_PATH = "Assets/BundleDemo/Hall/Prefab/";
+    public const string GAME_DATA_PATH="Assets/GameData/";
+    public const string HALL_PATH = GAME_DATA_PATH + "Hall/";
+    public const string HALL_PREFABS_PATH = HALL_PATH + "Prefabs/";
+    public const string HALL_DYNAMICITEM_PATH = HALL_PREFABS_PATH + "DynamicItem/";
 
-    public const string HALL_TEXTURE_PATH = "Assets/BundleDemo/Hall/Textures/";
+ 
 
-    public const string HALL_DATA_PATH = "Assets/BundleDemo/Hall/Data/";
+
+
+    public const string HALL_TEXTURE_PATH = HALL_PATH + "Textures/";
+
+    public const string HALL_DATA_PATH = HALL_PATH+ "CfgData/";
 }

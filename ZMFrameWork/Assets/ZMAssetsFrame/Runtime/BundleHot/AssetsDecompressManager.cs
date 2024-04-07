@@ -47,7 +47,7 @@ namespace ZM.AssetFrameWork
             if (ComputeDecompressFile(bundleModule))
             {
                 IsStartDecompress = true;
-                ZMAssetsFrame.Instance.StartCoroutine(UnPackToPersistentDataPath(bundleModule, callBack));
+                ZMAsset.Instance.StartCoroutine(UnPackToPersistentDataPath(bundleModule, callBack));
             }
             else
             {

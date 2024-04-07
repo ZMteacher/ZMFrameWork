@@ -13,6 +13,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
@@ -52,6 +55,25 @@ namespace ZM.AssetFrameWork
         public object param2;
         public System.Action<GameObject, object, object> loadResult;
     }
+    /// <summary>
+    /// 资源请求
+    /// </summary>
+    public class AssetsRequest
+    {
+        public GameObject obj;
+        public object param1;
+        public object param2;
+        public object param3;
+
+        public void Release()
+        {
+            obj = null;
+            param1 = null;
+            param2 = null;
+            param3 = null;
+            ZMAsset.Release(this);
+        }
+    }
 
     public class ResourceManager : IResourceInterface
     {
@@ -71,6 +93,10 @@ namespace ZM.AssetFrameWork
         /// 缓存对象类对象池
         /// </summary>
         private ClassObjectPool<CacheObejct> mCacheObejctPool = new ClassObjectPool<CacheObejct>(300);
+        /// <summary>
+        /// 缓存资源请求对象池
+        /// </summary>
+        private ClassObjectPool<AssetsRequest> mAssetsRequestPool = new ClassObjectPool<AssetsRequest>(50);
         /// <summary>
         /// 异步加载任务列表
         /// </summary>
@@ -289,6 +315,47 @@ namespace ZM.AssetFrameWork
             });
         }
         /// <summary>
+        /// 异步克隆对象 可通过await进行等待
+        /// </summary>
+        /// <param name="path">路径</param>
+        /// <param name="loadAsync">异步加载回调</param>
+        /// <param name="param1">异步加载参数1</param>
+        /// <param name="param2">异步加载参数2</param>
+        public async Task<AssetsRequest> InstantiateAsync(string path,  object param1 = null, object param2 = null,object param3=null)
+        {
+            path = path.EndsWith(".prefab") ? path : path + ".prefab";
+            AssetsRequest request = mAssetsRequestPool.Spawn();
+            request.param1 = param1;
+            request.param2 = param2;
+            request.param3 = param3;
+            //先从对象池中查询这个对象，如果存在就直接使用
+            GameObject cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path));
+            if (cacheObj != null)
+            {
+                request.obj = cacheObj;
+                return request;
+            }
+            //获取异步加载任务唯一id
+            long guid = mAsyncTaskGuid;
+            mAsyncLoadingTaskList.Add(guid);
+            //开始异步加载资源
+            GameObject loadObj= await LoadResourceAsync<GameObject>(path);
+            if (mAsyncLoadingTaskList.Contains(guid))
+            {
+                mAsyncLoadingTaskList.Remove(guid);
+                GameObject nObj = Instantiate(path,loadObj, null);
+                request.obj = nObj;
+                return request;
+            }
+            else
+            {
+                mAsyncLoadingTaskList.Remove(guid);
+                Debug.LogError("Async Load GameObject is Null Path:" + path);
+                return request;
+            }
+            
+        }
+        /// <summary>
         /// 克隆并且等待资源下载完成克隆
         /// </summary>
         /// <param name="path"></param>
@@ -343,6 +410,21 @@ namespace ZM.AssetFrameWork
             for (int i = 0; i < count; i++)
             {
                 preLoadObjList.Add(Instantiate(path, null, Vector3.zero, Vector3.one, Quaternion.identity));
+            }
+            //回收对象到对象池
+            foreach (var obj in preLoadObjList)
+            {
+                Release(obj);
+            }
+        }
+        public async Task PreLoadObjAsync(string path, int count = 1)
+        {
+            List<GameObject> preLoadObjList = new List<GameObject>();
+            for (int i = 0; i < count; i++)
+            {
+                AssetsRequest request=  await InstantiateAsync(path);
+                preLoadObjList.Add(request.obj);
+                request.Release();
             }
             //回收对象到对象池
             foreach (var obj in preLoadObjList)
@@ -573,6 +655,92 @@ namespace ZM.AssetFrameWork
             }
         }
         /// <summary>
+        /// 异步加载资源，可使用await进行等待 外部直接调用，仅仅加载不需要实例化的资源
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public async Task<T> LoadResourceAsync<T>(string path) where T : UnityEngine.Object
+        {
+
+            if (string.IsNullOrEmpty(path))
+            {
+                Debug.LogError("path is Null , return null!");
+                return null;
+            }
+            uint crc = Crc32.GetCrc32(path);
+            //从缓存中获取我们Bundleitem
+            BundleItem item = GetCacheItemFormAssetDic(crc);
+
+            //如果BundleItem中的对象已经加载过，就直接返回该对象
+            if (item.obj != null)
+            {
+                //loadFinish?.Invoke(item.obj as T);
+                return item.obj as T;
+            }
+
+            //声明新对象
+            T obj = null;
+#if UNITY_EDITOR
+            if (BundleSettings.Instance.loadAssetType == LoadAssetEnum.Editor)
+            {
+                obj = LoadAssetsFormEditor<T>(path);
+                return obj;
+            }
+#endif
+            if (obj == null)
+            {
+                //加载该路径对应的AssetBundle
+                item = AssetBundleManager.Instance.LoadAssetBundle(crc);
+                if (item != null)
+                {
+                    if (item.obj != null)
+                    {
+                        //loadFinish?.Invoke(item.obj);
+
+                        item.path = path;
+                        item.crc = crc;
+                        mAlreayLoadAssetsDic.Add(crc, item);
+                        return obj;
+                    }
+                    else
+                    {
+                        //通过异步方式加载AssetBudnle
+                        T loadObj = await item.assetBundle.LoadAssetAsync<T>(item.assetName) as T;
+                        //request.completed += (asyncOption) =>
+                        //{
+                        //资源加载完成
+                        //UnityEngineo.Object loadObj = (asyncOption as AssetBundleRequest).asset;
+                        item.obj = loadObj;
+                        item.path = path;
+                        item.crc = crc;
+                        if (!mAlreayLoadAssetsDic.ContainsKey(crc))
+                        {
+                            mAlreayLoadAssetsDic.Add(crc, item);
+                        }
+                        //     //loadFinish?.Invoke(item.obj);
+                        return loadObj;
+                        //};
+
+                    }
+                }
+                else
+                {
+                    Debug.LogError("item is null ...Path:" + path);
+                    //loadFinish?.Invoke(null);
+                    return null;
+                }
+            }
+            else
+            {
+                item.obj = obj;
+                item.path = path;
+                //缓存已经加载过的资源
+                mAlreayLoadAssetsDic.Add(crc, item);
+                return null;
+            }
+        }
+        /// <summary>
         /// 从缓存中获取我们Bundleitem
         /// </summary>
         /// <param name="crc"></param>
@@ -622,7 +790,7 @@ namespace ZM.AssetFrameWork
                 Debug.LogError("Recycl Obj failed,obj is Gameobject.Instantiate...");
                 return;
             }
-            Debug.Log("Release Obj ins：" + insid + "  path:" + cacheObejct.path);
+            //Debug.Log("Release Obj ins：" + insid + "  path:" + cacheObejct.path);
             if (destroy)
             {
                 GameObject.Destroy(obj);
@@ -680,7 +848,7 @@ namespace ZM.AssetFrameWork
                 //会受到对象回收节点下
                 if (cacheObejct.obj != null)
                 {
-                    cacheObejct.obj?.transform.SetParent(ZMAssetsFrame.RecyclObjRoot);
+                    cacheObejct.obj?.transform.SetParent(ZMAsset.RecyclObjRoot);
                 }
                 else
                 {
@@ -758,7 +926,7 @@ namespace ZM.AssetFrameWork
                 Debug.LogError("Not find spriteAtlas Name:" + name);
                 return null;
             }
-            
+
             //从图集中获取指定名称的图片
             Sprite sprite = spriteAtlas.GetSprite(name);
             if (sprite != null)
@@ -786,7 +954,7 @@ namespace ZM.AssetFrameWork
             }
             UnityEngine.Object[] objectArr = null;
             //优先从缓存中读取
-            if (mAllAssetObjectDic.TryGetValue(path,out objectArr)&& objectArr!=null)
+            if (mAllAssetObjectDic.TryGetValue(path, out objectArr) && objectArr != null)
             {
                 return LoadSpriteFormAltas(objectArr, name);
             }
@@ -957,6 +1125,11 @@ namespace ZM.AssetFrameWork
             Resources.UnloadUnusedAssets();
             //触发GC垃圾回收
             System.GC.Collect();
+        }
+
+        public void Release(AssetsRequest request)
+        {
+            mAssetsRequestPool.Recycl(request);
         }
 
 

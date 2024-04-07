@@ -24,12 +24,12 @@ public class WindowBase : WindowBehaviour
         mUIMask = transform.Find("UIMask").GetComponent<CanvasGroup>();
         mUIContent = transform.Find("UIContent").transform;
     }
-    #region 声明周期
+    #region 生命周期
     public override void OnAwake()
     {
         base.OnAwake();
         InitializeBaseComponent();
-         
+
     }
     public override void OnShow()
     {
@@ -108,6 +108,10 @@ public class WindowBase : WindowBehaviour
             return;
         }
         mUIMask.alpha = isVisble ? 1 : 0;
+    }
+    public void PopUpWindow<T>() where T:WindowBase,new ()
+    {
+        UIModule.Instance.PopUpWindow<T>();
     }
     #region 事件管理
     public void AddButtonClickListener(Button btn, UnityAction action)

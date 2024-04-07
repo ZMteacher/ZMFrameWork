@@ -274,7 +274,7 @@ namespace ZM.AssetFrameWork
                 //计算出AssetBundle加载路径
                 string hotFilePath = BundleSettings.Instance.GetHotAssetsPath(bundleModuleType)+bundleName;
                 //获取热更模块
-                HotAssetsModule module= ZMAssetsFrame.GetHotAssetsModule(bundleModuleType);
+                HotAssetsModule module= ZMAsset.GetHotAssetsModule(bundleModuleType);
                 bool isHotPath = module==null?(File.Exists(hotFilePath)?true:false):(module.HotAssetCount==0?(File.Exists(hotFilePath) ? true : false):module.HotAssetsIsExists(bundleName));
                 //通过是否是热更路径 计算出AssetBundle加载的路径
                 string bundlePath = isHotPath ? hotFilePath : BundleSettings.Instance.GetAssetsDecompressPath(bundleModuleType) + bundleName;

@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ZM.AssetFrameWork
 {
-    public partial class ZMAssetsFrame :ZMFrameBase
+    public partial class ZMAsset : ZMFrameBase
     {
         public static Transform RecyclObjRoot { get; private set; }
 
@@ -43,5 +43,7 @@ namespace ZM.AssetFrameWork
         {
             mHotAssets?.OnMainThreadUpdate();
         }
+
+ 
     }
 }

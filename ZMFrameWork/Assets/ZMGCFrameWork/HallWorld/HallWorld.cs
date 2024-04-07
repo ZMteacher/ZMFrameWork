@@ -17,7 +17,7 @@ namespace ZMGC.Hall
         {
             base.OnCretae();
             Debug.Log("HallWorld  OnCretae>>>");
-            //大厅世界构建完成，弹出大厅弹窗
+            //大厅世界构建完成，弹出登录弹窗
             UIModule.PopUpWindow<LoginWindow>();
         }
         /// <summary>
@@ -25,9 +25,9 @@ namespace ZMGC.Hall
         /// </summary>
         public static void EnterHallWorldFormLogin()
         { 
-            //退出游戏流程：销毁所有弹窗，解除资源引用 =>  释放内存中无引用的资源 
+            //从登录进入大厅流程：销毁所有弹窗，解除资源引用 =>  释放内存中无引用的资源 
             HallWorld.UIModule.DestroyAllWindow();
-            ZMAssetsFrame.ClearResourcesAssets(false);
+            ZMAsset.ClearResourcesAssets(false);
             //弹出大厅弹窗
             UIModule.PopUpWindow<HallWindow>();
         }
@@ -41,7 +41,7 @@ namespace ZMGC.Hall
         {
             //退出游戏流程：销毁所有弹窗，解除资源引用 =>  释放内存中无引用的资源 
             HallWorld.UIModule.DestroyAllWindow();
-            ZMAssetsFrame.ClearResourcesAssets(false);
+            ZMAsset.ClearResourcesAssets(false);
 
             //弹出大厅弹窗
             HallWorld.UIModule.PopUpWindow<HallWindow>();

@@ -12,7 +12,7 @@ public class Main : MonoBehaviour
     private void Awake()
     {
         //初始化游戏热更框架
-        ZMAssetsFrame.Instance.InitFrameWork();
+        ZMAsset.Instance.InitFrameWork();
         
         Debug.Log(Application.persistentDataPath);
     }

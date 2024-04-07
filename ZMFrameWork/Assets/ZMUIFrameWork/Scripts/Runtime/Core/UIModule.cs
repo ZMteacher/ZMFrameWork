@@ -217,7 +217,7 @@ public class UIModule
             SetWidnowMaskVisible();
             window.OnHide();
             window.OnDestroy();
-            ZMAssetsFrame.Release(window.gameObject,true);
+            ZMAsset.Release(window.gameObject,true);
             //在出栈的情况下，上一个界面销毁时，自动打开栈种的下一个界面
             PopNextStackWindow(window);
         }
@@ -285,7 +285,7 @@ public class UIModule
     public GameObject LoadWindow(string wndName)
     {
         //GameObject window = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>(mWindowConfig.GetWindowPath(wndName)), mUIRoot);
-        GameObject window = ZMAssetsFrame.Instantiate(mWindowConfig.GetWindowPath(wndName),mUIRoot);
+        GameObject window = ZMAsset.Instantiate(mWindowConfig.GetWindowPath(wndName),mUIRoot);
         //window.transform.SetParent(mUIRoot);
         window.transform.localScale = Vector3.one;
         window.transform.localPosition = Vector3.zero;

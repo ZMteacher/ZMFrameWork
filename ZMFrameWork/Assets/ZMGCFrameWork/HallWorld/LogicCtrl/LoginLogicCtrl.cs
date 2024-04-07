@@ -18,12 +18,12 @@ namespace ZMGC.Hall
         public int AccountLogin(string account, string pass)
         {
             //验证账号是否符合规范
-            if (account.Length < 6)
+            if (account.Length < 0)
             {
                 Debug.Log("账号长度不能小于6个字符");
                 return 1;
             }
-            if (pass.Length < 4)
+            if (pass.Length < 0)
             {
                 Debug.Log("密码长度不能小于4个字符");
                 return 2;
