@@ -11,7 +11,13 @@ public abstract class WindowBehaviour
     public string Name { get; set; }
     public bool Visible { get; set; }
     public bool PopStack { get; set; }//是否是通过堆栈系统弹出的弹窗
+    /// <summary>
+    /// 全屏窗口标志(在窗口Awake接口中进行设置,智能显隐开启后当全屏弹窗弹出时，被遮挡的窗口都会通过伪隐藏隐藏掉，从而提升性能)
+    /// </summary>
+    public bool FullScreenWindow { get; set; }
+
     public Action<WindowBase> PopStackListener { get; set; }
+
     public virtual void OnAwake() { } //只会在物体创建时执行一次 ，与Mono Awake调用时机和次数保持一致
     public virtual void OnShow() { }  //在物体显示时执行一次，与MonoOnEnable一致
     public virtual void OnUpdate() { }
