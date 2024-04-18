@@ -68,8 +68,8 @@ public class WindowBase : WindowBehaviour
         if (Canvas.sortingOrder > 90 && mDisableAnim == false)
         {
             //Mask动画
-            mUIMask.alpha = 0;
-            mUIMask.DOFade(1, 0.2f);
+            mUIMaskCanvasGroup.alpha = 0;
+            mUIMaskCanvasGroup.DOFade(1, 0.2f);
             //缩放动画
             mUIContent.localScale = Vector3.one * 0.8f;
             mUIContent.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack);
