@@ -22,6 +22,7 @@ namespace ZM.AssetFrameWork
     public class WaitDownLoadModule
     {
         public BundleModuleEnum bundleModule;
+        public bool checkAssetsVersion;
         public Action<BundleModuleEnum> startHot;
         public Action<BundleModuleEnum> hotFinish;
         public Action<BundleModuleEnum, float> hotAssetsProgressCallBack;
@@ -80,13 +81,13 @@ namespace ZM.AssetFrameWork
                 }
                 assetsModule.OnDownLoadAllAssetsFinish += HotModuleAssetsFinish;
                 //开始热更资源
-                assetsModule.StartHotAssets(()=> { MultipleThreadBalancing();startHotCallBack?.Invoke(bundleModule); },hotFinish);
+                assetsModule.StartHotAssets(()=> { MultipleThreadBalancing();startHotCallBack?.Invoke(bundleModule); },hotFinish, isCheckAssetsVersion);
             }
             else
             {
                 waiteDownLoad?.Invoke(bundleModule);
                 //把热更模块添加到等待下载队列
-                mWaitDownLoadQueue.Enqueue(new WaitDownLoadModule { bundleModule=bundleModule,startHot=startHotCallBack,hotFinish=hotFinish });
+                mWaitDownLoadQueue.Enqueue(new WaitDownLoadModule { bundleModule=bundleModule,startHot=startHotCallBack,hotFinish=hotFinish, checkAssetsVersion = isCheckAssetsVersion });
             }
         }
         public HotAssetsModule GetOrNewAssetModule(BundleModuleEnum bundleModule)
@@ -161,7 +162,7 @@ namespace ZM.AssetFrameWork
             if (mWaitDownLoadQueue.Count>0)
             {
                 WaitDownLoadModule downLoadModule= mWaitDownLoadQueue.Dequeue();
-                HotAssets(downLoadModule.bundleModule, downLoadModule.startHot, downLoadModule.hotFinish,null);
+                HotAssets(downLoadModule.bundleModule, downLoadModule.startHot, downLoadModule.hotFinish,null,downLoadModule.checkAssetsVersion);
             }
             else
             {

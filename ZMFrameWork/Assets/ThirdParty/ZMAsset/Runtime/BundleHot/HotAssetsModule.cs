@@ -119,6 +119,10 @@ namespace ZM.AssetFrameWork
                     }
                 });
             }
+            else
+            {
+                StartDownLoadHotAssets(startDownLoadCallback);
+            }
         }
         /// <summary>
         /// 开始下载热更资源
