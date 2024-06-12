@@ -7,8 +7,6 @@ using ZMGC.Hall;
 
 public class Main : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //Assets/Hall/Prefab/LoginWindow.prefab
     private void Awake()
     {
         //初始化游戏热更框架

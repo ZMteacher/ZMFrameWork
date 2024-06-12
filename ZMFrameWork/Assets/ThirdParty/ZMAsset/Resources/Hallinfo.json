@@ -1,0 +1,67 @@
+[
+  {
+    "fileName": "Android",
+    "md5": "E54B31B20B045FF7459F416556AAA75F",
+    "size": 1.0
+  },
+  {
+    "fileName": "hallbundleconfig",
+    "md5": "EBFE65B2267D96A987F8B778B012963C",
+    "size": 3.0
+  },
+  {
+    "fileName": "hall_examplewindow",
+    "md5": "1D4ADDF1EF9D2A47848A1F357449DE10",
+    "size": 9.0
+  },
+  {
+    "fileName": "hall_exshopitem",
+    "md5": "A93BBCAED0575143A89FF0C3B079BACC",
+    "size": 4.0
+  },
+  {
+    "fileName": "hall_exshopwindow",
+    "md5": "F582351637DBF80C95280BF54EFBBE95",
+    "size": 13.0
+  },
+  {
+    "fileName": "hall_hall",
+    "md5": "D2D663526887F1515EBBCAF3F90AD5A0",
+    "size": 1428.0
+  },
+  {
+    "fileName": "hall_halldata",
+    "md5": "009541AB13793E0E6C10B3DDCB9521CF",
+    "size": 1.0
+  },
+  {
+    "fileName": "hall_hallwindow",
+    "md5": "5080F6185B71CE775EAE5CF3685828B5",
+    "size": 22.0
+  },
+  {
+    "fileName": "hall_loading",
+    "md5": "876B4946CC6DFADCC0F8EAC0C1EF265C",
+    "size": 238.0
+  },
+  {
+    "fileName": "hall_login",
+    "md5": "EFB3BF3A5F8650C20009554F17AA472B",
+    "size": 1109.0
+  },
+  {
+    "fileName": "hall_loginwindow",
+    "md5": "FD4B541C1B38522014E58CB97F09FB2A",
+    "size": 13.0
+  },
+  {
+    "fileName": "hall_shop",
+    "md5": "29D1E9759E5C08ED5F7442D96A2569E4",
+    "size": 166.0
+  },
+  {
+    "fileName": "hall_testobj",
+    "md5": "6E28976AFBED375FE7B3E5E61F702492",
+    "size": 3.0
+  }
+]

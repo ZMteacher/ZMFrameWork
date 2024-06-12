@@ -1,67 +1,77 @@
 [
   {
     "fileName": "Android",
-    "md5": "E54B31B20B045FF7459F416556AAA75F",
+    "md5": "DDFE0C98C04143EF89DE30AB33741E22",
     "size": 1.0
   },
   {
     "fileName": "hallbundleconfig",
-    "md5": "EBFE65B2267D96A987F8B778B012963C",
+    "md5": "7FD28428BB4F8FAA33D0BD48023C8D03",
     "size": 3.0
   },
   {
     "fileName": "hall_examplewindow",
-    "md5": "1D4ADDF1EF9D2A47848A1F357449DE10",
+    "md5": "0FF5B727F081B7E7E160878E726E5BA7",
     "size": 9.0
   },
   {
+    "fileName": "hall_examplewindow 1",
+    "md5": "41F60FD8B05AC133A2581EB7074BB26E",
+    "size": 15.0
+  },
+  {
     "fileName": "hall_exshopitem",
-    "md5": "A93BBCAED0575143A89FF0C3B079BACC",
+    "md5": "13F18EFDC1A7215586689BB787220AAC",
     "size": 4.0
   },
   {
     "fileName": "hall_exshopwindow",
-    "md5": "F582351637DBF80C95280BF54EFBBE95",
+    "md5": "70F313128447202790A7865E0CC9B011",
     "size": 13.0
   },
   {
     "fileName": "hall_hall",
-    "md5": "D2D663526887F1515EBBCAF3F90AD5A0",
-    "size": 1428.0
+    "md5": "2088E899F31C5E3EA8AFDCDF3BF73599",
+    "size": 1427.0
   },
   {
     "fileName": "hall_halldata",
-    "md5": "009541AB13793E0E6C10B3DDCB9521CF",
+    "md5": "4C95FC19DA036C7D5FFB5FFF814068F6",
     "size": 1.0
   },
   {
     "fileName": "hall_hallwindow",
-    "md5": "5080F6185B71CE775EAE5CF3685828B5",
+    "md5": "89E2501CA03C7D6278A697986BB06D87",
     "size": 22.0
   },
   {
     "fileName": "hall_loading",
-    "md5": "876B4946CC6DFADCC0F8EAC0C1EF265C",
+    "md5": "D3A3A96C86B5D284A0986576E288B87E",
     "size": 238.0
   },
   {
     "fileName": "hall_login",
-    "md5": "EFB3BF3A5F8650C20009554F17AA472B",
+    "md5": "1C5D6C5643B2C09E710B53D22D960EEF",
     "size": 1109.0
   },
   {
     "fileName": "hall_loginwindow",
-    "md5": "FD4B541C1B38522014E58CB97F09FB2A",
+    "md5": "0183926DCC1DF22D09DE37D7AB171F23",
     "size": 13.0
   },
   {
+    "fileName": "hall_scene",
+    "md5": "35FB4BBBE563CB28ABEE96695C7EAD76",
+    "size": 77.0
+  },
+  {
     "fileName": "hall_shop",
-    "md5": "29D1E9759E5C08ED5F7442D96A2569E4",
+    "md5": "F76E0EB192F6DBD58FB53EB6DC1986FB",
     "size": 166.0
   },
   {
     "fileName": "hall_testobj",
-    "md5": "6E28976AFBED375FE7B3E5E61F702492",
+    "md5": "E2AD62209B932451BCD7F7A4D0F4D716",
     "size": 3.0
   }
 ]
