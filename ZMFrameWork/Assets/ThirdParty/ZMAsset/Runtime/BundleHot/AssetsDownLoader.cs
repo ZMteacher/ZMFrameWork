@@ -174,7 +174,7 @@ namespace ZM.AssetFrameWork
         public void DownLoadFailed(DownLoadThread downLoadThread, HotFileInfo hotFileInfo)
         {
             RemoveDownLoadThread(downLoadThread);
-            TriggerCallBackInMainThread(new DownLoadEventHandler { downLoadEvent = OnDownLoadSuccess, hotfileInfo = hotFileInfo });
+            TriggerCallBackInMainThread(new DownLoadEventHandler { downLoadEvent = OnDownLoadFailed, hotfileInfo = hotFileInfo });
             DownLoadNextBundle();
         }
 

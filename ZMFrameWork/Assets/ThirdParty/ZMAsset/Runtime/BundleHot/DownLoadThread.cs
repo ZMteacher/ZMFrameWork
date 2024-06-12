@@ -103,14 +103,15 @@ namespace ZM.AssetFrameWork
 
                     using (var stream= response.GetResponseStream())
                     {
-                        //文件下载异常
-                        if (stream.Length==0)
-                        {
-                            Debug.LogError("File DownLoad exception plase check file fileName:"+mHotFileInfo.abName +" fileUrl:"+mDownLoadUrl);
-                        }
                         byte[] buffer = new byte[512]; //512 
                         //从字节流中读取字节，读取到buff数组中
                         int size = stream.Read(buffer,0, buffer.Length); //700
+
+                        //文件下载异常
+                        if (size == 0)
+                        {
+                            Debug.LogError("File DownLoad exception plase check file fileName:" + mHotFileInfo.abName + " fileUrl:" + mDownLoadUrl);
+                        }
 
                         while (size>0)
                         {
