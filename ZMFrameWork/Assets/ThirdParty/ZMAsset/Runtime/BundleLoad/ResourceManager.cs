@@ -270,8 +270,8 @@ namespace ZM.AssetFrameWork
             if (objList != null && objList.Count > 0)
             {
                 //直接取对象池中的第0个对象
-                CacheObejct obj = objList[0];
-                objList.RemoveAt(0);
+                CacheObejct obj = objList[objList.Count-1];
+                objList.Remove(obj);
                 return obj.obj;
             }
             return null;
@@ -351,8 +351,7 @@ namespace ZM.AssetFrameWork
             }
             else
             {
-                mAsyncLoadingTaskList.Remove(guid);
-                Debug.LogError("Async Load GameObject is Null Path:" + path);
+                Debug.LogError("Async Task already Cancel Load invalid! Path:" + path);
                 return request;
             }
             
@@ -721,7 +720,6 @@ namespace ZM.AssetFrameWork
             //如果BundleItem中的对象已经加载过，就直接返回该对象
             if (item.obj != null)
             {
-                //loadFinish?.Invoke(item.obj as T);
                 return item.obj as T;
             }
 
@@ -731,6 +729,10 @@ namespace ZM.AssetFrameWork
             if (BundleSettings.Instance.loadAssetType == LoadAssetEnum.Editor)
             {
                 obj = LoadAssetsFormEditor<T>(path);
+                item.obj = obj;
+                item.path = path;
+                //缓存已经加载过的资源
+                mAlreayLoadAssetsDic.Add(crc, item);
                 return obj;
             }
 #endif
@@ -755,9 +757,8 @@ namespace ZM.AssetFrameWork
                         item.path = path;
                         item.crc = crc;
                         if (!mAlreayLoadAssetsDic.ContainsKey(crc))
-                        {
                             mAlreayLoadAssetsDic.Add(crc, item);
-                        }
+ 
                         return loadObj;
                     }
                 }
@@ -767,14 +768,7 @@ namespace ZM.AssetFrameWork
                     return null;
                 }
             }
-            else
-            {
-                item.obj = obj;
-                item.path = path;
-                //缓存已经加载过的资源
-                mAlreayLoadAssetsDic.Add(crc, item);
-                return null;
-            }
+            return null;
         }
         /// <summary>
         /// 从缓存中获取我们Bundleitem
