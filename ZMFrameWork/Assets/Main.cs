@@ -18,7 +18,7 @@ public class Main : MonoBehaviour
     void Start()
     {
         //热更大厅资源
-        HotUpdateManager.Instance.HotAndUnPackAssets(BundleModuleEnum.Hall, this);
+        HotUpdateManager.Instance.HotAndUnPackAssets(BundleModuleEnum.Hall, StartGame);
     }
     /// <summary>
     /// 开始游戏

@@ -15,20 +15,17 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ZM.AssetFrameWork
 {
-    public class HotUpdateManager : Singleton<HotUpdateManager>
+    public class HotUpdateManager :MonoSingleton<HotUpdateManager>
     {
-        private Main main;
         private HotAssetsWindow mHotAssetsWindow;
+        private System.Action OnHotFinishCallBackAction;
         /// <summary>
         /// 热更并且解压热更模块
         /// </summary>
         /// <param name="bundleModule"></param>
-        public void HotAndUnPackAssets(BundleModuleEnum bundleModule,Main main)
+        public void HotAndUnPackAssets(BundleModuleEnum bundleModule,System.Action hotFinishCallBack)
         {
-            if (this.main == null)
-            {
-                this.main = main;
-            }
+            this.OnHotFinishCallBackAction += hotFinishCallBack; 
             mHotAssetsWindow = InstantiateResourcesObj<HotAssetsWindow>("HotAssetsWindow");
             //开始解压游戏内嵌资源
            IDecompressAssets decompress= ZMAsset.StartDeCompressBuiltinFile(bundleModule,()=> {
@@ -117,7 +114,7 @@ namespace ZM.AssetFrameWork
         {
             Debug.Log("OnHotFinishCallBack.....");
             mHotAssetsWindow.SetLoadGameEvn();
-            main.StartCoroutine(InitGameEnv());
+            StartCoroutine(InitGameEnv());
         }
 
         public void OnStartHotAssetsCallBack(BundleModuleEnum bundleModule)
@@ -158,7 +155,7 @@ namespace ZM.AssetFrameWork
                 yield return null;
 
             }
-            main.StartGame();
+            OnHotFinishCallBackAction?.Invoke();
             GameObject.Destroy(mHotAssetsWindow.gameObject);
         }
         public void LoadGameConfig()
