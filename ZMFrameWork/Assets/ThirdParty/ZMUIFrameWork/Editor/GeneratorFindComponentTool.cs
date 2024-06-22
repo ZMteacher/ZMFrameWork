@@ -30,8 +30,13 @@ public class GeneratorFindComponentTool : Editor
         {
             Directory.CreateDirectory(UISetting.Instance.FindComponentGeneratorPath);
         }
+        ////解析窗口组件数据
+        //PresWindowNodeData(obj.transform,obj.name);
         //解析窗口组件数据
-        PresWindowNodeData(obj.transform,obj.name);
+        if (UISetting.Instance.ParseType == ParseType.Tag)
+            ParseWindowDataByTag(obj.transform, obj.name);
+        else
+            PresWindowNodeData(obj.transform, obj.name);
         //储存字段名称
         string datalistJson = JsonConvert.SerializeObject(objDataList);
         PlayerPrefs.SetString(GeneratorConfig.OBJDATALIST_KEY, datalistJson);
@@ -40,25 +45,6 @@ public class GeneratorFindComponentTool : Editor
         Debug.Log("CsConent:\n"+csContnet);
         string cspath = UISetting.Instance.FindComponentGeneratorPath + "/"+obj.name+"UIComponent.cs";
         UIWindowEditor.ShowWindow(csContnet,cspath);
-        //生成脚本文件
-        //if (File.Exists(cspath))
-        //{
-        //    File.Delete(cspath);
-        //}
-        //StreamWriter writer = File.CreateText(cspath);
-        //writer.Write(csContnet);
-        //writer.Close();
-        //AssetDatabase.Refresh();
-        //Debug.Log("cspath:" + cspath);
-        //foreach (var item in objDataList)
-        //{
-        //    Debug.Log("fieldName: " + item.fieldName);
-        //    Debug.Log("fieldType: " + item.fieldType);
-        //}
-        //foreach (var item in objFindPathDic)
-        //{
-        //    Debug.Log("查找路径："+item.Value);
-        //}
     }
     /// <summary>
     /// 解析窗口节点数据
@@ -112,7 +98,21 @@ public class GeneratorFindComponentTool : Editor
             PresWindowNodeData(trans.GetChild(i),WinName);
         }
     }
-
+    public static void ParseWindowDataByTag(Transform trans, string WinName)
+    {
+        for (int i = 0; i < trans.childCount; i++)
+        {
+            GameObject obj = trans.GetChild(i).gameObject;
+            string tagName = obj.tag;
+            if (GeneratorConfig.TAGArr.Contains(tagName))
+            {
+                string fieldName = obj.name;//获取字段昵称
+                string fieldType = tagName;//获取字段类型
+                objDataList.Add(new EditorObjectData { fieldName = fieldName, fieldType = fieldType, insID = obj.GetInstanceID() });
+            }
+            ParseWindowDataByTag(trans.GetChild(i), WinName);
+        }
+    }
     public static string CreateCS(string name)
     {
         StringBuilder sb = new StringBuilder();

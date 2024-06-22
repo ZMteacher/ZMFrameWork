@@ -43,7 +43,7 @@ public class UISetting : ScriptableObject
 
 #if ODIN_INSPECTOR
 
-    [EnumToggleButtons, HideLabel, BoxGroup("代码自动化生成设置  建议使用名称解析+组件绑定方式 (兼容性好，性能好)"), Title("组件解析方式"),]//LabelText("组件解析方式")
+    [EnumToggleButtons, HideLabel, BoxGroup("代码自动化生成设置  建议使用名称解析+组件绑定方式 (兼容性好，性能好)"), Title("组件解析方式"),OnValueChanged("OnParseTypeEnumChang")] 
 #endif
     public ParseType ParseType = ParseType.Name;
 #if ODIN_INSPECTOR
@@ -72,6 +72,11 @@ public class UISetting : ScriptableObject
     public void OnBindEnumChang(GeneratorType type)
     {
         mShowFindComponentGeneratorPath = type == GeneratorType.Find;
+        Save();
+    }
+    public void OnParseTypeEnumChang(ParseType type)
+    {
+        Save();
     }
 #endif
     public void Save()
