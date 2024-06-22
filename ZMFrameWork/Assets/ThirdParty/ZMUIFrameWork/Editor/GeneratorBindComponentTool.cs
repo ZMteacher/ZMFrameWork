@@ -235,7 +235,8 @@ public class GeneratorBindComponentTool : Editor
                 }
             }
         }
-
+        //自动保存预制体
+        PrefabUtility.ApplyPrefabInstance(windowObj, InteractionMode.AutomatedAction);
         EditorPrefs.DeleteKey("GeneratorClassName");
     }
 }
