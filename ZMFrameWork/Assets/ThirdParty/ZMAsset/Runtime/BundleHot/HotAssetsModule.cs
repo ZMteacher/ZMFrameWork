@@ -212,33 +212,24 @@ namespace ZM.AssetFrameWork
             foreach (var item in serverAssetsPath.hotAssetsList)
             {
                 //获取本地AssetBundle文件路径
-                string localFilePath = HotAssetsSavePath + item.abName;
+                string localHotFilePath = HotAssetsSavePath + item.abName;
+                //获取本地解压后的AssetBundle文件路径
+                string localCompressFilePath = BundleSettings.Instance.GetAssetsDecompressPath(CurBundleModuleEnum)+ item.abName;
                 mAllHotAssetsList.Add(item);
-                //如果本地文件不存在，或者本地文件与服务端不一致，就需要热更
-                string localMd5= GetLocalFileMd5ByBundleName(item.abName);
-                if (!File.Exists(localFilePath)||item.md5!= localMd5)
+                //如果本地热更文件不存在，或者本地文件与服务端不一致 就需要热更
+                if (!File.Exists(localHotFilePath) ||item.md5!= MD5.GetMd5FromFile(localHotFilePath))//验证资源是否损、是否需要热更坏或被篡改
                 {
-                    mNeedDownLoadAssetsList.Add(item);
-                    AssetsMaxSizeM += item.size / 1024f;
+                    //检测本地内嵌解压后的资源是否存在，进行二次验证，如仍不一致，则需要确定热更
+                    if (!File.Exists(localCompressFilePath) || item.md5 != MD5.GetMd5FromFile(localCompressFilePath))
+                    {
+                        mNeedDownLoadAssetsList.Add(item);
+                        AssetsMaxSizeM += item.size / 1024f;
+                    }
+                   
                 }
             }
             
             return mNeedDownLoadAssetsList.Count > 0;
-        }
-        public string GetLocalFileMd5ByBundleName(string bundleName)
-        {
-            if (mLocalHotAssetsManifest!=null&& mLocalHotAssetsManifest.hotAssetsPatchList.Count>0)
-            {
-                HotAssetsPatch localPatch = mLocalHotAssetsManifest.hotAssetsPatchList[mLocalHotAssetsManifest.hotAssetsPatchList.Count-1];
-                foreach (var item in localPatch.hotAssetsList)
-                {
-                    if (string.Equals(bundleName,item.abName))
-                    {
-                        return item.md5;
-                    }
-                }
-            }
-            return "";
         }
         /// <summary>
         /// 检测模块资源是否需要热更
@@ -334,7 +325,7 @@ namespace ZM.AssetFrameWork
         public void DownLoadAssetBundleSuccess(HotFileInfo hotFile)
         {
 
-            string abName = hotFile.abName.Contains(".")? hotFile.abName.Replace(BundleSettings.ABSUFFIX, "") : hotFile.abName;
+            string abName = hotFile.abName.Contains(".")? hotFile.abName.Replace(BundleSettings.Instance.ABSUFFIX, "") : hotFile.abName;
             if (hotFile.abName.Contains("bundleconfig"))
             {
                 OnDownLoadABConfigListener?.Invoke(abName);

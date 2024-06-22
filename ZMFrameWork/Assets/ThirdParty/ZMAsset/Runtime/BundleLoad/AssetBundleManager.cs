@@ -121,7 +121,7 @@ namespace ZM.AssetFrameWork
         public bool GeneratorBundleConfigPath(BundleModuleEnum bundleModule)
         {
             mAssetsBundleConfigName = bundleModule.ToString().ToLower() + "assetbundleconfig";
-            mBundleConfigName = bundleModule.ToString().ToLower() + "bundleconfig"+ BundleSettings.ABSUFFIX;
+            mBundleConfigName = bundleModule.ToString().ToLower() + "bundleconfig"+ BundleSettings.Instance.ABSUFFIX;
             mBundleConfigPath = BundleSettings.Instance.GetHotAssetsPath(bundleModule) + mBundleConfigName;
             //如果配置文件 存在，return true，如果不存，我们就直接从内嵌解压的资源中去加载。
             //如果内嵌解压的文件中不存在，说明用户网络有问题
@@ -275,7 +275,7 @@ namespace ZM.AssetFrameWork
                 string hotFilePath = BundleSettings.Instance.GetHotAssetsPath(bundleModuleType)+bundleName;
                 //获取热更模块
                 HotAssetsModule module= ZMAsset.GetHotAssetsModule(bundleModuleType);
-                bool isHotPath = module==null?(File.Exists(hotFilePath)?true:false):(module.HotAssetCount==0?(File.Exists(hotFilePath) ? true : false):module.HotAssetsIsExists(bundleName));
+                bool isHotPath = File.Exists(hotFilePath);
                 //通过是否是热更路径 计算出AssetBundle加载的路径
                 string bundlePath = isHotPath ? hotFilePath : BundleSettings.Instance.GetAssetsDecompressPath(bundleModuleType) + bundleName;
 

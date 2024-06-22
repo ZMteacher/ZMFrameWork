@@ -11,27 +11,27 @@
       ]
     },
     {
-      "path": "Assets/GameData/Hall/Prefabs/Window/ExampleWindow 1.prefab",
-      "crc": 3594113686,
-      "bundleName": "hall_examplewindow 1",
-      "assetName": "ExampleWindow 1.prefab",
+      "path": "Assets/GameData/Hall/Prefabs/Window/ExampleWindow1.prefab",
+      "crc": 2484666259,
+      "bundleName": "hall_examplewindow1",
+      "assetName": "ExampleWindow1.prefab",
       "bundleDependce": [
         "hall_shop",
         "hall_hall",
-        "hall_examplewindow 1"
+        "hall_examplewindow1"
       ]
     },
     {
       "path": "Assets/ThirdParty/ZMUIFrameWork/Texture/Cut Frame Filled Big 1.png",
       "crc": 2043150761,
-      "bundleName": "hall_examplewindow 1",
+      "bundleName": "hall_examplewindow1",
       "assetName": "Cut Frame Filled Big 1.png",
       "bundleDependce": []
     },
     {
       "path": "Assets/ThirdParty/ZMUIFrameWork/Texture/tinyButton_Decline.png",
       "crc": 2713453678,
-      "bundleName": "hall_examplewindow 1",
+      "bundleName": "hall_examplewindow1",
       "assetName": "tinyButton_Decline.png",
       "bundleDependce": []
     },

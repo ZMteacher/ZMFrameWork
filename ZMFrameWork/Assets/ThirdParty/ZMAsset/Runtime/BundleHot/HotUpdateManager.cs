@@ -44,6 +44,8 @@ namespace ZM.AssetFrameWork
                         CheckAssetsVersion(bundleModule);
                    else
                    {
+                       //在资源解压完成时且不需要热更的情况下，需要加载对应的Bundle配置文件，热更文件热更配置文件完成后会自动加载
+                       AssetBundleManager.Instance.LoadAssetBundleConfig(bundleModule);
                        //如果不需要热更，说明用户已经热更过了，资源是最新的，直接进入游戏 
                        OnHotFinishCallBack(bundleModule);
                    }
@@ -143,7 +145,6 @@ namespace ZM.AssetFrameWork
                 else if (i == 70)
                 {
                     mHotAssetsWindow.progressText.text = "加载AssetBUndle配置文件...";
-                    //举例： AssetBundleManager.Instance.LoadAssetBundleConfig(BundleModuleEnum.Game);
                 }
                 else if (i == 90)
                 {

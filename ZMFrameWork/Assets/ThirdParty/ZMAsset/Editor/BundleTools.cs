@@ -18,7 +18,7 @@ using System.IO;
 
 public class BundleTools 
 {
-    private static string mBundleModuleEnumFilePath = Application.dataPath + "/ThirdParty/ZMAsset/Config/BundleModuleEnum.cs";
+    private static string mBundleModuleEnumFilePath = Application.dataPath + "/"+BundleSettings.Instance.ZMAssetRootPath +"/Config/BundleModuleEnum.cs";
 
     [MenuItem("ZMFrame/GeneratorModuleEnum")]
     public static void GenerateBundleModuleEnum()

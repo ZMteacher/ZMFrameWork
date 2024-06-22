@@ -13,6 +13,7 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using ZM.AssetFrameWork;
 /// <summary>
@@ -48,8 +49,9 @@ public class BundleSettings : ScriptableObject
             return _instance;
         } 
     }
-    //AssetBundle后缀 例：.ab 建议不加后缀，防止内嵌时Unity读取出错
-    public const string ABSUFFIX = "";
+ 
+
+
 
     [TitleGroup("资源加载热更设置"),LabelText("AssetBundle下载地址")]
     public string AssetBundleDownLoadUrl;
@@ -58,6 +60,10 @@ public class BundleSettings : ScriptableObject
     [LabelText("是否加密AssetBundle")]
     public BundleEncryptToggle bundleEncrypt = new BundleEncryptToggle();
 
+    //AssetBundle后缀 例：.ab 建议不加后缀，防止内嵌时Unity读取出错
+    [TitleGroup("AssetBundle打包设置")]
+    [LabelText("AssetBundle后缀")]
+    public string ABSUFFIX = "";
 
     [TitleGroup("AssetBundle打包设置")]
     [LabelText("资源压缩格式")]
@@ -66,6 +72,8 @@ public class BundleSettings : ScriptableObject
     [TitleGroup("AssetBundle打包设置")]
     [LabelText("资源打包平台")]
     public BuildTarget buildTarget;
+
+
 
     [TitleGroup("资源加载热更设置")]
     [LabelText("资源热更模式")]
@@ -79,6 +87,10 @@ public class BundleSettings : ScriptableObject
     [LabelText("最大下载线程数量")]
     public int MAX_THREAD_COUNT;
 
+    [TitleGroup("框架相关配置")]
+    [LabelText("ZMAsset框架路径")]
+    [InfoBox("资源框架总路径节点(基于Assets目录下)，若需要修改资源框架存放位置，需要同步到这里")]
+    public string ZMAssetRootPath = "ThirdParty/ZMAsset";
     [Title("AssetBundle热更文件储存路径")]
     private string HotAssetsPath { get { return Application.persistentDataPath + "/HotAssets/"; } }
     [Title("AssetBundle加压路径")]

@@ -73,7 +73,7 @@ namespace ZM.AssetFrameWork
         /// <summary>
         /// 框架Resources路径
         /// </summary>
-        private static string mResourcesPath { get { return Application.dataPath + "/ZMAssetsFrame/Resources/"; } }
+        private static string mResourcesPath { get { return Application.dataPath +"/"+BundleSettings.Instance.ZMAssetRootPath+ "/Resources/"; } }
         /// <summary>
         /// 打包AssetBundle
         /// </summary>
@@ -370,7 +370,7 @@ namespace ZM.AssetFrameWork
             AssetImporter importer= AssetImporter.GetAtPath(bundleConfigPath.Replace(Application.dataPath,"Assets"));
             if (importer!=null)
             {
-                importer.assetBundleName = mBundleModuleEnum.ToString().ToLower() + "bundleconfig"+ BundleSettings.ABSUFFIX;
+                importer.assetBundleName = mBundleModuleEnum.ToString().ToLower() + "bundleconfig"+ BundleSettings.Instance.ABSUFFIX;
             }
         }
         /// <summary>
@@ -390,7 +390,7 @@ namespace ZM.AssetFrameWork
                     AssetImporter importer= AssetImporter.GetAtPath(path);
                     if (importer!=null)
                     {
-                        importer.assetBundleName = (clear ? "" : item.Key + BundleSettings.ABSUFFIX);
+                        importer.assetBundleName = (clear ? "" : item.Key + BundleSettings.Instance.ABSUFFIX);
                     }
                 }
             }
@@ -406,7 +406,7 @@ namespace ZM.AssetFrameWork
                     AssetImporter importer = AssetImporter.GetAtPath(path);
                     if (importer != null)
                     {
-                        importer.assetBundleName = (clear ? "" : item.Key + BundleSettings.ABSUFFIX);
+                        importer.assetBundleName = (clear ? "" : item.Key + BundleSettings.Instance.ABSUFFIX);
                     }
                 }
 
@@ -533,7 +533,7 @@ namespace ZM.AssetFrameWork
             FileHelper.DeleteFolder(mHotAssetsOutPutPath);
             Directory.CreateDirectory(mHotAssetsOutPutPath);
 
-            string[] bundlePatchArr= Directory.GetFiles(mBundleOutPutPath,"*"+ BundleSettings.ABSUFFIX);
+            string[] bundlePatchArr= Directory.GetFiles(mBundleOutPutPath,"*"+ BundleSettings.Instance.ABSUFFIX);
             for (int i = 0; i < bundlePatchArr.Length; i++)
             {
               
@@ -562,7 +562,7 @@ namespace ZM.AssetFrameWork
             hotAssetsPatch.patchVersion = mHotPatchVersion;
             //计算热更补丁文件信息
             DirectoryInfo directory = new DirectoryInfo(mHotAssetsOutPutPath);
-            FileInfo[] bundleInfoArr= directory.GetFiles("*"+ BundleSettings.ABSUFFIX);
+            FileInfo[] bundleInfoArr= directory.GetFiles("*"+ BundleSettings.Instance.ABSUFFIX);
             foreach (var bundleInfo in bundleInfoArr)
             {
                 HotFileInfo info = new HotFileInfo();
