@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace ZM.AssetFrameWork
@@ -36,6 +37,10 @@ namespace ZM.AssetFrameWork
         /// 资源名称
         /// </summary>
         public string assetName;
+        /// <summary>
+        /// 是否寻址资源
+        /// </summary>
+        public bool isAddressableAsset;
         /// <summary>
         /// AssetBundle所属的模块
         /// </summary>
@@ -79,6 +84,12 @@ namespace ZM.AssetFrameWork
         }
     }
 
+
+    //加载----配置表不存在---无法查询到该资源是哪个文件----失败。
+    //检测资源版本---计算需要热更的文件---初始化配置
+    //初始化成功---加载资源---配置表中查询命中---加载对应AB---本地不存在---自动开启下载---下载完成---回调出去
+    //初始化失败---加载本地已存在配置---配置表查询命---加载对应AB---本地不存在---自动开启下载---下载完成---回调出去
+
     public class AssetBundleManager : Singleton<AssetBundleManager>
     {
         /// <summary>
@@ -94,7 +105,10 @@ namespace ZM.AssetFrameWork
         /// 所有模块的已经加载过的AssetBundle的资源对象字典
         /// </summary>
         private Dictionary<string, AssetBundleCache> mAllAlreadyLoadBundleDic = new Dictionary<string, AssetBundleCache>();
-
+        /// <summary>
+        /// 所有AB模块字典
+        /// </summary>
+        private Dictionary<string, BundleModuleData> mAllBundleModuleDic = new Dictionary<string, BundleModuleData>();
         /// <summary>
         /// AssetBundle类对象池
         /// </summary>
@@ -112,7 +126,94 @@ namespace ZM.AssetFrameWork
         /// </summary>
         private string mAssetsBundleConfigName;
 
+        /// <summary>
+        /// 加载AssetBundle配置文件
+        /// </summary>
+        /// <param name="bundleModule">资源模块</param>
+        /// <param name="isAddressModule">是否寻址资源</param>
+        /// <returns></returns>
+        public async Task<bool> InitAssetModule(BundleModuleEnum bundleModule)
+        {
+            try
+            {
+                if (mAlreadyLoadBundleModuleList.Contains(bundleModule))
+                {
+                    Debug.LogError("该模块配置文件已经加载：" + bundleModule);
+                    return false;
+                }
+                LoadAllBundleModule();
+                //获取当前模块配置文件所在的路径
+                if (GeneratorBundleConfigPath(bundleModule))
+                {
+                    AssetBundle bundleConfig = null;
+                    //如果该AssetBundle已经加密，则需要解密
+                    if (BundleSettings.Instance.bundleEncrypt.isEncrypt)
+                    {
+                        bundleConfig = AssetBundle.LoadFromMemory(AES.AESFileByteDecrypt(mBundleConfigPath, BundleSettings.Instance.bundleEncrypt.encryptKey));
+                    }
+                    else
+                    {
+                        bundleConfig = AssetBundle.LoadFromFile(mBundleConfigPath);
+                    }
 
+                    string bundleConfigJson = bundleConfig.LoadAsset<TextAsset>(mAssetsBundleConfigName).text;
+                    BundleConfig bundleManife = JsonConvert.DeserializeObject<BundleConfig>(bundleConfigJson);
+                    //把所有的AssetBundle信息存放至字典中，管理起来
+                    foreach (var info in bundleManife.bundleInfoList)
+                    {
+                        if (!mAllBundleAssetDic.ContainsKey(info.crc))
+                        {
+                            BundleItem item = new BundleItem();
+                            item.path = info.path;
+                            item.crc = info.crc;
+                            item.bundleModuleType = bundleModule;
+                            item.assetName = info.assetName;
+                            item.bundleDependce = info.bundleDependce;
+                            item.bundleName = info.bundleName;
+                            item.isAddressableAsset = info.isAddressableAsset;
+                            mAllBundleAssetDic.Add(item.crc, item);
+                        }
+                        else
+                        {
+                            Debug.LogError("AssetBundle Already Exists! BundleName:" + info.bundleName);
+                        }
+                    }
+                    //释放AssetBunle配置
+                    bundleConfig.Unload(false);
+                    mAlreadyLoadBundleModuleList.Add(bundleModule);
+                    Debug.Log("Init AssetModule Successs...:" + bundleModule);
+                    return true;
+                }
+                else
+                {
+                    Debug.LogError("AssetBundleConfig Not find.  Load AssetBundle failed!");
+                    return false;
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Load AssetBundleConfig Failed, Exception:" + e);
+                return false;
+            }
+
+        }
+
+        private void LoadAllBundleModule()
+        {
+            if (mAllBundleModuleDic.Count>=0)
+            {
+                return;
+            }
+            TextAsset textAsset= Resources.Load<TextAsset>("bundlemoduleCfg");
+            if (textAsset!=null)
+            {
+                List<BundleModuleData> bundleModuleData = JsonConvert.DeserializeObject<List<BundleModuleData>>(textAsset.text);
+                foreach (var item in bundleModuleData)
+                {
+                    mAllBundleModuleDic.Add(item.moduleName,item);
+                }
+            }
+        }
         /// <summary>
         /// 生成AssetBundleConfig配置文件路径
         /// </summary>
@@ -135,70 +236,7 @@ namespace ZM.AssetFrameWork
             }
             return true;
         }
-        /// <summary>
-        /// 加载AssetBundle配置文件
-        /// </summary>
-        /// <param name="bundleModule"></param>
-        public void LoadAssetBundleConfig(BundleModuleEnum bundleModule)
-        {
-            try
-            {
-                if (mAlreadyLoadBundleModuleList.Contains(bundleModule))
-                {
-                    Debug.LogError("该模块配置文件已经加载："+bundleModule);
-                    return;
-                }
-               
-                //获取当前模块配置文件所在的路径
-                if (GeneratorBundleConfigPath(bundleModule))
-                {
-                    AssetBundle bundleConfig = null;
-                    //如果该AssetBundle已经加密，则需要解密
-                    if (BundleSettings.Instance.bundleEncrypt.isEncrypt)
-                    {
-                        bundleConfig= AssetBundle.LoadFromMemory(AES.AESFileByteDecrypt(mBundleConfigPath,BundleSettings.Instance.bundleEncrypt.encryptKey));
-                    }
-                    else
-                    {
-                          bundleConfig = AssetBundle.LoadFromFile(mBundleConfigPath);
-                    }
-
-                    string bundleConfigJson = bundleConfig.LoadAsset<TextAsset>(mAssetsBundleConfigName).text;
-                    BundleConfig bundleManife = JsonConvert.DeserializeObject<BundleConfig>(bundleConfigJson);
-                    //把所有的AssetBundle信息存放至字典中，管理起来
-                    foreach (var info in bundleManife.bundleInfoList)
-                    {
-                        if (!mAllBundleAssetDic.ContainsKey(info.crc))
-                        {
-                            BundleItem item = new BundleItem();
-                            item.path = info.path;
-                            item.crc = info.crc;
-                            item.bundleModuleType = bundleModule;
-                            item.assetName = info.assetName;
-                            item.bundleDependce = info.bundleDependce;
-                            item.bundleName = info.bundleName;
-                            mAllBundleAssetDic.Add(item.crc, item);
-                         }
-                        else
-                        {
-                            Debug.LogError("AssetBundle Already Exists! BundleName:" + info.bundleName);
-                        }
-                    }
-                    //释放AssetBunle配置
-                    bundleConfig.Unload(false);
-                    mAlreadyLoadBundleModuleList.Add(bundleModule);
-                }
-                else
-                {
-                    Debug.LogError("AssetBundleConfig Not find.  Load AssetBundle failed!");
-                }
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError("Load AssetBundleConfig Failed, Exception:"+e);
-            }
-          
-        }
+  
         /// <summary>
         /// 根据AssetBundle名称查询该AssetBUndle中都有那些资源
         /// </summary>
@@ -216,12 +254,18 @@ namespace ZM.AssetFrameWork
             }
             return itemList;
         }
+
+        public BundleItem GetBundleItemByCrc(uint crc)
+        {
+            mAllBundleAssetDic.TryGetValue(crc, out BundleItem item);
+            return item;
+        }
         /// <summary>
         /// 通过资源路径的Crc加载该资源所在AssetBundle
         /// </summary>
         /// <param name="crc"></param>
         /// <returns></returns>
-        public BundleItem LoadAssetBundle(uint crc)
+        public  BundleItem LoadAssetBundle(uint crc)
         {
             BundleItem item = null;
 
@@ -235,6 +279,12 @@ namespace ZM.AssetFrameWork
                 if (item.assetBundle==null)
                 {
                     item.assetBundle = LoadAssetBundle(item.bundleName,item.bundleModuleType);
+
+                    if (item.assetBundle == null)
+                    {
+                        Debug.LogError("Start AddressableSystem Load:" + item.bundleName);
+                        return null;
+                    }
                     //需要加载这个AssetBundle依赖的其他的AssetBundle
                     foreach (var bundleName in item.bundleDependce)
                     {
@@ -255,6 +305,73 @@ namespace ZM.AssetFrameWork
                 Debug.LogError("assets not exists AssetbundleConfig , LoadAssetBundle failed! Crc:"+crc);
                 return null;
             }
+        }
+        public async Task<BundleItem> LoadAssetBundleAddressable(uint crc, BundleModuleEnum moduleEnum = BundleModuleEnum.None)
+        {
+            BundleItem item = null;
+
+            //先到所有的AssetBunel资源字典中查询一下这个资源存不存在，如果存在说明该资源已经打成了AssetBundle包，这种情况下就可以直接加载了
+            //如果不存在，则说明该资源 不属于AssetBUnle 给与错误提示。
+            mAllBundleAssetDic.TryGetValue(crc, out item);
+
+            if (item != null)
+            {
+                //如果AssetBundle为空，说明该资源所在的AssetBundle没有加载进内存，这种情况我们就需要加载该AssetBundle
+                if (item.assetBundle != null) return item;
+ 
+                if (item.assetBundle == null && !item.isAddressableAsset)
+                {
+                    item.assetBundle = LoadAssetBundle(item.bundleName, item.bundleModuleType);
+                }
+                else if (item.assetBundle == null)
+                {
+                    return await LoadAssetBundleAddressableAsset(item, crc);
+                }
+                //需要加载这个AssetBundle依赖的其他的AssetBundle
+                foreach (var bundleName in item.bundleDependce)
+                {
+                    if (item.bundleName != bundleName)
+                    {
+                        LoadAssetBundle(bundleName, item.bundleModuleType);
+                    }
+                }
+                return item;
+            }
+            else
+            {
+               
+                if (moduleEnum!= BundleModuleEnum.None&& await AddressableAssetSystem.Instance.LoadAddressableAsset(moduleEnum, 0, string.Empty))
+                {
+                     return  LoadAssetBundle(crc);
+                }
+                Debug.LogError("assets not exists AssetbundleConfig , LoadAssetBundle failed! Crc:" + crc);
+                return null;
+            }
+        }
+        private async Task<BundleItem> LoadAssetBundleAddressableAsset(BundleItem item,uint crc)
+        {
+            bool loadResult = await AddressableAssetSystem.Instance.LoadAddressableAsset(item.bundleModuleType, crc, item.bundleName);
+            if (!loadResult)
+            {
+                Debug.LogError("AddressableSystem downLoad assetBundle failed:" + item.bundleName); 
+                return null;
+            }
+            item.assetBundle = LoadAssetBundle(item.bundleName, item.bundleModuleType);
+
+            if (item.assetBundle == null)
+            {
+                Debug.LogError("AddressableSystem AddressableSystem Load failed:" + item.bundleName);
+                return null;
+            }
+            //需要加载这个AssetBundle依赖的其他的AssetBundle
+            foreach (var bundleName in item.bundleDependce)
+            {
+                if (item.bundleName != bundleName)
+                {
+                    LoadAssetBundle(bundleName, item.bundleModuleType);
+                }
+            }
+            return item;
         }
         /// <summary>
         /// 通过AssetBundle Name加载AssetBundle

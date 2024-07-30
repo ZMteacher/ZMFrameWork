@@ -1,7 +1,7 @@
 /* ----------------------------------------------
 /* Title:AssetBundle模块类
 /* Author:铸梦xy
-/* Data:2024/4/24 12:29:24
+/* Data:2024/6/14 16:26:28
 /* Description:  Represents each module which is used to download an load
 /* Modify:
 ----------------------------------------------*/
@@ -21,5 +21,6 @@ namespace ZM.AssetFrameWork
 		GameItem,
 		Test,
 		Fish3d,
+		AdressAsset,
 	}
 }

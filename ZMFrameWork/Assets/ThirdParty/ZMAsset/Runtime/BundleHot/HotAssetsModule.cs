@@ -334,12 +334,17 @@ namespace ZM.AssetFrameWork
         public void DownLoadAssetBundleSuccess(HotFileInfo hotFile)
         {
 
-            string abName = hotFile.abName.Contains(".")? hotFile.abName.Replace(BundleSettings.ABSUFFIX, "") : hotFile.abName;
+            string abName = hotFile.abName;
+            if (!string.IsNullOrEmpty(BundleSettings.ABSUFFIX))
+            {
+                abName = hotFile.abName.Contains(".") ? hotFile.abName.Replace(BundleSettings.ABSUFFIX, "") : hotFile.abName;
+            }
+                
             if (hotFile.abName.Contains("bundleconfig"))
             {
                 OnDownLoadABConfigListener?.Invoke(abName);
-                //如果下载成功需要及时去加载配置文件
-                AssetBundleManager.Instance.LoadAssetBundleConfig(CurBundleModuleEnum);
+                //如果下载成功需要及时初始化模块配置
+                ZMAsset.InitAssetsModule(CurBundleModuleEnum);
             }
             else
             {

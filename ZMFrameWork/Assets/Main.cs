@@ -10,7 +10,7 @@ public class Main : MonoBehaviour
     private void Awake()
     {
         //初始化游戏热更框架
-        ZMAsset.Instance.InitFrameWork();
+        ZMAsset.InitFrameWork();
         
         Debug.Log(Application.persistentDataPath);
     }
@@ -18,7 +18,7 @@ public class Main : MonoBehaviour
     void Start()
     {
         //热更大厅资源
-        HotUpdateManager.Instance.HotAndUnPackAssets(BundleModuleEnum.Hall, this);
+        HotUpdateManager.Instance.HotAndUnPackAssets(BundleModuleEnum.Hall, StartGame);
     }
     /// <summary>
     /// 开始游戏
@@ -30,3 +30,4 @@ public class Main : MonoBehaviour
     }
 
 }
+

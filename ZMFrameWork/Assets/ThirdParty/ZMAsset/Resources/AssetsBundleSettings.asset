@@ -18,6 +18,6 @@ MonoBehaviour:
     encryptKey: zhumengxy
   buildbundleOptions: 256
   buildTarget: 13
-  bundleHotType: 0
-  loadAssetType: 0
+  bundleHotType: 1
+  loadAssetType: 1
   MAX_THREAD_COUNT: 3

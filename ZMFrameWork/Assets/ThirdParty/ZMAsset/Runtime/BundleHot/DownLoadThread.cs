@@ -15,6 +15,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -33,7 +34,7 @@ namespace ZM.AssetFrameWork
         /// 下载失败回调
         /// </summary>
         public Action<DownLoadThread, HotFileInfo> OnDownLoadFailed;
-
+        private BundleModuleEnum mCurBundleModuleEnum;
         /// <summary>
         /// 当前热更的资源模块
         /// </summary>
@@ -61,7 +62,7 @@ namespace ZM.AssetFrameWork
         /// <summary>
         /// 最大尝试下载次数
         /// </summary>
-        private const int MAX_TRY_DOWNLOAD_COUNT=3;
+        private const int MAX_TRY_DOWNLOAD_COUNT = 3;
         /// <summary>
         /// 资源下载线程
         /// </summary>
@@ -69,85 +70,175 @@ namespace ZM.AssetFrameWork
         /// <param name="hotFileInfo">需要下载热更的资源</param>
         /// <param name="downLoadUrl">资源下载地址</param>
         /// <param name="fileSavePath">文件储存地址</param>
-        public DownLoadThread(HotAssetsModule assetsModule,HotFileInfo hotFileInfo,string downLoadUrl,string fileSavePath)
+        public DownLoadThread(HotAssetsModule assetsModule, HotFileInfo hotFileInfo, string downLoadUrl, string fileSavePath)
         {
             this.mCurHotAssetsModule = assetsModule;
+            this.mCurBundleModuleEnum = assetsModule.CurBundleModuleEnum;
             this.mHotFileInfo = hotFileInfo;
             this.mFileSavePath = fileSavePath + "/" + hotFileInfo.abName;
-            this.mDownLoadUrl = downLoadUrl+"/"+ hotFileInfo.abName;
+            this.mDownLoadUrl = downLoadUrl + "/" + hotFileInfo.abName;
+        }
+        public DownLoadThread(BundleModuleEnum bundleModule, HotFileInfo hotFileInfo, string downLoadUrl, string fileSavePath)
+        {
+            this.mHotFileInfo = hotFileInfo;
+            this.mCurBundleModuleEnum = bundleModule;
+            this.mFileSavePath = fileSavePath + "/" + hotFileInfo.abName;
+            this.mDownLoadUrl = downLoadUrl + "/" + hotFileInfo.abName;
         }
         /// <summary>
         /// 开始通过子线程下载资源
         /// </summary>
         /// <param name="downLoadSuccess">下载成功回调</param>
         /// <param name="downLoadFailed">下载失败回调</param>
-        public void StartDownLoad(Action<DownLoadThread,HotFileInfo> downLoadSuccess, Action<DownLoadThread, HotFileInfo> downLoadFailed)
+        public void StartDownLoad(Action<DownLoadThread, HotFileInfo> downLoadSuccess, Action<DownLoadThread, HotFileInfo> downLoadFailed)
         {
             curDownLoadCount++;
             OnDownLoadSuccess = downLoadSuccess;
             OnDownLoadFailed = downLoadFailed;
 
-            Task.Run(()=> {
+            Task.Run(() =>
+            {
                 //这里的代码在子线程中执行
                 try
                 {
-                    Debug.Log("StartDownLoad ModuelEnum:"+mCurHotAssetsModule.CurBundleModuleEnum+" AssetBundle URL:"+mDownLoadUrl);
+                    Debug.Log("StartDownLoad ModuelEnum:" + mCurHotAssetsModule.CurBundleModuleEnum + " AssetBundle URL:" + mDownLoadUrl);
 
                     HttpWebRequest request = WebRequest.Create(mDownLoadUrl) as HttpWebRequest;
                     request.Method = "GET";
                     //发起请求
-                    HttpWebResponse response= request.GetResponse() as HttpWebResponse;
+                    HttpWebResponse response = request.GetResponse() as HttpWebResponse;
 
                     //创建本地文件流
-                    FileStream fileStream= File.Create(mFileSavePath);
+                    FileStream fileStream = File.Create(mFileSavePath);
 
-                    using (var stream= response.GetResponseStream())
+                    using (var stream = response.GetResponseStream())
                     {
                         byte[] buffer = new byte[512]; //512 
                         //从字节流中读取字节，读取到buff数组中
-                        int size = stream.Read(buffer,0, buffer.Length); //700
+                        int size = stream.Read(buffer, 0, buffer.Length); //700
 
-                        //文件下载异常
-                        if (size == 0)
-                        {
-                            Debug.LogError("File DownLoad exception plase check file fileName:" + mHotFileInfo.abName + " fileUrl:" + mDownLoadUrl);
-                        }
 
-                        while (size>0)
+
+                        while (size > 0)
                         {
-                            fileStream.Write(buffer,0, size);
+                            fileStream.Write(buffer, 0, size);
                             size = stream.Read(buffer, 0, buffer.Length);
                             //1mb=1024kb 1kb=1024字节
                             mDownLoadSizeKB += size;
                             //计算以m为单位的大小
                             mCurHotAssetsModule.AssetsDownLoadSizeM += ((size / 1024.0f) / 1024.0f);
-                            
                         }
                         fileStream.Dispose();
                         fileStream.Close();
-                        Debug.Log("OnDownLoadSuccess ModuleEnum:"+mCurHotAssetsModule.CurBundleModuleEnum +" AssetBundleUrl:"+mDownLoadUrl 
-                            +" FileSavePath:"+mFileSavePath);
-                         
-                        OnDownLoadSuccess?.Invoke(this,mHotFileInfo);
+                        //文件下载异常
+                        if (mDownLoadSizeKB == 0)
+                        {
+                            Debug.LogError("File DownLoad exception plase check file fileName:" + mHotFileInfo.abName + " fileUrl:" + mDownLoadUrl);
+                            if (curDownLoadCount > MAX_TRY_DOWNLOAD_COUNT)
+                            {
+                                OnDownLoadFailed?.Invoke(this, mHotFileInfo);
+                            }
+                            else
+                            {
+                                Debug.LogError("文件下载失败，正在进行重新下载，下载次数" + curDownLoadCount);
+                                StartDownLoad(OnDownLoadSuccess, OnDownLoadFailed);
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log("OnDownLoadSuccess ModuleEnum:" + mCurHotAssetsModule.CurBundleModuleEnum + " AssetBundleUrl:" + mDownLoadUrl
+                            + " FileSavePath:" + mFileSavePath);
+                            OnDownLoadSuccess?.Invoke(this, mHotFileInfo);
+                        }
+
 
                     }
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError("DownLoad AssetBundle Error Url:"+mDownLoadUrl +" Exception:"+e);
-                    if (curDownLoadCount> MAX_TRY_DOWNLOAD_COUNT)
+                    Debug.LogError("DownLoad AssetBundle Error Url:" + mDownLoadUrl + " Exception:" + e);
+                    if (curDownLoadCount > MAX_TRY_DOWNLOAD_COUNT)
                     {
-                        OnDownLoadFailed?.Invoke(this,mHotFileInfo);
+                        OnDownLoadFailed?.Invoke(this, mHotFileInfo);
                     }
                     else
                     {
                         Debug.LogError("文件下载失败，正在进行重新下载，下载次数" + curDownLoadCount);
-                        StartDownLoad(OnDownLoadSuccess,OnDownLoadFailed);
+                        StartDownLoad(OnDownLoadSuccess, OnDownLoadFailed);
                     }
                     throw;
                 }
-            
+
             });
+        }
+
+        public async Task<bool> StartDownLoadAsync()
+        {
+            try
+            {
+                Debug.Log("StartDownLoad ModuelEnum:" + mCurBundleModuleEnum + " AssetBundle URL:" + mDownLoadUrl);
+
+                HttpWebRequest request = WebRequest.Create(mDownLoadUrl) as HttpWebRequest;
+                request.Method = "GET";
+                //发起请求
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+
+                //创建本地文件流
+                using (FileStream fileStream = File.Create(mFileSavePath))
+                {
+                    using (var stream = response.GetResponseStream())
+                    {
+                        byte[] buffer = new byte[512]; //512 
+                                                       //从字节流中读取字节，读取到buff数组中
+                        int size = stream.Read(buffer, 0, buffer.Length); //700
+                        while (size > 0)
+                        {
+                            fileStream.Write(buffer, 0, size);
+                            size = stream.Read(buffer, 0, buffer.Length);
+                            //1mb=1024kb 1kb=1024字节
+                            mDownLoadSizeKB += size;
+                            //计算以m为单位的大小
+                            //mCurHotAssetsModule.AssetsDownLoadSizeM += ((size / 1024.0f) / 1024.0f);
+                        }
+                        //文件下载异常
+                        if (mDownLoadSizeKB == 0)
+                        {
+                            Debug.LogError("File DownLoad exception plase check file fileName:" + mHotFileInfo.abName + " fileUrl:" + mDownLoadUrl);
+                            if (curDownLoadCount > MAX_TRY_DOWNLOAD_COUNT)
+                            {
+                                return false;
+                            }
+                            else
+                            {
+                                Debug.LogError("文件下载失败，正在进行重新下载，下载次数" + curDownLoadCount);
+                                return await StartDownLoadAsync();
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log("OnDownLoadSuccess ModuleEnum:" + mCurBundleModuleEnum + " AssetBundleUrl:" + mDownLoadUrl
+                            + " FileSavePath:" + mFileSavePath);
+                            return true;
+                        }
+
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("DownLoad AssetBundle Error Url:" + mDownLoadUrl + " Exception:" + e);
+                if (curDownLoadCount > MAX_TRY_DOWNLOAD_COUNT)
+                {
+                    return false;
+                }
+                else
+                {
+                    Debug.LogError("文件下载失败，正在进行重新下载，下载次数" + curDownLoadCount);
+                    return await StartDownLoadAsync();
+                }
+            }
+
+
         }
     }
 }

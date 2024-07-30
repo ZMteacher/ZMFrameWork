@@ -17,7 +17,7 @@ namespace ZM.AssetFrameWork
 {
     public partial class ZMAsset : ZMFrameBase
     {
-        public static Transform RecyclObjRoot { get; private set; }
+        public static Transform RecyclObjPool { get; private set; }
 
         private IHotAssets mHotAssets = null;
 
@@ -27,15 +27,17 @@ namespace ZM.AssetFrameWork
         /// <summary>
         /// 初始化框架
         /// </summary>
-        public void InitFrameWork()
+        private void Initialize()
         {
-            GameObject recyclObjectRoot = new GameObject("RecyclObjRoot");
-            RecyclObjRoot = recyclObjectRoot.transform;
+            GameObject recyclObjectRoot = new GameObject("RecyclObjPool");
+            RecyclObjPool = recyclObjectRoot.transform;
             recyclObjectRoot.SetActive(false);
             DontDestroyOnLoad(recyclObjectRoot);
             mHotAssets = new HotAssetsManager();
             mDecompressAssets =new  AssetsDecompressManager();
-            mResource = new ResourceManager();
+            var resource=new ResourceManager();
+            mResource = resource;
+            ZMAddressableAsset.Interface = resource;
             mResource.Initlizate();
         }
 
@@ -43,7 +45,10 @@ namespace ZM.AssetFrameWork
         {
             mHotAssets?.OnMainThreadUpdate();
         }
+        private void OnApplicationQuit()
+        {
+            mResource.ClearResourcesAssets(true);
+        }
 
- 
     }
 }

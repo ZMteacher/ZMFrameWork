@@ -13,6 +13,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 namespace ZM.AssetFrameWork
 {
@@ -104,6 +105,7 @@ namespace ZM.AssetFrameWork
             }
             return assetsModule;
         }
+  
         /// <summary>
         /// 检测资源版本是否需要热更
         /// </summary>
@@ -120,14 +122,15 @@ namespace ZM.AssetFrameWork
             }
 #endif
             HotAssetsModule assetsModule = GetOrNewAssetModule(bundleModule);
-           assetsModule.CheckAssetsVersion((isHot,sizem)=> {
+            assetsModule.CheckAssetsVersion((isHot,sizem)=>
+            {
                if (isHot==false)
                {
-                   AssetBundleManager.Instance.LoadAssetBundleConfig(bundleModule);
+                  ZMAsset.InitAssetsModule(bundleModule);
                }
                callBack?.Invoke(isHot, sizem);
            } );
-        }
+        } 
         /// <summary>
         /// 获取热更模块
         /// </summary>
@@ -170,7 +173,7 @@ namespace ZM.AssetFrameWork
                 //我们就需要把闲置下来的下载线程分配给其他正在热更的模块，增加该模块的热更速度
                 MultipleThreadBalancing();
             }
-            AssetBundleManager.Instance.LoadAssetBundleConfig(bundleModule);
+            ZMAsset.InitAssetsModule(bundleModule);
         }
         /// <summary>
         /// 多线程均衡

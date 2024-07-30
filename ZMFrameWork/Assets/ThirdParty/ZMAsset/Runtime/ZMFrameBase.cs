@@ -31,7 +31,7 @@ namespace ZM.AssetFrameWork
                     {
                         GameObject obj = new GameObject(typeof(ZMAsset).Name);
                         //禁止销毁这个物体
-                        DontDestroyOnLoad(obj);
+                         DontDestroyOnLoad(obj);
                         _Instance=obj.AddComponent<ZMAsset>();
                         _Instance.OnInitlizate();
                     }

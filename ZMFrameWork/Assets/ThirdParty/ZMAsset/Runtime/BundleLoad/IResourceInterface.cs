@@ -23,6 +23,8 @@ public interface IResourceInterface
 {
     void Initlizate();
 
+    void InitAssetModule(BundleModuleEnum bundleModule,bool isAddressableAsset = false);
+
     void PreLoadObj(string path,int count=1);
 
     Task PreLoadObjAsync(string path, int count = 1);
@@ -30,13 +32,20 @@ public interface IResourceInterface
     void PreLoadResource<T>(string path) where T : UnityEngine.Object;
 
     GameObject Instantiate(string path, Transform parent, Vector3 localPoition, Vector3 localScale, Quaternion quaternion);
+
     void InstantiateAsync(string path, Action<GameObject, object, object> loadAsync, object param1, object param2);
+
     Task<AssetsRequest> InstantiateAsync(string path,  object param1, object param21, object param2);
+
+    //Task<AssetsRequest> InstantiateAsyncFormPoolAas(string path, object param1, object param2, object param3,BundleModuleEnum moduleEnum);
+
     long InstantiateAndLoad(string path, Action<GameObject, object, object> loadAsync, Action loading, object param1, object param2);
     Task<T> LoadResourceAsync<T>(string path) where T : UnityEngine.Object;
+
+    //Task<T> LoadResourceAsyncAas<T>(string path, BundleModuleEnum moduleEnum ) where T : UnityEngine.Object;
     void RemoveObjectLoadCallBack(long loadid);
 
-    void Release(GameObject obj, bool destroy = false);
+    void Release(GameObject obj, bool destroy = false); 
 
     void Release(Texture texture);
 
@@ -49,7 +58,7 @@ public interface IResourceInterface
     AudioClip LoadAudio(string path);
 
     TextAsset LoadTextAsset(string path);
-     AsyncOperation  LoadSceceAsync(string path, LoadSceneMode loadSceneMode = LoadSceneMode.Additive);
+    AsyncOperation  LoadSceceAsync(string path, LoadSceneMode loadSceneMode = LoadSceneMode.Additive);
     T LoadScriptableObject<T>(string path) where T : UnityEngine.Object;
  
     UnityEngine.Sprite LoadAtlasSprite(string atlasPath, string spriteName);
