@@ -28,7 +28,7 @@ public class BuildBundleConfigura : ScriptableObject
         {
             if (_instance==null)
             {
-                _instance = AssetDatabase.LoadAssetAtPath<BuildBundleConfigura>("Assets/ThirdParty/ZMAsset/Config/BuildBundleConfigura.asset");
+                _instance = AssetDatabase.LoadAssetAtPath<BuildBundleConfigura>("Assets/" +BundleSettings.Instance.ZMAssetRootPath+"/Config/BuildBundleConfigura.asset");
             }
             return _instance;
         } 

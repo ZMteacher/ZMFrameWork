@@ -10,8 +10,8 @@
 *
 * Modify: 
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
- 
- 
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -64,10 +64,10 @@ namespace ZM.AssetFrameWork
         private bool ComputeDecompressFile(BundleModuleEnum bundleModule)
         {
             mStreamingAssetsBundlePath = BundleSettings.Instance.GetAssetsBuiltinBundlePath(bundleModule);
-            mDecompressPath=BundleSettings.Instance.GetAssetsDecompressPath(bundleModule);
+            mDecompressPath = BundleSettings.Instance.GetAssetsDecompressPath(bundleModule);
             mNeedDecompressFileList.Clear();
-
-#if UNITY_ANDROID||UNITY_ISO
+          
+#if UNITY_ANDROID||UNITY_ISO||UNITY_EDITOR
             //如果文件夹不存在，就进行创建
             if (!Directory.Exists(mDecompressPath))
             {
@@ -75,10 +75,10 @@ namespace ZM.AssetFrameWork
             }
 
             //计算需要解压的文件，以及大小
-            TextAsset textAsset= Resources.Load<TextAsset>(bundleModule+"info");
-            if (textAsset!=null)
+            TextAsset textAsset = Resources.Load<TextAsset>(bundleModule + "info");
+            if (textAsset != null)
             {
-                List<BuiltinBundleInfo> builtinBundleInfoList= JsonConvert.DeserializeObject<List<BuiltinBundleInfo>>(textAsset.text);
+                List<BuiltinBundleInfo> builtinBundleInfoList = JsonConvert.DeserializeObject<List<BuiltinBundleInfo>>(textAsset.text);
                 foreach (var info in builtinBundleInfoList)
                 {
                     //本地文件储存路径
@@ -88,7 +88,7 @@ namespace ZM.AssetFrameWork
                         continue;
                     }
                     //计算出需要解压的文件
-                    if (!File.Exists(localFilePath)||MD5.GetMd5FromFile(localFilePath)!=info.md5)
+                    if (!File.Exists(localFilePath) || MD5.GetMd5FromFile(localFilePath) != info.md5)
                     {
                         mNeedDecompressFileList.Add(info.fileName);
                         TotalSizem += info.size / 1024.0f;
@@ -97,7 +97,7 @@ namespace ZM.AssetFrameWork
             }
             else
             {
-                Debug.LogError(bundleModule + "info"+" 不存在，请检查内嵌资源 是否内嵌！");
+                Debug.LogError(bundleModule + "info" + " 不存在，请检查内嵌资源 是否内嵌！");
             }
             return mNeedDecompressFileList.Count > 0;
 #else
@@ -106,7 +106,7 @@ namespace ZM.AssetFrameWork
         }
         public override float GetDecompressProgress()
         {
-            return AlreadyDecompressSizem==0? 0: AlreadyDecompressSizem /TotalSizem;
+            return AlreadyDecompressSizem == 0 ? 0 : AlreadyDecompressSizem / TotalSizem;
         }
         /// <summary>
         /// 解压文件到持久化目录
@@ -114,7 +114,7 @@ namespace ZM.AssetFrameWork
         /// <param name="bundleModule"></param>
         /// <param name="callBack"></param>
         /// <returns></returns>
-        IEnumerator UnPackToPersistentDataPath(BundleModuleEnum bundleModule,Action callBack)
+        IEnumerator UnPackToPersistentDataPath(BundleModuleEnum bundleModule, Action callBack)
         {
             foreach (var fileName in mNeedDecompressFileList)
             {
@@ -122,26 +122,30 @@ namespace ZM.AssetFrameWork
 #if UNITY_EDITOR_OSX || UNITY_IOS
                 filePath = "file://" + mStreamingAssetsBundlePath + fileName;
 #else
-                filePath =  mStreamingAssetsBundlePath + fileName;
+                filePath = mStreamingAssetsBundlePath + fileName;
 #endif
-                Debug.Log("Start UnPack AssetBundle filePath:"+filePath+"\r\n UnPackPath:"+mDecompressPath);
+                Debug.Log("Start UnPack AssetBundle filePath:" + filePath + "\r\n UnPackPath:" + mDecompressPath);
                 //通过 UnityWebRequest(Http) 访问本地文件 ，这个过程是不消耗流量的，相当于直接读取，所以速度是非常快的
                 UnityWebRequest unityWebRequest = UnityWebRequest.Get(filePath);
                 unityWebRequest.timeout = 30;
                 yield return unityWebRequest.SendWebRequest();
 
-                if (unityWebRequest.isNetworkError)
+                if (unityWebRequest.result== UnityWebRequest.Result.ConnectionError)
                 {
-                    Debug.LogError("UnPack Error:"+unityWebRequest.error);
+                    Debug.LogError("UnPack Error:" + unityWebRequest.error);
                 }
                 else
                 {
                     //到了这一步，文件就已经读取完成了
-                    byte[] bytes= unityWebRequest.downloadHandler.data;
-                    FileHelper.WriteFile(mDecompressPath+fileName,bytes);
-                    AlreadyDecompressSizem += (bytes.Length / 1024f) / 1024f;
-                    Debug.Log("AlreadyDecompressSizem:"+AlreadyDecompressSizem +" totalSize:"+TotalSizem);
-                    Debug.Log("UnPack Finish "+mDecompressPath+fileName);
+                    byte[] bytes = unityWebRequest.downloadHandler.data;
+                    //文件不存在或被删除掉了
+                    if (bytes != null)
+                    {
+                        FileHelper.WriteFile(mDecompressPath + fileName, bytes);
+                        AlreadyDecompressSizem += (bytes.Length / 1024f) / 1024f;
+                        Debug.Log("AlreadyDecompressSizem:" + AlreadyDecompressSizem + " totalSize:" + TotalSizem);
+                        Debug.Log("UnPack Finish " + mDecompressPath + fileName);
+                    }
                 }
 
                 unityWebRequest.Dispose();

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee52d936477a1e344a630017ee8d6a01, type: 3}
   m_Name: AssetsBundleSettings
   m_EditorClassIdentifier: 
-  AssetBundleDownLoadUrl: http://172.20.42.246
+  AssetBundleDownLoadUrl: http://192.168.2.113
   bundleEncrypt:
     isEncrypt: 0
     encryptKey: zhumengxy

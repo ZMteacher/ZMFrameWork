@@ -378,6 +378,12 @@ namespace ZM.AssetFrameWork
             mAsyncLoadingTaskList.Add(guid);
             //开始异步加载资源
             GameObject loadObj= await LoadResourceAsync<GameObject>(path);
+            if (loadObj == null)
+            {
+                Debug.LogError("Load GameObject Failed Path：" + path);
+                request.obj = new GameObject("Laod ErrorObj");//创建空物体，增加鲁棒性，防止报空后的游戏逻辑阻塞
+                return request;
+            }
             if (mAsyncLoadingTaskList.Contains(guid))
             {
                 mAsyncLoadingTaskList.Remove(guid);
@@ -388,6 +394,7 @@ namespace ZM.AssetFrameWork
             else
             {
                 Debug.LogError("Async Task already Cancel Load invalid! Path:" + path);
+                request.obj = new GameObject("Laod ErrorObj");//创建空物体，增加鲁棒性，防止报空后的游戏逻辑阻塞
                 return request;
             }
             
@@ -803,7 +810,8 @@ namespace ZM.AssetFrameWork
                 item.obj = obj;
                 item.path = path;
                 //缓存已经加载过的资源
-                mAlreayLoadAssetsDic.Add(crc, item);
+                if (!mAlreayLoadAssetsDic.ContainsKey(crc))
+                    mAlreayLoadAssetsDic.Add(crc, item);
                 return obj;
             }
 #endif

@@ -28,6 +28,7 @@ namespace ZM.AssetFrameWork
                         var obj = new GameObject(typeof(T).Name);
                         mInstance = obj.AddComponent<T>();
                         mInstance.OnAwake();
+                        DontDestroyOnLoad(obj);
                     }
                 }
                 return mInstance;

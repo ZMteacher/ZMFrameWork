@@ -17,15 +17,15 @@ namespace ZM.AssetFrameWork
 {
     public class HotUpdateManager : MonoSingleton<HotUpdateManager>
     {
-        private System.Action OnFinshCallBack;
         private HotAssetsWindow mHotAssetsWindow;
+        private System.Action OnHotFinishCallBackAction;
         /// <summary>
         /// 热更并且解压热更模块
         /// </summary>
         /// <param name="bundleModule"></param>
-        public void HotAndUnPackAssets(BundleModuleEnum bundleModule,System.Action finshCallBack)
+        public void HotAndUnPackAssets(BundleModuleEnum bundleModule,System.Action hotFinishCallBack)
         {
-           this.OnFinshCallBack = finshCallBack;
+            this.OnHotFinishCallBackAction += hotFinishCallBack; 
            mHotAssetsWindow = InstantiateResourcesObj<HotAssetsWindow>("HotAssetsWindow");
             //开始解压游戏内嵌资源
            IDecompressAssets decompress= ZMAsset.StartDeCompressBuiltinFile(bundleModule,()=> {
@@ -154,7 +154,7 @@ namespace ZM.AssetFrameWork
                 yield return null;
 
             }
-            OnFinshCallBack?.Invoke();
+            OnHotFinishCallBackAction?.Invoke();
             GameObject.Destroy(mHotAssetsWindow.gameObject);
         }
         public void LoadGameConfig()
