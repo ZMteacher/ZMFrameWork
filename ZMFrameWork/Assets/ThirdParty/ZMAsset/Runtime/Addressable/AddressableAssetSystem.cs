@@ -43,7 +43,7 @@ namespace ZM.AssetFrameWork
                 HotFileInfo hotInfo = assetModule.AssetIsNeedHotUpdate(BundleSettings.Instance.GetBundleCfgName(module));
                 if (hotInfo != null)
                 {
-                    string mBundleConfigName = module.ToString().ToLower() + "bundleconfig" + BundleSettings.ABSUFFIX;
+                    string mBundleConfigName = module.ToString().ToLower() + "bundleconfig" + BundleSettings.Instance.ABSUFFIX;
                     string mBundleConfigPath = BundleSettings.Instance.GetHotAssetsPath(module) + mBundleConfigName;
                     File.Delete(mBundleConfigPath);
                     //热更AssetBundle配置文件
