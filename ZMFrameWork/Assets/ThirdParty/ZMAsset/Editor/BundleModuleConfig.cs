@@ -24,7 +24,10 @@ public class BundleModuleConfig : OdinEditorWindow
     [GUIColor(0.3f ,0.8f,0.8f,1f)]
     [LabelText("资源模块名称:")]
     public string moduleName;
-
+ 
+    //[GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [LabelText("是否可寻址资源?"),InfoBox("区别:用时下载。建议在外围模块使用该功能，因为使用时下载需要Loading进行表现...")]
+    public bool isAddressableAsset=false;
     [ReadOnly]
     [HideLabel]
     [TabGroup("预制体包")]
@@ -67,6 +70,7 @@ public class BundleModuleConfig : OdinEditorWindow
         BundleModuleData moduleData= BuildBundleConfigura.Instance.GetBundleDataByName(moduleName);
         if (moduleData!=null)
         {
+            window.isAddressableAsset = moduleData.isAddressableAsset;
             window.moduleName = moduleData.moduleName;
             window.prefabPathArr = moduleData.prefabPathArr;
             window.rootFolderPathArr = moduleData.rootFolderPathArr;
@@ -123,6 +127,7 @@ public class BundleModuleConfig : OdinEditorWindow
             //添加新的模块资源
             moduleData = new BundleModuleData();
             moduleData.moduleName = this.moduleName;
+            moduleData.isAddressableAsset = this.isAddressableAsset;
             moduleData.prefabPathArr = this.prefabPathArr;
             moduleData.rootFolderPathArr = this.rootFolderPathArr;
             moduleData.signFolderPathArr = this.signFolderPathArr;

@@ -15,8 +15,9 @@ MonoBehaviour:
   AssetBundleConfig:
   - bundleid: 0
     moduleName: Hall
-    isBuild: 1
-    lastClickBtnTime: 101.16345
+    isAddressableAsset: 0
+    isBuild: 0
+    lastClickBtnTime: 157.2343
     prefabPathArr:
     - Assets/GameData/Hall/Prefabs
     rootFolderPathArr:
@@ -28,6 +29,7 @@ MonoBehaviour:
       bundlePath: Assets/Scenes
   - bundleid: 0
     moduleName: Majiang
+    isAddressableAsset: 0
     isBuild: 0
     lastClickBtnTime: 0
     prefabPathArr:
@@ -37,6 +39,7 @@ MonoBehaviour:
     signFolderPathArr: []
   - bundleid: 0
     moduleName: NiuNiu
+    isAddressableAsset: 0
     isBuild: 0
     lastClickBtnTime: 0
     prefabPathArr:
@@ -45,43 +48,8 @@ MonoBehaviour:
     - Assets/BundleDemo/NiuNiu/Textures
     signFolderPathArr: []
   - bundleid: 0
-    moduleName: ShiSanShui
-    isBuild: 0
-    lastClickBtnTime: 0
-    prefabPathArr:
-    - Assets/BundleDemo/ShiSanShui/Prefab
-    rootFolderPathArr:
-    - Assets/BundleDemo/ShiSanShui/Textures
-    signFolderPathArr: []
-  - bundleid: 0
-    moduleName: ShuangKou
-    isBuild: 0
-    lastClickBtnTime: 7.613889
-    prefabPathArr:
-    - Assets/GameData/ShuangKou/Prefabs
-    rootFolderPathArr:
-    - Assets/GameData/ShuangKou/Textures
-    signFolderPathArr: []
-  - bundleid: 0
-    moduleName: WuZhang
-    isBuild: 0
-    lastClickBtnTime: 0
-    prefabPathArr:
-    - Assets/BundleDemo/WuZhang/Prefab
-    rootFolderPathArr:
-    - Assets/BundleDemo/WuZhang/Textures
-    signFolderPathArr: []
-  - bundleid: 0
-    moduleName: ZhiZun
-    isBuild: 0
-    lastClickBtnTime: 0
-    prefabPathArr:
-    - Assets/BundleDemo/ZhiZun/Prefab
-    rootFolderPathArr:
-    - Assets/BundleDemo/ZhiZun/Textures
-    signFolderPathArr: []
-  - bundleid: 0
     moduleName: Game
+    isAddressableAsset: 0
     isBuild: 0
     lastClickBtnTime: 83.87675
     prefabPathArr:
@@ -91,6 +59,7 @@ MonoBehaviour:
     signFolderPathArr: []
   - bundleid: 0
     moduleName: GameItem
+    isAddressableAsset: 0
     isBuild: 0
     lastClickBtnTime: 0
     prefabPathArr:
@@ -99,22 +68,11 @@ MonoBehaviour:
     - Assets/BundleDemo/GameItem
     signFolderPathArr: []
   - bundleid: 0
-    moduleName: Test
-    isBuild: 0
-    lastClickBtnTime: 0
-    prefabPathArr:
-    - Path...
+    moduleName: AdressAsset
+    isAddressableAsset: 1
+    isBuild: 1
+    lastClickBtnTime: 158.0949
+    prefabPathArr: []
     rootFolderPathArr:
-    - Assets/BundleDemo/GameItem
+    - Assets/GameData/GameItem
     signFolderPathArr: []
-  - bundleid: 0
-    moduleName: Fish3d
-    isBuild: 0
-    lastClickBtnTime: 0
-    prefabPathArr:
-    - Assets/BundleDemo/Hall/Prefab
-    rootFolderPathArr:
-    - Assets/BundleDemo/Hall/Textures
-    signFolderPathArr:
-    - abName: cfgdata
-      bundlePath: Assets/BundleDemo/Hall/Data

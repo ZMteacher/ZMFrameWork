@@ -22,6 +22,8 @@ public class BundleModuleData
     public long bundleid;
     //模块名称
     public string moduleName;
+    //是否寻址资源
+    public bool isAddressableAsset;
     //是否打包
     public bool isBuild;
 

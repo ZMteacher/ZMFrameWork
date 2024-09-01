@@ -324,13 +324,16 @@ namespace ZM.AssetFrameWork
 #region 资源下载回调
         public void DownLoadAssetBundleSuccess(HotFileInfo hotFile)
         {
-
-            string abName = hotFile.abName.Contains(".")? hotFile.abName.Replace(BundleSettings.Instance.ABSUFFIX, "") : hotFile.abName;
+            string abName = hotFile.abName;
+            if (!string.IsNullOrEmpty(BundleSettings.Instance.ABSUFFIX))
+            {
+                abName = hotFile.abName.Contains(".") ? hotFile.abName.Replace(BundleSettings.Instance.ABSUFFIX, "") : hotFile.abName;
+            }
+                
             if (hotFile.abName.Contains("bundleconfig"))
             {
                 OnDownLoadABConfigListener?.Invoke(abName);
-                //如果下载成功需要及时去加载配置文件
-                AssetBundleManager.Instance.LoadAssetBundleConfig(CurBundleModuleEnum);
+                ZMAsset.InitAssetsModule(CurBundleModuleEnum);//如果下载成功需要及时初始化模块配置
             }
             else
             {

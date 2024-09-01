@@ -125,6 +125,15 @@ public class BundleSettings : ScriptableObject
     {
         return HotAssetsPath + moduleEnum + "/";
     }
+    /// <summary>
+    /// 获取配置文件名称
+    /// </summary>
+    /// <param name="moduleEnum"></param>
+    /// <returns></returns>
+    public string GetBundleCfgName(BundleModuleEnum moduleEnum)
+    {
+        return moduleEnum.ToString().ToLower() + "bundleconfig";
+    }
 }
 
 [System.Serializable,Toggle("isEncrypt")]

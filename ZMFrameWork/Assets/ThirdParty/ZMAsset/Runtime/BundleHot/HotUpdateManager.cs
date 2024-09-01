@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ZM.AssetFrameWork
 {
-    public class HotUpdateManager :MonoSingleton<HotUpdateManager>
+    public class HotUpdateManager : MonoSingleton<HotUpdateManager>
     {
         private HotAssetsWindow mHotAssetsWindow;
         private System.Action OnHotFinishCallBackAction;
@@ -26,7 +26,7 @@ namespace ZM.AssetFrameWork
         public void HotAndUnPackAssets(BundleModuleEnum bundleModule,System.Action hotFinishCallBack)
         {
             this.OnHotFinishCallBackAction += hotFinishCallBack; 
-            mHotAssetsWindow = InstantiateResourcesObj<HotAssetsWindow>("HotAssetsWindow");
+           mHotAssetsWindow = InstantiateResourcesObj<HotAssetsWindow>("HotAssetsWindow");
             //开始解压游戏内嵌资源
            IDecompressAssets decompress= ZMAsset.StartDeCompressBuiltinFile(bundleModule,()=> {
                //说明资源开启解压了
@@ -41,8 +41,7 @@ namespace ZM.AssetFrameWork
                         CheckAssetsVersion(bundleModule);
                    else
                    {
-                       //在资源解压完成时且不需要热更的情况下，需要加载对应的Bundle配置文件，热更文件热更配置文件完成后会自动加载
-                       AssetBundleManager.Instance.LoadAssetBundleConfig(bundleModule);
+                       ZMAsset.InitAssetsModule(bundleModule);
                        //如果不需要热更，说明用户已经热更过了，资源是最新的，直接进入游戏 
                        OnHotFinishCallBack(bundleModule);
                    }
@@ -141,7 +140,7 @@ namespace ZM.AssetFrameWork
                 }
                 else if (i == 70)
                 {
-                    mHotAssetsWindow.progressText.text = "加载AssetBUndle配置文件...";
+                    mHotAssetsWindow.progressText.text = "初始化资源模块...";
                 }
                 else if (i == 90)
                 {

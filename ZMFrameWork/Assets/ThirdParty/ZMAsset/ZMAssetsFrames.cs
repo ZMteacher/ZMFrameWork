@@ -22,6 +22,14 @@ namespace ZM.AssetFrameWork
 {
     public partial class ZMAsset
     {
+        #region 框架初始化
+        public static void InitFrameWork()
+        {
+           Instance.Initialize();
+        }
+        #endregion
+
+        #region 对象实例化 API
         /// <summary>
         /// 同步克隆物体
         /// </summary>
@@ -46,6 +54,8 @@ namespace ZM.AssetFrameWork
         /// <returns></returns>
         public static GameObject Instantiate(string path, Transform parent, Vector3 localPoition, Vector3 localScale, Quaternion quaternion)
         {
+        /// <param name="param1">异步加载参数1</param>
+        /// <param name="param2">异步加载参数2</param>
             return Instance.mResource.Instantiate(path,parent,localPoition,localScale,quaternion);
         }
       
@@ -55,16 +65,22 @@ namespace ZM.AssetFrameWork
         /// </summary>
         /// <param name="path">路径</param>
         /// <param name="loadAsync">异步加载回调</param>
-        /// <param name="param1">异步加载参数1</param>
-        /// <param name="param2">异步加载参数2</param>
         public static void InstantiateAsync(string path, System.Action<GameObject, object, object> loadAsync, object param1 = null, object param2 = null)
         {
             Instance.mResource.InstantiateAsync(path,loadAsync,param1,param2);
         }
+        /// <summary>
+        /// 可等待异步实例化对象
+        /// </summary>
+        /// <param name="path">加载路径</param>
+        /// <param name="param1">透传参数1 (回调触发时返回)</param>
+        /// <param name="param2">透传参数2 (回调触发时返回)</param>
+        /// <param name="param3">透传参数3 (回调触发时返回)</param>
         public static async Task<AssetsRequest> InstantiateAsync(string path, object param1 = null, object param2 = null, object param3 = null)
         {
           return await Instance.mResource.InstantiateAsync(path, param1, param2, param3);
         }
+     
         /// <summary>
         /// 克隆并且等待资源下载完成克隆
         /// </summary>
@@ -92,8 +108,10 @@ namespace ZM.AssetFrameWork
         {
             await Instance.mResource.PreLoadObjAsync(path, count);
         }
+        #endregion
 
-        /// <summary>
+        #region 资源加载 API
+        /// <summary> 
         /// 预加载资源
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -196,6 +214,7 @@ namespace ZM.AssetFrameWork
         {
             return   Instance.mResource.LoadSceceAsync(fullPath, loadSceneMode);
         }
+      
         /// <summary>
         /// 加载可编写脚本对象
         /// </summary>
@@ -292,8 +311,17 @@ namespace ZM.AssetFrameWork
         {
             Instance.mResource.ClearResourcesAssets(absoluteCleaning);
         }
+        #endregion
 
-
+        #region 资源热更API
+        /// <summary>
+        /// 初始化资产模块，在资源热更完成后必须、优先调用
+        /// </summary>
+        /// <param name="bundleModule">初始化的资产模块</param>
+        public static void InitAssetsModule(BundleModuleEnum bundleModule)
+        {
+           Instance.mResource.InitAssetModule(bundleModule,false);
+        }
         /// <summary>
         /// 开始热更
         /// </summary>
@@ -315,6 +343,7 @@ namespace ZM.AssetFrameWork
         {
             Instance.mHotAssets.CheckAssetsVersion(bundleModule, callBack);
         }
+       
         /// <summary>
         /// 获取热更模块
         /// </summary>
@@ -326,12 +355,14 @@ namespace ZM.AssetFrameWork
            return Instance.mHotAssets.GetHotAssetsModule(bundleModule);
         }
 
+        #endregion
 
+        #region 资源解压 API
         /// <summary>
         /// 开始解压内嵌文件
         /// </summary>
         /// <returns></returns>
-         public static IDecompressAssets StartDeCompressBuiltinFile(BundleModuleEnum bundleModule, Action callBack) 
+        public static IDecompressAssets StartDeCompressBuiltinFile(BundleModuleEnum bundleModule, Action callBack) 
         {
             return Instance.mDecompressAssets.StartDeCompressBuiltinFile(bundleModule, callBack);
         }
@@ -343,6 +374,7 @@ namespace ZM.AssetFrameWork
         {
             return Instance.mDecompressAssets.GetDecompressProgress();
         }
+        #endregion
     }
 
 }

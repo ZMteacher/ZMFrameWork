@@ -33,6 +33,7 @@ namespace ZM.AssetFrameWork
         /// <param name="bundleModule">热更模块类型</param>
         /// <param name="callBack">检测完成回调</param>
         void CheckAssetsVersion(BundleModuleEnum bundleModule,Action<bool,float> callBack);
+ 
         /// <summary>
         /// 获取热更模块
         /// </summary>

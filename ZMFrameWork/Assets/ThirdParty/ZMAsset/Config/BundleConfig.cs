@@ -45,6 +45,14 @@ public class BundleInfo
     /// </summary>
     public string assetName;
     /// <summary>
+    /// AB模块
+    /// </summary>
+    public string bundleModule;
+    /// <summary>
+    /// 是否寻址资源
+    /// </summary>
+    public bool isAddressableAsset;
+    /// <summary>
     /// 依赖项
     /// </summary>
     public List<string> bundleDependce;

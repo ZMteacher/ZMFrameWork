@@ -85,7 +85,8 @@ namespace ZM.AssetFrameWork
         {
 
             //初始化打包数据
-            Initlization(moduleData, buildType, hotPatchVersion, updateNotice);
+            bool initStatus= Initlization(moduleData, buildType, hotPatchVersion, updateNotice);
+            if (!initStatus) { return; }
             //打包所有的文件夹
             BuildAllFolder();
             //打包父节点下的所有子文件夹
@@ -102,7 +103,7 @@ namespace ZM.AssetFrameWork
         /// <param name="buildType"></param>
         /// <param name="hotPatchVersion"></param>
         /// <param name="updateNotice"></param>
-        public static void Initlization(BundleModuleData moduleData, BuildType buildType = BuildType.AssetBundle, int hotPatchVersion = 0, string updateNotice = "")
+        public static bool Initlization(BundleModuleData moduleData, BuildType buildType = BuildType.AssetBundle, int hotPatchVersion = 0, string updateNotice = "")
         {
             //清理数据以防下次打包时有数据残留
             mAllBundlePathList.Clear();
@@ -113,9 +114,19 @@ namespace ZM.AssetFrameWork
             mUpdateNotice = updateNotice;
             mBuildModuleData = moduleData;
             mHotPatchVersion = hotPatchVersion;
-            mBundleModuleEnum = (BundleModuleEnum)Enum.Parse(typeof(BundleModuleEnum), moduleData.moduleName);
+            try
+            {
+                mBundleModuleEnum = (BundleModuleEnum)Enum.Parse(typeof(BundleModuleEnum), moduleData.moduleName);
+            }
+            catch (Exception)
+            {
+                Debug.LogError($"{moduleData.moduleName} Enum Not find! Plase Gennerate Enum : Menu ZMFrame-GeneratorModuleEnum");
+                return false;
+            }
+            
             FileHelper.DeleteFolder(mBundleOutPutPath);
             Directory.CreateDirectory(mBundleOutPutPath);
+            return true;    
 
         }
         /// <summary>
@@ -334,6 +345,8 @@ namespace ZM.AssetFrameWork
                     info.bundleName = item.Value;
                     info.assetName = Path.GetFileName(filePath);
                     info.crc = Crc32.GetCrc32(filePath);
+                    info.bundleModule = mBundleModuleEnum.ToString();
+                    info.isAddressableAsset = mBuildModuleData.isAddressableAsset;
                     info.bundleDependce = new List<string>();
 
                     string[] depence= AssetDatabase.GetDependencies(filePath);
@@ -372,6 +385,7 @@ namespace ZM.AssetFrameWork
             {
                 importer.assetBundleName = mBundleModuleEnum.ToString().ToLower() + "bundleconfig"+ BundleSettings.Instance.ABSUFFIX;
             }
+            GeneratorHotModuleCfgToResource();
         }
         /// <summary>
         /// 修改或清空AssetBundle
@@ -478,7 +492,11 @@ namespace ZM.AssetFrameWork
                 Debug.Log("AssetBundle Encrypt Finish!");
             }
         }
-
+        /// <summary>
+        /// 拷贝AssetBundle至Resource文件夹
+        /// </summary>
+        /// <param name="moduleData"></param>
+        /// <param name="showTips"></param>
         public static void CopyBundleToStramingAssets(BundleModuleData moduleData,bool showTips=true)
         {
             mBundleModuleEnum = (BundleModuleEnum)Enum.Parse(typeof(BundleModuleEnum),moduleData.moduleName);
@@ -525,6 +543,37 @@ namespace ZM.AssetFrameWork
             Debug.Log(" Assets Copy toStreamingAssets Finish!");
         }
 
+
+        /// <summary>
+        /// 生成热更模块配置到Resources文件夹
+        /// </summary>
+        public static void GeneratorHotModuleCfgToResource()
+        {
+            string bundleModuleCfgJson = string.Empty;
+            TextAsset textAsset= Resources.Load<TextAsset>("bundlemoduleCfg");
+            if (textAsset==null)
+            {
+                List<BundleModuleData> bundleModuleData = new List<BundleModuleData> { mBuildModuleData };
+                bundleModuleCfgJson = JsonConvert.SerializeObject(bundleModuleData);
+                File.WriteAllText(mResourcesPath + "bundlemoduleCfg.json", bundleModuleCfgJson);
+            }
+            else
+            {
+                List<BundleModuleData> bundleModuleData = JsonConvert.DeserializeObject<List<BundleModuleData>>(textAsset.text);
+                for (int i = 0; i < bundleModuleData.Count; i++)
+                {
+                    if (string.Equals(bundleModuleData[i].moduleName,mBuildModuleData.moduleName))
+                    {
+                        bundleModuleData.Remove(bundleModuleData[i]);
+                        break;
+                    }
+                }
+                bundleModuleData.Add(mBuildModuleData);
+                bundleModuleCfgJson= JsonConvert.SerializeObject(bundleModuleData);
+                File.WriteAllText(mResourcesPath+ "bundlemoduleCfg.json", bundleModuleCfgJson);
+            }
+
+        }
         /// <summary>
         /// 生成热更资源
         /// </summary>
