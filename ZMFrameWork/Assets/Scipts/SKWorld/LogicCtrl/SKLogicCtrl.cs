@@ -8,7 +8,7 @@ namespace ZMGC.SK
         public void OnCreate()
         {
             Debug.Log("SKLogicCtrl  OnCreate>>>");
-            UIModule.Instance.PopUpWindow<SKWindow>();
+          
         }
 
         public void ExitbattleGame()

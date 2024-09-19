@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ZM.AssetFrameWork;
+using ZM.ZMAsset;
 
 namespace ZMGC.Hall
 {
@@ -13,10 +13,10 @@ namespace ZMGC.Hall
     /// </summary>
     public class HallWorld : World
     {
-        public override void OnCretae()
+        public override void OnCreate()
         {
-            base.OnCretae();
-            Debug.Log("HallWorld  OnCretae>>>");
+            base.OnCreate();
+            Debug.Log("HallWorld  OnCreate>>>");
             //大厅世界构建完成，弹出登录弹窗
             UIModule.PopUpWindow<LoginWindow>();
         }

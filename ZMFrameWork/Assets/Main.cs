@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ZM.AssetFrameWork;
+using ZM.ZMAsset;
 using ZMGC.Hall;
 
 public class Main : MonoBehaviour

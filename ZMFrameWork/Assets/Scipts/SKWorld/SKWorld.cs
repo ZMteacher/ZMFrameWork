@@ -11,12 +11,13 @@ namespace ZMGC.SK
         private SKDataMgr mSKData;
         private SKMsgMgr mSKMsg;
         private SKLogicCtrl mSKLogic;
-        public override void OnCretae()
+        public override void OnCreate()
         {
-            base.OnCretae();
+            base.OnCreate();
             mSKData = GetExitsDataMgr<SKDataMgr>();
             mSKMsg = GetExitsMsgMgr<SKMsgMgr>();
             mSKLogic = GetExitsLogicCtrl<SKLogicCtrl>();
+            UIModule.Instance.PopUpWindow<SKWindow>();
         }
 
         public override void OnDestroy()

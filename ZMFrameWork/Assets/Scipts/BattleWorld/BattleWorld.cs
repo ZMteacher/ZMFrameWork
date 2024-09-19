@@ -4,10 +4,10 @@ using UnityEngine;
 namespace ZMGC.Battle { 
     public class BattleWorld :World
     {
-        public override void OnCretae()
+        public override void OnCreate()
         {
-            base.OnCretae();
-            Debug.Log("BattleWorld  OnCretae>>>");
+            base.OnCreate();
+            Debug.Log("BattleWorld  OnCreate>>>");
          }
 
         public override void OnDestroy()
