@@ -20,4 +20,10 @@ ZMAsset：一款成熟的游戏资源管理框架,集多版本、多模块热更
 
 [Demo功能修复]增加 WZWorld(五张游戏世界) 修复大厅界面 “五张游戏按钮”点击无法进入对应游戏世界问题。
 
+2024.7.10
+
+[BUG修复]优化stream.Length在2020以上版本报错问题，优化AssetsDownLoader下载错误回调使用为成功回调问题，
+
+[功能新增]增加UI框架可视化配置，菜单栏ZMFrame-ZNUISetting。ZMAsset增加场景加载接口，LoadSceneAsync。
+
 
