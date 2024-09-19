@@ -12,18 +12,25 @@ ZMAsset：一款成熟的游戏资源管理框架,集多版本、多模块热更
 
 更新记录：
 
-2024/9/20：
+## 2024/9/20：
 
-[目录调整]调整ZMAsset ZMUI ZMGC 框架目录至ZMPackage目录下，为后续做框架插件统一注入插件做准备。
+[目录调整] 调整ZMAsset ZMUI ZMGC 框架目录至ZMPackage目录下，为后续做框架插件统一注入插件做准备。
 
-[单词优化]修复onCreate命名错误问题。感谢 七寸息 提供的问题。
+[单词优化] 修复onCreate命名错误问题。感谢 七寸息 提供的问题。
 
-[Demo功能修复]增加 WZWorld(五张游戏世界) 修复大厅界面 “五张游戏按钮”点击无法进入对应游戏世界问题。
+[Demo功能修复] 增加 WZWorld(五张游戏世界) 修复大厅界面 “五张游戏按钮”点击无法进入对应游戏世界问题。
 
-2024.7.10
+## 2024/8/6：
 
-[BUG修复]优化stream.Length在2020以上版本报错问题，优化AssetsDownLoader下载错误回调使用为成功回调问题，
+[功能新增] 增加可寻址加载资源加载(加载本地某个文件-本地没有-自动下载-下载完成-自动加载资源和依赖-触发资源加载回调)
+详见：ZMAddressableAsset 脚本。
 
-[功能新增]增加UI框架可视化配置，菜单栏ZMFrame-ZNUISetting。ZMAsset增加场景加载接口，LoadSceneAsync。
+[功能新增] ZMFrame-AssetBundle-BundleModule配置窗口增加是否寻址资源开关。寻址资源模块打包后为寻址资源，生成寻址相关配置数据，可通过ZMAddressableAsset脚本进行加载，非寻址资源无法通过ZMAddressableAsset脚本进行加载。
+
+## 2024/7/10：
+
+[BUG修复] 优化stream.Length在2020以上版本报错问题，优化AssetsDownLoader下载错误回调使用为成功回调问题，
+
+[功能新增] 增加UI框架可视化配置，菜单栏ZMFrame-ZNUISetting。ZMAsset增加场景加载接口，LoadSceneAsync。
 
 
