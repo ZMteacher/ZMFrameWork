@@ -15,9 +15,9 @@ MonoBehaviour:
   SINGMASK_SYSTEM: 1
   ParseType: 0
   GeneratorType: 1
-  BindComponentGeneratorPath: Assets/Scipts/UI
+  BindComponentGeneratorPath: Assets/Scripts/UI
   FindComponentGeneratorPath: Assets/ThirdParty/ZMUIFrameWork/Scripts/FindCompoent
-  WindowGeneratorPath: Assets/Scipts/UI
+  WindowGeneratorPath: Assets/Scripts/UI
   WindowPrefabFolderPathArr:
   - Assets/GameData/Battle/Prefabs/Window
   - Assets/GameData/Hall/Prefabs/Window
