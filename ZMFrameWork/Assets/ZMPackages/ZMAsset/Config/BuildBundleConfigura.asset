@@ -17,7 +17,7 @@ MonoBehaviour:
     moduleName: Hall
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 157.2343
+    lastClickBtnTime: 429.954
     prefabPathArr:
     - Assets/GameData/Hall/Prefabs
     rootFolderPathArr:
@@ -31,7 +31,7 @@ MonoBehaviour:
     moduleName: GameItem
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 209.34106
+    lastClickBtnTime: 429.40347
     prefabPathArr:
     - Path...
     rootFolderPathArr:
@@ -41,7 +41,7 @@ MonoBehaviour:
     moduleName: AdressAsset
     isAddressableAsset: 1
     isBuild: 0
-    lastClickBtnTime: 13.852327
+    lastClickBtnTime: 428.5154
     prefabPathArr: []
     rootFolderPathArr:
     - Assets/GameData/GameItem
@@ -50,7 +50,7 @@ MonoBehaviour:
     moduleName: WuZhang
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 74.963326
+    lastClickBtnTime: 427.41135
     prefabPathArr:
     - Assets/GameData/WuZhang/Prefab
     rootFolderPathArr:
@@ -60,7 +60,7 @@ MonoBehaviour:
     moduleName: ShuangKou
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 0
+    lastClickBtnTime: 422.03766
     prefabPathArr:
     - Assets/GameData/ShuangKou/Prefabs
     rootFolderPathArr:
@@ -72,3 +72,21 @@ MonoBehaviour:
       bundlePath: Assets/GameData/ShuangKou/Sounds
     - abName: effect
       bundlePath: Assets/GameData/ShuangKou/Effects
+  - bundleid: 0
+    moduleName: "\u6D4B\u8BD5\u8D44\u6E90"
+    isAddressableAsset: 0
+    isBuild: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: "\u997F"
+    isAddressableAsset: 0
+    isBuild: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []

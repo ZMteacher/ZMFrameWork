@@ -14,3 +14,4 @@ namespace ZM.GC
         public static string[] folderArr = new string[] { "/DataMgr/", "/MsgMgr/", "/LogicCtrl/" };
     }
 }
+ 

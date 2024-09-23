@@ -56,6 +56,7 @@ public class BuildBundleWindow : BundleBehaviour
                 {
                     //打包AssetBundle按钮事件
                     BuildBundle();
+                    GUIUtility.ExitGUI();
                 }
                 else
                 {
@@ -96,6 +97,7 @@ public class BuildBundleWindow : BundleBehaviour
             if (item.isBuild)
             {
                 BuildBundleCompiler.CopyBundleToStramingAssets(item);
+                GUIUtility.ExitGUI();
             }
         }
     }
