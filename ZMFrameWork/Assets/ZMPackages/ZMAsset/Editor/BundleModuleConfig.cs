@@ -38,7 +38,7 @@ public class BundleModuleConfig : OdinEditorWindow
     [HideLabel]
     [TabGroup("文件夹子包")]
     [DisplayAsString]
-    public string rootFolderSubBundle = "该文件夹下的所有子文件夹都会单独达成一个AssetBundle";
+    public string rootFolderSubBundle = "该文件夹下的所有子文件夹都会单独打成一个AssetBundle";
 
     [ReadOnly]
     [HideLabel]

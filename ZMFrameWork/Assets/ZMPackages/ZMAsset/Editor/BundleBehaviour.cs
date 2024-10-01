@@ -77,13 +77,13 @@ public class BundleBehaviour
                 {
                     moduleData.isBuild = moduleData.isBuild == false ? true : false;
                     //检测按钮是否是双击
-                    if (Time.realtimeSinceStartup-moduleData.lastClickBtnTime<=0.2f)
+                    if (Time.realtimeSinceStartup-moduleData.lastClickBtnTime<=0.18f)
                     {
-                        
                         Debug.Log("双击");
                         BundleModuleConfig.ShowWindow(moduleData.moduleName);
                     }
                     moduleData.lastClickBtnTime = Time.realtimeSinceStartup;
+
                 }
                 GUI.Label(new Rect((j+1)*20+(j*112),150*(i+1)+(i*20),115,20),moduleData.moduleName,new GUIStyle { alignment =TextAnchor.MiddleCenter});
 
@@ -92,7 +92,7 @@ public class BundleBehaviour
                 {
                     GUIStyle style= UnityEditorUility.GetGUIStyle("LightmapEditorSelectedHighlight");
                     style.contentOffset = new Vector2(100,-70);
-                    GUI.Toggle(new Rect(10+(j*133),-162+1*(i+1)+((i+1)*170),120,160),true,EditorGUIUtility.IconContent("Collab"), style);
+                    GUI.Toggle(new Rect(10+(j*133),-160+1*(i+1)+((i+1)*170),120,160),true,EditorGUIUtility.IconContent("Collab"), style);
                 }
             }
 

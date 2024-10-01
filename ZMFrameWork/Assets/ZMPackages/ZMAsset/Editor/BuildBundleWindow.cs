@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using ZM.ZMAsset;
+using Sirenix.Utilities.Editor;
 public class BuildBundleWindow : BundleBehaviour
 {
     protected string[] buildButtonsNameArr = new string[] { "打包资源", "内嵌资源" };
@@ -44,25 +45,31 @@ public class BuildBundleWindow : BundleBehaviour
         GUILayout.BeginArea(new Rect(0, 555, 800, 600));
 
         GUILayout.BeginHorizontal();
-
-        for (int i = 0; i < buildButtonsNameArr.Length; i++)
+        try
         {
-            GUIStyle style = UnityEditorUility.GetGUIStyle("PreButtonBlue");
-            style.fixedHeight = 55;
-
-            if (GUILayout.Button(buildButtonsNameArr[i],style,GUILayout.Height(400)))
+            for (int i = 0; i < buildButtonsNameArr.Length; i++)
             {
-                if (i==0)
+                GUIStyle style = UnityEditorUility.GetGUIStyle("PreButtonBlue");
+                style.fixedHeight = 55;
+
+                if (GUILayout.Button(buildButtonsNameArr[i], style, GUILayout.Height(400)))
                 {
-                    //打包AssetBundle按钮事件
-                    BuildBundle();
-                    GUIUtility.ExitGUI();
-                }
-                else
-                {
-                    CopyBundleToStreamingAssetsPath();
+                    if (i == 0)
+                    {
+                        //打包AssetBundle按钮事件
+                        BuildBundle();
+                        GUIHelper.ExitGUI(true);
+                    }
+                    else
+                    {
+                        CopyBundleToStreamingAssetsPath();
+                    }
                 }
             }
+        }
+        catch (System.Exception)
+        {
+            
         }
 
         //打包图标绘制完成
@@ -97,7 +104,6 @@ public class BuildBundleWindow : BundleBehaviour
             if (item.isBuild)
             {
                 BuildBundleCompiler.CopyBundleToStramingAssets(item);
-                GUIUtility.ExitGUI();
             }
         }
     }

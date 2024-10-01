@@ -82,12 +82,10 @@ public class BuildHotPatchWindow : BundleBehaviour
                 {
                     //打包AssetBundle按钮事件
                     BuildBundle();
-                    GUIUtility.ExitGUI();
                 }
                 else
                 {
                     CopyBundleToStreamingAssetsPath();
-                    GUIUtility.ExitGUI();
                 }
             }
         }

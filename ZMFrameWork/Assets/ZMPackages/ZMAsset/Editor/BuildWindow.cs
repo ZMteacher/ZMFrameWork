@@ -32,9 +32,18 @@ public class BuildWindows : OdinMenuEditorWindow
     [MenuItem("ZMFrame/AssetBundle")]
     public static void ShowAssetBundleWindow()
     {
-        BuildWindows window = GetWindow<BuildWindows>();
-        window.position = GUIHelper.GetEditorWindowRect().AlignCenter(985,612);
-        window.ForceMenuTreeRebuild();
+        try
+        {
+            BuildWindows window = GetWindow<BuildWindows>();
+            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(985, 612);
+            window.ForceMenuTreeRebuild();
+        }
+        catch (System.Exception)
+        {
+
+       
+        }
+       
     }
 
     protected override OdinMenuTree BuildMenuTree()
