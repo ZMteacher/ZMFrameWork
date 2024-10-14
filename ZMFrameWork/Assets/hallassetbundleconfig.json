@@ -3,460 +3,577 @@
     {
       "path": "Assets/GameData/Hall/Prefabs/Window/ExampleWindow.prefab",
       "crc": 3082594063,
-      "bundleName": "hall_examplewindow",
+      "bundleName": "hall_examplewindow.uab",
       "assetName": "ExampleWindow.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": [
-        "hall_shop",
-        "hall_hall"
+        "hall_shop.uab",
+        "hall_hall.uab"
       ]
     },
     {
       "path": "Assets/GameData/Hall/Prefabs/Window/ExampleWindow1.prefab",
       "crc": 2484666259,
-      "bundleName": "hall_examplewindow1",
+      "bundleName": "hall_examplewindow1.uab",
       "assetName": "ExampleWindow1.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": [
-        "hall_shop",
-        "hall_hall",
-        "hall_examplewindow1"
+        "hall_shop.uab",
+        "hall_hall.uab"
       ]
-    },
-    {
-      "path": "Assets/ThirdParty/ZMUIFrameWork/Texture/Cut Frame Filled Big 1.png",
-      "crc": 2043150761,
-      "bundleName": "hall_examplewindow1",
-      "assetName": "Cut Frame Filled Big 1.png",
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/ThirdParty/ZMUIFrameWork/Texture/tinyButton_Decline.png",
-      "crc": 2713453678,
-      "bundleName": "hall_examplewindow1",
-      "assetName": "tinyButton_Decline.png",
-      "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Prefabs/DynamicItem/ExShopItem.prefab",
       "crc": 595189068,
-      "bundleName": "hall_exshopitem",
+      "bundleName": "hall_exshopitem.uab",
       "assetName": "ExShopItem.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": [
-        "hall_shop"
+        "hall_shop.uab"
       ]
     },
     {
       "path": "Assets/GameData/Hall/Prefabs/Window/ExShopWindow.prefab",
       "crc": 2941083401,
-      "bundleName": "hall_exshopwindow",
+      "bundleName": "hall_exshopwindow.uab",
       "assetName": "ExShopWindow.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": [
-        "hall_shop",
-        "hall_hall"
+        "hall_shop.uab",
+        "hall_hall.uab"
       ]
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/5zhang.png",
       "crc": 1216028367,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "5zhang.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/13zhang.png",
       "crc": 759482310,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "13zhang.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/Bank.png",
       "crc": 4013271161,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "Bank.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/BG.jpg",
       "crc": 2078623160,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "BG.jpg",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/Box.png",
       "crc": 1561136286,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "Box.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/Down.png",
       "crc": 2505836160,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "Down.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/Gold.png",
       "crc": 947055514,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "Gold.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/kou.png",
       "crc": 4290294880,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "kou.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/level.png",
       "crc": 1178289631,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "level.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/Logo200x200.png",
       "crc": 3610977007,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "Logo200x200.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/majiang.png",
       "crc": 2188090559,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "majiang.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/niuniu.png",
       "crc": 2316418445,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "niuniu.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/Pregress.png",
       "crc": 2592911279,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "Pregress.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/Server.png",
       "crc": 1782481098,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "Server.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/Setting.png",
       "crc": 1104129953,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "Setting.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/Share.png",
       "crc": 2634853663,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "Share.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/Shop.png",
       "crc": 382773545,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "Shop.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/UP.png",
       "crc": 1913005424,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "UP.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/zhizun.png",
       "crc": 1754165398,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "zhizun.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/代理.png",
       "crc": 2704473884,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "代理.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Hall/大厅.jpg",
       "crc": 2513438227,
-      "bundleName": "hall_hall",
+      "bundleName": "hall_hall.uab",
       "assetName": "大厅.jpg",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/CfgData/PrefabConfig.txt",
       "crc": 4172947302,
-      "bundleName": "hall_halldata",
+      "bundleName": "hall_halldata.uab",
       "assetName": "PrefabConfig.txt",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Prefabs/Window/HallWindow.prefab",
       "crc": 2837863627,
-      "bundleName": "hall_hallwindow",
+      "bundleName": "hall_hallwindow.uab",
       "assetName": "HallWindow.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": [
-        "hall_hall"
+        "hall_hall.uab"
       ]
     },
     {
       "path": "Assets/GameData/Hall/Textures/Loading/LoginButton.png",
       "crc": 1011024469,
-      "bundleName": "hall_loading",
+      "bundleName": "hall_loading.uab",
       "assetName": "LoginButton.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Loading/图层 11.png",
       "crc": 1317335538,
-      "bundleName": "hall_loading",
+      "bundleName": "hall_loading.uab",
       "assetName": "图层 11.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Loading/圆角矩形 1 拷贝.png",
       "crc": 345720003,
-      "bundleName": "hall_loading",
+      "bundleName": "hall_loading.uab",
       "assetName": "圆角矩形 1 拷贝.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Loading/圆角矩形 1.png",
       "crc": 21342963,
-      "bundleName": "hall_loading",
+      "bundleName": "hall_loading.uab",
       "assetName": "圆角矩形 1.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Loading/圆角矩形 3.png",
       "crc": 2072377747,
-      "bundleName": "hall_loading",
+      "bundleName": "hall_loading.uab",
       "assetName": "圆角矩形 3.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Loading/弹窗.png",
       "crc": 861819915,
-      "bundleName": "hall_loading",
+      "bundleName": "hall_loading.uab",
       "assetName": "弹窗.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Loading/椭圆 3.png",
       "crc": 2696168094,
-      "bundleName": "hall_loading",
+      "bundleName": "hall_loading.uab",
       "assetName": "椭圆 3.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Loading/背景.png",
       "crc": 1338835025,
-      "bundleName": "hall_loading",
+      "bundleName": "hall_loading.uab",
       "assetName": "背景.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Login/Login.spriteatlas",
       "crc": 1052393602,
-      "bundleName": "hall_login",
+      "bundleName": "hall_login.uab",
       "assetName": "Login.spriteatlas",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": [
-        "hall_login"
+        "hall_login.uab"
       ]
     },
     {
       "path": "Assets/GameData/Hall/Textures/Login/LoginButton.png",
       "crc": 1020718031,
-      "bundleName": "hall_login",
+      "bundleName": "hall_login.uab",
       "assetName": "LoginButton.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Login/LoginPOp.png",
       "crc": 2951448971,
-      "bundleName": "hall_login",
+      "bundleName": "hall_login.uab",
       "assetName": "LoginPOp.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Login/LoginPopBox.png",
       "crc": 2251984453,
-      "bundleName": "hall_login",
+      "bundleName": "hall_login.uab",
       "assetName": "LoginPopBox.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Login/Login图层 11.png",
       "crc": 2846091204,
-      "bundleName": "hall_login",
+      "bundleName": "hall_login.uab",
       "assetName": "Login图层 11.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Login/Login圆角矩形 1 拷贝.png",
       "crc": 1511664932,
-      "bundleName": "hall_login",
+      "bundleName": "hall_login.uab",
       "assetName": "Login圆角矩形 1 拷贝.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Login/Login圆角矩形 1.png",
       "crc": 1986779864,
-      "bundleName": "hall_login",
+      "bundleName": "hall_login.uab",
       "assetName": "Login圆角矩形 1.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Login/Login椭圆 3.png",
       "crc": 1066365840,
-      "bundleName": "hall_login",
+      "bundleName": "hall_login.uab",
       "assetName": "Login椭圆 3.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Login/Login背景.png",
       "crc": 606574658,
-      "bundleName": "hall_login",
+      "bundleName": "hall_login.uab",
       "assetName": "Login背景.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Login/xb_0000_退-出-中.png",
       "crc": 2108038995,
-      "bundleName": "hall_login",
+      "bundleName": "hall_login.uab",
       "assetName": "xb_0000_退-出-中.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Login/xb_0001_更-新-中.png",
       "crc": 2221052412,
-      "bundleName": "hall_login",
+      "bundleName": "hall_login.uab",
       "assetName": "xb_0001_更-新-中.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Prefabs/Window/LoginWindow.prefab",
       "crc": 1174266611,
-      "bundleName": "hall_loginwindow",
+      "bundleName": "hall_loginwindow.uab",
       "assetName": "LoginWindow.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": [
-        "hall_login",
-        "hall_hall"
+        "hall_login.uab",
+        "hall_hall.uab"
+      ]
+    },
+    {
+      "path": "Assets/Scenes/AddressAPI.unity",
+      "crc": 2041909121,
+      "bundleName": "hall_scene.uab",
+      "assetName": "AddressAPI.unity",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "hall_shop.uab",
+        "hall_hall.uab"
       ]
     },
     {
       "path": "Assets/Scenes/APIDemo.unity",
       "crc": 1682462692,
-      "bundleName": "hall_scene",
+      "bundleName": "hall_scene.uab",
       "assetName": "APIDemo.unity",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": [
-        "hall_examplewindow",
-        "hall_shop",
-        "hall_hall"
+        "hall_examplewindow.uab",
+        "hall_shop.uab",
+        "hall_hall.uab"
       ]
     },
     {
       "path": "Assets/Scenes/SampleScene.unity",
       "crc": 2052513325,
-      "bundleName": "hall_scene",
+      "bundleName": "hall_scene.uab",
       "assetName": "SampleScene.unity",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/Scenes/TestLoadScene.unity",
       "crc": 438807704,
-      "bundleName": "hall_scene",
+      "bundleName": "hall_scene.uab",
       "assetName": "TestLoadScene.unity",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Shop/Loading.png",
       "crc": 1767702982,
-      "bundleName": "hall_shop",
+      "bundleName": "hall_shop.uab",
       "assetName": "Loading.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Shop/图层 6.png",
       "crc": 3478548898,
-      "bundleName": "hall_shop",
+      "bundleName": "hall_shop.uab",
       "assetName": "图层 6.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Shop/左列表.png",
       "crc": 2879097461,
-      "bundleName": "hall_shop",
+      "bundleName": "hall_shop.uab",
       "assetName": "左列表.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Shop/未选中 金币赠送.png",
       "crc": 3164592064,
-      "bundleName": "hall_shop",
+      "bundleName": "hall_shop.uab",
       "assetName": "未选中 金币赠送.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Shop/矩形 1 拷贝 6.png",
       "crc": 3236344194,
-      "bundleName": "hall_shop",
+      "bundleName": "hall_shop.uab",
       "assetName": "矩形 1 拷贝 6.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Shop/矩形 1.png",
       "crc": 2096428781,
-      "bundleName": "hall_shop",
+      "bundleName": "hall_shop.uab",
       "assetName": "矩形 1.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Shop/组 145 拷贝 4.png",
       "crc": 3085280167,
-      "bundleName": "hall_shop",
+      "bundleName": "hall_shop.uab",
       "assetName": "组 145 拷贝 4.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Shop/返回.png",
       "crc": 1144660753,
-      "bundleName": "hall_shop",
+      "bundleName": "hall_shop.uab",
       "assetName": "返回.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Textures/Shop/选中 银行存款.png",
       "crc": 3422679356,
-      "bundleName": "hall_shop",
+      "bundleName": "hall_shop.uab",
       "assetName": "选中 银行存款.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
       "path": "Assets/GameData/Hall/Prefabs/DynamicItem/TestObj.prefab",
       "crc": 239473143,
-      "bundleName": "hall_testobj",
+      "bundleName": "hall_testobj.uab",
       "assetName": "TestObj.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
       "bundleDependce": [
-        "hall_hall"
+        "hall_hall.uab"
       ]
     }
   ]
