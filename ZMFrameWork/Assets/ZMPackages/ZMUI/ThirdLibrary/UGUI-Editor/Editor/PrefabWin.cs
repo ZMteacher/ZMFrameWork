@@ -625,6 +625,7 @@ namespace U3DExtends
                         {
                             Debug.Log("按钮点击");
                         }
+                        GUIUtility.ExitGUI();
                     }
 
                     string caption = (ent == null) ? "" : ent.prefab.name.Replace("Control - ", "");
