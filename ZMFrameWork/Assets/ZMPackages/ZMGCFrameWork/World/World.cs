@@ -34,7 +34,7 @@ public partial class World
     /// <summary>
     /// 销毁游戏世界
     /// </summary>
-    public void DestoryWorld(string nameSpace,object pars =null)
+    public void DestroyWorld(string nameSpace,object pars =null)
     {
         //需要移除的一个列表
         List<string> needRemoveList = new List<string>();

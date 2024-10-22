@@ -132,7 +132,7 @@ public class WorldManager
         {
             if (mWorldList[i].GetType().Name == typeof(T).Name)
             {
-                mWorldList[i].DestoryWorld(typeof(T).Namespace, args);
+                mWorldList[i].DestroyWorld(typeof(T).Namespace, args);
                 mWorldList.Remove(mWorldList[i]);
                 break;
             }
