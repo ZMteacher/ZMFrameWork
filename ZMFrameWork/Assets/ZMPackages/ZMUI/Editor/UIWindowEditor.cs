@@ -17,7 +17,7 @@ public class UIWindowEditor : EditorWindow
     public static void ShowWindow(string content, string filePath, Dictionary<string, string> insterDic = null)
     {
         //创建代码展示窗口
-        UIWindowEditor window = (UIWindowEditor)GetWindowWithRect(typeof(UIWindowEditor), new Rect(100, 50, 800, 700), true, "Window生成界面");
+        UIWindowEditor window = (UIWindowEditor)GetWindowWithRect(typeof(UIWindowEditor), new Rect(100, 50, 800, 700), false, "Window生成界面");
         window.scriptContent = content;
         window.filePath = filePath;
         //处理代码新增
