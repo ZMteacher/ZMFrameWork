@@ -486,7 +486,7 @@ namespace ZM.ZMAsset
                 for (int i = 0; i < fileInfoArr.Length; i++)
                 {
                     EditorUtility.DisplayProgressBar("加密文件", "Name:" + fileInfoArr[i].Name, i * 1.0f / fileInfoArr.Length);
-                    AES.AESFileEncrypt(fileInfoArr[i].FullName, "zhumengxy");
+                    AES.AESFileEncrypt(fileInfoArr[i].FullName, BundleSettings.Instance.bundleEncrypt.encryptKey);
                 }
                 EditorUtility.ClearProgressBar();
                 Debug.Log("AssetBundle Encrypt Finish!");
