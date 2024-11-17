@@ -704,6 +704,7 @@ namespace ZM.ZMAsset
             {
                 Debug.LogError("path is Null , return null!");
                 loadFinish?.Invoke(null);
+                return;
             }
             uint crc = Crc32.GetCrc32(path);
             //从缓存中获取我们Bundleitem
