@@ -113,14 +113,12 @@ namespace ZM.ZMAsset
         /// <param name="callBack">热更回调</param>
         public void CheckAssetsVersion(BundleModuleEnum bundleModule, Action<bool, float> callBack)
         {
-#if UNITY_EDITOR
-            if (BundleSettings.Instance.bundleHotType == BundleHotEnum.NoHot && BundleSettings.Instance.loadAssetType == LoadAssetEnum.Editor)
+            if (BundleSettings.Instance.bundleHotType == BundleHotEnum.NoHot)
             {
-                Debug.Log("Editor加载模式，不需要热更");
+                Debug.Log("NoHot加载模式，不需要热更");
                 callBack?.Invoke(false, 0);
                 return;
             }
-#endif
             HotAssetsModule assetsModule = GetOrNewAssetModule(bundleModule);
             assetsModule.CheckAssetsVersion((isHot,sizem)=>
             {

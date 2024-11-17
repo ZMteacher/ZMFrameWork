@@ -13,16 +13,10 @@ public class TypeManager
         //获取Unity和我们创建的脚本所在的程序集
         Assembly[] assemblyArr= AppDomain.CurrentDomain.GetAssemblies();
         Assembly worldAssembly = null;
-        //获取当前脚本运行的程序集
-        foreach (var assembly in assemblyArr)
-        {
-            if (assembly.GetName().Name=="Assembly-CSharp")
-            {
-                worldAssembly = assembly;
-                break;
-            }
-        }
 
+        //获取当前脚本运行的程序集 这种方式能自动识别任何自定义程序集的World脚本
+        worldAssembly = world.GetType().Assembly;
+     
         if (worldAssembly==null)
         {
             Debug.LogError("worldAssembly is Null Plase check Create Assembly!");

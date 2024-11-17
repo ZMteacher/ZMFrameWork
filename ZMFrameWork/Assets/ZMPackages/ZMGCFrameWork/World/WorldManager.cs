@@ -64,7 +64,11 @@ public class WorldManager
             return;
         }
         T world = new T();
-        DefaultGameWorld = world;
+        //首个创建的世界为默认世界，按照目前的HallWorld常驻内存的设计，DefaultGameWorld一直HallWorld。
+        if (DefaultGameWorld == null)
+        {
+            DefaultGameWorld = world;
+        }
         //初始化当前游戏世界的程序集脚本
         TypeManager.InitlizateWorldAssemblies(world, GetBehaviourExecution(world));
         world.OnCreate ();
@@ -104,7 +108,9 @@ public class WorldManager
     /// </summary>
     public static void Update()
     {
-        //Debug.Log("WorldManger Update");
+        //帧更新接口，若需要使用请在对应的xxxWorld脚本中实现OnUpdate接口，自行去调用逻辑层/数据层/消息层的帧更新接口
+        //不制作方便使用的自动化方式执行Update的原因是为了保障性能，防止对Update接口的滥用，影响性能。
+        //故不太建议在逻辑层/数据层/消息层去使用Update帧更新接口。特殊需求情况除外
         for (int i = 0; i < mWorldList.Count; i++)
         {
             mWorldList[i].OnUpdate();
@@ -112,6 +118,7 @@ public class WorldManager
     }
     /// <summary>
     /// 初始化世界更新程序
+    /// 
     /// </summary>
     public static void InitWorldUpdater()
     {
@@ -130,12 +137,18 @@ public class WorldManager
     {
         for (int i = 0; i < mWorldList.Count; i++)
         {
-            if (mWorldList[i].GetType().Name == typeof(T).Name)
+            World world= mWorldList[i];
+            if (world.GetType().Name == typeof(T).Name)
             {
-                mWorldList[i].DestroyWorld(typeof(T).Namespace, args);
+                world.DestroyWorld(typeof(T).Namespace, args);
                 mWorldList.Remove(mWorldList[i]);
+                //重设当前所处世界
+                GetBehaviourExecution(DefaultGameWorld);
+                //触发销毁后处理，可在对应接口中返回其他世界
+                world.OnDestroyPostProcess(args);
                 break;
             }
         }
     }
+    
 }

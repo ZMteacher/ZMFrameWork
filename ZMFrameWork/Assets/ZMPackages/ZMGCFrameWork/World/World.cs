@@ -78,8 +78,7 @@ public partial class World
         }
 
         OnDestroy();
-
-        OnDestroyPostProcess(pars);
+ 
     }
     /// <summary>
     /// 世界销毁完成后触发

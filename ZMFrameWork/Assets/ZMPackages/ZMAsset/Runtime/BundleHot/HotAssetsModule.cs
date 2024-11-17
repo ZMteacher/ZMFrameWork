@@ -249,7 +249,7 @@ namespace ZM.ZMAsset
             }
             //判断本地资源清单补丁版本号是否与服务端资源清单补丁版本号一致，如果一致，不需要热更， 如果不一致，则需要热更
             HotAssetsManifest localHotAssetsManifest = JsonConvert.DeserializeObject<HotAssetsManifest>(File.ReadAllText(mLocalHotAssetManifestPath));
-            if (localHotAssetsManifest.hotAssetsPatchList.Count==0&&mServerHotAssetsManifest.hotAssetsPatchList.Count!=0)
+            if (localHotAssetsManifest.hotAssetsPatchList.Count==0 && mServerHotAssetsManifest.hotAssetsPatchList.Count!=0)
             {
                 return true;
             }
@@ -265,10 +265,6 @@ namespace ZM.ZMAsset
                 {
                     return true;
                 }
-                //else
-                //{
-                //    return false;
-                //}
             }
 
             if (serverHotPatch!=null)
@@ -294,7 +290,12 @@ namespace ZM.ZMAsset
 
             yield return webRequest.SendWebRequest();
 
+            
+#if UNITY_2020_1_OR_NEWER
+            if (webRequest.result== UnityWebRequest.Result.ConnectionError)
+#else
             if (webRequest.isNetworkError)
+#endif
             {
                 Debug.LogError("DownLoad Error:"+webRequest.error);
             }

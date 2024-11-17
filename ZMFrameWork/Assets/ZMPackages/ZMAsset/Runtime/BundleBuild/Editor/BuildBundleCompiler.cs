@@ -307,6 +307,7 @@ namespace ZM.ZMAsset
             ModifyAllFileBundleName(true);
 
             EditorUtility.ClearProgressBar();
+    
         }
         /// <summary>
         /// 生成AssetBundle配置文件
@@ -372,8 +373,8 @@ namespace ZM.ZMAsset
             }
             //生成AsestBundle配置文件。
             string json = JsonConvert.SerializeObject(config,Formatting.Indented);
-            string bundleConfigPath = Application.dataPath + "/" + mBundleModuleEnum.ToString().ToLower() + "assetbundleconfig.json";
-             StreamWriter writer= File.CreateText(bundleConfigPath);
+            string bundleConfigPath = Application.dataPath + "/" + BundleSettings.Instance.ZMAssetRootPath + "/Config/" + mBundleModuleEnum.ToString().ToLower() + "assetbundleconfig.json";
+            StreamWriter writer= File.CreateText(bundleConfigPath);
             writer.Write(json);
             writer.Dispose();
             writer.Close();
@@ -493,7 +494,7 @@ namespace ZM.ZMAsset
             }
         }
         /// <summary>
-        /// 拷贝AssetBundle至Resource文件夹
+        /// 拷贝AssetBundle至StramingAssets文件夹
         /// </summary>
         /// <param name="moduleData"></param>
         /// <param name="showTips"></param>
@@ -530,7 +531,7 @@ namespace ZM.ZMAsset
                 Directory.CreateDirectory(mResourcesPath);
             }
 
-            //写入配置文件到Resources文件夹
+            //写入包内资源配置文件到Resources文件夹
             FileHelper.WriteFile(mResourcesPath+mBundleModuleEnum+"info.json",System.Text.Encoding.UTF8.GetBytes(json));
 
             AssetDatabase.Refresh();

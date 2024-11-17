@@ -109,7 +109,7 @@ public class GeneratorModuleWindow : EditorWindow
             folder = mFolderArr[1];
         else if (mFileName.Contains("Logic"))
             folder = mFolderArr[2];
-        mFilePath = Application.dataPath  + Path.Combine(moduleConfig.savePath, moduleConfig.modules[index].moduleName, folder, mFileName);
+        mFilePath = $"{Application.dataPath}/{moduleConfig.savePath}/{moduleConfig.modules[index].moduleName}{folder}{mFileName}";
     }
     public void CreateScripts()
     {
