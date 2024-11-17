@@ -47,7 +47,7 @@ namespace ZMGC.Hall
             //退出游戏流程：销毁所有弹窗，解除资源引用 =>  释放内存中无引用的资源 
             HallWorld.UIModule.DestroyAllWindow();
             ZMAsset.ClearResourcesAssets(false);
-
+            Debug.Log($"CurWorld:{WorldManager.CurWorldEnum}");
             //弹出大厅弹窗
             HallWorld.UIModule.PopUpWindow<HallWindow>();
         }

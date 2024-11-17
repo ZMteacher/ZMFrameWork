@@ -5828,7 +5828,7 @@ MonoBehaviour:
   downLoadProgressText: {fileID: 1017282972008852908}
   downLoadTips: {fileID: 2065915767477876818}
   updateRoot: {fileID: 4707396070619737365}
-  gameType: 6
+  gameType: 4
 --- !u!1 &5916653650081803803
 GameObject:
   m_ObjectHideFlags: 0
