@@ -202,9 +202,12 @@ namespace ZM.ZMAsset
         }
         public void RemoveDownLoadThread(DownLoadThread downLoadThread)
         {
-            if (mAllDownLoadThreadList.Contains(downLoadThread))
+            lock (mAllDownLoadThreadList)
             {
-                mAllDownLoadThreadList.Remove(downLoadThread);
+                if (mAllDownLoadThreadList.Contains(downLoadThread))
+                {
+                    mAllDownLoadThreadList.Remove(downLoadThread);
+                } 
             }
         }
     }

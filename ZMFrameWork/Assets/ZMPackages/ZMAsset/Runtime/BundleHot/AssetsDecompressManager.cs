@@ -124,7 +124,11 @@ namespace ZM.ZMAsset
 #else
                 filePath = mStreamingAssetsBundlePath + fileName;
 #endif
+                //文件不存在
+                if (!File.Exists(filePath)) continue;
+                
                 Debug.Log("Start UnPack AssetBundle filePath:" + filePath + "\r\n UnPackPath:" + mDecompressPath);
+               
                 //通过 UnityWebRequest(Http) 访问本地文件 ，这个过程是不消耗流量的，相当于直接读取，所以速度是非常快的
                 UnityWebRequest unityWebRequest = UnityWebRequest.Get(filePath);
                 unityWebRequest.timeout = 30;

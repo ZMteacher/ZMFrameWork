@@ -11,9 +11,7 @@
 * Modify: 
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -74,7 +72,7 @@ namespace ZM.ZMAsset
         /// <param name="param1">透传参数1 (回调触发时返回)</param>
         /// <param name="param2">透传参数2 (回调触发时返回)</param>
         /// <param name="param3">透传参数3 (回调触发时返回)</param>
-        public static async Task<AssetsRequest> InstantiateAsync(string path, object param1 = null, object param2 = null, object param3 = null)
+        public static async UniTask<AssetsRequest> InstantiateAsync(string path, object param1 = null, object param2 = null, object param3 = null)
         {
           return await Instance.mResource.InstantiateAsync(path, param1, param2, param3);
         }
@@ -102,7 +100,7 @@ namespace ZM.ZMAsset
         {
              Instance.mResource.PreLoadObj(path,count);
         }
-        public static async Task PreLoadObjAsync<T>(string path, int count = 1) 
+        public static async UniTask PreLoadObjAsync<T>(string path, int count = 1) 
         {
             await Instance.mResource.PreLoadObjAsync(path, count);
         }
@@ -119,7 +117,7 @@ namespace ZM.ZMAsset
             Instance.mResource.PreLoadResource<T>(path);
         }
 
-        public static async Task<T> PreLoadResourceAsync<T>(string path) where T : UnityEngine.Object
+        public static async UniTask<T> PreLoadResourceAsync<T>(string path) where T : UnityEngine.Object
         {
           return await Instance.mResource.LoadResourceAsync<T>(path);
         }
@@ -199,7 +197,7 @@ namespace ZM.ZMAsset
         /// </summary>
         /// <param name="path">绝对路径</param>
         /// <returns></returns>
-        public static async Task<TextAsset> LoadTextAssetAsync(string fullPath)
+        public static async UniTask<TextAsset> LoadTextAssetAsync(string fullPath)
         {
             return await Instance.mResource.LoadResourceAsync<TextAsset>(fullPath);
         }
@@ -260,7 +258,7 @@ namespace ZM.ZMAsset
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static async Task<Texture> LoadTextureAsync(string path)
+        public static async UniTask<Texture> LoadTextureAsync(string path)
         {
             if (!path.EndsWith(".jpg"))
             {
@@ -285,7 +283,7 @@ namespace ZM.ZMAsset
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static async Task<Sprite> LoadSpriteAsync(string path)
+        public static async UniTask<Sprite> LoadSpriteAsync(string path)
         {
             if (!path.EndsWith(".png"))
             {

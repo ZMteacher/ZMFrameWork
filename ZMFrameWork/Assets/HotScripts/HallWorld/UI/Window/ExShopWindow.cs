@@ -20,7 +20,7 @@ public class ExShopWindow : WindowBase
     public List<int> itemIDlist = new List<int>();
 
     public List<ExShopItem> exShopItemList = new List<ExShopItem>();
-
+    
     public ExShopWindowDataComponent dataCompt;
 
     #region 声明周期函数
@@ -31,7 +31,6 @@ public class ExShopWindow : WindowBase
         dataCompt = gameObject.GetComponent<ExShopWindowDataComponent>();
         dataCompt.InitComponent(this);
         base.OnAwake();
-        ZMAsset.HotAssets(BundleModuleEnum.GameItem, null, null, null);
     }
     //物体显示时执行
     public override async void OnShow()
@@ -41,23 +40,22 @@ public class ExShopWindow : WindowBase
         itemIDlist.Clear();
         exShopItemList.Clear();
         //添加道具id
-        for (int i = 0; i < 15; i++)
+         for (int i = 0; i < 15; i++)
         {
             itemIDlist.Add(i + 6000 + 1);
-        }
-
+        } 
+         
         //生成兑换道具列表
         foreach (var id in itemIDlist)
         {
-            AssetsRequest assets = await ZMAsset.InstantiateAsync(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "ExShopItem");
+            AssetsRequest assets = await ZMAddressableAsset.InstantiateAsyncFormPool(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "ExShopItem", BundleModuleEnum.GameItem);
             GameObject itemObj = assets.obj;
             itemObj.transform.SetParent(dataCompt.ContentTransform, false);
             itemObj.transform.localScale = Vector3.one;
             itemObj.SetActive(true);
             ExShopItem item = itemObj.GetComponent<ExShopItem>();
-            item.SetData(id);
+            item.SetData(assets,id);
             exShopItemList.Add(item);
-            assets.Release();
         }
     }
     //物体隐藏时执行

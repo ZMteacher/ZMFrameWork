@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine.Networking;
 using UnityEngine;
 using System.IO;
-using UnityEditor;
-using System.ComponentModel;
+using Cysharp.Threading.Tasks;
 
 namespace ZM.ZMAsset
 {
@@ -72,7 +71,7 @@ namespace ZM.ZMAsset
         /// 检测资源版本
         /// </summary>
         /// <param name="checkCallBack"></param>
-        public async Task<bool> CheckAssetsVersion()
+        public async UniTask<bool> CheckAssetsVersion()
         {
             mNeedDownLoadAssetsList.Clear();
             //1.验证并下载资源清单
@@ -83,7 +82,7 @@ namespace ZM.ZMAsset
             //2.检测当前版本是否需要热更
             if (mServerHotAssetsManifest!=null)
             {
-                return CheckModuleAssetsIsHot() ? ComputeNeedHotAssetsList() : false;
+                return await CheckModuleAssetsIsHot() ? ComputeNeedHotAssetsList() : false;
             }
             return false;
         }
@@ -91,7 +90,7 @@ namespace ZM.ZMAsset
         /// 检测模块资源是否需要热更
         /// </summary>
         /// <returns></returns>
-        private bool CheckModuleAssetsIsHot()
+        private async Task<bool> CheckModuleAssetsIsHot()
         {
             //如果服务端资源清单不存，不需要热更
             if (mServerHotAssetsManifest == null)
@@ -104,7 +103,7 @@ namespace ZM.ZMAsset
                 return true;
             }
             //判断本地资源清单补丁版本号是否与服务端资源清单补丁版本号一致，如果一致，不需要热更， 如果不一致，则需要热更
-            HotAssetsManifest localHotAssetsManifest = JsonConvert.DeserializeObject<HotAssetsManifest>(File.ReadAllText(mLocalHotAssetManifestPath));
+            HotAssetsManifest localHotAssetsManifest = JsonConvert.DeserializeObject<HotAssetsManifest>(await File.ReadAllTextAsync(mLocalHotAssetManifestPath));
             if (localHotAssetsManifest.hotAssetsPatchList.Count == 0 && mServerHotAssetsManifest.hotAssetsPatchList.Count != 0)
             {
                 return true;
@@ -186,8 +185,7 @@ namespace ZM.ZMAsset
             {
                 try
                 {
-                    Debug.Log("*** Request AssetBundle HotAssetsMainfest Url Finish Module:" + CurBundleModuleEnum
-                        + " txt:" + webRequest.downloadHandler.text);
+                    Debug.Log("*** Request AssetBundle HotAssetsMainfest Url Finish Module:" + CurBundleModuleEnum + " txt:" + webRequest.downloadHandler.text);
                     //写入服务端资源热更清单到本地
                     FileHelper.WriteFile(mServerHotAssetsManifestPath, webRequest.downloadHandler.data);
                     mServerHotAssetsManifest = JsonConvert.DeserializeObject<HotAssetsManifest>(webRequest.downloadHandler.text);

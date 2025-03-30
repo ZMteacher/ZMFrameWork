@@ -67,7 +67,7 @@ public class HotAssetsWindow : MonoBehaviour
 
         if (mDecompressAssets!=null&& progressSlider.value!=1.0f)
         {
-            Debug.Log("mDecompressAssets.GetDecompressProgress():"+ mDecompressAssets.GetDecompressProgress());
+            // Debug.Log("mDecompressAssets.GetDecompressProgress():"+ mDecompressAssets.GetDecompressProgress());
             progressText.text = "资源解压中,过程中不消耗流量...";
             progressSlider.value = mDecompressAssets.GetDecompressProgress();
         }

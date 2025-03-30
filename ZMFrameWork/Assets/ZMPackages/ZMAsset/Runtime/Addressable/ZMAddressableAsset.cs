@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 
 namespace ZM.ZMAsset 
 { 
@@ -19,7 +15,7 @@ namespace ZM.ZMAsset
         /// <param name="param2">透传参数2 (回调触发时返回)</param>
         /// <param name="param3">透传参数3 (回调触发时返回)</param>
         /// <returns></returns>
-        public static async Task<AssetsRequest> InstantiateAsyncFormPool(string path, BundleModuleEnum bundleModule, object param1 = null, object param2 = null, object param3 = null)
+        public static async UniTask<AssetsRequest> InstantiateAsyncFormPool(string path, BundleModuleEnum bundleModule, object param1 = null, object param2 = null, object param3 = null)
         {
              return await Interface.InstantiateAsyncFormPoolAas(path, bundleModule, param1, param2, param3);
         }
@@ -31,7 +27,7 @@ namespace ZM.ZMAsset
         /// <param name="path">资源路径</param>
         /// <param name="moduleEnum">可寻址资源模块</param>
         /// <returns></returns>
-        public static async Task<T> LoadResourceAsync<T>(string fullPath, BundleModuleEnum moduleEnum) where T : UnityEngine.Object
+        public static async UniTask<T> LoadResourceAsync<T>(string fullPath, BundleModuleEnum moduleEnum) where T : UnityEngine.Object
         {
             return await Interface.LoadResourceAsyncAas<T>(fullPath, moduleEnum);
         }

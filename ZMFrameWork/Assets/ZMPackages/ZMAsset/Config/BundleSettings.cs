@@ -94,7 +94,7 @@ public class BundleSettings : ScriptableObject
     public string ZMAssetRootPath = "ThirdParty/ZMAsset";
     [Title("AssetBundle热更文件储存路径")]
     private string HotAssetsPath { get { return Application.persistentDataPath + "/HotAssets/"; } }
-    [Title("AssetBundle加压路径")]
+    [Title("AssetBundle解压路径")]
     private string BundleDecompressPath { get { return Application.persistentDataPath + "/DecompressAssets/"; } }
 
     [Title("AssetBundle内嵌文件路径")]
@@ -116,7 +116,7 @@ public class BundleSettings : ScriptableObject
     public string GetAssetsDecompressPath(BundleModuleEnum moduleEnum)
     {
 #if UNITY_2020_1_OR_NEWER
-        return $"{Application.persistentDataPath}/{moduleEnum.ToString()}/";
+        return $"{Application.persistentDataPath}/DecompressAssets/{moduleEnum.ToString()}/";
 #else
         return BundleDecompressPath + moduleEnum + "/";
 #endif
@@ -138,7 +138,7 @@ public class BundleSettings : ScriptableObject
     /// <returns></returns>
     public string GetBundleCfgName(BundleModuleEnum moduleEnum)
     {
-        return moduleEnum.ToString().ToLower() + "bundleconfig";
+        return $"{moduleEnum.ToString().ToLower()}bundleconfig{ABSUFFIX}";
     }
 }
 

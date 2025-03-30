@@ -627,6 +627,24 @@
       "bundleModule": "GameItem",
       "isAddressableAsset": false,
       "bundleDependce": []
+    },
+    {
+      "path": "Assets/ZMPackages/ZMAsset/Config/shuangkouassetbundleconfig.json",
+      "crc": 556503698,
+      "bundleName": "shuangkoubundleconfig.uab",
+      "assetName": "shuangkouassetbundleconfig.json",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/ZMPackages/ZMAsset/Config/wuzhangassetbundleconfig.json",
+      "crc": 1557721827,
+      "bundleName": "wuzhangbundleconfig.uab",
+      "assetName": "wuzhangassetbundleconfig.json",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
     }
   ]
 }

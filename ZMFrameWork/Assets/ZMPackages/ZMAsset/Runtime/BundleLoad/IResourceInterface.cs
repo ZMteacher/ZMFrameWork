@@ -11,7 +11,7 @@
 * Modify: 
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
 using System;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,7 +25,7 @@ public interface IResourceInterface
 
     void PreLoadObj(string path,int count=1);
 
-    Task PreLoadObjAsync(string path, int count = 1);
+    UniTask PreLoadObjAsync(string path, int count = 1);
 
     void PreLoadResource<T>(string path) where T : UnityEngine.Object;
 
@@ -33,12 +33,12 @@ public interface IResourceInterface
 
     void InstantiateAsync(string path, Action<GameObject, object, object> loadAsync, object param1, object param2);
 
-    Task<AssetsRequest> InstantiateAsync(string path,  object param1, object param21, object param2);
+    UniTask<AssetsRequest> InstantiateAsync(string path,  object param1, object param21, object param2);
 
     //Task<AssetsRequest> InstantiateAsyncFormPoolAas(string path, object param1, object param2, object param3,BundleModuleEnum moduleEnum);
 
     long InstantiateAndLoad(string path, Action<GameObject, object, object> loadAsync, Action loading, object param1, object param2);
-    Task<T> LoadResourceAsync<T>(string path) where T : UnityEngine.Object;
+    UniTask<T> LoadResourceAsync<T>(string path) where T : UnityEngine.Object;
 
     //Task<T> LoadResourceAsyncAas<T>(string path, BundleModuleEnum moduleEnum ) where T : UnityEngine.Object;
     void RemoveObjectLoadCallBack(long loadid);

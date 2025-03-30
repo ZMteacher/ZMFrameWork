@@ -11,12 +11,8 @@
 * Modify: 
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using UnityEditor;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
@@ -69,11 +65,14 @@ namespace ZM.ZMAsset
 
         public void Release()
         {
-            obj = null;
+            if (obj != null)
+                ZMAsset.Release(obj);
+            ZMAsset.Release(this);
             param1 = null;
             param2 = null;
             param3 = null;
-            ZMAsset.Release(this);
+            obj = null;
+          
         }
     }
 
@@ -220,7 +219,7 @@ namespace ZM.ZMAsset
                 Release(obj);
             }
         }
-        public async Task PreLoadObjAsync(string path, int count = 1)
+        public async UniTask PreLoadObjAsync(string path, int count = 1)
         {
             List<GameObject> preLoadObjList = new List<GameObject>();
             for (int i = 0; i < count; i++)
@@ -359,7 +358,7 @@ namespace ZM.ZMAsset
         /// <param name="loadAsync">异步加载回调</param>
         /// <param name="param1">异步加载参数1</param>
         /// <param name="param2">异步加载参数2</param>
-        public async Task<AssetsRequest> InstantiateAsync(string path,  object param1 = null, object param2 = null,object param3=null)
+        public async UniTask<AssetsRequest> InstantiateAsync(string path,  object param1 = null, object param2 = null,object param3=null)
         {
             path = path.EndsWith(".prefab") ? path : path + ".prefab";
             AssetsRequest request = mAssetsRequestPool.Spawn();
@@ -408,7 +407,7 @@ namespace ZM.ZMAsset
         /// <param name="param2"></param>
         /// <param name="moduleEnum"></param>
         /// <returns></returns>
-        public async Task<AssetsRequest> InstantiateAsyncFormPoolAas(string path, BundleModuleEnum moduleEnum, object param1, object param2, object param3)
+        public async UniTask<AssetsRequest> InstantiateAsyncFormPoolAas(string path, BundleModuleEnum moduleEnum, object param1, object param2, object param3)
         {
             path = path.EndsWith(".prefab") ? path : path + ".prefab";
             AssetsRequest request = mAssetsRequestPool.Spawn();
@@ -780,7 +779,7 @@ namespace ZM.ZMAsset
         /// <typeparam name="T"></typeparam>
         /// <param name="path"></param>
         /// <returns></returns>
-        public async Task<T> LoadResourceAsyncAas<T>(string path,BundleModuleEnum moduleEnum= BundleModuleEnum.None) where T : UnityEngine.Object
+        public async UniTask<T> LoadResourceAsyncAas<T>(string path,BundleModuleEnum moduleEnum= BundleModuleEnum.None) where T : UnityEngine.Object
         {
 
             if (string.IsNullOrEmpty(path))
@@ -860,7 +859,7 @@ namespace ZM.ZMAsset
             return null;
         }
 
-        public async Task<T> LoadResourceAsync<T>(string path) where T : UnityEngine.Object
+        public async UniTask<T> LoadResourceAsync<T>(string path) where T : UnityEngine.Object
         {
             return await LoadResourceAsyncAas<T>(path, BundleModuleEnum.None);
         }
@@ -1267,9 +1266,6 @@ namespace ZM.ZMAsset
                 await AddressableAssetSystem.Instance.InitAddressableModule(bundleModule, AddressableAssetSystem.Instance.GetAddressableModule(bundleModule));
             }
         }
-
-      
-
         #endregion
     }
 }

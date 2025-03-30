@@ -1,15 +1,6 @@
 {
   "bundleInfoList": [
     {
-      "path": "Assets/ZMPackages/ZMAsset/Config/gameitemassetbundleconfig.json",
-      "crc": 2574792709,
-      "bundleName": "gameitembundleconfig.uab",
-      "assetName": "gameitemassetbundleconfig.json",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
       "path": "Assets/GameData/Hall/Prefabs/Window/ExampleWindow.prefab",
       "crc": 3082594063,
       "bundleName": "hall_examplewindow.uab",
@@ -293,6 +284,15 @@
       "bundleDependce": []
     },
     {
+      "path": "Assets/GameData/Hall/HotFixDll/SKWorld.dll.bytes",
+      "crc": 1715098950,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "SKWorld.dll.bytes",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
       "path": "Assets/GameData/Hall/HotFixDll/System.Core.dll.bytes",
       "crc": 2443937253,
       "bundleName": "hall_hotscript.uab",
@@ -306,6 +306,15 @@
       "crc": 2410813216,
       "bundleName": "hall_hotscript.uab",
       "assetName": "System.dll.bytes",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/HotFixDll/WZWorld.dll.bytes",
+      "crc": 1568529798,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "WZWorld.dll.bytes",
       "bundleModule": "Hall",
       "isAddressableAsset": false,
       "bundleDependce": []
@@ -665,24 +674,6 @@
       "bundleDependce": [
         "hall_hall.uab"
       ]
-    },
-    {
-      "path": "Assets/ZMPackages/ZMAsset/Config/hallassetbundleconfig.json",
-      "crc": 1909326844,
-      "bundleName": "hallbundleconfig.uab",
-      "assetName": "hallassetbundleconfig.json",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/ZMPackages/ZMAsset/Config/shuangkouassetbundleconfig.json",
-      "crc": 556503698,
-      "bundleName": "shuangkoubundleconfig.uab",
-      "assetName": "shuangkouassetbundleconfig.json",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
     }
   ]
 }

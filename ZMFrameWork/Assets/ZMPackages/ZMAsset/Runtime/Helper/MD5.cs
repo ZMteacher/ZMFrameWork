@@ -24,6 +24,11 @@ namespace ZM.ZMAsset
         /// <returns></returns>
         public static string GetMd5FromFile(string path)
         {
+            if (!File.Exists(path))
+            {
+                return string.Empty;
+            }
+
             using (System.Security.Cryptography.MD5 md5File = System.Security.Cryptography.MD5.Create())
             {
                 using (FileStream fileRead = File.OpenRead(path))

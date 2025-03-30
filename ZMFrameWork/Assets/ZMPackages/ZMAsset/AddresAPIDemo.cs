@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using ZM.ZMAsset;
@@ -15,7 +14,7 @@ public class AddresAPIDemo : MonoBehaviour
  
         asset.obj.transform.SetParent(transform.GetChild(0).GetChild(0));
 
-        await new WaitForSeconds(1);
+        await UniTask.Delay(1000);
         rawImageAsync.texture=await ZMAddressableAsset.LoadResourceAsync<Texture>(AssetsPathConfig.GAME_ITEM_PATH + "6001/huafei.png", BundleModuleEnum.AdressAsset);
     }
 

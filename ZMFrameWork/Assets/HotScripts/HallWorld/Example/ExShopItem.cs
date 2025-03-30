@@ -22,35 +22,32 @@ public class ExShopItem : MonoBehaviour
     public Transform gameItemParent;
     public GameObject loadingObj;
 
-    private GameObject mItemObj;
+    private GameObject m_ItemObj;
     private int mItemId;
-    public void SetData(int itemid)
+    private AssetsRequest m_AssetsRequest;
+    private AssetsRequest m_itemAsset;
+    public async void SetData(AssetsRequest itemAsset, int itemid)
     {
         mItemId = itemid;
-        ZMAsset.InstantiateAndLoad(AssetsPathConfig.GAME_DATA_PATH + "GameItem/" + itemid + "/" + itemid, LoadItemObjComplete, ItemObjLoading);
-    }
-    /// <summary>
-    /// 加载游戏道具完成
-    /// </summary>
-    /// <param name="itemObj"></param>
-    /// <param name="param1"></param>
-    /// <param name="param2"></param>
-    public void LoadItemObjComplete(GameObject itemObj, object param1, object param2)
-    {
-        Debug.Log("LoadItemObjComplete:" + mItemId);
-        loadingObj.SetActive(false);
-        if (itemObj != null)
+        m_itemAsset = itemAsset;
+        ItemObjLoading();
+        AssetsRequest assets = await ZMAddressableAsset.InstantiateAsyncFormPool(AssetsPathConfig.GAME_DATA_PATH + "GameItem/" + itemid + "/" + itemid,
+            BundleModuleEnum.GameItem,itemid);
+        if ((int)assets.param1 == mItemId && assets.obj != null)
         {
-            itemObj.SetActive(true);
-            itemObj.transform.SetParent(gameItemParent);
-            itemObj.transform.localPosition = Vector3.zero;
-            itemObj.transform.localScale = Vector3.one;
-            itemObj.transform.rotation = Quaternion.identity;
-            mItemObj = itemObj;
+            m_AssetsRequest = assets;
+            m_ItemObj = assets.obj;
+            m_ItemObj.SetActive(true);
+            m_ItemObj.transform.SetParent(gameItemParent);
+            m_ItemObj.transform.localPosition = Vector3.zero;
+            m_ItemObj.transform.localScale = Vector3.one;
+            m_ItemObj.transform.rotation = Quaternion.identity;
+            loadingObj.SetActive(false);
         }
         else
         {
-            Debug.Log("item obj  is Null:" + mItemId);
+            assets.Release();
+            assets=null;
         }
     }
 
@@ -61,11 +58,10 @@ public class ExShopItem : MonoBehaviour
 
     public void Release()
     {
-        if (mItemObj != null)
-        {
-            ZMAsset.Release(mItemObj, true);
-        }
-        ZMAsset.Release(gameObject,true);
-     }
+        m_AssetsRequest.Release();
+        m_itemAsset.Release();
+        m_AssetsRequest = null;
+        m_itemAsset = null;
+    }
 
 }

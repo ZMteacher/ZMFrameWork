@@ -12,6 +12,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using ZM.ZMAsset;
@@ -39,7 +40,7 @@ public class ExampleWindow : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        await new WaitForSeconds(1);
+        await UniTask.Delay(1000);
 
     
 

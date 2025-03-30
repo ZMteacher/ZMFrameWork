@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 namespace ZM.ZMAsset
 {
@@ -32,7 +30,7 @@ namespace ZM.ZMAsset
         /// <param name="module"></param>
         /// <param name="assetModule"></param>
         /// <returns></returns>
-        public async Task<bool> InitAddressableModule(BundleModuleEnum module, AddressableModule assetModule)
+        public async UniTask<bool> InitAddressableModule(BundleModuleEnum module, AddressableModule assetModule)
         {
             if (assetModule.IsHotAsset)
             {
@@ -47,8 +45,8 @@ namespace ZM.ZMAsset
                     File.Delete(mBundleConfigPath);
                     //热更AssetBundle配置文件
                     await HotAssetBundleFile(assetModule, module, hotInfo);
-                    assetModule.IsHotAsset = false;
                 }
+                assetModule.IsHotAsset = false;
             }
             return await AssetBundleManager.Instance.InitAssetModule(module);
         }
@@ -56,21 +54,21 @@ namespace ZM.ZMAsset
         public async Task<bool> LoadAddressableAsset(BundleModuleEnum module,uint crc, string bundleName)
         {
             //下载流程：资源清单文件 - 资源配置文件 - 对应资源 + 资源依赖包，全部下载完成后进行加载。
-            AddressableModule asset= GetAddressableModule(module);
+            AddressableModule assetModule= GetAddressableModule(module);
 
             //通过 await mTaskCompletionSouce让所有执行到这的代码全都等待mTaskCompletionSouce(资源版本检测和文件清单校验完成)任务完成
-            if (asset.TaskCompletionSouce != null) 
-                await asset.TaskCompletionSouce.Task;
+            if (assetModule.TaskCompletionSouce != null) 
+                await assetModule.TaskCompletionSouce.Task;
 
             //1.验证资源清单文件
-            if (asset.IsHotAsset)
+            if (assetModule.IsHotAsset)
             {
                 //设置等待标记，让其他资源等待 AssetBundle清单文件下载成功后进行下载
-                asset.TaskCompletionSouce = new TaskCompletionSource<bool>();
-                bool initState= await InitAddressableModule(module, asset);
+                assetModule.TaskCompletionSouce = new TaskCompletionSource<bool>();
+                bool initState= await InitAddressableModule(module, assetModule);
                 //设置为任务完成,让所有等待的资源加载任务开始资源加载
-                asset.TaskCompletionSouce?.SetResult(true);
-                asset.TaskCompletionSouce = null;
+                assetModule.TaskCompletionSouce?.SetResult(true);
+                assetModule.TaskCompletionSouce = null;
                 if (initState == false) return false;
             }
             if (crc==0) return true;
@@ -79,8 +77,8 @@ namespace ZM.ZMAsset
             if (item==null) return false;
          
             //下载资源所在Bundle包
-            HotFileInfo mainHotInfo = asset.AssetIsNeedHotUpdate(item.bundleName);
-            bool loadResult= await HotAssetBundleFile(asset, module, mainHotInfo);
+            HotFileInfo mainHotInfo = assetModule.AssetIsNeedHotUpdate(item.bundleName);
+            bool loadResult= await HotAssetBundleFile(assetModule, module, mainHotInfo);
             if (loadResult==false)  return false;
 
             //下载资源依赖Bundle包
@@ -88,8 +86,8 @@ namespace ZM.ZMAsset
             foreach (string abName in dependce) {
                 if (!string.Equals(abName,bundleName))
                 {
-                    HotFileInfo dependHotInfo = asset.AssetIsNeedHotUpdate(abName);
-                    loadResult = await HotAssetBundleFile(asset, module, dependHotInfo);
+                    HotFileInfo dependHotInfo = assetModule.AssetIsNeedHotUpdate(abName);
+                    loadResult = await HotAssetBundleFile(assetModule, module, dependHotInfo);
                     if (loadResult == false) return false;
                 }
             }
@@ -102,8 +100,9 @@ namespace ZM.ZMAsset
         /// <param name="module">资源模块类型</param>
         /// <param name="hotFileInfo">热更文件信息</param>
         /// <returns></returns>
-        private async Task<bool> HotAssetBundleFile(AddressableModule asset,BundleModuleEnum module,HotFileInfo hotFileInfo)
+        private async UniTask<bool> HotAssetBundleFile(AddressableModule asset,BundleModuleEnum module,HotFileInfo hotFileInfo)
         {
+            //不等于Null说明许需要热更
             if (hotFileInfo != null)
             {
                 DownLoadThread downLoadItem = new DownLoadThread(module, hotFileInfo, asset.HotAssetDownLoadUrl, asset.HotAssetsSavePath);
@@ -112,7 +111,8 @@ namespace ZM.ZMAsset
                     asset.RemoveNeedHotAsset(hotFileInfo);
                 return downLoadSuccess;
             }
-            return false;
+            //已经热更完成
+            return true;
         }
 
         /// <summary>

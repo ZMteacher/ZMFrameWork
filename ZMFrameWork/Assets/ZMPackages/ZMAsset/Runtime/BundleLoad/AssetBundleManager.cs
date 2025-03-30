@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace ZM.ZMAsset
@@ -132,7 +132,7 @@ namespace ZM.ZMAsset
         /// <param name="bundleModule">资源模块</param>
         /// <param name="isAddressModule">是否寻址资源</param>
         /// <returns></returns>
-        public async Task<bool> InitAssetModule(BundleModuleEnum bundleModule)
+        public async UniTask<bool> InitAssetModule(BundleModuleEnum bundleModule)
         {
             try
             {
@@ -149,14 +149,14 @@ namespace ZM.ZMAsset
                     //如果该AssetBundle已经加密，则需要解密
                     if (BundleSettings.Instance.bundleEncrypt.isEncrypt)
                     {
-                        bundleConfig = AssetBundle.LoadFromMemory(AES.AESFileByteDecrypt(mBundleConfigPath, BundleSettings.Instance.bundleEncrypt.encryptKey));
+                        bundleConfig =await AssetBundle.LoadFromMemoryAsync(AES.AESFileByteDecrypt(mBundleConfigPath, BundleSettings.Instance.bundleEncrypt.encryptKey));
                     }
                     else
                     {
-                        bundleConfig = AssetBundle.LoadFromFile(mBundleConfigPath);
+                        bundleConfig =await AssetBundle.LoadFromFileAsync(mBundleConfigPath);
                     }
 
-                    string bundleConfigJson = bundleConfig.LoadAsset<TextAsset>(mAssetsBundleConfigName).text;
+                    string bundleConfigJson = (await bundleConfig.LoadAssetAsync<TextAsset>(mAssetsBundleConfigName) as TextAsset).text;
                     BundleConfig bundleManife = JsonConvert.DeserializeObject<BundleConfig>(bundleConfigJson);
                     //把所有的AssetBundle信息存放至字典中，管理起来
                     foreach (var info in bundleManife.bundleInfoList)
@@ -181,7 +181,7 @@ namespace ZM.ZMAsset
                     //释放AssetBunle配置
                     bundleConfig.Unload(false);
                     mAlreadyLoadBundleModuleList.Add(bundleModule);
-                    Debug.Log("Init AssetModule Successs...:" + bundleModule);
+                    Debug.Log($"Init AssetModule Successes BundleModule:{bundleModule}" );
                     return true;
                 }
                 else
@@ -306,7 +306,7 @@ namespace ZM.ZMAsset
                 return null;
             }
         }
-        public async Task<BundleItem> LoadAssetBundleAddressable(uint crc, BundleModuleEnum moduleEnum = BundleModuleEnum.None)
+        public async UniTask<BundleItem> LoadAssetBundleAddressable(uint crc, BundleModuleEnum moduleEnum = BundleModuleEnum.None)
         {
             BundleItem item = null;
 
@@ -340,7 +340,7 @@ namespace ZM.ZMAsset
             else
             {
                
-                if (moduleEnum!= BundleModuleEnum.None&& await AddressableAssetSystem.Instance.LoadAddressableAsset(moduleEnum, 0, string.Empty))
+                if (moduleEnum!= BundleModuleEnum.None && await AddressableAssetSystem.Instance.LoadAddressableAsset(moduleEnum, crc, string.Empty))
                 {
                      return  LoadAssetBundle(crc);
                 }
@@ -348,7 +348,7 @@ namespace ZM.ZMAsset
                 return null;
             }
         }
-        private async Task<BundleItem> LoadAssetBundleAddressableAsset(BundleItem item,uint crc)
+        private async UniTask<BundleItem> LoadAssetBundleAddressableAsset(BundleItem item,uint crc)
         {
             bool loadResult = await AddressableAssetSystem.Instance.LoadAddressableAsset(item.bundleModuleType, crc, item.bundleName);
             if (!loadResult)
