@@ -55,7 +55,7 @@ public class SelectWindow : WindowBase
     #endregion
 
     #region AIP Function
-    public void InitViewState(SelectType type, string content, Action sureCallback, Action cancelCallback, string suretext = "确认", string canceltext = "取消", string title = "提示", TextAnchor aligment = TextAnchor.MiddleCenter)
+    public void InitViewState(SelectType type, string content, Action sureCallback=null, Action cancelCallback=null, string suretext = "确认", string canceltext = "取消", string title = "提示", TextAnchor aligment = TextAnchor.MiddleCenter)
     {
         mSelectType = type;
         mOnSureCallback = sureCallback;

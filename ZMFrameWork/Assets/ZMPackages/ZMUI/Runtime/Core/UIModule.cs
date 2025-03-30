@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using ZM.UI;
 using ZM.ZMAsset;
 
 public class UIModule
@@ -61,19 +62,19 @@ public class UIModule
     #endregion
 
     #region 智能显隐
-    private bool mSmartShowHide = true;//智能显隐开关（可根据情况选择开启或关闭）
-                                       //智能显隐：主要用来优化窗口叠加时被遮挡的窗口参与渲染计算，导致帧率降低的问题。
-                                       //显隐规则：由程序设定某个窗口是否为全屏窗口。(全屏窗口设定方式：在窗口的OnAwake接口中设定该窗口是否为全屏窗口如 FullScreenWindow=true)
-                                       //1.智能隐藏:当FullScreenWindow=true的全屏窗口打开时，框架会自动通过伪隐藏的方式隐藏所有被当前全屏窗口遮挡住的窗口，避免这些看不到的窗口参与渲染运算，
-                                       //从而提高性能。
-                                       //2.智能显示：当FullScreenWindow=true的全屏窗口关闭时，框架会自动找到上一个伪隐藏的窗口把其设置为可见状态，若上一个窗口为非全屏窗口，框架则会找上上个窗口进行显示，
-                                       //以此类推进行循环，直到找到全屏窗口则停止智能显示流程。
-                                       //注意：通过智能显隐进行伪隐藏的窗口在逻辑上仍属于显示中的窗口，可以通过GetWindow获取到该窗口。但是在表现上该窗口为不可见窗口，故称之为伪隐藏。
-                                       //智能显隐逻辑与（打开当前窗口时隐藏其他所有窗口相似）但本质上有非常大的区别，
-                                       //1.通过智能显隐设置为不可见的窗口属于伪隐藏窗口，在逻辑上属于显示中的窗口。
-                                       //2.通过智能显隐设置为不可见的窗口可以通过关闭当前窗口，自动恢复当前窗口之前的窗口的显示。
-                                       //3.通过智能显隐设置为不可见的窗口不会触发UGUI重绘、不会参与渲染计算、不会影响帧率。
-                                       //4.程序只需要通过FullScreenWindow=true配置那些窗口为全屏窗口即可，智能显隐的所有逻辑均有框架自动维护处理。
+    private bool mSmartShowHide=true;//智能显隐开关（可根据情况选择开启或关闭）
+                                     //智能显隐：主要用来优化窗口叠加时被遮挡的窗口参与渲染计算，导致帧率降低的问题。
+                                     //显隐规则：由程序设定某个窗口是否为全屏窗口。(全屏窗口设定方式：在窗口的OnAwake接口中设定该窗口是否为全屏窗口如 FullScreenWindow=true)
+                                     //1.智能隐藏:当FullScreenWindow=true的全屏窗口打开时，框架会自动通过伪隐藏的方式隐藏所有被当前全屏窗口遮挡住的窗口，避免这些看不到的窗口参与渲染运算，
+                                     //从而提高性能。
+                                     //2.智能显示：当FullScreenWindow=true的全屏窗口关闭时，框架会自动找到上一个伪隐藏的窗口把其设置为可见状态，若上一个窗口为非全屏窗口，框架则会找上上个窗口进行显示，
+                                     //以此类推进行循环，直到找到全屏窗口则停止智能显示流程。
+                                     //注意：通过智能显隐进行伪隐藏的窗口在逻辑上仍属于显示中的窗口，可以通过GetWindow获取到该窗口。但是在表现上该窗口为不可见窗口，故称之为伪隐藏。
+                                     //智能显隐逻辑与（打开当前窗口时隐藏其他所有窗口相似）但本质上有非常大的区别，
+                                     //1.通过智能显隐设置为不可见的窗口属于伪隐藏窗口，在逻辑上属于显示中的窗口。
+                                     //2.通过智能显隐设置为不可见的窗口可以通过关闭当前窗口，自动恢复当前窗口之前的窗口的显示。
+                                     //3.通过智能显隐设置为不可见的窗口不会触发UGUI重绘、不会参与渲染计算、不会影响帧率。
+                                     //4.程序只需要通过FullScreenWindow=true配置那些窗口为全屏窗口即可，智能显隐的所有逻辑均有框架自动维护处理。
     #endregion
 
     #region 框架初始化接口 (外部调用)
@@ -81,12 +82,24 @@ public class UIModule
     {
         mUICamera = GameObject.Find("UICamera").GetComponent<Camera>();
         mUIRoot = GameObject.Find("UIRoot").transform;
-        mWindowConfig = Resources.Load<WindowConfig>("WindowConfig");
+        // mWindowConfig = Resources.Load<WindowConfig>("WindowConfig");
+        mWindowConfig = ZMAsset.LoadScriptableObject<WindowConfig>(AssetsPathConfig.HALL_DATA_PATH+"WindowConfig.asset");
+        AdaptationBangs.InitializeAdaptation();
         //在手机上不会触发调用
 #if UNITY_EDITOR
         mWindowConfig.GeneratorWindowConfig();
 #endif
     }
+
+    /// <summary>
+    /// 添加窗口元数据 (在HyBridCLR多模块资源+独立代码热更程序集时使用) 主要作用是添加热更窗口数据至AOT或热更程序集内
+    /// </summary>
+    /// <param name="config"></param>
+    public void AddAOTWindowMetadata(WindowConfig config)
+    {
+        mWindowConfig.AddAOTWindowMetadata(config);
+    }
+
     #endregion
 
     #region 窗口管理
@@ -131,6 +144,7 @@ public class UIModule
     {
         System.Type type = typeof(T);
         string wndName = type.Name;
+        Debug.Log($"PopUpWindow:{wndName}");
         WindowBase wnd = GetWindow(wndName);
         if (wnd != null)
         {
@@ -138,6 +152,7 @@ public class UIModule
         }
 
         T t = new T();
+        Debug.Log($"PopUpWindow new T:{t}");
         return InitializeWindow(t, wndName) as T;
     }
     private WindowBase PopUpWindow(WindowBase window)
@@ -303,7 +318,7 @@ public class UIModule
             GameObjectDestoryWindow(window.gameObject);
             //在出栈的情况下，上一个界面销毁时，自动打开栈种的下一个界面
             PopNextStackWindow(window);
-            window = null;
+            window=null;
         }
     }
     public void DestroyAllWindow(List<string> filterlist = null)
@@ -322,6 +337,11 @@ public class UIModule
 
     private void SetWidnowMaskVisible()
     {
+        if (UISetting.Instance==null)
+        {
+            Debug.LogError("UISetting.Instance is null");
+            return;
+        }
         if (!UISetting.Instance.SINGMASK_SYSTEM)
         {
             return;
@@ -389,16 +409,17 @@ public class UIModule
     /// <param name="windowObj"></param>
     public void GameObjectDestoryWindow(GameObject windowObj)
     {
-        //GameObject.Destroy(windowObj);
+        // GameObject.Destroy(windowObj);
         //可在这里中替换自己的资源框架的释放接口
-        ZMAsset.Release(windowObj,true);
+        ZMAsset.Release(windowObj);
     }
     //*** Resouces 加载接口，可在下面接口中修改为自己的资源框架加载和释放接口  ***
-    public GameObject ResourcesLoadObj(string path, Transform parent)
+    public GameObject ResourcesLoadObj(string wndName,Transform parent)
     {
-        //return GameObject.Instantiate<GameObject>(Resources.Load<GameObject>(path), parent);
+          // return GameObject.Instantiate<GameObject>(Resources.Load<GameObject>(path), parent);
         //在这里替换成自己的资源加载框架 例:
-        return ZMAsset.Instantiate(mWindowConfig.GetWindowData(path).path, mUIRoot);
+        Debug.Log("LaodWindow:"+mWindowConfig.GetWindowData(wndName).path);
+        return ZMAsset.Instantiate(mWindowConfig.GetWindowData(wndName).path, mUIRoot);
     }
     #endregion
 

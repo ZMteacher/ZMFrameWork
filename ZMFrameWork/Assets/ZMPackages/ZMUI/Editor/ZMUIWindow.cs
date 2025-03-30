@@ -1,21 +1,21 @@
-﻿/*---------------------------------------------------------------------------------------------------------------------------------------------
-*
-* Title: ZMAsset
-*
-* Description: 可视化多模块打包器、多模块热更、多线程下载、多版本热更、多版本回退、加密、解密、内嵌、解压、内存引用计数、大型对象池、AssetBundle加载、Editor加载
+﻿/*----------------------------------------------------------------------------
+* Title: ZMUIFrameWork 一款Mono分离式UI管理框架
 *
 * Author: 铸梦xy
 *
-* Date: 2023.4.13
+* Date: 2024/09/01 14:15:58
 *
-* Modify: 
-------------------------------------------------------------------------------------------------------------------------------------------------*/
+* Description: 高性能、自动化、自定义生命周期工作管线是该框架的特点，该框架属于MVC中的View层架构。
+* 设计简洁清晰、轻便小巧，可以对接至任意重中小型游戏项目中。
+*
+* Remarks: QQ:975659933 邮箱：zhumengxyedu@163.com
+*
+* GitHub：https://github.com/ZMteacher?tab=repositories
+----------------------------------------------------------------------------*/
 # if ODIN_INSPECTOR
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 

@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿/*----------------------------------------------------------------------------
+* Title: ZMUIFrameWork 一款Mono分离式UI管理框架
+*
+* Author: 铸梦xy
+*
+* Date: 2024/09/01 14:15:58
+*
+* Description: 高性能、自动化、自定义生命周期工作管线是该框架的特点，该框架属于MVC中的View层架构。
+* 设计简洁清晰、轻便小巧，可以对接至任意重中小型游戏项目中。
+*
+* Remarks: QQ:975659933 邮箱：zhumengxyedu@163.com
+*
+* GitHub：https://github.com/ZMteacher?tab=repositories
+----------------------------------------------------------------------------*/
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -34,9 +47,10 @@ public class GeneratorFindComponentTool : Editor
         //PresWindowNodeData(obj.transform,obj.name);
         //解析窗口组件数据
         if (UISetting.Instance.ParseType == ParseType.Tag)
-            ParseWindowDataByTag(obj.transform, obj.name);
+            AnalysisComponentDataTool.AnalysisWindowDataByTag(ref objDataList,obj.transform, obj.name);
         else
-            PresWindowNodeData(obj.transform, obj.name);
+            AnalysisComponentDataTool.AnalysisWindowNodeData(ref objDataList, obj.transform, obj.name);
+        
         //储存字段名称
         string datalistJson = JsonConvert.SerializeObject(objDataList);
         PlayerPrefs.SetString(GeneratorConfig.OBJDATALIST_KEY, datalistJson);
@@ -44,7 +58,7 @@ public class GeneratorFindComponentTool : Editor
         string csContnet= CreateCS(obj.name);
         Debug.Log("CsConent:\n"+csContnet);
         string cspath = UISetting.Instance.FindComponentGeneratorPath + "/"+obj.name+"UIComponent.cs";
-        UIWindowEditor.ShowWindow(csContnet,cspath);
+        ScriptDisplayWindow.ShowWindow(csContnet,cspath);
     }
     /// <summary>
     /// 解析窗口节点数据
@@ -116,7 +130,7 @@ public class GeneratorFindComponentTool : Editor
     public static string CreateCS(string name)
     {
         StringBuilder sb = new StringBuilder();
-        string nameSpaceName = "ZMUIFrameWork";
+        string nameSpaceName = "ZM.UI";
         //添加引用
         sb.AppendLine("/*---------------------------------");
         sb.AppendLine(" *Title:UI自动化组件查找代码生成工具");
@@ -127,7 +141,7 @@ public class GeneratorFindComponentTool : Editor
         sb.AppendLine("---------------------------------*/");
         sb.AppendLine("using UnityEngine.UI;");
         sb.AppendLine("using UnityEngine;");
-
+        sb.AppendLine("using ZM.UGUIPro;");
         sb.AppendLine();
 
         //生成命名空间
@@ -221,5 +235,5 @@ public class EditorObjectData
     public int insID;
     public string fieldName;
     public string fieldType;
-   
+    public List<EditorObjectData> dataList;
 }

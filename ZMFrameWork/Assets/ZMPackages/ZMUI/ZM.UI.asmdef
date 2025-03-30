@@ -1,0 +1,19 @@
+{
+    "name": "ZM.UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3f7be2e305220e64496f5ab9f53e1bdd",
+        "GUID:988174221d4b79d428483d9695d8941e",
+        "GUID:5403ce132d923e54b9101bea279ab174",
+        "GUID:c1b89f0da4438b4488ee01a2e116876d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ZM.ZMAsset
 {
-    public partial class ZMAsset : ZMFrameBase
+    public partial class ZMAsset : MonoSingleton<ZMAsset>
     {
         public static Transform RecyclObjPool { get; private set; }
 
@@ -29,15 +29,21 @@ namespace ZM.ZMAsset
         /// </summary>
         private void Initialize()
         {
+            //创建对象池回收节点
             GameObject recyclObjectRoot = new GameObject("RecyclObjPool");
             RecyclObjPool = recyclObjectRoot.transform;
             recyclObjectRoot.SetActive(false);
             DontDestroyOnLoad(recyclObjectRoot);
+            
+            //热更资源管理器
             mHotAssets = new HotAssetsManager();
+            //资源解压管理器
             mDecompressAssets =new  AssetsDecompressManager();
-            var resource=new ResourceManager();
+            //资源加载管理器
+            var resource= new ResourceManager();
             mResource = resource;
             ZMAddressableAsset.Interface = resource;
+            //初始化资源管理器
             mResource.Initlizate();
         }
 

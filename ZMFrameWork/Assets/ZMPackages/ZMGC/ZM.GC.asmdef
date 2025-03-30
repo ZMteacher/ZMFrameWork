@@ -1,0 +1,16 @@
+{
+    "name": "ZM.GC",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3a417a6192b5ecb44afe222fb3c9a681"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

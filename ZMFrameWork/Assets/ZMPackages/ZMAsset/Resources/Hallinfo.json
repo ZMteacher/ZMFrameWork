@@ -1,77 +1,87 @@
 [
   {
     "fileName": "Android",
-    "md5": "4D61F57F6C7BFEA15B0796B72A850AA3",
-    "size": 1.0
+    "md5": "7B7A7FC6336BE1690667D85F42639503",
+    "size": 2.0
+  },
+  {
+    "fileName": "gameitembundleconfig.uab",
+    "md5": "43D279C1B0848A10D68DEDA893D56D36",
+    "size": 3.0
   },
   {
     "fileName": "hallbundleconfig.uab",
-    "md5": "7CC6FCD3A72EFF289A7FAA06E3E4D5D6",
+    "md5": "7818B85685136F97E9AFC72A147E3ECC",
     "size": 3.0
   },
   {
     "fileName": "hall_examplewindow.uab",
-    "md5": "6FFC76D9772E457F9A86B0B0FA45EE4E",
-    "size": 9.0
+    "md5": "15FA0EEBD174A2047A1F9800C7CFA065",
+    "size": 10.0
   },
   {
     "fileName": "hall_examplewindow1.uab",
-    "md5": "B18DE575C27B31C01DA7F09BFF4F3E3E",
+    "md5": "ECC6A11B0959D388420C94EE7DD232B3",
     "size": 10.0
   },
   {
     "fileName": "hall_exshopitem.uab",
-    "md5": "278FA3EFD38D14BC2B60312CC8C3F8CE",
+    "md5": "3DF55297192BEE169A560ED929EC8B8D",
     "size": 4.0
   },
   {
     "fileName": "hall_exshopwindow.uab",
-    "md5": "235173D212D5BFA1FCA2CCFCEBECD8F3",
+    "md5": "36AAC3617432BF500F6D70B117C6E236",
     "size": 13.0
   },
   {
     "fileName": "hall_hall.uab",
-    "md5": "3FBABDF59CA07765FBCFED06BAC4DAA2",
-    "size": 1430.0
+    "md5": "1E7C81D63BCE71B39893B78BD77AF3A9",
+    "size": 1784.0
   },
   {
     "fileName": "hall_halldata.uab",
-    "md5": "2DFA3D39EDA8F44944B50E73BC7B7915",
+    "md5": "A07AD6844D1E8A34E43DB1D20DE2DC1F",
     "size": 1.0
   },
   {
     "fileName": "hall_hallwindow.uab",
-    "md5": "A2626E5E3FEEA0A2D112B87382A1E394",
+    "md5": "C3C7220633AE28A8D1ADB4A9ED7BC81C",
     "size": 22.0
   },
   {
+    "fileName": "hall_hotscript.uab",
+    "md5": "DDD65567B60FBF03A9C1BEE6894B5D8F",
+    "size": 37.0
+  },
+  {
     "fileName": "hall_loading.uab",
-    "md5": "909380F9FD1617F061DB7ADC364CACCB",
-    "size": 239.0
+    "md5": "CEEDC603B0190EC1DA193304C2C6518B",
+    "size": 628.0
   },
   {
     "fileName": "hall_login.uab",
-    "md5": "3526F31B51A1EBDE9B0ACFFA79DE7C5D",
+    "md5": "E6432DE78A615F539A75BBC68066B731",
     "size": 1110.0
   },
   {
     "fileName": "hall_loginwindow.uab",
-    "md5": "F391968A2A7508049DE88C89F7931152",
+    "md5": "3D1189689B6CC452773498BD7E81B8B6",
     "size": 14.0
   },
   {
     "fileName": "hall_scene.uab",
-    "md5": "8B3CA777A335CD348F649C20376BD67C",
-    "size": 122.0
+    "md5": "454FCCC09980934B933FA1440B2BE6F5",
+    "size": 50.0
   },
   {
     "fileName": "hall_shop.uab",
-    "md5": "137DF27A43F8D3C5512A78807AA12D6B",
-    "size": 167.0
+    "md5": "ED59D870E062028531E67B5FFEC6F146",
+    "size": 562.0
   },
   {
     "fileName": "hall_testobj.uab",
-    "md5": "B7D3DC65CCC26409920B113578E58F11",
+    "md5": "D7634A49A6B03561DD7B32917F40032B",
     "size": 3.0
   }
 ]

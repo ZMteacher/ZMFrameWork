@@ -20,10 +20,12 @@ public class AssetsPathConfig
    
     public const string GAME_DATA_PATH="Assets/GameData/";
     public const string GAME_ITEM_PATH = GAME_DATA_PATH + "GameItem/";
+    
+    
     public const string HALL_PATH = GAME_DATA_PATH + "Hall/";
     public const string HALL_PREFABS_PATH = HALL_PATH + "Prefabs/";
     public const string HALL_DYNAMICITEM_PATH = HALL_PREFABS_PATH + "DynamicItem/";
-
+    public const string HALL_HOTFIXDLL_PATH = HALL_PATH + "HotFixDll/";
  
 
 

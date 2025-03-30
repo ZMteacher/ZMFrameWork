@@ -1,0 +1,636 @@
+{
+  "bundleInfoList": [
+    {
+      "path": "Assets/ZMPackages/ZMAsset/Config/gameitemassetbundleconfig.json",
+      "crc": 2574792709,
+      "bundleName": "gameitembundleconfig.uab",
+      "assetName": "gameitemassetbundleconfig.json",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/ZMPackages/ZMAsset/Config/hallassetbundleconfig.json",
+      "crc": 1909326844,
+      "bundleName": "hallbundleconfig.uab",
+      "assetName": "hallassetbundleconfig.json",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/ZMPackages/ZMAsset/Config/shuangkouassetbundleconfig.json",
+      "crc": 556503698,
+      "bundleName": "shuangkoubundleconfig.uab",
+      "assetName": "shuangkouassetbundleconfig.json",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/CfgData/WZWindowConfig.asset",
+      "crc": 2917153539,
+      "bundleName": "wuzhang_cfgdata.uab",
+      "assetName": "WZWindowConfig.asset",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/5zhang.png",
+      "crc": 2941824074,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "5zhang.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/13zhang.png",
+      "crc": 2960233435,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "13zhang.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/Bank.png",
+      "crc": 343217849,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "Bank.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/Box.png",
+      "crc": 3388975553,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "Box.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/Down.png",
+      "crc": 1847375936,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "Down.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/Gold.png",
+      "crc": 3274855770,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "Gold.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/kou.png",
+      "crc": 1800016191,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "kou.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/level.png",
+      "crc": 3718563793,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "level.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/Logo200x200.png",
+      "crc": 846333582,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "Logo200x200.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/majiang.png",
+      "crc": 526305442,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "majiang.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/niuniu.png",
+      "crc": 1831997192,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "niuniu.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/Pregress.png",
+      "crc": 4179097122,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "Pregress.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/Server.png",
+      "crc": 2367500879,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "Server.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/Setting.png",
+      "crc": 3707435964,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "Setting.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/Share.png",
+      "crc": 110309137,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "Share.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/Shop.png",
+      "crc": 3985643497,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "Shop.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/UP.png",
+      "crc": 3835231993,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "UP.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/zhizun.png",
+      "crc": 2410529299,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "zhizun.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/代理.png",
+      "crc": 1175539097,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "代理.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/大厅 1.jpg",
+      "crc": 14992224,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/大厅 2.jpg",
+      "crc": 1195686320,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/大厅 3.jpg",
+      "crc": 2049216512,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "大厅 3.jpg",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/大厅.jpg",
+      "crc": 1928574102,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "大厅.jpg",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/背景 1.png",
+      "crc": 1738529697,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "背景 1.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Hall/背景.png",
+      "crc": 2755373102,
+      "bundleName": "wuzhang_hall.uab",
+      "assetName": "背景.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/HotFixDll/mscorlib.dll.bytes",
+      "crc": 3084613060,
+      "bundleName": "wuzhang_hotscripts.uab",
+      "assetName": "mscorlib.dll.bytes",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/HotFixDll/System.Core.dll.bytes",
+      "crc": 3511606939,
+      "bundleName": "wuzhang_hotscripts.uab",
+      "assetName": "System.Core.dll.bytes",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/HotFixDll/System.dll.bytes",
+      "crc": 3962130093,
+      "bundleName": "wuzhang_hotscripts.uab",
+      "assetName": "System.dll.bytes",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/HotFixDll/ZM.WZWorld.dll.bytes",
+      "crc": 788437127,
+      "bundleName": "wuzhang_hotscripts.uab",
+      "assetName": "ZM.WZWorld.dll.bytes",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Loading/LoginButton.png",
+      "crc": 2344532789,
+      "bundleName": "wuzhang_loading.uab",
+      "assetName": "LoginButton.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Loading/图层 11.png",
+      "crc": 1960110360,
+      "bundleName": "wuzhang_loading.uab",
+      "assetName": "图层 11.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Loading/圆角矩形 1 拷贝.png",
+      "crc": 2684831424,
+      "bundleName": "wuzhang_loading.uab",
+      "assetName": "圆角矩形 1 拷贝.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Loading/圆角矩形 1.png",
+      "crc": 3214539316,
+      "bundleName": "wuzhang_loading.uab",
+      "assetName": "圆角矩形 1.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Loading/圆角矩形 3.png",
+      "crc": 3310987604,
+      "bundleName": "wuzhang_loading.uab",
+      "assetName": "圆角矩形 3.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Loading/弹窗.png",
+      "crc": 2687774927,
+      "bundleName": "wuzhang_loading.uab",
+      "assetName": "弹窗.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Loading/椭圆 3.png",
+      "crc": 1174234879,
+      "bundleName": "wuzhang_loading.uab",
+      "assetName": "椭圆 3.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Loading/背景 1.png",
+      "crc": 4068235989,
+      "bundleName": "wuzhang_loading.uab",
+      "assetName": "背景 1.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Loading/背景 2.png",
+      "crc": 3051102213,
+      "bundleName": "wuzhang_loading.uab",
+      "assetName": "背景 2.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Loading/背景 3.png",
+      "crc": 2294024629,
+      "bundleName": "wuzhang_loading.uab",
+      "assetName": "背景 3.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Loading/背景.png",
+      "crc": 3701957781,
+      "bundleName": "wuzhang_loading.uab",
+      "assetName": "背景.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/LoginButton.png",
+      "crc": 109507365,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "LoginButton.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/POp.png",
+      "crc": 2938544121,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "POp.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/PopBox.png",
+      "crc": 671234465,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "PopBox.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/xb_0000_退-出-中.png",
+      "crc": 3700972675,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "xb_0000_退-出-中.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/xb_0001_更-新-中.png",
+      "crc": 626840108,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "xb_0001_更-新-中.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/图层 11.png",
+      "crc": 2228101111,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "图层 11.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/圆角矩形 1 拷贝.png",
+      "crc": 1560978893,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "圆角矩形 1 拷贝.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/圆角矩形 1.png",
+      "crc": 3005031514,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "圆角矩形 1.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/椭圆 3.png",
+      "crc": 1352191343,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "椭圆 3.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/背景 1.png",
+      "crc": 3877237061,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "背景 1.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/背景 2.png",
+      "crc": 2696514453,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "背景 2.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/背景 3.png",
+      "crc": 2648285733,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "背景 3.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/背景 4.png",
+      "crc": 804879925,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "背景 4.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Login/背景.png",
+      "crc": 2317299622,
+      "bundleName": "wuzhang_login.uab",
+      "assetName": "背景.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Shop/图层 6.png",
+      "crc": 2899126319,
+      "bundleName": "wuzhang_shop.uab",
+      "assetName": "图层 6.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Shop/左列表.png",
+      "crc": 955379377,
+      "bundleName": "wuzhang_shop.uab",
+      "assetName": "左列表.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Shop/未选中 金币赠送.png",
+      "crc": 3530728395,
+      "bundleName": "wuzhang_shop.uab",
+      "assetName": "未选中 金币赠送.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Shop/矩形 1 拷贝 6.png",
+      "crc": 2117787973,
+      "bundleName": "wuzhang_shop.uab",
+      "assetName": "矩形 1 拷贝 6.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Shop/矩形 1.png",
+      "crc": 527413088,
+      "bundleName": "wuzhang_shop.uab",
+      "assetName": "矩形 1.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Shop/组 145 拷贝 4.png",
+      "crc": 1621456085,
+      "bundleName": "wuzhang_shop.uab",
+      "assetName": "组 145 拷贝 4.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Shop/返回.png",
+      "crc": 2736361876,
+      "bundleName": "wuzhang_shop.uab",
+      "assetName": "返回.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Textures/Shop/选中 银行存款.png",
+      "crc": 600924061,
+      "bundleName": "wuzhang_shop.uab",
+      "assetName": "选中 银行存款.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/ShuangKou/Textures/Game/xb_0000_退-出-中 1.png",
+      "crc": 4095634243,
+      "bundleName": "wuzhang_wuzhangwindow.uab",
+      "assetName": "xb_0000_退-出-中 1.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/ShuangKou/Textures/Game/背景 1.png",
+      "crc": 1062590119,
+      "bundleName": "wuzhang_wuzhangwindow.uab",
+      "assetName": "背景 1.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/ShuangKou/Textures/Shop/未选中 金币赠送.png",
+      "crc": 635933821,
+      "bundleName": "wuzhang_wuzhangwindow.uab",
+      "assetName": "未选中 金币赠送.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/Prefab/Window/WuZhangWindow.prefab",
+      "crc": 623524571,
+      "bundleName": "wuzhang_wuzhangwindow.uab",
+      "assetName": "WuZhangWindow.prefab",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "wuzhang_wuzhangwindow.uab"
+      ]
+    }
+  ]
+}

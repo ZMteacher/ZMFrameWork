@@ -1,0 +1,632 @@
+{
+  "bundleInfoList": [
+    {
+      "path": "Assets/GameData/GameItem/6001/6001.prefab",
+      "crc": 1296549914,
+      "bundleName": "gameitem_6001.uab",
+      "assetName": "6001.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6001.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6001/huafei.png",
+      "crc": 67507990,
+      "bundleName": "gameitem_6001.uab",
+      "assetName": "huafei.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6001/大厅 1.jpg",
+      "crc": 3998522958,
+      "bundleName": "gameitem_6001.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6001/大厅 2.jpg",
+      "crc": 2851398814,
+      "bundleName": "gameitem_6001.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6002/6002.prefab",
+      "crc": 2114102071,
+      "bundleName": "gameitem_6002.uab",
+      "assetName": "6002.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6002.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6002/jingdongka.png",
+      "crc": 3177986687,
+      "bundleName": "gameitem_6002.uab",
+      "assetName": "jingdongka.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6002/大厅 1.jpg",
+      "crc": 2452994965,
+      "bundleName": "gameitem_6002.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6002/大厅 2.jpg",
+      "crc": 3583361349,
+      "bundleName": "gameitem_6002.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6003/1000jingdongka.png",
+      "crc": 2808750490,
+      "bundleName": "gameitem_6003.uab",
+      "assetName": "1000jingdongka.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6003/6003.prefab",
+      "crc": 1866365484,
+      "bundleName": "gameitem_6003.uab",
+      "assetName": "6003.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6003.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6003/大厅 1.jpg",
+      "crc": 255482595,
+      "bundleName": "gameitem_6003.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6003/大厅 2.jpg",
+      "crc": 1218060339,
+      "bundleName": "gameitem_6003.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6004/10beimianfeika.png",
+      "crc": 585637295,
+      "bundleName": "gameitem_6004.uab",
+      "assetName": "10beimianfeika.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6004/6004.prefab",
+      "crc": 411596141,
+      "bundleName": "gameitem_6004.uab",
+      "assetName": "6004.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6004/大厅 1.jpg",
+      "crc": 1794633763,
+      "bundleName": "gameitem_6004.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6004/大厅 2.jpg",
+      "crc": 760711923,
+      "bundleName": "gameitem_6004.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6005/50beimianfeika.png",
+      "crc": 1277686255,
+      "bundleName": "gameitem_6005.uab",
+      "assetName": "50beimianfeika.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6005/6005.prefab",
+      "crc": 162835574,
+      "bundleName": "gameitem_6005.uab",
+      "assetName": "6005.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6005.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6005/大厅 1.jpg",
+      "crc": 4160229717,
+      "bundleName": "gameitem_6005.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6005/大厅 2.jpg",
+      "crc": 2958584709,
+      "bundleName": "gameitem_6005.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6006/100beimianfeika.png",
+      "crc": 3026702094,
+      "bundleName": "gameitem_6006.uab",
+      "assetName": "100beimianfeika.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6006/6006.prefab",
+      "crc": 988923739,
+      "bundleName": "gameitem_6006.uab",
+      "assetName": "6006.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6006.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6006/大厅 1.jpg",
+      "crc": 2342073486,
+      "bundleName": "gameitem_6006.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6006/大厅 2.jpg",
+      "crc": 3426307678,
+      "bundleName": "gameitem_6006.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6007/6007.prefab",
+      "crc": 734862912,
+      "bundleName": "gameitem_6007.uab",
+      "assetName": "6007.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6007.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6007/huafeikaliantong.png",
+      "crc": 2310325193,
+      "bundleName": "gameitem_6007.uab",
+      "assetName": "huafeikaliantong.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6007/大厅 1.jpg",
+      "crc": 378983928,
+      "bundleName": "gameitem_6007.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6007/大厅 2.jpg",
+      "crc": 1362538280,
+      "bundleName": "gameitem_6007.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6008/6008.prefab",
+      "crc": 3583891929,
+      "bundleName": "gameitem_6008.uab",
+      "assetName": "6008.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6008.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6008/huafeikaliantong100.png",
+      "crc": 739750535,
+      "bundleName": "gameitem_6008.uab",
+      "assetName": "huafeikaliantong100.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6008/大厅 1.jpg",
+      "crc": 1073897742,
+      "bundleName": "gameitem_6008.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6008/大厅 2.jpg",
+      "crc": 128064478,
+      "bundleName": "gameitem_6008.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6009/6009.prefab",
+      "crc": 3298885826,
+      "bundleName": "gameitem_6009.uab",
+      "assetName": "6009.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6009.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6009/huafeikayidong.png",
+      "crc": 92412343,
+      "bundleName": "gameitem_6009.uab",
+      "assetName": "huafeikayidong.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6009/大厅 1.jpg",
+      "crc": 3708649592,
+      "bundleName": "gameitem_6009.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6009/大厅 2.jpg",
+      "crc": 2595093160,
+      "bundleName": "gameitem_6009.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6010/6010.prefab",
+      "crc": 3591365684,
+      "bundleName": "gameitem_6010.uab",
+      "assetName": "6010.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6010.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6010/huafeikayidong100.png",
+      "crc": 1050799255,
+      "bundleName": "gameitem_6010.uab",
+      "assetName": "huafeikayidong100.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6010/大厅 1.jpg",
+      "crc": 3399525584,
+      "bundleName": "gameitem_6010.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6010/大厅 2.jpg",
+      "crc": 2365644288,
+      "bundleName": "gameitem_6010.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6011/6011.prefab",
+      "crc": 3342023983,
+      "bundleName": "gameitem_6011.uab",
+      "assetName": "6011.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6011.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6011/zadan.png",
+      "crc": 3332939973,
+      "bundleName": "gameitem_6011.uab",
+      "assetName": "zadan.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6011/大厅 1.jpg",
+      "crc": 1471104422,
+      "bundleName": "gameitem_6011.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6011/大厅 2.jpg",
+      "crc": 269434742,
+      "bundleName": "gameitem_6011.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6012/2.png",
+      "crc": 1187240809,
+      "bundleName": "gameitem_6012.uab",
+      "assetName": "2.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6012/6012.prefab",
+      "crc": 4101395970,
+      "bundleName": "gameitem_6012.uab",
+      "assetName": "6012.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6012.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6012/大厅 1.jpg",
+      "crc": 734945405,
+      "bundleName": "gameitem_6012.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6012/大厅 2.jpg",
+      "crc": 1819155117,
+      "bundleName": "gameitem_6012.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6013/6013.prefab",
+      "crc": 3846868761,
+      "bundleName": "gameitem_6013.uab",
+      "assetName": "6013.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6006.uab",
+        "gameitem_6013.uab",
+        "gameitem_6004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6013/zuanshi_4.png",
+      "crc": 1185450300,
+      "bundleName": "gameitem_6013.uab",
+      "assetName": "zuanshi_4.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6013/大厅 1.jpg",
+      "crc": 3066134795,
+      "bundleName": "gameitem_6013.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6013/大厅 2.jpg",
+      "crc": 4049730523,
+      "bundleName": "gameitem_6013.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6014/6014.prefab",
+      "crc": 2466021464,
+      "bundleName": "gameitem_6014.uab",
+      "assetName": "6014.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6014.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6014/zuanshi_6.png",
+      "crc": 2808730950,
+      "bundleName": "gameitem_6014.uab",
+      "assetName": "zuanshi_6.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6014/大厅 1.jpg",
+      "crc": 3540790219,
+      "bundleName": "gameitem_6014.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6014/大厅 2.jpg",
+      "crc": 2494320923,
+      "bundleName": "gameitem_6014.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6015/6015.prefab",
+      "crc": 2210421059,
+      "bundleName": "gameitem_6015.uab",
+      "assetName": "6015.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6015.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6015/chibang_emo.png",
+      "crc": 3395741832,
+      "bundleName": "gameitem_6015.uab",
+      "assetName": "chibang_emo.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6015/大厅 1.jpg",
+      "crc": 1308871357,
+      "bundleName": "gameitem_6015.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6015/大厅 2.jpg",
+      "crc": 161722477,
+      "bundleName": "gameitem_6015.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6016/6016.prefab",
+      "crc": 2961519214,
+      "bundleName": "gameitem_6016.uab",
+      "assetName": "6016.prefab",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "gameitem_6016.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/GameItem/6016/chibang_anhui.png",
+      "crc": 145497221,
+      "bundleName": "gameitem_6016.uab",
+      "assetName": "chibang_anhui.png",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6016/大厅 1.jpg",
+      "crc": 845344614,
+      "bundleName": "gameitem_6016.uab",
+      "assetName": "大厅 1.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/GameItem/6016/大厅 2.jpg",
+      "crc": 1975686582,
+      "bundleName": "gameitem_6016.uab",
+      "assetName": "大厅 2.jpg",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/ZMPackages/ZMAsset/Config/gameitemassetbundleconfig.json",
+      "crc": 2574792709,
+      "bundleName": "gameitembundleconfig.uab",
+      "assetName": "gameitemassetbundleconfig.json",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/ZMPackages/ZMAsset/Config/hallassetbundleconfig.json",
+      "crc": 1909326844,
+      "bundleName": "hallbundleconfig.uab",
+      "assetName": "hallassetbundleconfig.json",
+      "bundleModule": "GameItem",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    }
+  ]
+}

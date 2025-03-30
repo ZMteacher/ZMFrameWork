@@ -138,7 +138,7 @@ namespace ZM.ZMAsset
             {
                 if (mAlreadyLoadBundleModuleList.Contains(bundleModule))
                 {
-                    Debug.LogError("该模块配置文件已经加载：" + bundleModule);
+                    Debug.LogWarning("该模块配置文件已经加载：" + bundleModule);
                     return false;
                 }
                 LoadAllBundleModule();
@@ -175,7 +175,7 @@ namespace ZM.ZMAsset
                         }
                         else
                         {
-                            Debug.LogError("AssetBundle Already Exists! BundleName:" + info.bundleName);
+                            Debug.LogWarning("AssetBundle Already Exists! BundleName:" + info.bundleName);
                         }
                     }
                     //释放AssetBunle配置
@@ -447,14 +447,10 @@ namespace ZM.ZMAsset
             //AssetBundle assetBundle = null;
             if (assetitem!=null)
             {
-                if (assetitem.obj!=null)
-                {
-                    assetitem.obj = null;
-                }
-                if (assetitem.objArr!=null)
-                {
-                    assetitem.objArr = null;
-                }
+                if (assetitem.obj!=null)  assetitem.obj = null;
+               
+                if (assetitem.objArr!=null)  assetitem.objArr = null;
+                
 
                 ReleaseAssetBundle(assetitem,unLoad);
 

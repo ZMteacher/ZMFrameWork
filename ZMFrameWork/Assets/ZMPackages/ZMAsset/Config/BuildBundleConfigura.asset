@@ -17,7 +17,7 @@ MonoBehaviour:
     moduleName: Hall
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 429.954
+    lastClickBtnTime: 47.75353
     prefabPathArr:
     - Assets/GameData/Hall/Prefabs
     rootFolderPathArr:
@@ -27,15 +27,17 @@ MonoBehaviour:
       bundlePath: Assets/GameData/Hall/CfgData
     - abName: scene
       bundlePath: Assets/Scenes
+    - abName: hotscript
+      bundlePath: Assets/GameData/Hall/HotFixDll
   - bundleid: 0
     moduleName: GameItem
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 429.40347
+    lastClickBtnTime: 274.39026
     prefabPathArr:
     - Path...
     rootFolderPathArr:
-    - Assets/BundleDemo/GameItem
+    - Assets/GameData/GameItem
     signFolderPathArr: []
   - bundleid: 0
     moduleName: AdressAsset
@@ -50,17 +52,21 @@ MonoBehaviour:
     moduleName: WuZhang
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 427.41135
+    lastClickBtnTime: 117.21776
     prefabPathArr:
     - Assets/GameData/WuZhang/Prefab
     rootFolderPathArr:
     - Assets/GameData/WuZhang/Textures
-    signFolderPathArr: []
+    signFolderPathArr:
+    - abName: hotscripts
+      bundlePath: Assets/GameData/WuZhang/HotFixDll
+    - abName: cfgdata
+      bundlePath: Assets/GameData/WuZhang/CfgData
   - bundleid: 0
     moduleName: ShuangKou
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 422.03766
+    lastClickBtnTime: 51.426407
     prefabPathArr:
     - Assets/GameData/ShuangKou/Prefabs
     rootFolderPathArr:
@@ -72,11 +78,13 @@ MonoBehaviour:
       bundlePath: Assets/GameData/ShuangKou/Sounds
     - abName: effect
       bundlePath: Assets/GameData/ShuangKou/Effects
+    - abName: hotscipts
+      bundlePath: Assets/GameData/ShuangKou/HotFixDll
   - bundleid: 0
     moduleName: "\u6D4B\u8BD5\u8D44\u6E90"
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 0
+    lastClickBtnTime: 100.00018
     prefabPathArr:
     - Path...
     rootFolderPathArr: []
@@ -85,8 +93,11 @@ MonoBehaviour:
     moduleName: "\u997F"
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 0
+    lastClickBtnTime: 290.29022
     prefabPathArr:
-    - Path...
-    rootFolderPathArr: []
-    signFolderPathArr: []
+    - Assets/Scenes
+    rootFolderPathArr:
+    - Assets/Scenes
+    signFolderPathArr:
+    - abName: AB Name
+      bundlePath: Assets/Scenes

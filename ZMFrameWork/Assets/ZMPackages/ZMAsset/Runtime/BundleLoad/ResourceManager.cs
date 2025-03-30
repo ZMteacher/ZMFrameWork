@@ -566,6 +566,7 @@ namespace ZM.ZMAsset
         }
         public T LoadScriptableObject<T>(string path) where T : UnityEngine.Object
         {
+            if (!path.EndsWith(".asset")) path += ".asset";
             return LoadResource<T>(path);
         }
         /// <summary>

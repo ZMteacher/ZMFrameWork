@@ -24,7 +24,7 @@ namespace ZM.ZMAsset
         /// </summary>
         /// <param name="bundleModule"></param>
         public void HotAndUnPackAssets(BundleModuleEnum bundleModule,System.Action hotFinishCallBack)
-        {
+        { 
             this.OnHotFinishCallBackAction += hotFinishCallBack; 
            mHotAssetsWindow = InstantiateResourcesObj<HotAssetsWindow>("HotAssetsWindow");
             //开始解压游戏内嵌资源
@@ -35,17 +35,19 @@ namespace ZM.ZMAsset
                    InstantiateResourcesObj<UpdateTipsWindow>("UpdateTipsWindow").InitView("当前无网络，请检测网络重试？", () => { NotNetButtonClick(bundleModule); }, () => { NotNetButtonClick(bundleModule); });
                    return;
                }
+               //网络正常
+               if (BundleSettings.Instance.bundleHotType == BundleHotEnum.Hot)
+               {
+                   //检测资源版本
+                   CheckAssetsVersion(bundleModule);
+               }
                else
                {
-                   if (BundleSettings.Instance.bundleHotType == BundleHotEnum.Hot)
-                        CheckAssetsVersion(bundleModule);
-                   else
-                   {
-                       ZMAsset.InitAssetsModule(bundleModule);
-                       //如果不需要热更，说明用户已经热更过了，资源是最新的，直接进入游戏 
-                       OnHotFinishCallBack(bundleModule);
-                   }
-                }
+                   //初始化资源模块
+                   ZMAsset.InitAssetsModule(bundleModule);
+                   //如果不需要热更，说明用户已经热更过了，资源是最新的，直接进入游戏 
+                   OnHotFinishCallBack(bundleModule);
+               }
             });
             //更新解压进度
             mHotAssetsWindow.ShowDecompressProgress(decompress);
@@ -58,20 +60,14 @@ namespace ZM.ZMAsset
             {
                 CheckAssetsVersion(bundleModule);
             }
-            else
-            {
-
-            }
-
         }
         public void CheckAssetsVersion(BundleModuleEnum bundleModule)
         {
             ZMAsset.CheckAssetsVersion(bundleModule,(isHot,sizem)=> {
-                if (isHot )
+                if (isHot)
                 {
                     //当用户使用是流量的时候呢，需要询问用户是否需要更新资源
-                    if (Application.internetReachability== NetworkReachability.ReachableViaCarrierDataNetwork||Application.platform==
-                    RuntimePlatform.WindowsEditor||Application.platform==RuntimePlatform.OSXEditor)
+                    if (Application.internetReachability== NetworkReachability.ReachableViaCarrierDataNetwork||Application.platform == RuntimePlatform.WindowsEditor||Application.platform==RuntimePlatform.OSXEditor)
                     {
                         //弹出选择弹窗，让用户决定是否更新
                         InstantiateResourcesObj<UpdateTipsWindow>("UpdateTipsWindow").
@@ -86,6 +82,7 @@ namespace ZM.ZMAsset
                     }
                     else
                     {
+                        //开始热更资源
                         StartHotAssets(bundleModule);
                     }
                 }

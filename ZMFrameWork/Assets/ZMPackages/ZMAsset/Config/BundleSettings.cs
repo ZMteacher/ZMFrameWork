@@ -13,6 +13,7 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using UnityEngine;
 using ZM.ZMAsset;
@@ -108,13 +109,18 @@ public class BundleSettings : ScriptableObject
         return BuiltinAssetsPath + moduleEnum + "/";
     }
     /// <summary>
-    /// 获取解压文件路径
+    /// 获取解压文件路径(Unity2019 支持直接都streamingAssetsPath目录下Bundle)
     /// </summary>
     /// <param name="moduleEnum"></param>
     /// <returns></returns>
     public string GetAssetsDecompressPath(BundleModuleEnum moduleEnum)
     {
+#if UNITY_2020_1_OR_NEWER
+        return $"{Application.persistentDataPath}/{moduleEnum.ToString()}/";
+#else
         return BundleDecompressPath + moduleEnum + "/";
+#endif
+        
     }
     /// <summary>
     /// 获取热更文件储存路径

@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿/*----------------------------------------------------------------------------
+* Title: ZMUIFrameWork 一款Mono分离式UI管理框架
+*
+* Author: 铸梦xy
+*
+* Date: 2024/09/01 14:15:58
+*
+* Description: 高性能、自动化、自定义生命周期工作管线是该框架的特点，该框架属于MVC中的View层架构。
+* 设计简洁清晰、轻便小巧，可以对接至任意重中小型游戏项目中。
+*
+* Remarks: QQ:975659933 邮箱：zhumengxyedu@163.com
+*
+* GitHub：https://github.com/ZMteacher?tab=repositories
+----------------------------------------------------------------------------*/
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -33,18 +46,7 @@ public class GeneratorWindowTool : Editor
 
         Debug.Log("CsConent:\n" + csContnet);
         string cspath = UISetting.Instance.WindowGeneratorPath + "/" + obj.name + ".cs";
-        UIWindowEditor.ShowWindow(csContnet, cspath, methodDic);
-        //////生成脚本文件
-        //if (File.Exists(cspath))
-        //{
-        //    File.Delete(cspath);
-        //}
-        //StreamWriter writer = File.CreateText(cspath);
-        //writer.Write(csContnet);
-        //writer.Close();
-        //AssetDatabase.Refresh();
-        //Debug.Log("cspath:" + cspath);
-
+        ScriptDisplayWindow.ShowWindow(csContnet, cspath, methodDic);
     }
     /// <summary>
     /// 生成Window脚本
@@ -58,7 +60,7 @@ public class GeneratorWindowTool : Editor
         List<EditorObjectData> objDatalist = JsonConvert.DeserializeObject<List<EditorObjectData>>(datalistJson);
         methodDic.Clear();
         StringBuilder sb = new StringBuilder();
-
+        string nameSpaceName = "ZM.UI";
         //添加引用
         sb.AppendLine("/*---------------------------------");
         sb.AppendLine(" *Title:UI表现层脚本自动化生成工具");
@@ -69,9 +71,13 @@ public class GeneratorWindowTool : Editor
         sb.AppendLine("---------------------------------*/");
         sb.AppendLine("using UnityEngine.UI;");
         sb.AppendLine("using UnityEngine;");
-        sb.AppendLine("using ZMUIFrameWork;");
         sb.AppendLine();
-
+        //生成命名空间
+        if (!string.IsNullOrEmpty(nameSpaceName))
+        {
+            sb.AppendLine($"namespace {nameSpaceName}");
+            sb.AppendLine("{");
+        }
         //生成类命
         sb.AppendLine($"\tpublic class {name}:WindowBase");
         sb.AppendLine("\t{");
@@ -88,9 +94,9 @@ public class GeneratorWindowTool : Editor
         }
 
 
-        //生成声明周期函数 Awake
+        //生成生命周期函数 Awake
         sb.AppendLine("\t");
-        sb.AppendLine($"\t\t #region 声明周期函数");
+        sb.AppendLine($"\t\t #region 生命周期函数");
         sb.AppendLine($"\t\t //调用机制与Mono Awake一致");
         sb.AppendLine("\t\t public override void OnAwake()");
         sb.AppendLine("\t\t {");
@@ -159,6 +165,10 @@ public class GeneratorWindowTool : Editor
         sb.AppendLine($"\t\t #endregion");
 
         sb.AppendLine("\t}");
+        if (!string.IsNullOrEmpty(nameSpaceName))
+        {
+            sb.AppendLine("}");
+        }
         return sb.ToString();
     }
     /// <summary>

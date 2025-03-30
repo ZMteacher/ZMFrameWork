@@ -1,4 +1,18 @@
-﻿using DG.Tweening;
+﻿/*----------------------------------------------------------------------------
+* Title: ZMUIFrameWork 一款Mono分离式UI管理框架
+*
+* Author: 铸梦xy
+*
+* Date: 2024/09/01 14:15:58
+*
+* Description: 高性能、自动化、自定义生命周期工作管线是该框架的特点，该框架属于MVC中的View层架构。
+* 设计简洁清晰、轻便小巧，可以对接至任意重中小型游戏项目中。
+*
+* Remarks: QQ:975659933 邮箱：zhumengxyedu@163.com
+*
+* GitHub：https://github.com/ZMteacher?tab=repositories
+----------------------------------------------------------------------------*/
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +21,16 @@ using UnityEngine.UI;
 
 public class WindowBase : WindowBehaviour
 {
-    private List<Button> mAllButtonList = new List<Button>();//所有Button列表
-    private List<Toggle> mToggleList = new List<Toggle>();//所有的Toggle列表
-    private List<InputField> mInputList = new List<InputField>();//所有的输入框列表
-
     private CanvasGroup mUIMaskCanvasGroup;
     private CanvasGroup mCanvasGroup;
     protected Transform mUIContent;
+
+    private List<Toggle> mToggleList = new List<Toggle>();//所有的Toggle列表
+    private List<Button> mAllButtonList = new List<Button>();//所有Button列表
+    private List<InputField> mInputList = new List<InputField>();//所有的输入框列表
+
     protected bool mDisableAnim = false;//禁用动画
+
     /// <summary>
     /// 初始化基类组件
     /// </summary>
@@ -124,7 +140,10 @@ public class WindowBase : WindowBehaviour
             mUIMaskCanvasGroup.gameObject.SetActive(true);
         }
     }
-
+    /// <summary>
+    /// 伪隐藏触发接口
+    /// </summary>
+    /// <param name="value"></param>
     public virtual void PseudoHidden(int value)
     {
         mUIMaskCanvasGroup.alpha = mCanvasGroup.alpha = value;

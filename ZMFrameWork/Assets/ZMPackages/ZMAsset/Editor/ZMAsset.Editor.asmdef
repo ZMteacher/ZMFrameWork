@@ -1,0 +1,19 @@
+{
+    "name": "ZMAsset.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3f7be2e305220e64496f5ab9f53e1bdd",
+        "GUID:e6691dc0db9d9644e9aa9e59f896bb3a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

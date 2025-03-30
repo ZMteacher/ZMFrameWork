@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33d3891a34cfa847af5f5f9cacd41d0, type: 3}
+  m_Name: WZWindowConfig
+  m_EditorClassIdentifier: 
+  windowDataList:
+  - name: ExampleWindow
+    path: Assets/GameData/Hall/Prefabs/Window/ExampleWindow
+  - name: ExampleWindow1
+    path: Assets/GameData/Hall/Prefabs/Window/ExampleWindow1
+  - name: ExShopWindow
+    path: Assets/GameData/Hall/Prefabs/Window/ExShopWindow
+  - name: HallWindow
+    path: Assets/GameData/Hall/Prefabs/Window/HallWindow
+  - name: LoginWindow
+    path: Assets/GameData/Hall/Prefabs/Window/LoginWindow
+  - name: SKWindow
+    path: Assets/GameData/ShuangKou/Prefabs/Window/SKWindow
+  - name: WuZhangWindow
+    path: Assets/GameData/WuZhang/Prefab/Window/WuZhangWindow
