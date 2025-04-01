@@ -314,9 +314,9 @@ namespace ZM.ZMAsset
         /// 初始化资产模块，在资源热更完成后必须、优先调用
         /// </summary>
         /// <param name="bundleModule">初始化的资产模块</param>
-        public static void InitAssetsModule(BundleModuleEnum bundleModule)
+        public static async UniTask<bool> InitAssetsModule(BundleModuleEnum bundleModule)
         {
-           Instance.mResource.InitAssetModule(bundleModule,false);
+            return await Instance.mResource.InitAssetModule(bundleModule,false);
         }
         /// <summary>
         /// 开始热更

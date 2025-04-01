@@ -125,6 +125,10 @@ namespace ZM.ZMAsset
         /// AssetBundle配置文件名称
         /// </summary>
         private string mAssetsBundleConfigName;
+        /// <summary>
+        /// 线程锁
+        /// </summary>
+        private object mLock = new object();
 
         /// <summary>
         /// 加载AssetBundle配置文件
@@ -157,27 +161,33 @@ namespace ZM.ZMAsset
                     }
 
                     string bundleConfigJson = (await bundleConfig.LoadAssetAsync<TextAsset>(mAssetsBundleConfigName) as TextAsset).text;
-                    BundleConfig bundleManife = JsonConvert.DeserializeObject<BundleConfig>(bundleConfigJson);
-                    //把所有的AssetBundle信息存放至字典中，管理起来
-                    foreach (var info in bundleManife.bundleInfoList)
+                    await UniTask.RunOnThreadPool(() =>
                     {
-                        if (!mAllBundleAssetDic.ContainsKey(info.crc))
+                        BundleConfig bundleManife = JsonConvert.DeserializeObject<BundleConfig>(bundleConfigJson);
+                        lock (mLock)
                         {
-                            BundleItem item = new BundleItem();
-                            item.path = info.path;
-                            item.crc = info.crc;
-                            item.bundleModuleType = bundleModule;
-                            item.assetName = info.assetName;
-                            item.bundleDependce = info.bundleDependce;
-                            item.bundleName = info.bundleName;
-                            item.isAddressableAsset = info.isAddressableAsset;
-                            mAllBundleAssetDic.Add(item.crc, item);
+                            //把所有的AssetBundle信息存放至字典中，管理起来
+                            foreach (var info in bundleManife.bundleInfoList)
+                            {
+                                if (!mAllBundleAssetDic.ContainsKey(info.crc))
+                                {
+                                    BundleItem item = new BundleItem();
+                                    item.path = info.path;
+                                    item.crc = info.crc;
+                                    item.bundleModuleType = bundleModule;
+                                    item.assetName = info.assetName;
+                                    item.bundleDependce = info.bundleDependce;
+                                    item.bundleName = info.bundleName;
+                                    item.isAddressableAsset = info.isAddressableAsset;
+                                    mAllBundleAssetDic.Add(item.crc, item);
+                                }
+                                else
+                                {
+                                    Debug.LogWarning("AssetBundle Already Exists! BundleName:" + info.bundleName);
+                                }
+                            }
                         }
-                        else
-                        {
-                            Debug.LogWarning("AssetBundle Already Exists! BundleName:" + info.bundleName);
-                        }
-                    }
+                    });
                     //释放AssetBunle配置
                     bundleConfig.Unload(false);
                     mAlreadyLoadBundleModuleList.Add(bundleModule);

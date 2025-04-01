@@ -62,6 +62,10 @@ namespace ZM.ZMAsset
         /// </summary>
         private static Dictionary<string, List<string>> mAllPrefabsBundleDic = new Dictionary<string, List<string>>();
         /// <summary>
+        /// 要打包的Bundle资产数组
+        /// </summary>
+        private static List<AssetBundleBuild> mBundleBuildList = new List<AssetBundleBuild>();
+        /// <summary>
         /// AssetBundle文件输出路径
         /// </summary>
         private static string mBundleOutPutPath { get { return Application.dataPath + "/../AssetBundle/" + mBundleModuleEnum + "/" + EditorUserBuildSettings.activeBuildTarget.ToString() + "/"; } }
@@ -108,7 +112,8 @@ namespace ZM.ZMAsset
             mAllBundlePathList.Clear();
             mAllFolderBundleDic.Clear();
             mAllPrefabsBundleDic.Clear();
-
+            mBundleBuildList.Clear();
+            
             mBuildType = buildType;
             mUpdateNotice = updateNotice;
             mBuildModuleData = moduleData;
@@ -142,26 +147,29 @@ namespace ZM.ZMAsset
             {
                 //获取文件夹路径
                 string path = mBuildModuleData.signFolderPathArr[i].bundlePath.Replace(@"\", "/");
-                if (IsRepeatBundleFile(path) == false)
+                EditorUtility.DisplayProgressBar("查找AB文件", "name:" + mBuildModuleData.signFolderPathArr[i].abName, i * 1.0f / mBuildModuleData.signFolderPathArr.Length);
+               
+                DirectoryInfo info = new DirectoryInfo(path);
+                FileInfo[] pathArr = info.GetFiles("*", SearchOption.AllDirectories); ;
+                foreach (var fileInfo in pathArr)
                 {
-                    mAllBundlePathList.Add(path);
+                    int removeStartIndex = fileInfo.FullName.LastIndexOf("Assets");
+                    string filePath = fileInfo.FullName.Substring(removeStartIndex, fileInfo.FullName.Length - removeStartIndex).Replace("\\", "/");
+                    
+                    if (filePath.EndsWith(".cs") || filePath.EndsWith(".meta")) continue;
+                    
+                    mAllBundlePathList.Add(filePath);
                     //获取以模块名+_+AbName的格式的AssetBundle包名
                     string bundleName = GenerateBundleName(mBuildModuleData.signFolderPathArr[i].abName);
                     if (!mAllFolderBundleDic.ContainsKey(bundleName))
                     {
-                        mAllFolderBundleDic.Add(bundleName, new List<string> { path });
+                        mAllFolderBundleDic.Add(bundleName, new List<string> { filePath });
                     }
                     else
                     {
-                        mAllFolderBundleDic[bundleName].Add(path);
+                        mAllFolderBundleDic[bundleName].Add(filePath);
                     }
                 }
-                else
-                {
-                    Debug.LogError(" RepeatBundleFile ：" + path);
-                }
-
-
             }
         }
 
@@ -179,7 +187,7 @@ namespace ZM.ZMAsset
             for (int i = 0; i < mBuildModuleData.rootFolderPathArr.Length; i++)
             {
                 string path = mBuildModuleData.rootFolderPathArr[i] + "/";
-                //获取符文夹的所有的子文件夹
+                //获取父文夹的所有的子文件夹
                 string[] folderArr = Directory.GetDirectories(path);
                 foreach (var item in folderArr)
                 {
@@ -187,22 +195,6 @@ namespace ZM.ZMAsset
                     int nameIndex = path.LastIndexOf("/") + 1;
                     //获取文件夹同名的AssetBundle名称
                     string bundleName = GenerateBundleName(path.Substring(nameIndex, path.Length - nameIndex));
-                    if (!IsRepeatBundleFile(path))
-                    {
-                        mAllBundlePathList.Add(path);
-                        if (!mAllFolderBundleDic.ContainsKey(bundleName))
-                        {
-                            mAllFolderBundleDic.Add(bundleName, new List<string> { path });
-                        }
-                        else
-                        {
-                            mAllFolderBundleDic[bundleName].Add(path);
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogError("RepeatBundle file FolderPath:" + path);
-                    }
                     //处理子文件夹资源的代码
                     string[] filePathArr = Directory.GetFiles(path, "*");
                     foreach (var filePath in filePathArr)
@@ -278,15 +270,15 @@ namespace ZM.ZMAsset
         /// </summary>
         public static void BuildAllAssetBundle()
         {
-            //修改所有要打包的文件的AssetBundleName
-            ModifyAllFileBundleName();
+            //生成所有要打包的Bundle
+            GenerateBundleBuilder();
             //生成一份AssetBundle配置
             WriteAssetBundleConfig();
 
             AssetDatabase.Refresh();
 
             //调用UnityAPI打包AssetBundle
-            AssetBundleManifest manifest= BuildPipeline.BuildAssetBundles(mBundleOutPutPath,(UnityEditor.BuildAssetBundleOptions)Enum.Parse(typeof(UnityEditor.BuildAssetBundleOptions),BundleSettings.Instance.buildbundleOptions.ToString())
+            AssetBundleManifest manifest= BuildPipeline.BuildAssetBundles(mBundleOutPutPath,mBundleBuildList.ToArray(), (UnityEditor.BuildAssetBundleOptions)Enum.Parse(typeof(UnityEditor.BuildAssetBundleOptions),BundleSettings.Instance.buildbundleOptions.ToString())
                 , (UnityEditor.BuildTarget)Enum.Parse(typeof(UnityEditor.BuildTarget), BundleSettings.Instance.buildTarget.ToString()));
             if (manifest==null)
             {
@@ -303,8 +295,7 @@ namespace ZM.ZMAsset
                     GeneratorHotAssets();
                 }
             }
-            ModifyAllFileBundleName(true);
-
+            
             EditorUtility.ClearProgressBar();
     
         }
@@ -315,24 +306,22 @@ namespace ZM.ZMAsset
         {
             BundleConfig config = new BundleConfig();
             config.bundleInfoList = new List<BundleInfo>();
+            
             //所有AssetBundle文件字典 key =路径 value =AssetBundleName
             Dictionary<string, string> allBundleFilePathDic = new Dictionary<string, string>();
-            //获取到工程内所有的AssetBundleName
-            string[] allBundleArr= AssetDatabase.GetAllAssetBundleNames();
-
-            foreach (var bundleName in allBundleArr)
+            //遍历所有的Bundle列表，收集成字典，方便写入配置
+            foreach (var item in mBundleBuildList)
             {
-                //获取指定AssetBundleName 下的所有的文件路径
-                string[] bundleFileArr= AssetDatabase.GetAssetPathsFromAssetBundle(bundleName);
-
-                foreach (var filePath in bundleFileArr)
+                foreach (var itemValue in item.assetNames)
                 {
-                    if (!filePath.EndsWith(".cs"))
+                    if (!allBundleFilePathDic.ContainsKey(itemValue))
                     {
-                        allBundleFilePathDic.Add(filePath,bundleName);
+                        allBundleFilePathDic.Add(itemValue, item.assetBundleName);
                     }
                 }
             }
+            
+            int index = 0;
             //计算AssetBundle数据，生成AsestBundle配置文件。
             foreach (var item in allBundleFilePathDic)
             {
@@ -348,15 +337,15 @@ namespace ZM.ZMAsset
                     info.bundleModule = mBundleModuleEnum.ToString();
                     info.isAddressableAsset = mBuildModuleData.isAddressableAsset;
                     info.bundleDependce = new List<string>();
-
-                    string[] depence= AssetDatabase.GetDependencies(filePath);
-                    foreach (var dePath in depence)
+                    EditorUtility.DisplayProgressBar("写入AssetBundle配置", "ABName:" + allBundleFilePathDic[filePath], index * 1.0f / allBundleFilePathDic.Count);
+                    
+                    string[] dependence= AssetDatabase.GetDependencies(filePath);
+                    foreach (var dePath in dependence)
                     {
                         //如果依赖项不是当前的这个文件，以及依赖项不是cs脚本 就进行处理
-                        if (!dePath.Equals(filePath)&& dePath.EndsWith(".cs")==false)
+                        if (!dePath.Equals(filePath) && dePath.EndsWith(".cs")==false)
                         {
-                            string assetBundleName = "";
-                            if (allBundleFilePathDic.TryGetValue(dePath,out assetBundleName))
+                            if (allBundleFilePathDic.TryGetValue(dePath,out var assetBundleName))
                             {
                                 //如果依赖项已经包含这个AssetBundle就不进行处理，否则添加进依赖项
                                 if (!info.bundleDependce.Contains(assetBundleName))
@@ -370,7 +359,7 @@ namespace ZM.ZMAsset
                     config.bundleInfoList.Add(info);
                 }
             }
-            //生成AsestBundle配置文件。
+            //生成AsestBundle配置文件
             string json = JsonConvert.SerializeObject(config,Formatting.Indented);
             string bundleConfigPath = Application.dataPath + "/" + BundleSettings.Instance.ZMAssetRootPath + "/Config/" + mBundleModuleEnum.ToString().ToLower() + "assetbundleconfig.json";
             StreamWriter writer= File.CreateText(bundleConfigPath);
@@ -379,64 +368,40 @@ namespace ZM.ZMAsset
             writer.Close();
 
             AssetDatabase.Refresh();
-            //修改AssetBundle配置文件的AssetBundleName
-            AssetImporter importer= AssetImporter.GetAtPath(bundleConfigPath.Replace(Application.dataPath,"Assets"));
-            if (importer!=null)
-            {
-                importer.assetBundleName = mBundleModuleEnum.ToString().ToLower() + "bundleconfig"+ BundleSettings.Instance.ABSUFFIX;
-            }
+            
+            //生成热更模块配置到Resources文件夹
             GeneratorHotModuleCfgToResource();
         }
         /// <summary>
-        /// 修改或清空AssetBundle
+        /// 生成Bundle打包列表
         /// </summary>
         /// <param name="clear"></param>
-        public static void ModifyAllFileBundleName(bool clear=false)
+        public static void GenerateBundleBuilder(bool clear=false)
         {
             int i = 0;
-            //修改所有文件夹下AssetBundle name
+            //收集所有要打包的文件夹Bundle
             foreach (var item in mAllFolderBundleDic)
             {
                 i++;
                 EditorUtility.DisplayProgressBar("Modify AssetBundle Name","Name:"+item.Key, i*1.0f/mAllFolderBundleDic.Count);
-                foreach (var path in item.Value)
-                {
-                    AssetImporter importer= AssetImporter.GetAtPath(path);
-                    if (importer!=null)
-                    {
-                        importer.assetBundleName = (clear ? "" : item.Key + BundleSettings.Instance.ABSUFFIX);
-                    }
-                }
+                mBundleBuildList.Add(new AssetBundleBuild(){ assetBundleName =$"{item.Key.ToLower()}{BundleSettings.Instance.ABSUFFIX}" , assetNames = item.Value.ToArray() });
             }
-            //修改所有预制体的AssetBundleName
+            //收集所有要打包的预制体Bundle
             i = 0;
             foreach (var item in mAllPrefabsBundleDic)
             {
                 i++;
-                List<string> bundleList = item.Value;
-                foreach (var path in bundleList)
-                {
-                    EditorUtility.DisplayProgressBar("Modify AssetBundle Name", "Name:" + item.Key, i * 1.0f / mAllPrefabsBundleDic.Count);
-                    AssetImporter importer = AssetImporter.GetAtPath(path);
-                    if (importer != null)
-                    {
-                        importer.assetBundleName = (clear ? "" : item.Key + BundleSettings.Instance.ABSUFFIX);
-                    }
-                }
-
+                EditorUtility.DisplayProgressBar("Modify AssetBundle Name", "Name:" + item.Key, i * 1.0f / mAllPrefabsBundleDic.Count);
+                mBundleBuildList.Add(new AssetBundleBuild(){ assetBundleName = $"{item.Key.ToLower()}{BundleSettings.Instance.ABSUFFIX}", assetNames = item.Value.ToArray() });
             }
-            //移除未使用的AssetBundleName
-            if (clear)
+            
+            //收集至Bundle打包配置文件
+            string bundleConfigPath = Application.dataPath + "/" + BundleSettings.Instance.ZMAssetRootPath + "/Config/" + mBundleModuleEnum.ToString().ToLower() + "assetbundleconfig.json";
+            mBundleBuildList.Add(new AssetBundleBuild(){ assetBundleName = mBundleModuleEnum.ToString().ToLower() + "bundleconfig"+BundleSettings.Instance.ABSUFFIX,assetNames = new []
             {
-                string bundleConfigPath = Application.dataPath + "/" + mBundleModuleEnum.ToString().ToLower() + "assetbundleconfig.json";
-                AssetImporter importer = AssetImporter.GetAtPath(bundleConfigPath.Replace(Application.dataPath, "Assets"));
-                if (importer != null)
-                {
-                    importer.assetBundleName ="";
-                }
+                $"{bundleConfigPath.Replace(Application.dataPath, "Assets/")}"
+            }});
 
-                AssetDatabase.RemoveUnusedAssetBundleNames();
-            }
         }
         /// <summary>
         /// 是否是重复的Bundle文件

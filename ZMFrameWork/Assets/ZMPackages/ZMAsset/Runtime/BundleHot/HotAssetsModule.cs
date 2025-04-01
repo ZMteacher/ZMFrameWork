@@ -15,6 +15,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -153,8 +154,7 @@ namespace ZM.ZMAsset
                 downLoadQueue.Enqueue(item);
             }
             //通过资源下载器，开始下载资源
-            mAssetsDownLoader = new AssetsDownLoader(this,downLoadQueue,mServerHotAssetsManifest.downLoadURL,HotAssetsSavePath
-                ,DownLoadAssetBundleSuccess,DownLoadAssetBundleFailed,DownLoadAllAssetBundleFinish);
+            mAssetsDownLoader = new AssetsDownLoader(this,downLoadQueue,mServerHotAssetsManifest.downLoadURL,HotAssetsSavePath,DownLoadAssetBundleSuccess,DownLoadAssetBundleFailed,DownLoadAllAssetBundleFinish);
 
             startDonwLoadCallBack?.Invoke();
             //开始下载队列中的资源
@@ -175,7 +175,7 @@ namespace ZM.ZMAsset
                 //1.检测当前版本是否需要热更
                 if (CheckModuleAssetsIsHot())
                 {
-                    HotAssetsPatch serverHotPath = mServerHotAssetsManifest.hotAssetsPatchList[mServerHotAssetsManifest.hotAssetsPatchList.Count - 1];
+                    HotAssetsPatch serverHotPath = mServerHotAssetsManifest.hotAssetsPatchList[^1];
                     bool isNeedHot= ComputeNeedHotAssetsList(serverHotPath);
                     if (isNeedHot)
                     {
@@ -190,9 +190,6 @@ namespace ZM.ZMAsset
                 {
                     checkCallBack?.Invoke(false, 0);
                 }
-                //2.如果需要热更，开始计算需要下载的文件 开始下载文件
-                //3.如果不需要热更，说明文件是最新的，直接热更完成
-
             }));
         }
         /// <summary>
@@ -285,11 +282,9 @@ namespace ZM.ZMAsset
             string url = BundleSettings.Instance.AssetBundleDownLoadUrl + "/HotAssets/" + CurBundleModuleEnum + "AssetsHotManifest.json";
             UnityWebRequest webRequest = UnityWebRequest.Get(url);
             webRequest.timeout = 30;
-
             Debug.Log("*** Requset HotAssetsMainfest Url:"+ url);
-
+            
             yield return webRequest.SendWebRequest();
-
             
 #if UNITY_2020_1_OR_NEWER
             if (webRequest.result== UnityWebRequest.Result.ConnectionError)
@@ -301,20 +296,24 @@ namespace ZM.ZMAsset
             }
             else
             {
+                string downLoadContent = webRequest.downloadHandler.text;
                 try
                 {
-                    Debug.Log("*** Request AssetBundle HotAssetsMainfest Url Finish Module:"+CurBundleModuleEnum 
-                        +" txt:"+webRequest.downloadHandler.text);
+                    Debug.Log($"*** Request AssetBundle HotAssetsMainfest Url Finish Module:{CurBundleModuleEnum} txt:{downLoadContent}");
                     //写入服务端资源热更清单到本地
-                    FileHelper.WriteFile(mServerHotAssetsManifestPath, webRequest.downloadHandler.data);
-                    mServerHotAssetsManifest = JsonConvert.DeserializeObject<HotAssetsManifest>(webRequest.downloadHandler.text);
+                    FileHelper.WriteFileAsync(mServerHotAssetsManifestPath, downLoadContent);
                 }
                 catch (Exception e)
                 {
                     Debug.LogError("服务端资源清单配置下载异常，文件不存在或者配置有问题，更新出错，请检查："+e.ToString());
-                 }
+                }
+                yield return UniTask.RunOnThreadPool(() =>
+                {
+                    mServerHotAssetsManifest = JsonConvert.DeserializeObject<HotAssetsManifest>(downLoadContent);
+                });
             }
             downLoadFinish?.Invoke();
+            webRequest.Dispose();
         }
         public void GeneratorHotAssetsManifest()
         {
@@ -323,7 +322,7 @@ namespace ZM.ZMAsset
         }
 
 #region 资源下载回调
-        public void DownLoadAssetBundleSuccess(HotFileInfo hotFile)
+        private async void DownLoadAssetBundleSuccess(HotFileInfo hotFile)
         {
             string abName = hotFile.abName;
             if (!string.IsNullOrEmpty(BundleSettings.Instance.ABSUFFIX))
@@ -333,8 +332,8 @@ namespace ZM.ZMAsset
                 
             if (hotFile.abName.Contains("bundleconfig"))
             {
+                await ZMAsset.InitAssetsModule(CurBundleModuleEnum);//如果下载成功需要及时初始化模块配置
                 OnDownLoadABConfigListener?.Invoke(abName);
-                ZMAsset.InitAssetsModule(CurBundleModuleEnum);//如果下载成功需要及时初始化模块配置
             }
             else
             {

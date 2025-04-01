@@ -12,6 +12,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 namespace ZM.ZMAsset
 {
@@ -109,7 +110,7 @@ namespace ZM.ZMAsset
         /// </summary>
         /// <param name="bundleModule">热更模块</param>
         /// <param name="callBack">热更回调</param>
-        public void CheckAssetsVersion(BundleModuleEnum bundleModule, Action<bool, float> callBack)
+        public void  CheckAssetsVersion(BundleModuleEnum bundleModule, Action<bool, float> callBack)
         {
             if (BundleSettings.Instance.bundleHotType == BundleHotEnum.NoHot)
             {
@@ -118,11 +119,11 @@ namespace ZM.ZMAsset
                 return;
             }
             HotAssetsModule assetsModule = GetOrNewAssetModule(bundleModule);
-            assetsModule.CheckAssetsVersion((isHot,sizem)=>
+            assetsModule.CheckAssetsVersion(async (isHot,sizem)=>
             {
-               if (isHot==false)
-               {
-                  ZMAsset.InitAssetsModule(bundleModule);
+               if (!isHot)
+               { 
+                   await ZMAsset.InitAssetsModule(bundleModule);
                }
                callBack?.Invoke(isHot, sizem);
            } );
@@ -144,7 +145,7 @@ namespace ZM.ZMAsset
         /// 热更模块资源完成
         /// </summary>
         /// <param name="bundleModule"></param>
-        public void HotModuleAssetsFinish(BundleModuleEnum bundleModule)
+        private async void HotModuleAssetsFinish(BundleModuleEnum bundleModule)
         {
             //把下载完成的模块从下载中的字典中移除掉
             if (mDownLoadingAssetsModuleDic.ContainsKey(bundleModule))
@@ -169,7 +170,7 @@ namespace ZM.ZMAsset
                 //我们就需要把闲置下来的下载线程分配给其他正在热更的模块，增加该模块的热更速度
                 MultipleThreadBalancing();
             }
-            ZMAsset.InitAssetsModule(bundleModule);
+            await ZMAsset.InitAssetsModule(bundleModule);
         }
         /// <summary>
         /// 多线程均衡

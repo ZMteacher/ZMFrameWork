@@ -1,28 +1,37 @@
 {
   "bundleInfoList": [
     {
-      "path": "Assets/ZMPackages/ZMAsset/Config/gameitemassetbundleconfig.json",
-      "crc": 2574792709,
-      "bundleName": "gameitembundleconfig.uab",
-      "assetName": "gameitemassetbundleconfig.json",
+      "path": "Assets/GameData/WuZhang/HotFixDll/mscorlib.dll.bytes",
+      "crc": 3084613060,
+      "bundleName": "wuzhang_hotscripts.uab",
+      "assetName": "mscorlib.dll.bytes",
       "bundleModule": "WuZhang",
       "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
-      "path": "Assets/ZMPackages/ZMAsset/Config/hallassetbundleconfig.json",
-      "crc": 1909326844,
-      "bundleName": "hallbundleconfig.uab",
-      "assetName": "hallassetbundleconfig.json",
+      "path": "Assets/GameData/WuZhang/HotFixDll/System.Core.dll.bytes",
+      "crc": 3511606939,
+      "bundleName": "wuzhang_hotscripts.uab",
+      "assetName": "System.Core.dll.bytes",
       "bundleModule": "WuZhang",
       "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
-      "path": "Assets/ZMPackages/ZMAsset/Config/shuangkouassetbundleconfig.json",
-      "crc": 556503698,
-      "bundleName": "shuangkoubundleconfig.uab",
-      "assetName": "shuangkouassetbundleconfig.json",
+      "path": "Assets/GameData/WuZhang/HotFixDll/System.dll.bytes",
+      "crc": 3962130093,
+      "bundleName": "wuzhang_hotscripts.uab",
+      "assetName": "System.dll.bytes",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/WuZhang/HotFixDll/ZM.WZWorld.dll.bytes",
+      "crc": 788437127,
+      "bundleName": "wuzhang_hotscripts.uab",
+      "assetName": "ZM.WZWorld.dll.bytes",
       "bundleModule": "WuZhang",
       "isAddressableAsset": false,
       "bundleDependce": []
@@ -37,19 +46,19 @@
       "bundleDependce": []
     },
     {
-      "path": "Assets/GameData/WuZhang/Textures/Hall/5zhang.png",
-      "crc": 2941824074,
+      "path": "Assets/GameData/WuZhang/Textures/Hall/13zhang.png",
+      "crc": 2960233435,
       "bundleName": "wuzhang_hall.uab",
-      "assetName": "5zhang.png",
+      "assetName": "13zhang.png",
       "bundleModule": "WuZhang",
       "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
-      "path": "Assets/GameData/WuZhang/Textures/Hall/13zhang.png",
-      "crc": 2960233435,
+      "path": "Assets/GameData/WuZhang/Textures/Hall/5zhang.png",
+      "crc": 2941824074,
       "bundleName": "wuzhang_hall.uab",
-      "assetName": "13zhang.png",
+      "assetName": "5zhang.png",
       "bundleModule": "WuZhang",
       "isAddressableAsset": false,
       "bundleDependce": []
@@ -257,42 +266,6 @@
       "crc": 2755373102,
       "bundleName": "wuzhang_hall.uab",
       "assetName": "背景.png",
-      "bundleModule": "WuZhang",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/WuZhang/HotFixDll/mscorlib.dll.bytes",
-      "crc": 3084613060,
-      "bundleName": "wuzhang_hotscripts.uab",
-      "assetName": "mscorlib.dll.bytes",
-      "bundleModule": "WuZhang",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/WuZhang/HotFixDll/System.Core.dll.bytes",
-      "crc": 3511606939,
-      "bundleName": "wuzhang_hotscripts.uab",
-      "assetName": "System.Core.dll.bytes",
-      "bundleModule": "WuZhang",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/WuZhang/HotFixDll/System.dll.bytes",
-      "crc": 3962130093,
-      "bundleName": "wuzhang_hotscripts.uab",
-      "assetName": "System.dll.bytes",
-      "bundleModule": "WuZhang",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/WuZhang/HotFixDll/ZM.WZWorld.dll.bytes",
-      "crc": 788437127,
-      "bundleName": "wuzhang_hotscripts.uab",
-      "assetName": "ZM.WZWorld.dll.bytes",
       "bundleModule": "WuZhang",
       "isAddressableAsset": false,
       "bundleDependce": []
@@ -595,28 +568,19 @@
       "bundleDependce": []
     },
     {
-      "path": "Assets/GameData/ShuangKou/Textures/Game/xb_0000_退-出-中 1.png",
-      "crc": 4095634243,
-      "bundleName": "wuzhang_wuzhangwindow.uab",
-      "assetName": "xb_0000_退-出-中 1.png",
-      "bundleModule": "WuZhang",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/ShuangKou/Textures/Game/背景 1.png",
-      "crc": 1062590119,
-      "bundleName": "wuzhang_wuzhangwindow.uab",
-      "assetName": "背景 1.png",
-      "bundleModule": "WuZhang",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
       "path": "Assets/GameData/ShuangKou/Textures/Shop/未选中 金币赠送.png",
       "crc": 635933821,
       "bundleName": "wuzhang_wuzhangwindow.uab",
       "assetName": "未选中 金币赠送.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/ShuangKou/Textures/Game/xb_0000_退-出-中 1.png",
+      "crc": 4095634243,
+      "bundleName": "wuzhang_wuzhangwindow.uab",
+      "assetName": "xb_0000_退-出-中 1.png",
       "bundleModule": "WuZhang",
       "isAddressableAsset": false,
       "bundleDependce": []
@@ -631,6 +595,24 @@
       "bundleDependce": [
         "wuzhang_wuzhangwindow.uab"
       ]
+    },
+    {
+      "path": "Assets/GameData/ShuangKou/Textures/Game/背景 1.png",
+      "crc": 1062590119,
+      "bundleName": "wuzhang_wuzhangwindow.uab",
+      "assetName": "背景 1.png",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets//ZMPackages/ZMAsset/Config/wuzhangassetbundleconfig.json",
+      "crc": 2966641189,
+      "bundleName": "wuzhangbundleconfig.uab",
+      "assetName": "wuzhangassetbundleconfig.json",
+      "bundleModule": "WuZhang",
+      "isAddressableAsset": false,
+      "bundleDependce": []
     }
   ]
 }

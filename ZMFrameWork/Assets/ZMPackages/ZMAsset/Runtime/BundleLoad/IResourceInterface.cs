@@ -21,7 +21,7 @@ public interface IResourceInterface
 {
     void Initlizate();
 
-    void InitAssetModule(BundleModuleEnum bundleModule,bool isAddressableAsset = false);
+    UniTask<bool> InitAssetModule(BundleModuleEnum bundleModule,bool isAddressableAsset = false);
 
     void PreLoadObj(string path,int count=1);
 

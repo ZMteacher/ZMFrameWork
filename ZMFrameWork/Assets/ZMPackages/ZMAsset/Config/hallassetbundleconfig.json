@@ -1,10 +1,28 @@
 {
   "bundleInfoList": [
     {
-      "path": "Assets/GameData/Hall/Prefabs/Window/ExampleWindow.prefab",
-      "crc": 3082594063,
-      "bundleName": "hall_examplewindow.uab",
-      "assetName": "ExampleWindow.prefab",
+      "path": "Assets/GameData/Hall/CfgData/PrefabConfig.txt",
+      "crc": 4172947302,
+      "bundleName": "hall_halldata.uab",
+      "assetName": "PrefabConfig.txt",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/CfgData/WindowConfig.asset",
+      "crc": 432133446,
+      "bundleName": "hall_halldata.uab",
+      "assetName": "WindowConfig.asset",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/Scenes/AddressAPI.unity",
+      "crc": 2041909121,
+      "bundleName": "hall_scene.uab",
+      "assetName": "AddressAPI.unity",
       "bundleModule": "Hall",
       "isAddressableAsset": false,
       "bundleDependce": [
@@ -13,45 +31,122 @@
       ]
     },
     {
-      "path": "Assets/GameData/Hall/Prefabs/Window/ExampleWindow1.prefab",
-      "crc": 2484666259,
-      "bundleName": "hall_examplewindow1.uab",
-      "assetName": "ExampleWindow1.prefab",
+      "path": "Assets/Scenes/APIDemo.unity",
+      "crc": 1682462692,
+      "bundleName": "hall_scene.uab",
+      "assetName": "APIDemo.unity",
       "bundleModule": "Hall",
       "isAddressableAsset": false,
       "bundleDependce": [
+        "hall_examplewindow.uab",
         "hall_shop.uab",
         "hall_hall.uab"
       ]
     },
     {
-      "path": "Assets/GameData/Hall/Prefabs/DynamicItem/ExShopItem.prefab",
-      "crc": 595189068,
-      "bundleName": "hall_exshopitem.uab",
-      "assetName": "ExShopItem.prefab",
+      "path": "Assets/Scenes/SampleScene.unity",
+      "crc": 2052513325,
+      "bundleName": "hall_scene.uab",
+      "assetName": "SampleScene.unity",
       "bundleModule": "Hall",
       "isAddressableAsset": false,
-      "bundleDependce": [
-        "hall_shop.uab"
-      ]
+      "bundleDependce": []
     },
     {
-      "path": "Assets/GameData/Hall/Prefabs/Window/ExShopWindow.prefab",
-      "crc": 2941083401,
-      "bundleName": "hall_exshopwindow.uab",
-      "assetName": "ExShopWindow.prefab",
+      "path": "Assets/Scenes/TestLoadScene.unity",
+      "crc": 438807704,
+      "bundleName": "hall_scene.uab",
+      "assetName": "TestLoadScene.unity",
       "bundleModule": "Hall",
       "isAddressableAsset": false,
-      "bundleDependce": [
-        "hall_shop.uab",
-        "hall_hall.uab"
-      ]
+      "bundleDependce": []
     },
     {
-      "path": "Assets/GameData/Hall/Textures/Hall/5zhang.png",
-      "crc": 1216028367,
-      "bundleName": "hall_hall.uab",
-      "assetName": "5zhang.png",
+      "path": "Assets/GameData/Hall/HotFixDll/HallWorld.dll.bytes",
+      "crc": 2325334670,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "HallWorld.dll.bytes",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/HotFixDll/mscorlib.dll.bytes",
+      "crc": 725686537,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "mscorlib.dll.bytes",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/HotFixDll/SKWorld.dll.bytes",
+      "crc": 1715098950,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "SKWorld.dll.bytes",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/HotFixDll/System.Core.dll.bytes",
+      "crc": 2443937253,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "System.Core.dll.bytes",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/HotFixDll/System.dll.bytes",
+      "crc": 2410813216,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "System.dll.bytes",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/HotFixDll/WZWorld.dll.bytes",
+      "crc": 1568529798,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "WZWorld.dll.bytes",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/HotFixDll/ZM.GC.dll.bytes",
+      "crc": 1163485194,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "ZM.GC.dll.bytes",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/HotFixDll/ZM.SKWorld.dll.bytes",
+      "crc": 803801261,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "ZM.SKWorld.dll.bytes",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/HotFixDll/ZM.UI.dll.bytes",
+      "crc": 1205160941,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "ZM.UI.dll.bytes",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/HotFixDll/ZM.WZWorld.dll.bytes",
+      "crc": 346980461,
+      "bundleName": "hall_hotscript.uab",
+      "assetName": "ZM.WZWorld.dll.bytes",
       "bundleModule": "Hall",
       "isAddressableAsset": false,
       "bundleDependce": []
@@ -61,6 +156,15 @@
       "crc": 759482310,
       "bundleName": "hall_hall.uab",
       "assetName": "13zhang.png",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Hall/Textures/Hall/5zhang.png",
+      "crc": 1216028367,
+      "bundleName": "hall_hall.uab",
+      "assetName": "5zhang.png",
       "bundleModule": "Hall",
       "isAddressableAsset": false,
       "bundleDependce": []
@@ -232,125 +336,6 @@
       "crc": 2513438227,
       "bundleName": "hall_hall.uab",
       "assetName": "大厅.jpg",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/CfgData/PrefabConfig.txt",
-      "crc": 4172947302,
-      "bundleName": "hall_halldata.uab",
-      "assetName": "PrefabConfig.txt",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/CfgData/WindowConfig.asset",
-      "crc": 432133446,
-      "bundleName": "hall_halldata.uab",
-      "assetName": "WindowConfig.asset",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/Prefabs/Window/HallWindow.prefab",
-      "crc": 2837863627,
-      "bundleName": "hall_hallwindow.uab",
-      "assetName": "HallWindow.prefab",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": [
-        "hall_hall.uab"
-      ]
-    },
-    {
-      "path": "Assets/GameData/Hall/HotFixDll/HallWorld.dll.bytes",
-      "crc": 2325334670,
-      "bundleName": "hall_hotscript.uab",
-      "assetName": "HallWorld.dll.bytes",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/HotFixDll/mscorlib.dll.bytes",
-      "crc": 725686537,
-      "bundleName": "hall_hotscript.uab",
-      "assetName": "mscorlib.dll.bytes",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/HotFixDll/SKWorld.dll.bytes",
-      "crc": 1715098950,
-      "bundleName": "hall_hotscript.uab",
-      "assetName": "SKWorld.dll.bytes",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/HotFixDll/System.Core.dll.bytes",
-      "crc": 2443937253,
-      "bundleName": "hall_hotscript.uab",
-      "assetName": "System.Core.dll.bytes",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/HotFixDll/System.dll.bytes",
-      "crc": 2410813216,
-      "bundleName": "hall_hotscript.uab",
-      "assetName": "System.dll.bytes",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/HotFixDll/WZWorld.dll.bytes",
-      "crc": 1568529798,
-      "bundleName": "hall_hotscript.uab",
-      "assetName": "WZWorld.dll.bytes",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/HotFixDll/ZM.GC.dll.bytes",
-      "crc": 1163485194,
-      "bundleName": "hall_hotscript.uab",
-      "assetName": "ZM.GC.dll.bytes",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/HotFixDll/ZM.SKWorld.dll.bytes",
-      "crc": 803801261,
-      "bundleName": "hall_hotscript.uab",
-      "assetName": "ZM.SKWorld.dll.bytes",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/HotFixDll/ZM.UI.dll.bytes",
-      "crc": 1205160941,
-      "bundleName": "hall_hotscript.uab",
-      "assetName": "ZM.UI.dll.bytes",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/Hall/HotFixDll/ZM.WZWorld.dll.bytes",
-      "crc": 346980461,
-      "bundleName": "hall_hotscript.uab",
-      "assetName": "ZM.WZWorld.dll.bytes",
       "bundleModule": "Hall",
       "isAddressableAsset": false,
       "bundleDependce": []
@@ -529,61 +514,6 @@
       "bundleDependce": []
     },
     {
-      "path": "Assets/GameData/Hall/Prefabs/Window/LoginWindow.prefab",
-      "crc": 1174266611,
-      "bundleName": "hall_loginwindow.uab",
-      "assetName": "LoginWindow.prefab",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": [
-        "hall_login.uab",
-        "hall_hall.uab"
-      ]
-    },
-    {
-      "path": "Assets/Scenes/AddressAPI.unity",
-      "crc": 2041909121,
-      "bundleName": "hall_scene.uab",
-      "assetName": "AddressAPI.unity",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": [
-        "hall_shop.uab",
-        "hall_hall.uab"
-      ]
-    },
-    {
-      "path": "Assets/Scenes/APIDemo.unity",
-      "crc": 1682462692,
-      "bundleName": "hall_scene.uab",
-      "assetName": "APIDemo.unity",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": [
-        "hall_examplewindow.uab",
-        "hall_shop.uab",
-        "hall_hall.uab"
-      ]
-    },
-    {
-      "path": "Assets/Scenes/SampleScene.unity",
-      "crc": 2052513325,
-      "bundleName": "hall_scene.uab",
-      "assetName": "SampleScene.unity",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/Scenes/TestLoadScene.unity",
-      "crc": 438807704,
-      "bundleName": "hall_scene.uab",
-      "assetName": "TestLoadScene.unity",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
       "path": "Assets/GameData/Hall/Textures/Shop/Loading.png",
       "crc": 1767702982,
       "bundleName": "hall_shop.uab",
@@ -665,6 +595,17 @@
       "bundleDependce": []
     },
     {
+      "path": "Assets/GameData/Hall/Prefabs/DynamicItem/ExShopItem.prefab",
+      "crc": 595189068,
+      "bundleName": "hall_exshopitem.uab",
+      "assetName": "ExShopItem.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "hall_shop.uab"
+      ]
+    },
+    {
       "path": "Assets/GameData/Hall/Prefabs/DynamicItem/TestObj.prefab",
       "crc": 239473143,
       "bundleName": "hall_testobj.uab",
@@ -674,6 +615,74 @@
       "bundleDependce": [
         "hall_hall.uab"
       ]
+    },
+    {
+      "path": "Assets/GameData/Hall/Prefabs/Window/ExampleWindow.prefab",
+      "crc": 3082594063,
+      "bundleName": "hall_examplewindow.uab",
+      "assetName": "ExampleWindow.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "hall_shop.uab",
+        "hall_hall.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Hall/Prefabs/Window/ExampleWindow1.prefab",
+      "crc": 2484666259,
+      "bundleName": "hall_examplewindow1.uab",
+      "assetName": "ExampleWindow1.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "hall_shop.uab",
+        "hall_hall.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Hall/Prefabs/Window/ExShopWindow.prefab",
+      "crc": 2941083401,
+      "bundleName": "hall_exshopwindow.uab",
+      "assetName": "ExShopWindow.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "hall_shop.uab",
+        "hall_hall.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Hall/Prefabs/Window/HallWindow.prefab",
+      "crc": 2837863627,
+      "bundleName": "hall_hallwindow.uab",
+      "assetName": "HallWindow.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "hall_hall.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Hall/Prefabs/Window/LoginWindow.prefab",
+      "crc": 1174266611,
+      "bundleName": "hall_loginwindow.uab",
+      "assetName": "LoginWindow.prefab",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "hall_login.uab",
+        "hall_hall.uab"
+      ]
+    },
+    {
+      "path": "Assets//ZMPackages/ZMAsset/Config/hallassetbundleconfig.json",
+      "crc": 710148973,
+      "bundleName": "hallbundleconfig.uab",
+      "assetName": "hallassetbundleconfig.json",
+      "bundleModule": "Hall",
+      "isAddressableAsset": false,
+      "bundleDependce": []
     }
   ]
 }

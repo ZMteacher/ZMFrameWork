@@ -611,37 +611,10 @@
       "bundleDependce": []
     },
     {
-      "path": "Assets/ZMPackages/ZMAsset/Config/gameitemassetbundleconfig.json",
-      "crc": 2574792709,
+      "path": "Assets//ZMPackages/ZMAsset/Config/gameitemassetbundleconfig.json",
+      "crc": 3952301096,
       "bundleName": "gameitembundleconfig.uab",
       "assetName": "gameitemassetbundleconfig.json",
-      "bundleModule": "GameItem",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/ZMPackages/ZMAsset/Config/hallassetbundleconfig.json",
-      "crc": 1909326844,
-      "bundleName": "hallbundleconfig.uab",
-      "assetName": "hallassetbundleconfig.json",
-      "bundleModule": "GameItem",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/ZMPackages/ZMAsset/Config/shuangkouassetbundleconfig.json",
-      "crc": 556503698,
-      "bundleName": "shuangkoubundleconfig.uab",
-      "assetName": "shuangkouassetbundleconfig.json",
-      "bundleModule": "GameItem",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/ZMPackages/ZMAsset/Config/wuzhangassetbundleconfig.json",
-      "crc": 1557721827,
-      "bundleName": "wuzhangbundleconfig.uab",
-      "assetName": "wuzhangassetbundleconfig.json",
       "bundleModule": "GameItem",
       "isAddressableAsset": false,
       "bundleDependce": []

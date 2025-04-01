@@ -8,21 +8,24 @@
 *
 * Date: 2023.4.13
 *
-* Modify: 
+* Modify:
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 using UnityEngine;
+
 namespace ZM.ZMAsset
 {
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
         protected static T mInstance = null;
+
         public static T Instance
         {
             get
             {
                 if (mInstance == null)
                 {
-                    mInstance = Object.FindObjectOfType<T>();
+                    mInstance = Object.FindFirstObjectByType<T>();
                     if (mInstance == null)
                     {
                         var obj = new GameObject(typeof(T).Name);
@@ -31,13 +34,15 @@ namespace ZM.ZMAsset
                         DontDestroyOnLoad(obj);
                     }
                 }
+
                 return mInstance;
             }
         }
+
         protected virtual void OnAwake()
         {
-
         }
+
         public virtual void Dispose()
         {
             Destroy(mInstance.gameObject);

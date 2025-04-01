@@ -52,4 +52,13 @@ public class FileHelper
         stream.Dispose();
         stream.Close();
     }
+    /// <summary>
+    /// 异步写入文件
+    /// </summary>
+    /// <param name="filePath"></param>
+    /// <param name="data"></param>
+    public static async void WriteFileAsync(string filePath,string data)
+    {
+        await File.WriteAllTextAsync(filePath, data);
+    }
 }

@@ -1255,15 +1255,15 @@ namespace ZM.ZMAsset
             mAssetsRequestPool.Recycl(request);
         }
 
-        public async void InitAssetModule(BundleModuleEnum bundleModule, bool isAddressableAsset = false)
+        public async UniTask<bool> InitAssetModule(BundleModuleEnum bundleModule, bool isAddressableAsset = false)
         {
             if (!isAddressableAsset)
             {
-                await AssetBundleManager.Instance.InitAssetModule(bundleModule);
+               return await AssetBundleManager.Instance.InitAssetModule(bundleModule);
             }
             else
             {
-                await AddressableAssetSystem.Instance.InitAddressableModule(bundleModule, AddressableAssetSystem.Instance.GetAddressableModule(bundleModule));
+               return await AddressableAssetSystem.Instance.InitAddressableModule(bundleModule, AddressableAssetSystem.Instance.GetAddressableModule(bundleModule));
             }
         }
         #endregion

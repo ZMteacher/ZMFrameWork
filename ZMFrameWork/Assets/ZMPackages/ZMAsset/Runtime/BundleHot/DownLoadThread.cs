@@ -187,10 +187,10 @@ namespace ZM.ZMAsset
                 curDownLoadCount++;
                 //文件是否完整
                 bool fileIsComplete = false;
-                await UniTask.RunOnThreadPool(async () =>
+                await Task.Run(async () =>
                 {
                     Debug.Log("StartDownLoad ModuelEnum:" + mCurBundleModuleEnum + " AssetBundle URL:" + mDownLoadUrl);
-
+                    
                     HttpWebRequest request = WebRequest.Create(mDownLoadUrl) as HttpWebRequest;
                     request.Method = "GET";
                     //发起请求

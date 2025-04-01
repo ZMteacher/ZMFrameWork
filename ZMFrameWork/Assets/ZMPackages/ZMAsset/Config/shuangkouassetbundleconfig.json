@@ -1,24 +1,6 @@
 {
   "bundleInfoList": [
     {
-      "path": "Assets/ZMPackages/ZMAsset/Config/gameitemassetbundleconfig.json",
-      "crc": 2574792709,
-      "bundleName": "gameitembundleconfig.uab",
-      "assetName": "gameitemassetbundleconfig.json",
-      "bundleModule": "ShuangKou",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/ZMPackages/ZMAsset/Config/hallassetbundleconfig.json",
-      "crc": 1909326844,
-      "bundleName": "hallbundleconfig.uab",
-      "assetName": "hallassetbundleconfig.json",
-      "bundleModule": "ShuangKou",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
       "path": "Assets/GameData/ShuangKou/CfgData/SKWindowConfig.asset",
       "crc": 369408938,
       "bundleName": "shuangkou_cfgdata.uab",
@@ -28,10 +10,37 @@
       "bundleDependce": []
     },
     {
-      "path": "Assets/GameData/ShuangKou/Textures/Game/5zhang.png",
-      "crc": 2302600041,
-      "bundleName": "shuangkou_game.uab",
-      "assetName": "5zhang.png",
+      "path": "Assets/GameData/ShuangKou/HotFixDll/mscorlib.dll.bytes",
+      "crc": 2255660390,
+      "bundleName": "shuangkou_hotscipts.uab",
+      "assetName": "mscorlib.dll.bytes",
+      "bundleModule": "ShuangKou",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/ShuangKou/HotFixDll/System.Core.dll.bytes",
+      "crc": 629180919,
+      "bundleName": "shuangkou_hotscipts.uab",
+      "assetName": "System.Core.dll.bytes",
+      "bundleModule": "ShuangKou",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/ShuangKou/HotFixDll/System.dll.bytes",
+      "crc": 1707889878,
+      "bundleName": "shuangkou_hotscipts.uab",
+      "assetName": "System.dll.bytes",
+      "bundleModule": "ShuangKou",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/ShuangKou/HotFixDll/ZM.SKWorld.dll.bytes",
+      "crc": 257633617,
+      "bundleName": "shuangkou_hotscipts.uab",
+      "assetName": "ZM.SKWorld.dll.bytes",
       "bundleModule": "ShuangKou",
       "isAddressableAsset": false,
       "bundleDependce": []
@@ -41,6 +50,15 @@
       "crc": 305169638,
       "bundleName": "shuangkou_game.uab",
       "assetName": "13zhang.png",
+      "bundleModule": "ShuangKou",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/ShuangKou/Textures/Game/5zhang.png",
+      "crc": 2302600041,
+      "bundleName": "shuangkou_game.uab",
+      "assetName": "5zhang.png",
       "bundleModule": "ShuangKou",
       "isAddressableAsset": false,
       "bundleDependce": []
@@ -280,78 +298,6 @@
       "bundleDependce": []
     },
     {
-      "path": "Assets/GameData/ShuangKou/HotFixDll/HallWorld.dll.bytes",
-      "crc": 1463387643,
-      "bundleName": "shuangkou_hotscipts.uab",
-      "assetName": "HallWorld.dll.bytes",
-      "bundleModule": "ShuangKou",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/ShuangKou/HotFixDll/mscorlib.dll.bytes",
-      "crc": 2255660390,
-      "bundleName": "shuangkou_hotscipts.uab",
-      "assetName": "mscorlib.dll.bytes",
-      "bundleModule": "ShuangKou",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/ShuangKou/HotFixDll/System.Core.dll.bytes",
-      "crc": 629180919,
-      "bundleName": "shuangkou_hotscipts.uab",
-      "assetName": "System.Core.dll.bytes",
-      "bundleModule": "ShuangKou",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/ShuangKou/HotFixDll/System.dll.bytes",
-      "crc": 1707889878,
-      "bundleName": "shuangkou_hotscipts.uab",
-      "assetName": "System.dll.bytes",
-      "bundleModule": "ShuangKou",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/ShuangKou/HotFixDll/ZM.GC.dll.bytes",
-      "crc": 3999117198,
-      "bundleName": "shuangkou_hotscipts.uab",
-      "assetName": "ZM.GC.dll.bytes",
-      "bundleModule": "ShuangKou",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/ShuangKou/HotFixDll/ZM.SKWorld.dll.bytes",
-      "crc": 257633617,
-      "bundleName": "shuangkou_hotscipts.uab",
-      "assetName": "ZM.SKWorld.dll.bytes",
-      "bundleModule": "ShuangKou",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/ShuangKou/HotFixDll/ZM.UI.dll.bytes",
-      "crc": 3973153897,
-      "bundleName": "shuangkou_hotscipts.uab",
-      "assetName": "ZM.UI.dll.bytes",
-      "bundleModule": "ShuangKou",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/ShuangKou/HotFixDll/ZM.WZWorld.dll.bytes",
-      "crc": 874292625,
-      "bundleName": "shuangkou_hotscipts.uab",
-      "assetName": "ZM.WZWorld.dll.bytes",
-      "bundleModule": "ShuangKou",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
       "path": "Assets/GameData/ShuangKou/Textures/Loading/LoginButton.png",
       "crc": 3478018065,
       "bundleName": "shuangkou_loading.uab",
@@ -424,6 +370,15 @@
       "bundleDependce": []
     },
     {
+      "path": "Assets/GameData/ShuangKou/Textures/Loading/背景 10.png",
+      "crc": 3724875808,
+      "bundleName": "shuangkou_loading.uab",
+      "assetName": "背景 10.png",
+      "bundleModule": "ShuangKou",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
       "path": "Assets/GameData/ShuangKou/Textures/Loading/背景 2.png",
       "crc": 2369080081,
       "bundleName": "shuangkou_loading.uab",
@@ -491,15 +446,6 @@
       "crc": 4209342976,
       "bundleName": "shuangkou_loading.uab",
       "assetName": "背景 9.png",
-      "bundleModule": "ShuangKou",
-      "isAddressableAsset": false,
-      "bundleDependce": []
-    },
-    {
-      "path": "Assets/GameData/ShuangKou/Textures/Loading/背景 10.png",
-      "crc": 3724875808,
-      "bundleName": "shuangkou_loading.uab",
-      "assetName": "背景 10.png",
       "bundleModule": "ShuangKou",
       "isAddressableAsset": false,
       "bundleDependce": []
@@ -733,8 +679,8 @@
       ]
     },
     {
-      "path": "Assets/ZMPackages/ZMAsset/Config/shuangkouassetbundleconfig.json",
-      "crc": 556503698,
+      "path": "Assets//ZMPackages/ZMAsset/Config/shuangkouassetbundleconfig.json",
+      "crc": 1686513035,
       "bundleName": "shuangkoubundleconfig.uab",
       "assetName": "shuangkouassetbundleconfig.json",
       "bundleModule": "ShuangKou",

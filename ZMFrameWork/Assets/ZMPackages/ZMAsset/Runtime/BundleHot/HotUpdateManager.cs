@@ -12,6 +12,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 namespace ZM.ZMAsset
 {
@@ -28,7 +29,7 @@ namespace ZM.ZMAsset
             this.OnHotFinishCallBackAction += hotFinishCallBack; 
            mHotAssetsWindow = InstantiateResourcesObj<HotAssetsWindow>("HotAssetsWindow");
             //开始解压游戏内嵌资源
-           IDecompressAssets decompress= ZMAsset.StartDeCompressBuiltinFile(bundleModule,()=> {
+           IDecompressAssets decompress= ZMAsset.StartDeCompressBuiltinFile(bundleModule, async ()=> {
                //说明资源开启解压了
                if (Application.internetReachability == NetworkReachability.NotReachable)
                {
@@ -44,7 +45,7 @@ namespace ZM.ZMAsset
                else
                {
                    //初始化资源模块
-                   ZMAsset.InitAssetsModule(bundleModule);
+                   await ZMAsset.InitAssetsModule(bundleModule);
                    //如果不需要热更，说明用户已经热更过了，资源是最新的，直接进入游戏 
                    OnHotFinishCallBack(bundleModule);
                }

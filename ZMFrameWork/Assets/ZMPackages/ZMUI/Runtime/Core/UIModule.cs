@@ -313,7 +313,8 @@ public class UIModule
             }
             window.SetVisible(false);
             SetWidnowMaskVisible();
-            window.OnHide();
+            if (window.Visible)
+                window.OnHide();
             window.OnDestroy();
             GameObjectDestoryWindow(window.gameObject);
             //在出栈的情况下，上一个界面销毁时，自动打开栈种的下一个界面
