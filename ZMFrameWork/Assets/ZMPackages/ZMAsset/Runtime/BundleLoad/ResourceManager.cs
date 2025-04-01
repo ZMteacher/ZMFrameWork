@@ -29,7 +29,7 @@ namespace ZM.ZMAsset
         public string path;
         public int insid;
         public GameObject obj;
-
+        public OriginData originData;
         public void Release()
         {
             crc = 0;
@@ -39,6 +39,7 @@ namespace ZM.ZMAsset
             {
                 GameObject.Destroy(obj);
             }
+            originData=null;
             obj = null;
         }
     }
@@ -93,7 +94,7 @@ namespace ZM.ZMAsset
         /// <summary>
         /// 缓存对象类对象池
         /// </summary>
-        private ClassObjectPool<CacheObejct> mCacheObejctPool = new ClassObjectPool<CacheObejct>(300);
+        private ClassObjectPool<CacheObejct> mCacheObejctPool = new ClassObjectPool<CacheObejct>(150);
         /// <summary>
         /// 缓存资源请求对象池
         /// </summary>
@@ -136,11 +137,12 @@ namespace ZM.ZMAsset
         /// <param name="info"></param>
         private void AssetsDownLoadFinish(HotFileInfo info)
         {
-            Debug.Log("ResourceManager   AssetsDownLoadFinish:" + info.abName);
+            if (mWaitLoadAssetsList.Count==0) return;
+            // Debug.Log("ResourceManager   AssetsDownLoadFinish:" + info.abName);
             //处理比AssetBunle配置文件先下载下来的AssetBunle的加载
             if (info.abName.Contains("bundleconfig"))
             {
-                Debug.Log("Handler waitLoadLsit Count:" + mWaitLoadAssetsList.Count);
+                // Debug.Log("Handler waitLoadLsit Count:" + mWaitLoadAssetsList.Count);
                 HotFileInfo[] hotFileArray = mWaitLoadAssetsList.ToArray();
                 mWaitLoadAssetsList.Clear();
                 foreach (var item in hotFileArray)
@@ -247,23 +249,21 @@ namespace ZM.ZMAsset
         {
             path = path.EndsWith(".prefab") ? path : path + ".prefab";
             //先从对象池中查询这个对象，如果存在就直接使用
-            GameObject cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path));
-            if (cacheObj != null)
+            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path),false);
+            if (cacheObj != null && cacheObj.obj != null)
             {
-                cacheObj.transform.SetParent(parent);
-                cacheObj.transform.localPosition = localPoition;
-                cacheObj.transform.localScale = localScale;
-                cacheObj.transform.rotation = quaternion;
-                return cacheObj;
+                GameObject poolObject = cacheObj.obj;
+                poolObject.transform.SetParent(parent);
+                //重置数据
+                SetObjectTransData(poolObject, localPoition, localScale, quaternion);
+                return cacheObj.obj;
             }
             //加载该对象
             GameObject obj = LoadResource<GameObject>(path);
             if (obj != null)
             {
-                GameObject nObj = Instantiate(path, obj, parent);
-                nObj.transform.localPosition = localPoition;
-                nObj.transform.localScale = localScale;
-                nObj.transform.rotation = quaternion;
+                GameObject nObj = InstantiateObject(path, obj, parent);
+                SetObjectTransData(nObj, localPoition, localScale, quaternion);
                 return nObj;
             }
             else
@@ -272,6 +272,14 @@ namespace ZM.ZMAsset
                 return null;
             }
         }
+
+        private void SetObjectTransData(GameObject obj,Vector3 localPoition, Vector3 localScale, Quaternion quaternion)
+        {
+            obj.transform.localPosition = localPoition;
+            obj.transform.localScale = localScale;
+            obj.transform.rotation = quaternion;
+        }
+
         /// <summary>
         /// 克隆一个对象
         /// </summary>
@@ -279,15 +287,23 @@ namespace ZM.ZMAsset
         /// <param name="obj"></param>
         /// <param name="parent"></param>
         /// <returns></returns>
-        private GameObject Instantiate(string path, GameObject obj, Transform parent)
+        private GameObject InstantiateObject(string path, GameObject obj, Transform parent)
         {
             obj = GameObject.Instantiate(obj, parent, false);
             CacheObejct cacheObejct = mCacheObejctPool.Spawn();
             cacheObejct.obj = obj;
             cacheObejct.path = path;
             cacheObejct.crc = Crc32.GetCrc32(path);
-            cacheObejct.insid = obj.GetInstanceID();
-
+            if (obj !=null)
+            {
+                cacheObejct.insid = obj.GetInstanceID();
+                cacheObejct.originData = obj.GetComponent<OriginData>();
+                //重置原始数据
+                if (!ReferenceEquals(cacheObejct.originData, null))
+                {
+                    cacheObejct.originData.ResetOriginData();
+                }
+            }
             mAllObjectDic.Add(cacheObejct.insid, cacheObejct);
             return obj;
         }
@@ -303,26 +319,25 @@ namespace ZM.ZMAsset
         {
             path = path.EndsWith(".prefab") ? path : path + ".prefab";
             //先从对象池中查询这个对象，如果存在就直接使用
-            GameObject cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path));
-            if (cacheObj != null)
+            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path),true);
+            if (cacheObj != null && cacheObj.obj != null)
             {
-                loadAsync?.Invoke(cacheObj, param1, param2);
+                loadAsync?.Invoke(cacheObj.obj, param1, param2);
                 return;
             }
             //获取异步加载任务唯一id
             long guid = mAsyncTaskGuid;
             mAsyncLoadingTaskList.Add(guid);
             //开始异步加载资源
-            GameObject obj=  await LoadResourceAsync<GameObject>(path);
-
-
+            GameObject obj = await LoadResourceAsync<GameObject>(path);
+            
             //异步加载完成
             if (obj != null)
             {
                 if (mAsyncLoadingTaskList.Contains(guid))
                 {
                     mAsyncLoadingTaskList.Remove(guid);
-                    GameObject nObj = Instantiate(path, (GameObject)obj, null);
+                    GameObject nObj = InstantiateObject(path, obj, null);
                     loadAsync?.Invoke(nObj, param1, param2);
                 }
             }
@@ -331,25 +346,7 @@ namespace ZM.ZMAsset
                 mAsyncLoadingTaskList.Remove(guid);
                 Debug.LogError("Async Load GameObject is Null Path:" + path);
             }
-
-            //LoadResourceAsync<GameObject>(path, (obj) =>
-            //{
-            //    //异步加载完成
-            //    if (obj != null)
-            //    {
-            //        if (mAsyncLoadingTaskList.Contains(guid))
-            //        {
-            //            mAsyncLoadingTaskList.Remove(guid);
-            //            GameObject nObj = Instantiate(path, (GameObject)obj, null);
-            //            loadAsync?.Invoke(nObj, param1, param2);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        mAsyncLoadingTaskList.Remove(guid);
-            //        Debug.LogError("Async Load GameObject is Null Path:" + path);
-            //    }
-            //});
+            
         }
         /// <summary>
         /// 异步克隆对象 可通过await进行等待
@@ -366,10 +363,10 @@ namespace ZM.ZMAsset
             request.param2 = param2;
             request.param3 = param3;
             //先从对象池中查询这个对象，如果存在就直接使用
-            GameObject cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path));
-            if (cacheObj != null)
+            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path),true);
+            if (cacheObj != null && cacheObj.obj != null)
             {
-                request.obj = cacheObj;
+                request.obj = cacheObj.obj;
                 return request;
             }
             //获取异步加载任务唯一id
@@ -386,7 +383,7 @@ namespace ZM.ZMAsset
             if (mAsyncLoadingTaskList.Contains(guid))
             {
                 mAsyncLoadingTaskList.Remove(guid);
-                GameObject nObj = Instantiate(path,loadObj, null);
+                GameObject nObj = InstantiateObject(path,loadObj, null);
                 request.obj = nObj;
                 return request;
             }
@@ -415,10 +412,10 @@ namespace ZM.ZMAsset
             request.param2 = param2;
             request.param3 = param3;
             //先从对象池中查询这个对象，如果存在就直接使用
-            GameObject cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path));
-            if (cacheObj != null)
+            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path),true);
+            if (cacheObj != null && cacheObj.obj != null)
             {
-                request.obj = cacheObj;
+                request.obj = cacheObj.obj;
                 return request;
             }
             //获取异步加载任务唯一id
@@ -429,7 +426,7 @@ namespace ZM.ZMAsset
             if (mAsyncLoadingTaskList.Contains(guid))
             {
                 mAsyncLoadingTaskList.Remove(guid);
-                GameObject nObj = Instantiate(path, loadObj, null);
+                GameObject nObj = InstantiateObject(path, loadObj, null);
                 request.obj = nObj;
                 return request;
             }
@@ -452,11 +449,11 @@ namespace ZM.ZMAsset
         {
             path = path.EndsWith(".prefab") ? path : path + ".prefab";
             //先从对象池中查询这个对象，如果存在就直接使用
-            GameObject cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path));
+            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path),true);
             long loadid = -1;
-            if (cacheObj != null)
+            if (cacheObj != null && cacheObj.obj != null)
             {
-                loadAsync?.Invoke(cacheObj, param1, param2);
+                loadAsync?.Invoke(cacheObj.obj, param1, param2);
                 return loadid;
             }
 
@@ -488,16 +485,20 @@ namespace ZM.ZMAsset
         /// </summary>
         /// <param name="crc"></param>
         /// <returns></returns>
-        private GameObject GetCacheObjFromPools(uint crc)
+        private CacheObejct GetCacheObjFromPools(uint crc,bool reSetData)
         {
-            List<CacheObejct> objList = null;
-            mObjectPoolDic.TryGetValue(crc, out objList);
+            mObjectPoolDic.TryGetValue(crc, out var objList);
             if (objList != null && objList.Count > 0)
             {
                 //直接取对象池中的第0个对象
-                CacheObejct obj = objList[objList.Count - 1];
+                CacheObejct obj = objList[^1];
                 objList.Remove(obj);
-                return obj.obj;
+                //重置数据
+                if (!ReferenceEquals(obj.originData,null))
+                {
+                    obj.originData.ResetOriginData();
+                }
+                return obj;
             }
             return null;
         }
@@ -548,13 +549,14 @@ namespace ZM.ZMAsset
                 uint crc = Crc32.GetCrc32(path);
                 //从缓存中获取我们Bundleitem
                 BundleItem item = GetCacheItemFormAssetDic(crc);
-                if (item==null||item.assetBundle==null)
+                if (item == null || item.assetBundle ==null)
                 {
                     item= AssetBundleManager.Instance.LoadAssetBundle(crc);
                     if (item != null)
                     {
                         item.path = path;
                         item.crc = crc;
+                        item.refCount++;
                         //缓存已经加载过的资源
                         mAlreayLoadAssetsDic.Add(crc, item);
                     }
@@ -576,7 +578,6 @@ namespace ZM.ZMAsset
         /// <returns></returns>
         public T LoadResource<T>(string path) where T : UnityEngine.Object
         {
-
             if (string.IsNullOrEmpty(path))
             {
                 Debug.LogError("path is Null , return null!");
@@ -624,9 +625,10 @@ namespace ZM.ZMAsset
 
             item.obj = obj;
             item.path = path;
+            item.refCount++;
             //缓存已经加载过的资源
             mAlreayLoadAssetsDic.Add(crc, item);
-
+            
             return obj;
         }
 
@@ -686,6 +688,7 @@ namespace ZM.ZMAsset
 
             item.objArr = objArr;
             item.path = path;
+            item.refCount++;
             //缓存已经加载过的资源
             mAlreayLoadAssetsDic.Add(crc, item);
 
@@ -737,6 +740,7 @@ namespace ZM.ZMAsset
                         loadFinish?.Invoke(item.obj);
                         item.path = path;
                         item.crc = crc;
+                        item.refCount++;
                         mAlreayLoadAssetsDic.Add(crc, item);
                     }
                     else
@@ -750,6 +754,7 @@ namespace ZM.ZMAsset
                             item.obj = loadObj;
                             item.path = path;
                             item.crc = crc;
+                            item.refCount++;
                             if (!mAlreayLoadAssetsDic.ContainsKey(crc))
                             {
                                 mAlreayLoadAssetsDic.Add(crc, item);
@@ -769,6 +774,7 @@ namespace ZM.ZMAsset
             {
                 item.obj = obj;
                 item.path = path;
+                item.refCount++;
                 //缓存已经加载过的资源
                 mAlreayLoadAssetsDic.Add(crc, item);
             }
@@ -828,33 +834,28 @@ namespace ZM.ZMAsset
                     item = await AssetBundleManager.Instance.LoadAssetBundleAddressable(crc, moduleEnum);
                 }
                 
-                if (item != null)
-                {
-                    if (item.obj != null)
-                    {
-                        item.path = path;
-                        item.crc = crc;
-                        mAlreayLoadAssetsDic.Add(crc, item);
-                        return obj;
-                    }
-                    else
-                    {
-                        //通过异步方式加载AssetBudnle
-                        T loadObj = await item.assetBundle.LoadAssetAsync<T>(item.assetName) as T;
-                        item.obj = loadObj;
-                        item.path = path;
-                        item.crc = crc;
-                        if (!mAlreayLoadAssetsDic.ContainsKey(crc))
-                            mAlreayLoadAssetsDic.Add(crc, item);
- 
-                        return loadObj;
-                    }
-                }
-                else
+                if (item == null)
                 {
                     Debug.LogError("item is null ...Path:" + path);
                     return null;
                 }
+                
+                if (item.obj != null)
+                {
+                    item.path = path;
+                    item.crc = crc;
+                    item.refCount++;
+                    mAlreayLoadAssetsDic.Add(crc, item);
+                    return obj;
+                }
+                //通过异步方式加载AssetBudnle
+                T loadObj = await item.assetBundle.LoadAssetAsync<T>(item.assetName) as T;
+                item.obj = loadObj;
+                item.path = path;
+                item.crc = crc;
+                item.refCount++;
+                mAlreayLoadAssetsDic.TryAdd(crc, item);
+                return loadObj;
             }
             return null;
         }
@@ -868,11 +869,15 @@ namespace ZM.ZMAsset
         /// </summary>
         /// <param name="crc"></param>
         /// <returns></returns>
-        public BundleItem GetCacheItemFormAssetDic(uint crc)
+        private BundleItem GetCacheItemFormAssetDic(uint crc)
         {
-            BundleItem item = null;
-            mAlreayLoadAssetsDic.TryGetValue(crc, out item);
-            return item != null ? item : new BundleItem { crc = crc };
+            mAlreayLoadAssetsDic.TryGetValue(crc, out var item);
+            if (item==null)
+            {
+                return new BundleItem { crc = crc ,refCount = 1};
+            }
+            item.refCount++;
+            return item;;
         }
 
 #if UNITY_EDITOR
@@ -900,28 +905,24 @@ namespace ZM.ZMAsset
         /// 释放对象占用内存
         /// </summary>
         /// <param name="obj"></param>
-        /// <param name="destroy"></param>
-        public void Release(GameObject obj, bool destroy = false)
+        /// <param name="destroyCache"></param>
+        public void Release(GameObject obj, bool destroyCache = false)
         {
-
-            CacheObejct cacheObejct = null;
+            
             int insid = obj.GetInstanceID();
-            mAllObjectDic.TryGetValue(insid, out cacheObejct);
+            mAllObjectDic.TryGetValue(insid, out var cacheObejct);
             //通过Gameobject.Instantiate 不支持回收，因为对象池中没有记录
             if (cacheObejct == null)
             {
                 Debug.LogError("Recycl Obj failed,obj is Gameobject.Instantiate...");
                 return;
             }
-            //Debug.Log("Release Obj ins：" + insid + "  path:" + cacheObejct.path);
-            if (destroy)
+            if (destroyCache)
             {
                 GameObject.Destroy(obj);
-                if (mAllObjectDic.ContainsKey(insid))
-                    mAllObjectDic.Remove(insid);
+                mAllObjectDic.Remove(insid);
                 //获取该物体所在对象池
-                List<CacheObejct> objectPoolList = null;
-                mObjectPoolDic.TryGetValue(cacheObejct.crc, out objectPoolList);
+                mObjectPoolDic.TryGetValue(cacheObejct.crc, out var objectPoolList);
                 if (objectPoolList != null)
                 {
                     //从对象池中移除缓存对象
@@ -931,23 +932,25 @@ namespace ZM.ZMAsset
                     }
                     cacheObejct.Release();
                     mCacheObejctPool.Recycl(cacheObejct);
+                    return;
                 }
+                
                 //如果该对象在对象池中不存在，或者已经全部释放了，就卸载该对象AssetBundle的资源占用
-                else if (objectPoolList == null || objectPoolList.Count == 0)
+                if (mAlreayLoadAssetsDic.TryGetValue(cacheObejct.crc, out BundleItem item))
                 {
-                    BundleItem item;
-                    if (mAlreayLoadAssetsDic.TryGetValue(cacheObejct.crc, out item))
+                    item.refCount--;
+                    if (item.refCount == 0)
                     {
                         AssetBundleManager.Instance.ReleaseAssets(item, true);
-                        mAlreayLoadAssetsDic.Remove(cacheObejct.crc);
+                        mAlreayLoadAssetsDic.Remove(cacheObejct.crc); 
                     }
-                    else
-                    {
-                        Debug.LogError("mAlreayLoadAssetsDic not find BundleItem Path:" + cacheObejct.path + " isnid:" + insid);
-                    }
-                    cacheObejct.Release();
-                    mCacheObejctPool.Recycl(cacheObejct);
                 }
+                else
+                {
+                    Debug.LogError("mAlreayLoadAssetsDic not find BundleItem Path:" + cacheObejct.path + " isnid:" + insid);
+                }
+                cacheObejct.Release();
+                mCacheObejctPool.Recycl(cacheObejct);
                 //Debug.Log(mCacheObejctPool.PoolCount);
             }
             else
@@ -1156,7 +1159,6 @@ namespace ZM.ZMAsset
             mAsyncLoadingTaskList.Add(guid);
             LoadResourceAsync<Sprite>(path, (obj) =>
             {
-
                 if (obj != null)
                 {
                     if (mAsyncLoadingTaskList.Contains(guid))
@@ -1254,7 +1256,12 @@ namespace ZM.ZMAsset
         {
             mAssetsRequestPool.Recycl(request);
         }
-
+        /// <summary>
+        /// 初始化资源模块
+        /// </summary>
+        /// <param name="bundleModule">模块类型</param>
+        /// <param name="isAddressableAsset">是否是寻址资源</param>
+        /// <returns></returns>
         public async UniTask<bool> InitAssetModule(BundleModuleEnum bundleModule, bool isAddressableAsset = false)
         {
             if (!isAddressableAsset)

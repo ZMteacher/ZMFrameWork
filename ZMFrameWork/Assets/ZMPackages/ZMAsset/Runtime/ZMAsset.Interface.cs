@@ -37,7 +37,7 @@ namespace ZM.ZMAsset
         /// <param name="localScale"></param>
         /// <param name="quaternion"></param>
         /// <returns></returns>
-        public static GameObject Instantiate(string path, Transform parent)
+        public static GameObject InstantiateObject(string path, Transform parent)
         {
             return Instance.mResource.Instantiate(path, parent, Vector3.zero, Vector3.one, Quaternion.identity);
         }
@@ -50,7 +50,7 @@ namespace ZM.ZMAsset
         /// <param name="localScale"></param>
         /// <param name="quaternion"></param>
         /// <returns></returns>
-        public static GameObject Instantiate(string path, Transform parent, Vector3 localPoition, Vector3 localScale, Quaternion quaternion)
+        public static GameObject InstantiateObject(string path, Transform parent, Vector3 localPoition, Vector3 localScale, Quaternion quaternion)
         {
             return Instance.mResource.Instantiate(path,parent,localPoition,localScale,quaternion);
         }
@@ -61,7 +61,7 @@ namespace ZM.ZMAsset
         /// </summary>
         /// <param name="path">路径</param>
         /// <param name="loadAsync">异步加载回调</param>
-        public static void InstantiateAsync(string path, System.Action<GameObject, object, object> loadAsync, object param1 = null, object param2 = null)
+        public static void InstantiateObjectAsync(string path, System.Action<GameObject, object, object> loadAsync, object param1 = null, object param2 = null)
         {
             Instance.mResource.InstantiateAsync(path,loadAsync,param1,param2);
         }
@@ -72,7 +72,7 @@ namespace ZM.ZMAsset
         /// <param name="param1">透传参数1 (回调触发时返回)</param>
         /// <param name="param2">透传参数2 (回调触发时返回)</param>
         /// <param name="param3">透传参数3 (回调触发时返回)</param>
-        public static async UniTask<AssetsRequest> InstantiateAsync(string path, object param1 = null, object param2 = null, object param3 = null)
+        public static async UniTask<AssetsRequest> InstantiateObjectAsync(string path, object param1 = null, object param2 = null, object param3 = null)
         {
           return await Instance.mResource.InstantiateAsync(path, param1, param2, param3);
         }
@@ -86,7 +86,7 @@ namespace ZM.ZMAsset
         /// <param name="param1"></param>
         /// <param name="param2"></param>
         /// <returns></returns>
-        public static long InstantiateAndLoad(string path, System.Action<GameObject, object, object> loadAsync, System.Action loading, object param1 = null, object param2 = null)
+        public static long InstantiateObjectAndLoad(string path, System.Action<GameObject, object, object> loadAsync, System.Action loading, object param1 = null, object param2 = null)
         {
             return Instance.mResource.InstantiateAndLoad(path, loadAsync, loading, param1, param2);
         }
@@ -96,11 +96,11 @@ namespace ZM.ZMAsset
         /// </summary>
         /// <param name="path"></param>
         /// <param name="count"></param>
-        public static void PreLoadObj(string path, int count = 1)
+        public static void PreLoadObjct(string path, int count = 1)
         {
              Instance.mResource.PreLoadObj(path,count);
         }
-        public static async UniTask PreLoadObjAsync<T>(string path, int count = 1) 
+        public static async UniTask PreLoadObjectAsync<T>(string path, int count = 1) 
         {
             await Instance.mResource.PreLoadObjAsync(path, count);
         }

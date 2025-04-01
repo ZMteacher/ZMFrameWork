@@ -74,12 +74,12 @@ public class ExampleWindow : MonoBehaviour
         LoadTextAssetText.text = (await ZMAsset.LoadTextAssetAsync(AssetsPathConfig.HALL_DATA_PATH + "PrefabConfig.txt")).text;
 
         //同步克隆对象
-        GameObject nObj= ZMAsset.Instantiate(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj", InstantiateRoot);
+        GameObject nObj= ZMAsset.InstantiateObject(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj", InstantiateRoot);
         //将当前对象回收至对象池
         ZMAsset.Release(nObj);
 
         //异步克隆对象
-        ZMAsset.InstantiateAsync(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj",(obj,param1,param2)=> {
+        ZMAsset.InstantiateObjectAsync(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj",(obj,param1,param2)=> {
             Debug.Log("param1:"+ param1 + "  param2:"+ param2);
             obj.transform.SetParent(InstantiateAsyncRoot);
             obj.transform.localPosition = Vector3.zero;
@@ -88,7 +88,7 @@ public class ExampleWindow : MonoBehaviour
         },123,456);
 
         //异步可等待的克隆对象
-        AssetsRequest assets = await ZMAsset.InstantiateAsync(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj", 123, 456,789);
+        AssetsRequest assets = await ZMAsset.InstantiateObjectAsync(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj", 123, 456,789);
         Debug.Log("param1:" + assets.param1 + "  param2:" + assets.param1);
         GameObject obj = assets.obj;
         obj.transform.SetParent(InstantiateAsyncRoot);
@@ -98,9 +98,9 @@ public class ExampleWindow : MonoBehaviour
         assets.Release();
 
         //预加载对象
-        ZMAsset.PreLoadObj(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj", 10);
+        ZMAsset.PreLoadObjct(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj", 10);
         //异步预加载对象 (这次预加载会触发框架对象池优化机制，同一个对象加载时优先从对象池中获取，故2次预加载对象池中只有10个)
-        await ZMAsset.PreLoadObjAsync<GameObject>(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj", 10);
+        await ZMAsset.PreLoadObjectAsync<GameObject>(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj", 10);
         preLoadText.text = "预加载对象成功 个数:" + 10 + " 以回收至对象池，对象池节点：RecyclObjRoot";
     }
 

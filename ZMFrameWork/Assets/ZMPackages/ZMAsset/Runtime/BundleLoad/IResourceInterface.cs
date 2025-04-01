@@ -43,7 +43,7 @@ public interface IResourceInterface
     //Task<T> LoadResourceAsyncAas<T>(string path, BundleModuleEnum moduleEnum ) where T : UnityEngine.Object;
     void RemoveObjectLoadCallBack(long loadid);
 
-    void Release(GameObject obj, bool destroy = false); 
+    void Release(GameObject obj, bool destroyCache = false); 
 
     void Release(Texture texture);
 

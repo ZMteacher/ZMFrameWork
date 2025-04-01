@@ -77,7 +77,7 @@ public class HallWindow : WindowBase
  
     public void OnExampleButtonClick()
     {
-        ZMAsset.Instantiate(AssetsPathConfig.HALL_PREFABS_PATH + "ExampleWindow", null);
+        ZMAsset.InstantiateObject(AssetsPathConfig.HALL_PREFABS_PATH + "ExampleWindow", null);
     }
     #endregion
 }

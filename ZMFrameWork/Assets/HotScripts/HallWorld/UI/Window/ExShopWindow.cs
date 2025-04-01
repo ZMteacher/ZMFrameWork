@@ -40,11 +40,10 @@ public class ExShopWindow : WindowBase
         itemIDlist.Clear();
         exShopItemList.Clear();
         //添加道具id
-         for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 15; i++)
         {
             itemIDlist.Add(i + 6000 + 1);
         } 
-         
         //生成兑换道具列表
         foreach (var id in itemIDlist)
         {

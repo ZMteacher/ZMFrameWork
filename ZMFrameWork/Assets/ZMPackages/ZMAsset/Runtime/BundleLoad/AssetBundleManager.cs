@@ -61,6 +61,10 @@ namespace ZM.ZMAsset
         /// 通过AssetBundle加载出的对象数组
         /// </summary>
         public UnityEngine.Object[] objArr;
+        /// <summary>
+        /// 引用计数
+        /// </summary>
+        public int refCount;
     }
 
     /// <summary>
@@ -277,38 +281,34 @@ namespace ZM.ZMAsset
         /// <returns></returns>
         public  BundleItem LoadAssetBundle(uint crc)
         {
-            BundleItem item = null;
-
             //先到所有的AssetBunel资源字典中查询一下这个资源存不存在，如果存在说明该资源已经打成了AssetBundle包，这种情况下就可以直接加载了
             //如果不存在，则说明该资源 不属于AssetBUnle 给与错误提示。
-            mAllBundleAssetDic.TryGetValue(crc, out item);
+            mAllBundleAssetDic.TryGetValue(crc, out var item);
 
-            if (item!=null)
+            if (item != null)
             {
                 //如果AssetBundle为空，说明该资源所在的AssetBundle没有加载进内存，这种情况我们就需要加载该AssetBundle
-                if (item.assetBundle==null)
+                if (item.assetBundle != null)
                 {
-                    item.assetBundle = LoadAssetBundle(item.bundleName,item.bundleModuleType);
+                    return item;
+                }
 
-                    if (item.assetBundle == null)
-                    {
-                        Debug.LogError("Start AddressableSystem Load:" + item.bundleName);
-                        return null;
-                    }
-                    //需要加载这个AssetBundle依赖的其他的AssetBundle
-                    foreach (var bundleName in item.bundleDependce)
-                    {
-                        if (item.bundleName!=bundleName)
-                        {
-                            LoadAssetBundle(bundleName, item.bundleModuleType);
-                        }
-                    }
-                    return item;
-                }
-                else
+                item.assetBundle = LoadAssetBundle(item.bundleName,item.bundleModuleType);
+
+                if (item.assetBundle == null)
                 {
-                    return item;
+                    Debug.LogError("Start AddressableSystem Load:" + item.bundleName);
+                    return null;
                 }
+                //需要加载这个AssetBundle依赖的其他的AssetBundle
+                foreach (var bundleName in item.bundleDependce)
+                {
+                    if (item.bundleName!=bundleName)
+                    {
+                        LoadAssetBundle(bundleName, item.bundleModuleType);
+                    }
+                }
+                return item;
             }
             else
             {
@@ -486,18 +486,10 @@ namespace ZM.ZMAsset
         /// <param name="bundleName"></param>
         public void ReleaseAssetBundle(BundleItem assetitem, bool unLoad,string bundleName="")
         {
-            string assetBudnleName = "";
-            if (assetitem == null)
-            {
-                assetBudnleName = bundleName;
-            }
-            else
-            {
-                assetBudnleName = assetitem.bundleName;
-            }
-            AssetBundleCache bundleCacheItem = null;
+            string assetBudnleName = assetitem == null ? bundleName : assetitem.bundleName;
+            
             //如果该AssetBUndle的名字不为空，与我们的这个AssetBundle已经加载过了
-            if (!string.IsNullOrEmpty(assetBudnleName) && mAllAlreadyLoadBundleDic.TryGetValue(assetBudnleName, out bundleCacheItem))
+            if (!string.IsNullOrEmpty(assetBudnleName) && mAllAlreadyLoadBundleDic.TryGetValue(assetBudnleName, out var bundleCacheItem))
             {
                 if (bundleCacheItem.assetBundle != null)
                 {

@@ -420,7 +420,7 @@ public class UIModule
           // return GameObject.Instantiate<GameObject>(Resources.Load<GameObject>(path), parent);
         //在这里替换成自己的资源加载框架 例:
         Debug.Log("LaodWindow:"+mWindowConfig.GetWindowData(wndName).path);
-        return ZMAsset.Instantiate(mWindowConfig.GetWindowData(wndName).path, mUIRoot);
+        return ZMAsset.InstantiateObject(mWindowConfig.GetWindowData(wndName).path, mUIRoot);
     }
     #endregion
 
