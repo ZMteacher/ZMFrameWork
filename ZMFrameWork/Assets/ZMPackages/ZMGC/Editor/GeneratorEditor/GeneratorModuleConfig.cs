@@ -5,7 +5,7 @@ using UnityEngine;
 public class GeneratorModuleConfig : ScriptableObject
 {
 
-    public string savePath ="Scripts";
+    public string savePath ="HotScripts";
 
     [System.Serializable]
     public class ModuleInfo

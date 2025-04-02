@@ -19,6 +19,15 @@
       "bundleDependce": []
     },
     {
+      "path": "Assets/GameData/ShuangKou/HotFixDll/SKWorld.dll.bytes",
+      "crc": 839810092,
+      "bundleName": "shuangkou_hotscipts.uab",
+      "assetName": "SKWorld.dll.bytes",
+      "bundleModule": "ShuangKou",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
       "path": "Assets/GameData/ShuangKou/HotFixDll/System.Core.dll.bytes",
       "crc": 629180919,
       "bundleName": "shuangkou_hotscipts.uab",
@@ -32,6 +41,15 @@
       "crc": 1707889878,
       "bundleName": "shuangkou_hotscipts.uab",
       "assetName": "System.dll.bytes",
+      "bundleModule": "ShuangKou",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/ShuangKou/HotFixDll/WZWorld.dll.bytes",
+      "crc": 155841772,
+      "bundleName": "shuangkou_hotscipts.uab",
+      "assetName": "WZWorld.dll.bytes",
       "bundleModule": "ShuangKou",
       "isAddressableAsset": false,
       "bundleDependce": []

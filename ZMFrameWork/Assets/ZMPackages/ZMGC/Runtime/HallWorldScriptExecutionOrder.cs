@@ -1,30 +1,30 @@
 ﻿using System;
 public class HallWorldScriptExecutionOrder  :IBehaviourExecution
 {
-    private static Type[] LogicBehaviorExecutions = new Type[] {
-       // typeof(TaskLogicCtrl)
+    private static readonly string[] LogicBehaviorExecutions = new string[] {
+       "TaskLogicCtrl",
      };
 
-    private static Type[] DataBehaviorExecutions = new Type[] {
-       //   typeof(RankDataMgr),
-       // typeof(UserDataMgr)
+    private static readonly string[] DataBehaviorExecutions = new string[] {
+       "RankDataMgr",
+       "UserDataMgr",
      };
 
-    private static Type[] MsgBehaviorExecutions = new Type[] {
-       // typeof(TaskMsgMgr)
+    private static readonly string[] MsgBehaviorExecutions = new string[] {
+       "TaskMsgMgr",
      };
 
-    public Type[] GetDataBehaviourExecution()
+    public string[] GetDataBehaviourExecution()
     {
         return DataBehaviorExecutions;
     }
 
-    public Type[] GetLogicBehaviourExecution()
+    public string[] GetLogicBehaviourExecution()
     {
         return LogicBehaviorExecutions;
     }
 
-    public Type[] GetMsgBehaviourExecution()
+    public string[] GetMsgBehaviourExecution()
     {
         return MsgBehaviorExecutions;
     }

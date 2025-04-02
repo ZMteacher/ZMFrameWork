@@ -16,6 +16,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using ZM.ZMAsset;
@@ -61,7 +62,6 @@ public class GameModeItem : MonoBehaviour
     public void OnGameButtonClick()
     {
         Debug.Log("OnGameButtonClick LoadAOTGenericMetadata");
-   
         ZMAsset.CheckAssetsVersion(gameType, CheckAssetCallBack);
     }
     public void CheckAssetCallBack(bool isHot,float sizem)
@@ -80,12 +80,12 @@ public class GameModeItem : MonoBehaviour
     /// <summary>
     /// 热更完成，进入游戏
     /// </summary>
-    public void EnterGame()
+    public async void EnterGame()
     {
-        UIModule.Instance.DestroyAllWindow();
-        ZMAsset.ClearResourcesAssets(true);
         //一般这个时候会有一个Loading加载窗口用于动画过度
         
+        UIModule.Instance.DestroyAllWindow();
+        ZMAsset.ClearResourcesAssets(true);
         //不销毁大厅，大厅一般常驻内存
         if (gameType== BundleModuleEnum.ShuangKou)
         {

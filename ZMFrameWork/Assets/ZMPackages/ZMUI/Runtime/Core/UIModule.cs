@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZM.UI;
 using ZM.ZMAsset;
+using Object = UnityEngine.Object;
 
 public class UIModule
 {
@@ -563,6 +564,25 @@ public class UIModule
     {
         mWindowStack.Clear();
     }
+    #endregion
+
+    #region 自定义Resources过度Loading
+
+    private GameObject mGameLoadingWin;
+    public void PopUpLoadingWindow()
+    {
+        if (mGameLoadingWin==null)
+        {
+            mGameLoadingWin = Object.Instantiate(Resources.Load("GameLoadingWindow")as GameObject);
+        }
+    }
+
+    public void HideLoadingWindow()
+    {
+        if(mGameLoadingWin!=null)
+                                                        Object.Destroy(mGameLoadingWin);
+    }
+
     #endregion
 }
 

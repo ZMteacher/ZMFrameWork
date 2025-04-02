@@ -8,9 +8,7 @@ public class WorldTypeManager
     public static void InitializeWorldAssemblies(World world, IBehaviourExecution  behaviourExecution)
     {
         m_BehaviourExecution = behaviourExecution;
-        //获取Unity和我们创建的脚本所在的程序集
-        Assembly[] assemblyArr = AppDomain.CurrentDomain.GetAssemblies();
- 
+        
         //获取当前脚本运行的程序集 这种方式能自动识别任何自定义程序集的World脚本
         Assembly worldAssembly = world.GetType().Assembly;
         
@@ -23,7 +21,7 @@ public class WorldTypeManager
         Type msgType = typeof(IMsgBehaviour);
         //获取当前程序集下的所有的类
         Type[] typeArr= worldAssembly.GetTypes();
-        List<TypeOrder> logicBehaviourList = new List<TypeOrder>();
+        List<TypeOrder> logicBehaviourList =  new List<TypeOrder>();
         List<TypeOrder> dataBehaviourList = new List<TypeOrder>();
         List<TypeOrder> msgBehaviourList = new List<TypeOrder>();
         foreach (var type in typeArr)
@@ -33,15 +31,15 @@ public class WorldTypeManager
  
             if (logicType.IsAssignableFrom(type))
             {
-                logicBehaviourList.Add( new TypeOrder(GetLogicBehaviourOrderIndex(type),type)); //获取当前类的初始化顺序
+                logicBehaviourList.Add( new TypeOrder(GetLogicBehaviourOrderIndex(type.Name),type)); //获取当前类的初始化顺序
             }
             else if (dataType.IsAssignableFrom(type))
             {
-                dataBehaviourList.Add(new TypeOrder(GetDataBehaviourOrderIndex(type), type));
+                dataBehaviourList.Add(new TypeOrder(GetDataBehaviourOrderIndex(type.Name), type));
             }
             else if (msgType.IsAssignableFrom(type))
             {
-                msgBehaviourList.Add(new TypeOrder(GetMsgBehaviourOrderIndex(type), type));
+                msgBehaviourList.Add(new TypeOrder(GetMsgBehaviourOrderIndex(type.Name), type));
             }
         }
         //最的小的排在前面
@@ -72,39 +70,39 @@ public class WorldTypeManager
         m_BehaviourExecution = null;
     }
 
-    private static int GetLogicBehaviourOrderIndex(Type type)
+    private static int GetLogicBehaviourOrderIndex(string typeName)
     {
         if (m_BehaviourExecution==null)
             return 999;
 
-        Type[] logicTypes = m_BehaviourExecution.GetLogicBehaviourExecution();
+        string[] logicTypes = m_BehaviourExecution.GetLogicBehaviourExecution();
         for (int i = 0; i < logicTypes.Length; i++)
         {
-            if (logicTypes[i]==type)
+            if (logicTypes[i]==typeName)
                 return i;
         }
         return 999;
     }
-    private static int GetDataBehaviourOrderIndex(Type dataType)
+    private static int GetDataBehaviourOrderIndex(string typeName)
     {
         if (m_BehaviourExecution == null)
             return 999;
-        Type[] dataTypes = m_BehaviourExecution.GetDataBehaviourExecution();
+        string[] dataTypes = m_BehaviourExecution.GetDataBehaviourExecution();
         for (int i = 0; i < dataTypes.Length; i++)
         {
-            if (dataTypes[i] == dataType)
+            if (dataTypes[i] == typeName)
                 return i;
         }
         return 999;
     }
-    private static int GetMsgBehaviourOrderIndex(Type msgType)
+    private static int GetMsgBehaviourOrderIndex(string typeName)
     {
         if (m_BehaviourExecution == null)
             return 999;
-        Type[] msgTypes = m_BehaviourExecution.GetMsgBehaviourExecution();
+        string[] msgTypes = m_BehaviourExecution.GetMsgBehaviourExecution();
         for (int i = 0; i < msgTypes.Length; i++)
         {
-            if (msgTypes[i] == msgType)
+            if (msgTypes[i] == typeName)
                 return i;
         }
         return 999;

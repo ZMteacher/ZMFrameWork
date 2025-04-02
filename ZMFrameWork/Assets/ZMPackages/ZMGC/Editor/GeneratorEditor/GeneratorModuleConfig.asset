@@ -12,31 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39371282ec90ec14395e9cdb6df829a5, type: 3}
   m_Name: GeneratorModuleConfig
   m_EditorClassIdentifier: 
-  savePath: Scripts
+  savePath: HotScripts
   modules:
   - moduleName: HallWorld
     moduleNamespace: ZMGC.Hall
-  - moduleName: BattleWorld
-    moduleNamespace: ZMGC.Battle
-  - moduleName: PokerWorld
-    moduleNamespace: ZMGC.Poker
-  - moduleName: RPGWorld
-    moduleNamespace: ZMGC.RPG
-  - moduleName: RPGWorld
-    moduleNamespace: ZMGC.RPG
-  - moduleName: RPGWorld
-    moduleNamespace: ZMGC.RPG
-  - moduleName: RPGWorld
-    moduleNamespace: ZMGC.RPG
-  - moduleName: RPGWorld
-    moduleNamespace: ZMGC.RPG
-  - moduleName: RPGWorld
-    moduleNamespace: ZMGC.RPG
-  - moduleName: RPGWorld
-    moduleNamespace: ZMGC.RPG
-  - moduleName: RPGWorld
-    moduleNamespace: ZMGC.RPG
-  - moduleName: RPGWorld
-    moduleNamespace: ZMGC.RPG
-  - moduleName: RPGWorld
-    moduleNamespace: ZMGC.RPG
+  - moduleName: SKWorld
+    moduleNamespace: ZMGC.SK

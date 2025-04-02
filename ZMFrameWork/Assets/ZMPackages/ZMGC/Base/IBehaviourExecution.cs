@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IBehaviourExecution  
+﻿public interface IBehaviourExecution  
 {
-    Type[] GetLogicBehaviourExecution();
-    Type[] GetDataBehaviourExecution();
-    Type[] GetMsgBehaviourExecution();
+    string[] GetLogicBehaviourExecution();
+    string[] GetDataBehaviourExecution();
+    string[] GetMsgBehaviourExecution();
 }
