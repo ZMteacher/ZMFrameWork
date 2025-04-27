@@ -1,0 +1,82 @@
+{
+  "updateNotice": "输入本次热更描述...",
+  "appVersion": "1.0.0",
+  "downLoadURL": "http://192.168.2.113/HotAssets/Hall/1.0.0/1/Windows",
+  "hotAssetsPatchList": [
+    {
+      "patchVersion": 1,
+      "hotAssetsList": [
+        {
+          "abName": "hallbundleconfig.uab",
+          "md5": "273AF6B9DFE4525F2A29C30B5A279E01",
+          "size": 3.52050781
+        },
+        {
+          "abName": "hall_examplewindow.uab",
+          "md5": "1003617FECFC8BC07D830DC759E9DE4B",
+          "size": 9.988281
+        },
+        {
+          "abName": "hall_exshopitem.uab",
+          "md5": "16C24E42BAD775197D35C58229DE6204",
+          "size": 4.39453125
+        },
+        {
+          "abName": "hall_exshopwindow.uab",
+          "md5": "613F5396D420AC4927A060B9CBBA8F1E",
+          "size": 13.6777344
+        },
+        {
+          "abName": "hall_hall.uab",
+          "md5": "A7DD045FC84A544D9BCA71F2A796B154",
+          "size": 1429.47168
+        },
+        {
+          "abName": "hall_halldata.uab",
+          "md5": "227E6D19FBCA0042CB47FA77D12D3E70",
+          "size": 2.17480469
+        },
+        {
+          "abName": "hall_hallwindow.uab",
+          "md5": "6F793037F2333AC98E438D88632DCD61",
+          "size": 22.8515625
+        },
+        {
+          "abName": "hall_hotscript.uab",
+          "md5": "80FC7C23EA5B2054724BD1B02B849FC8",
+          "size": 1718.1123
+        },
+        {
+          "abName": "hall_loading.uab",
+          "md5": "BC2448551B1926E8E8C5B4682DABA8BC",
+          "size": 239.180664
+        },
+        {
+          "abName": "hall_login.uab",
+          "md5": "E0AE5BF102BA643640751328DC291C59",
+          "size": 1110.19336
+        },
+        {
+          "abName": "hall_loginwindow.uab",
+          "md5": "9BE57F5A7F641BF6C2290DD6392B5227",
+          "size": 14.1357422
+        },
+        {
+          "abName": "hall_scene.uab",
+          "md5": "C8066D099EEE24C009A32395174AE312",
+          "size": 105.360352
+        },
+        {
+          "abName": "hall_shop.uab",
+          "md5": "62F2042D857B663054CF3B496F5F3680",
+          "size": 167.822266
+        },
+        {
+          "abName": "hall_testobj.uab",
+          "md5": "E63789A7514988E34935E649A81E6E31",
+          "size": 3.625
+        }
+      ]
+    }
+  ]
+}

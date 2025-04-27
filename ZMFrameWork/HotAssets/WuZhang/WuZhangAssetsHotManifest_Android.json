@@ -1,0 +1,52 @@
+{
+  "updateNotice": "输入本次热更描述...",
+  "appVersion": "1.0.0",
+  "downLoadURL": "http://192.168.2.113/HotAssets/WuZhang/1.0.0/1/Android",
+  "hotAssetsPatchList": [
+    {
+      "patchVersion": 1,
+      "hotAssetsList": [
+        {
+          "abName": "wuzhangbundleconfig.uab",
+          "md5": "922638D6B0932D00842EA2DF002B75B7",
+          "size": 3.29785156
+        },
+        {
+          "abName": "wuzhang_cfgdata.uab",
+          "md5": "92E387A77C6E2ADD03973542F33D2479",
+          "size": 2.00390625
+        },
+        {
+          "abName": "wuzhang_hall.uab",
+          "md5": "878A444C3B28193BC360245B199D9B55",
+          "size": 3085.287
+        },
+        {
+          "abName": "wuzhang_hotscripts.uab",
+          "md5": "AD8A7239A44081761BF10260B4FA2448",
+          "size": 1671.4209
+        },
+        {
+          "abName": "wuzhang_loading.uab",
+          "md5": "E087C325423F46702958262F2CA378CC",
+          "size": 614.9863
+        },
+        {
+          "abName": "wuzhang_login.uab",
+          "md5": "C92186B521CBD0BC461A185E1EA18DED",
+          "size": 4989.80762
+        },
+        {
+          "abName": "wuzhang_shop.uab",
+          "md5": "04596A17255AD4DBEE497497A2A94606",
+          "size": 159.5498
+        },
+        {
+          "abName": "wuzhang_wuzhangwindow.uab",
+          "md5": "BF7303C68733185EE3CD1E1E1E3E9B9F",
+          "size": 795.4531
+        }
+      ]
+    }
+  ]
+}

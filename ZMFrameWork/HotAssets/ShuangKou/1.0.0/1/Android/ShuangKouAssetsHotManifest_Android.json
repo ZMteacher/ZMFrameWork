@@ -1,0 +1,52 @@
+{
+  "updateNotice": "输入本次热更描述...",
+  "appVersion": "1.0.0",
+  "downLoadURL": "http://192.168.2.113/HotAssets/ShuangKou/1.0.0/1/Android",
+  "hotAssetsPatchList": [
+    {
+      "patchVersion": 1,
+      "hotAssetsList": [
+        {
+          "abName": "shuangkoubundleconfig.uab",
+          "md5": "2496011FF481547DFA9830199DC01921",
+          "size": 3.49902344
+        },
+        {
+          "abName": "shuangkou_cfgdata.uab",
+          "md5": "F70F34F3ECC068A3DAC2E41EE6414019",
+          "size": 2.00292969
+        },
+        {
+          "abName": "shuangkou_game.uab",
+          "md5": "FBC2272EE09A49DCCB0794ADD594A131",
+          "size": 4635.788
+        },
+        {
+          "abName": "shuangkou_hotscipts.uab",
+          "md5": "3FC7AC82F746FA0B408ADC698D36CA9F",
+          "size": 1682.61621
+        },
+        {
+          "abName": "shuangkou_loading.uab",
+          "md5": "F14EA18C9A140F7743951C1D50CAFF3A",
+          "size": 1500.46875
+        },
+        {
+          "abName": "shuangkou_login.uab",
+          "md5": "4D778C00ECC20CFCF14638CA09CDB1A1",
+          "size": 4988.66
+        },
+        {
+          "abName": "shuangkou_shop.uab",
+          "md5": "FA3FCADF4B5DA33D2CAD47BEE154DA4B",
+          "size": 259.078125
+        },
+        {
+          "abName": "shuangkou_skwindow.uab",
+          "md5": "BDAAF92D34D50810B00D04E1BD093AE7",
+          "size": 7.951172
+        }
+      ]
+    }
+  ]
+}

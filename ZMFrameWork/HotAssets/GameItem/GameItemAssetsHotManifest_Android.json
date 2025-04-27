@@ -1,0 +1,97 @@
+{
+  "updateNotice": "输入本次热更描述...",
+  "appVersion": "0.0.0",
+  "downLoadURL": "http://192.168.2.113/HotAssets/GameItem/0.0.0/1/Android",
+  "hotAssetsPatchList": [
+    {
+      "patchVersion": 1,
+      "hotAssetsList": [
+        {
+          "abName": "gameitembundleconfig.uab",
+          "md5": "F64976CE653ED7B2F0444E587BD9672C",
+          "size": 3.11914063
+        },
+        {
+          "abName": "gameitem_6001.uab",
+          "md5": "2FD85AC9B14A2F5DB842A4F356384353",
+          "size": 459.0996
+        },
+        {
+          "abName": "gameitem_6002.uab",
+          "md5": "8594827B093859FC9484179D53ABE027",
+          "size": 467.418945
+        },
+        {
+          "abName": "gameitem_6003.uab",
+          "md5": "8C116C5DA1FB4B924771B5824422F580",
+          "size": 439.615234
+        },
+        {
+          "abName": "gameitem_6004.uab",
+          "md5": "7A4BCE439A213E279E786E536BA1AF0D",
+          "size": 423.727539
+        },
+        {
+          "abName": "gameitem_6005.uab",
+          "md5": "5C24C172889AA72E35AB6DC7351F5ABA",
+          "size": 424.995117
+        },
+        {
+          "abName": "gameitem_6006.uab",
+          "md5": "48AF425E2E1CF2095593752349DE6D91",
+          "size": 423.602539
+        },
+        {
+          "abName": "gameitem_6007.uab",
+          "md5": "B13C7C8A736F53105FC0D98FA802214B",
+          "size": 403.227539
+        },
+        {
+          "abName": "gameitem_6008.uab",
+          "md5": "58D3DC6F53FE3B1DEA7FF76F557B4E3C",
+          "size": 403.006836
+        },
+        {
+          "abName": "gameitem_6009.uab",
+          "md5": "29CF9F5A393AC8A08CC8A139F1E9179D",
+          "size": 402.881836
+        },
+        {
+          "abName": "gameitem_6010.uab",
+          "md5": "9F8906273D30F1CDD795FB90CB462D57",
+          "size": 402.855469
+        },
+        {
+          "abName": "gameitem_6011.uab",
+          "md5": "DD8B2AA3FEE04D60879F8474C0EB9F78",
+          "size": 418.519531
+        },
+        {
+          "abName": "gameitem_6012.uab",
+          "md5": "214EF029B6FBB8E76F44B30863BC073E",
+          "size": 453.892578
+        },
+        {
+          "abName": "gameitem_6013.uab",
+          "md5": "D5B63A3B9F2DA10EB6FEE1EAD446C47E",
+          "size": 442.7412
+        },
+        {
+          "abName": "gameitem_6014.uab",
+          "md5": "A4F59F18E46A3785C97973622B27770C",
+          "size": 449.798828
+        },
+        {
+          "abName": "gameitem_6015.uab",
+          "md5": "53BB058E60A39DEB60A4D2ECFF36A83B",
+          "size": 439.326172
+        },
+        {
+          "abName": "gameitem_6016.uab",
+          "md5": "99ECDC9600843743E14EDC2BF263905C",
+          "size": 428.744141
+        }
+      ]
+    }
+  ]
+}

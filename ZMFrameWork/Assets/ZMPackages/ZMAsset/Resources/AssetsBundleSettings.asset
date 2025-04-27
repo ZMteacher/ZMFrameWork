@@ -19,7 +19,7 @@ MonoBehaviour:
   ABSUFFIX: .uab
   buildbundleOptions: 256
   buildTarget: 13
-  bundleHotType: 1
-  loadAssetType: 1
+  bundleHotType: 0
+  loadAssetType: 0
   MAX_THREAD_COUNT: 3
   ZMAssetRootPath: ZMPackages/ZMAsset
