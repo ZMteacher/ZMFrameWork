@@ -46,6 +46,22 @@ public class ScriptDisplayWindow : EditorWindow
             
             if (string.IsNullOrEmpty(originScript) == false)
             {
+                if (fieldList!=null)
+                {
+                    //插入字段(生成item脚本时使用)
+                    foreach (var item in fieldList)
+                    {
+                        if (!originScript.Contains($"{item.fieldName}{item.fieldType}"))
+                        {
+                            string insterArrayType = item.dataList!=null?"[]":"";
+                            string insterArray = item.dataList!=null?"Array":"";
+                            //插入新增的数据
+                            originScript = window.scriptContent = originScript.Insert(window.GetInsertFieldIndex(originScript)
+                                , $"public { item.fieldType }{insterArrayType} {item.fieldName}{item.fieldType}{insterArray};\n\n\t\t");
+                            isInsterSuccess = true;
+                        }
+                    }
+                }
                 if (_insertDic != null)
                 {
                     //插入方法
@@ -64,19 +80,7 @@ public class ScriptDisplayWindow : EditorWindow
 
                 if (fieldList!=null)
                 {
-                    //插入字段(生成item脚本时使用)
-                    foreach (var item in fieldList)
-                    {
-                        if (!originScript.Contains($"{item.fieldName}{item.fieldType}"))
-                        {
-                            string insterArrayType = item.dataList!=null?"[]":"";
-                            string insterArray = item.dataList!=null?"Array":"";
-                            //插入新增的数据
-                            originScript = window.scriptContent = originScript.Insert(window.GetInsertFieldIndex(originScript)
-                                , $"public { item.fieldType }{insterArrayType} {item.fieldName}{item.fieldType}{insterArray};\n\n\t\t");
-                            isInsterSuccess = true;
-                        }
-                    }
+                 
                     //插入事件(生成item脚本时使用)
                     foreach (var item in fieldList)
                     {  
@@ -182,18 +186,7 @@ public class ScriptDisplayWindow : EditorWindow
         //找到UI事件组件下面的第一个public 所在的位置 进行插入
         Regex regex = new Regex("UI组件事件");
         Match match = regex.Match(content);
-        Regex regex1 = new Regex("private");
-        MatchCollection matchColltion = regex1.Matches(content);
-
-        for (int i = 0; i < matchColltion.Count; i++)
-        {
-            if (matchColltion[i].Index > match.Index)
-            {
-                //Debug.Log(matchColltion[i].Index);
-                return matchColltion[i].Index;
-            }
-        }
-        return -1;
+        return match.Index+6;
     }
     public int GetInsertFieldIndex(string content)
     {

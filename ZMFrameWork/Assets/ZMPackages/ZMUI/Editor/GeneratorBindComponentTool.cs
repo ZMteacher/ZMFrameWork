@@ -19,7 +19,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -61,7 +60,7 @@ public class GeneratorBindComponentTool : Editor
         Debug.Log("CsConent:\n" + csContnet);
         string scriptPath = UISetting.Instance.BindComponentGeneratorPath + "/" + obj.name + "DataComponent.cs";
         ScriptDisplayWindow.ShowWindow(csContnet, scriptPath);
-        EditorPrefs.SetString("GeneratorClassPath", scriptPath);
+        EditorPrefs.SetString("BindDataGeneratorClassPath", scriptPath);
     }
  
     public static string GenerateScript(string name)
@@ -150,7 +149,7 @@ public class GeneratorBindComponentTool : Editor
     public static void AddComponent2Window()
     {
         //如果当前不是生成数据脚本的回调，就不处理
-        string scriptPath = EditorPrefs.GetString("GeneratorClassPath");
+        string scriptPath = EditorPrefs.GetString("BindDataGeneratorClassPath");
         if (string.IsNullOrEmpty(scriptPath))
         {
             return;
@@ -246,7 +245,7 @@ public class GeneratorBindComponentTool : Editor
         }
         //自动保存预制体
         PrefabUtility.ApplyPrefabInstance(selectedObject, InteractionMode.AutomatedAction);
-        EditorPrefs.DeleteKey("GeneratorClassPath");
+        EditorPrefs.DeleteKey("BindDataGeneratorClassPath");
     }
     public static Array ConvertArray(object[] sourceArray, Type targetElementType)
     {

@@ -58,8 +58,8 @@ public class ExShopItem : MonoBehaviour
 
     public void Release()
     {
-        m_AssetsRequest.Release();
-        m_itemAsset.Release();
+        m_AssetsRequest?.Release();
+        m_itemAsset?.Release();
         m_AssetsRequest = null;
         m_itemAsset = null;
     }

@@ -44,13 +44,8 @@ public class GeneratorFindComponentTool : Editor
             Directory.CreateDirectory(UISetting.Instance.FindComponentGeneratorPath);
         }
         ////解析窗口组件数据
-        //PresWindowNodeData(obj.transform,obj.name);
-        //解析窗口组件数据
-        if (UISetting.Instance.ParseType == ParseType.Tag)
-            AnalysisComponentDataTool.AnalysisWindowDataByTag(ref objDataList,obj.transform, obj.name);
-        else
-            AnalysisComponentDataTool.AnalysisWindowNodeData(ref objDataList, obj.transform, obj.name);
-        
+        PresWindowNodeData(obj.transform,obj.name);
+       
         //储存字段名称
         string datalistJson = JsonConvert.SerializeObject(objDataList);
         PlayerPrefs.SetString(GeneratorConfig.OBJDATALIST_KEY, datalistJson);
@@ -67,50 +62,46 @@ public class GeneratorFindComponentTool : Editor
     /// <param name="WinName"></param>
     public static void PresWindowNodeData(Transform trans, string WinName)
     {
-        for (int i = 0; i < trans.childCount; i++)
+        foreach (Transform child in trans)
         {
-            GameObject obj = trans.GetChild(i).gameObject;
+            GameObject obj = child.gameObject;
             string name = obj.name;
-            if (name.Contains("[")&&name.Contains("]"))
+        
+            if (name.Contains("[") && name.Contains("]"))
             {
-                int index = name.IndexOf("]") + 1;
-                string fieldName = name.Substring(index,name.Length-index);//获取字段昵称
-                string fieldType = name.Substring(1,index-2);//获取字段类型
+                // 解析字段名和类型
+                int endBracketIndex = name.IndexOf("]");
+                string fieldName = name.Substring(endBracketIndex + 1); // 获取字段昵称
+                string fieldType = name.Substring(1, endBracketIndex - 1); // 获取字段类型
 
-                objDataList.Add(new EditorObjectData { fieldName=fieldName,fieldType= fieldType,insID=obj.GetInstanceID() });
+                objDataList.Add(new EditorObjectData 
+                { 
+                    fieldName = fieldName,
+                    fieldType = fieldType,
+                    insID = obj.GetInstanceID() 
+                });
 
-                //计算该节点的查找路径
-                string objPath = name;//UIContent/[Button]Close
-                bool isFindOver = false;
-                Transform parent = obj.transform;
-                for (int k = 0; k < 20; k++)
-                {
-                    for (int j = 0; j <=k; j++)
-                    {
-                        if (k==j)
-                        {
-                            parent = parent.parent;
-                            //如果父节点是当前窗口，说明查找已经结束
-                            if (string.Equals(parent.name,WinName))
-                            {
-                                isFindOver = true;
-                                break;
-                            }
-                            else
-                            {
-                                objPath = objPath.Insert(0,parent.name+"/");
-                            }
-                        }
-                    }
-                    if (isFindOver)
-                    {
-                        break;
-                    }
-                }
-                objFindPathDic.Add(obj.GetInstanceID(),objPath);
+                // 计算查找路径（优化关键点）
+                string objPath = GetObjectPath(obj.transform, WinName);
+                objFindPathDic.Add(obj.GetInstanceID(), objPath);
             }
-            PresWindowNodeData(trans.GetChild(i),WinName);
+        
+            PresWindowNodeData(child, WinName); // 递归处理子节点
         }
+    }
+    //获取对象路径
+    private static string GetObjectPath(Transform objTransform, string winName)
+    {
+        StringBuilder pathBuilder = new StringBuilder(objTransform.name);
+        Transform parent = objTransform.parent;
+
+        while (parent != null && !string.Equals(parent.name, winName))
+        {
+            pathBuilder.Insert(0, parent.name + "/");
+            parent = parent.parent;
+        }
+
+        return pathBuilder.ToString();
     }
     public static void ParseWindowDataByTag(Transform trans, string WinName)
     {

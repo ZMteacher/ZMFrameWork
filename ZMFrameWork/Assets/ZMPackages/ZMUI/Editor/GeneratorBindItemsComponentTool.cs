@@ -66,7 +66,7 @@ public class GeneratorBindItemsComponentTool : Editor
 
         ScriptDisplayWindow.ShowWindow(scriptContent, scriptFilePath, _mMethodDic, objDataList);
 
-        EditorPrefs.SetString("GeneratorClassPath", scriptFilePath);
+        EditorPrefs.SetString("itemGeneratorClassPath", scriptFilePath);
     }
 
     public static string GenerateScripts(string name)
@@ -224,7 +224,7 @@ public class GeneratorBindItemsComponentTool : Editor
 
         sb.AppendLine(builder.ToString());
 
-        _mMethodDic.Add(methodName, builder.ToString().Replace("\t\t{", ""));
+        _mMethodDic.Add(methodName, builder.ToString());
     }
 
     /// <summary>
@@ -234,7 +234,7 @@ public class GeneratorBindItemsComponentTool : Editor
     public static void AddComponentToItem()
     {
         //如果当前不是生成数据脚本的回调，就不处理
-        string scriptPath = EditorPrefs.GetString("GeneratorClassPath").Replace(Application.dataPath, "Assets/");
+        string scriptPath = EditorPrefs.GetString("itemGeneratorClassPath").Replace(Application.dataPath, "Assets/");
         if (string.IsNullOrEmpty(scriptPath))
         {
             return;
@@ -286,6 +286,7 @@ public class GeneratorBindItemsComponentTool : Editor
                         }
                         else
                         {
+                            Debug.Log("targetComponent:"+uiObject.GetComponent(objData.fieldType) +" type:"+objData.fieldType);
                             item.SetValue(compt, uiObject.GetComponent(objData.fieldType));
                         }
                     }
@@ -337,6 +338,9 @@ public class GeneratorBindItemsComponentTool : Editor
 
         // PrefabUtility.ApplyPrefabInstance(selectedObject, InteractionMode.AutomatedAction);
         //自动保存预制体
-        EditorPrefs.DeleteKey("GeneratorClassPath");
+        EditorPrefs.DeleteKey("itemGeneratorClassPath");
+        PlayerPrefs.DeleteKey(GeneratorConfig.OBJDATALIST_KEY);
+        UnityEditor.EditorUtility.SetDirty(compt); // 标记对象为“脏”以刷新
+        UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(compt);
     }
 }
