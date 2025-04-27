@@ -73,7 +73,7 @@ public class HotAssetsWindow : MonoBehaviour
         }
         if (mHotAssetsModule!=null && progressSlider.value != 1.0f)
         {
-            Debug.Log("AssetsDownLoadSizeM:" + mHotAssetsModule.AssetsDownLoadSizeM + " AssetsMaxSizeM:"+ mHotAssetsModule.AssetsMaxSizeM);
+            // Debug.Log("AssetsDownLoadSizeM:" + mHotAssetsModule.AssetsDownLoadSizeM + " AssetsMaxSizeM:"+ mHotAssetsModule.AssetsMaxSizeM);
             progressText.text = string.Format("资源下载中...{0}m/{1}m",mHotAssetsModule.AssetsDownLoadSizeM.ToString("F1"),mHotAssetsModule.AssetsMaxSizeM.ToString("F1"));
             progressSlider.value = mHotAssetsModule.AssetsDownLoadSizeM / mHotAssetsModule.AssetsMaxSizeM;
         }

@@ -13,6 +13,10 @@ namespace ZM.ZMAsset
     public class AddressableModule
     {
         /// <summary>
+        /// 当前应用版本
+        /// </summary>
+        private string mAppVersion;
+        /// <summary>
         /// 热更资源下载储存路径
         /// </summary>
         public string HotAssetsSavePath { get { return Application.persistentDataPath + "/HotAssets/" + CurBundleModuleEnum + "/"; } }
@@ -63,6 +67,7 @@ namespace ZM.ZMAsset
 
         public AddressableModule(BundleModuleEnum bundleModule )
         {
+            mAppVersion = Application.version;
             CurBundleModuleEnum = bundleModule;
             GeneratorHotAssetsManifest();
         }
@@ -97,10 +102,22 @@ namespace ZM.ZMAsset
             {
                 return false;
             }
+            
             //如果本地资源清单文件不存在，说明我们需要热更
             if (!File.Exists(mLocalHotAssetManifestPath))
             {
                 return true;
+            }
+            //资源应用版本不一致
+            if (mServerHotAssetsManifest.appVersion!=mAppVersion && mServerHotAssetsManifest.appVersion!="0.0.0")
+            {
+                Debug.Log($"应用版本不一致，{CurBundleModuleEnum} 不需要热更");
+                return false;
+            }
+            //全版本生效热更
+            if ( mServerHotAssetsManifest.appVersion=="0.0.0")
+            {
+                Debug.Log($"{CurBundleModuleEnum} 属于全版本热更资源，计算热更需要下载的文件");
             }
             //判断本地资源清单补丁版本号是否与服务端资源清单补丁版本号一致，如果一致，不需要热更， 如果不一致，则需要热更
             HotAssetsManifest localHotAssetsManifest = JsonConvert.DeserializeObject<HotAssetsManifest>(await File.ReadAllTextAsync(mLocalHotAssetManifestPath));
@@ -170,7 +187,7 @@ namespace ZM.ZMAsset
         /// <returns></returns>
         private IEnumerator DownLoadHotAssetsManifest()
         {
-            string url = BundleSettings.Instance.AssetBundleDownLoadUrl + "/HotAssets/" + CurBundleModuleEnum + "AssetsHotManifest.json";
+            string url = $"{BundleSettings.Instance.AssetBundleDownLoadUrl}/HotAssets/{CurBundleModuleEnum}/{BundleSettings.Instance.HotManifestName(CurBundleModuleEnum)}";
             UnityWebRequest webRequest = UnityWebRequest.Get(url);
             webRequest.timeout = 30;
 
@@ -194,10 +211,7 @@ namespace ZM.ZMAsset
             {
                 Debug.LogError("服务端资源清单配置下载异常，文件不存在或者配置有问题，更新出错，请检查：" + e.ToString());
             }
-            yield return UniTask.RunOnThreadPool(() =>
-            {
-                mServerHotAssetsManifest = JsonConvert.DeserializeObject<HotAssetsManifest>(donwloadContent);
-            });
+            mServerHotAssetsManifest = JsonConvert.DeserializeObject<HotAssetsManifest>(donwloadContent);
             webRequest.Dispose();
          }
         public void GeneratorHotAssetsManifest()

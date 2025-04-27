@@ -20,7 +20,7 @@ public class BundleTools
 {
     private static string mBundleModuleEnumFilePath = Application.dataPath + "/"+BundleSettings.Instance.ZMAssetRootPath +"/Config/BundleModuleEnum.cs";
 
-    [MenuItem("ZMFrame/GeneratorModuleEnum")]
+    [MenuItem("ZMFrame/GeneratorModuleEnum",false,1)]
     public static void GenerateBundleModuleEnum()
     {
         string namespaceName = "ZM.ZMAsset";

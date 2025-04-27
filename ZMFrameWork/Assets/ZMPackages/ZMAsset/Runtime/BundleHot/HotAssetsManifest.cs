@@ -26,6 +26,10 @@ namespace ZM.ZMAsset
         /// </summary>
         public string updateNotice;
         /// <summary>
+        /// 应用版本
+        /// </summary>
+        public string appVersion;
+        /// <summary>
         /// 下载地址
         /// </summary>
         public string downLoadURL;

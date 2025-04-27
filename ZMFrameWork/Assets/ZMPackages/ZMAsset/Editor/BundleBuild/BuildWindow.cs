@@ -29,13 +29,13 @@ public class BuildWindows : OdinMenuEditorWindow
     [SerializeField]
     public BundleSettings settingWindow ;
 
-    [MenuItem("ZMFrame/AssetBundle")]
+    [MenuItem("ZMFrame/Build BundleWindow",false,0)]
     public static void ShowAssetBundleWindow()
     {
         try
         {
             BuildWindows window = GetWindow<BuildWindows>();
-            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(985, 612);
+            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(1010, 612);
             window.ForceMenuTreeRebuild();
         }
         catch (System.Exception)
@@ -48,8 +48,8 @@ public class BuildWindows : OdinMenuEditorWindow
 
     protected override OdinMenuTree BuildMenuTree()
     {
-        buildBundleWindow.Initzation();
-        buildHotWindow.Initzation();
+        buildBundleWindow.Initzation(550);
+        buildHotWindow.Initzation(390);
         OdinMenuTree menuTree = new OdinMenuTree(supportsMultiSelect: false)
         {
             { "Build",null,EditorIcons.House},

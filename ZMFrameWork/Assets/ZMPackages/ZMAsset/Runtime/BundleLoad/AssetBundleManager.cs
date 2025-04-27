@@ -165,6 +165,7 @@ namespace ZM.ZMAsset
                     }
 
                     string bundleConfigJson = (await bundleConfig.LoadAssetAsync<TextAsset>(mAssetsBundleConfigName) as TextAsset).text;
+                    mAlreadyLoadBundleModuleList.Add(bundleModule);
                     await UniTask.RunOnThreadPool(() =>
                     {
                         BundleConfig bundleManife = JsonConvert.DeserializeObject<BundleConfig>(bundleConfigJson);
@@ -194,7 +195,7 @@ namespace ZM.ZMAsset
                     });
                     //释放AssetBunle配置
                     bundleConfig.Unload(false);
-                    mAlreadyLoadBundleModuleList.Add(bundleModule);
+                   
                     Debug.Log($"Init AssetModule Successes BundleModule:{bundleModule}" );
                     return true;
                 }

@@ -36,6 +36,10 @@ namespace ZM.ZMAsset
         /// </summary>
         private static int mHotPatchVersion;
         /// <summary>
+        /// 热更应用版本
+        /// </summary>
+        private static string mHotAppVersion;
+        /// <summary>
         /// 打包类型
         /// </summary>
         private static BuildType mBuildType;
@@ -68,11 +72,11 @@ namespace ZM.ZMAsset
         /// <summary>
         /// AssetBundle文件输出路径
         /// </summary>
-        private static string mBundleOutPutPath { get { return Application.dataPath + "/../AssetBundle/" + mBundleModuleEnum + "/" + EditorUserBuildSettings.activeBuildTarget.ToString() + "/"; } }
+        private static string mBundleOutPutPath { get { return Application.dataPath + "/../AssetBundle/" + mBundleModuleEnum + "/" + BundleSettings.Instance.GetPlatformName() + "/"; } }
         /// <summary>
         /// 热更资源文件输出路径
         /// </summary>
-        private static string mHotAssetsOutPutPath { get { return Application.dataPath + "/../HotAssets/" + mBundleModuleEnum + "/" +mHotPatchVersion+"/"+ EditorUserBuildSettings.activeBuildTarget.ToString() + "/"; } }
+        private static string mHotAssetsOutPutPath { get { return Application.dataPath + "/../HotAssets/" + mBundleModuleEnum + "/"+mHotAppVersion  +"/"+mHotPatchVersion+"/"+ BundleSettings.Instance.GetPlatformName() + "/"; } }
         /// <summary>
         /// 框架Resources路径
         /// </summary>
@@ -84,11 +88,11 @@ namespace ZM.ZMAsset
         /// <param name="buildType">打包类型</param>
         /// <param name="hotPatchVersion">热更补丁版本</param>
         /// <param name="updateNotice">更新公告</param>
-        public static void BuildAssetBundle(BundleModuleData moduleData, BuildType buildType = BuildType.AssetBundle, int hotPatchVersion = 0, string updateNotice = "")
+        public static void BuildAssetBundle(BundleModuleData moduleData, BuildType buildType = BuildType.AssetBundle, int hotPatchVersion = 0,string hotAppVersion="0.0.0", string updateNotice = "")
         {
 
             //初始化打包数据
-            bool initStatus= Initlization(moduleData, buildType, hotPatchVersion, updateNotice);
+            bool initStatus= Initlization(moduleData, buildType, hotPatchVersion,hotAppVersion, updateNotice);
             if (!initStatus) { return; }
             //打包所有的文件夹
             BuildAllFolder();
@@ -106,7 +110,7 @@ namespace ZM.ZMAsset
         /// <param name="buildType"></param>
         /// <param name="hotPatchVersion"></param>
         /// <param name="updateNotice"></param>
-        public static bool Initlization(BundleModuleData moduleData, BuildType buildType = BuildType.AssetBundle, int hotPatchVersion = 0, string updateNotice = "")
+        public static bool Initlization(BundleModuleData moduleData, BuildType buildType = BuildType.AssetBundle, int hotPatchVersion = 0,string hotAppVersion="0.0.0", string updateNotice = "")
         {
             //清理数据以防下次打包时有数据残留
             mAllBundlePathList.Clear();
@@ -118,6 +122,7 @@ namespace ZM.ZMAsset
             mUpdateNotice = updateNotice;
             mBuildModuleData = moduleData;
             mHotPatchVersion = hotPatchVersion;
+            mHotAppVersion = hotAppVersion;
             try
             {
                 mBundleModuleEnum = (BundleModuleEnum)Enum.Parse(typeof(BundleModuleEnum), moduleData.moduleName);
@@ -270,33 +275,40 @@ namespace ZM.ZMAsset
         /// </summary>
         public static void BuildAllAssetBundle()
         {
-            //生成所有要打包的Bundle
-            GenerateBundleBuilder();
-            //生成一份AssetBundle配置
-            WriteAssetBundleConfig();
-
-            AssetDatabase.Refresh();
-
-            //调用UnityAPI打包AssetBundle
-            AssetBundleManifest manifest= BuildPipeline.BuildAssetBundles(mBundleOutPutPath,mBundleBuildList.ToArray(), (UnityEditor.BuildAssetBundleOptions)Enum.Parse(typeof(UnityEditor.BuildAssetBundleOptions),BundleSettings.Instance.buildbundleOptions.ToString())
-                , (UnityEditor.BuildTarget)Enum.Parse(typeof(UnityEditor.BuildTarget), BundleSettings.Instance.buildTarget.ToString()));
-            if (manifest==null)
+            try
             {
-                EditorUtility.DisplayProgressBar("BuildAssetBundle!", "BuildAssetBundle failed!",1);
-                Debug.LogError("AssetBundle Build failed!");
-            }
-            else
-            {
-                Debug.Log("AssetBundle Build Successs!:"+ manifest);
-                DeleteAllBundleManifestFile();
-                EncryptAllBundle();
-                if (mBuildType== BuildType.HotPatch)
+                //生成所有要打包的Bundle
+                GenerateBundleBuilder();
+                //生成一份AssetBundle配置
+                WriteAssetBundleConfig();
+
+                AssetDatabase.Refresh();
+
+                //调用UnityAPI打包AssetBundle
+                AssetBundleManifest manifest= BuildPipeline.BuildAssetBundles(mBundleOutPutPath,mBundleBuildList.ToArray(), (UnityEditor.BuildAssetBundleOptions)Enum.Parse(typeof(UnityEditor.BuildAssetBundleOptions),BundleSettings.Instance.buildbundleOptions.ToString())
+                    , (UnityEditor.BuildTarget)Enum.Parse(typeof(UnityEditor.BuildTarget), BundleSettings.Instance.buildTarget.ToString()));
+                if (manifest==null)
                 {
-                    GeneratorHotAssets();
+                    EditorUtility.DisplayProgressBar("BuildAssetBundle!", "BuildAssetBundle failed!",1);
+                    Debug.LogError("AssetBundle Build failed!");
+                }
+                else
+                {
+                    Debug.Log("AssetBundle Build Successs!:"+ manifest);
+                    DeleteAllBundleManifestFile();
+                    EncryptAllBundle();
+                    if (mBuildType== BuildType.HotPatch)
+                    {
+                        GeneratorHotAssets();
+                        EditorUtility.RevealInFinder(mHotAssetsOutPutPath);
+                    }
                 }
             }
-            
-            EditorUtility.ClearProgressBar();
+            finally
+            {
+                EditorUtility.ClearProgressBar();
+            }
+           
     
         }
         /// <summary>
@@ -567,9 +579,10 @@ namespace ZM.ZMAsset
         {
             //设置清单数据
             HotAssetsManifest assetsManifest = new HotAssetsManifest();
+            assetsManifest.appVersion = mHotAppVersion;
             assetsManifest.updateNotice = mUpdateNotice;
-            assetsManifest.downLoadURL = BundleSettings.Instance.AssetBundleDownLoadUrl+"/HotAssets/"+mBundleModuleEnum+"/"+
-                mHotPatchVersion+"/"+BundleSettings.Instance.buildTarget;
+            assetsManifest.downLoadURL = BundleSettings.Instance.AssetBundleDownLoadUrl+"/HotAssets/"+mBundleModuleEnum+"/"+ 
+                                         mHotAppVersion +"/"+ mHotPatchVersion+"/"+BundleSettings.Instance.GetPlatformName();
 
             //设置补丁数据
             HotAssetsPatch hotAssetsPatch = new HotAssetsPatch();
@@ -589,8 +602,27 @@ namespace ZM.ZMAsset
 
             //把对象转换为Json字符串
             string json= JsonConvert.SerializeObject(assetsManifest, Formatting.Indented);
-            FileHelper.WriteFile(Application.dataPath+"/../HotAssets/"+mBundleModuleEnum+"AssetsHotManifest.json",
-                System.Text.Encoding.UTF8.GetBytes(json));
+            string hotMainifestPath = Application.dataPath + "/../HotAssets/" + mBundleModuleEnum +"/"+ BundleSettings.Instance.HotManifestName(mBundleModuleEnum);
+            //生成热更清单，用来对比MD5和文件下载
+            FileHelper.WriteFile(hotMainifestPath, System.Text.Encoding.UTF8.GetBytes(json));
+            //备份热更清单，用来版本回退
+            File.Copy(hotMainifestPath,mHotAssetsOutPutPath+BundleSettings.Instance.HotManifestName(mBundleModuleEnum));
+        }
+
+        [MenuItem("ZMFrame/BundleFolder")]
+        public static void OpenAssetBundleFolder()
+        {
+            EditorUtility.RevealInFinder(Application.dataPath + "/../AssetBundle/");
+        }
+        [MenuItem("ZMFrame/HotBundleFolder")]
+        public static void OpenHotBundleFolder()
+        { 
+            EditorUtility.RevealInFinder(Application.dataPath + "/../HotAssets/");
+        }
+        [MenuItem("ZMFrame/PersistentFolder")]
+        public static void OpenPersistentFolder()
+        { 
+            EditorUtility.RevealInFinder(Application.persistentDataPath+"/");
         }
     }
 }

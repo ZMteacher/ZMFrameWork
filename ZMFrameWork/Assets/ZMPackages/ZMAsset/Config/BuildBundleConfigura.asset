@@ -17,7 +17,8 @@ MonoBehaviour:
     moduleName: Hall
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 47.75353
+    isAddModule: 0
+    lastClickBtnTime: 1520.4562
     prefabPathArr:
     - Assets/GameData/Hall/Prefabs
     rootFolderPathArr:
@@ -33,7 +34,8 @@ MonoBehaviour:
     moduleName: GameItem
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 3224.3572
+    isAddModule: 0
+    lastClickBtnTime: 1519.311
     prefabPathArr:
     - Path...
     rootFolderPathArr:
@@ -43,7 +45,8 @@ MonoBehaviour:
     moduleName: AdressAsset
     isAddressableAsset: 1
     isBuild: 0
-    lastClickBtnTime: 428.5154
+    isAddModule: 0
+    lastClickBtnTime: 1519.015
     prefabPathArr: []
     rootFolderPathArr:
     - Assets/GameData/GameItem
@@ -52,7 +55,8 @@ MonoBehaviour:
     moduleName: WuZhang
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 117.21776
+    isAddModule: 0
+    lastClickBtnTime: 1531.7754
     prefabPathArr:
     - Assets/GameData/WuZhang/Prefab
     rootFolderPathArr:
@@ -66,6 +70,7 @@ MonoBehaviour:
     moduleName: ShuangKou
     isAddressableAsset: 0
     isBuild: 0
+    isAddModule: 0
     lastClickBtnTime: 51.426407
     prefabPathArr:
     - Assets/GameData/ShuangKou/Prefabs
@@ -84,6 +89,7 @@ MonoBehaviour:
     moduleName: "\u6D4B\u8BD5\u8D44\u6E90"
     isAddressableAsset: 0
     isBuild: 0
+    isAddModule: 0
     lastClickBtnTime: 100.00018
     prefabPathArr:
     - Path...
@@ -93,7 +99,8 @@ MonoBehaviour:
     moduleName: "\u997F"
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 290.29022
+    isAddModule: 0
+    lastClickBtnTime: 1521.5205
     prefabPathArr:
     - Assets/Scenes
     rootFolderPathArr:
@@ -101,3 +108,113 @@ MonoBehaviour:
     signFolderPathArr:
     - abName: AB Name
       bundlePath: Assets/Scenes
+  - bundleid: 0
+    moduleName: 1
+    isAddressableAsset: 0
+    isBuild: 0
+    isAddModule: 0
+    lastClickBtnTime: 1518.2349
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: 2
+    isAddressableAsset: 0
+    isBuild: 0
+    isAddModule: 0
+    lastClickBtnTime: 1518.5457
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: 3
+    isAddressableAsset: 0
+    isBuild: 0
+    isAddModule: 0
+    lastClickBtnTime: 1532.512
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: 4
+    isAddressableAsset: 0
+    isBuild: 0
+    isAddModule: 0
+    lastClickBtnTime: 1529.8748
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: 5
+    isAddressableAsset: 0
+    isBuild: 0
+    isAddModule: 0
+    lastClickBtnTime: 1529.0864
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: 6
+    isAddressableAsset: 0
+    isBuild: 0
+    isAddModule: 0
+    lastClickBtnTime: 1521.82
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: 7
+    isAddressableAsset: 0
+    isBuild: 0
+    isAddModule: 0
+    lastClickBtnTime: 2018.1514
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: 8
+    isAddressableAsset: 0
+    isBuild: 0
+    isAddModule: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: 9
+    isAddressableAsset: 0
+    isBuild: 0
+    isAddModule: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: 10
+    isAddressableAsset: 0
+    isBuild: 0
+    isAddModule: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []
+  - bundleid: 0
+    moduleName: 11
+    isAddressableAsset: 0
+    isBuild: 0
+    isAddModule: 0
+    lastClickBtnTime: 0
+    prefabPathArr:
+    - Path...
+    rootFolderPathArr: []
+    signFolderPathArr: []

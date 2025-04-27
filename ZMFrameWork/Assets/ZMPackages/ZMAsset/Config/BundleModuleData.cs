@@ -13,6 +13,7 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 [System.Serializable]
@@ -26,7 +27,12 @@ public class BundleModuleData
     public bool isAddressableAsset;
     //是否打包
     public bool isBuild;
-
+#if UNITY_EDITOR
+    //是否添加模块按钮
+    [JsonIgnore]
+    public bool isAddModule;
+#endif
+    
     //上一次点击按钮的时间
     public float lastClickBtnTime;
 

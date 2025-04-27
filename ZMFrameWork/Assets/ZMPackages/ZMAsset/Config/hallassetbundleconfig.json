@@ -19,31 +19,6 @@
       "bundleDependce": []
     },
     {
-      "path": "Assets/Scenes/AddressAPI.unity",
-      "crc": 2041909121,
-      "bundleName": "hall_scene.uab",
-      "assetName": "AddressAPI.unity",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": [
-        "hall_shop.uab",
-        "hall_hall.uab"
-      ]
-    },
-    {
-      "path": "Assets/Scenes/APIDemo.unity",
-      "crc": 1682462692,
-      "bundleName": "hall_scene.uab",
-      "assetName": "APIDemo.unity",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": [
-        "hall_examplewindow.uab",
-        "hall_shop.uab",
-        "hall_hall.uab"
-      ]
-    },
-    {
       "path": "Assets/Scenes/SampleScene.unity",
       "crc": 2052513325,
       "bundleName": "hall_scene.uab",
@@ -621,18 +596,6 @@
       "crc": 3082594063,
       "bundleName": "hall_examplewindow.uab",
       "assetName": "ExampleWindow.prefab",
-      "bundleModule": "Hall",
-      "isAddressableAsset": false,
-      "bundleDependce": [
-        "hall_shop.uab",
-        "hall_hall.uab"
-      ]
-    },
-    {
-      "path": "Assets/GameData/Hall/Prefabs/Window/ExampleWindow1.prefab",
-      "crc": 2484666259,
-      "bundleName": "hall_examplewindow1.uab",
-      "assetName": "ExampleWindow1.prefab",
       "bundleModule": "Hall",
       "isAddressableAsset": false,
       "bundleDependce": [

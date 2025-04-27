@@ -26,7 +26,7 @@ public class ZMUIWindow : OdinMenuEditorWindow
     [SerializeField]
     public ZMUIWindow uiSettingWindow ;
 
-    [MenuItem("ZMFrame/ZMUI Setting")]
+    [MenuItem("ZMFrame/ZMUI Setting",false,2)]
     public static void ShowAssetBundleWindow()
     {
         ZMUIWindow window = GetWindow<ZMUIWindow>();

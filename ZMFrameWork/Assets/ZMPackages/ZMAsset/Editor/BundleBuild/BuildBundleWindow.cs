@@ -19,27 +19,7 @@ using Sirenix.Utilities.Editor;
 public class BuildBundleWindow : BundleBehaviour
 {
     protected string[] buildButtonsNameArr = new string[] { "打包资源", "内嵌资源" };
-    public override void Initzation()
-    {
-        base.Initzation();
-    }
-
-    /// <summary>
-    /// 绘制添加资源模块的按钮
-    /// </summary>
-    public override void DrawAddModuleButton()
-    {
-        base.DrawAddModuleButton();
-
-        GUIContent addContent = EditorGUIUtility.IconContent("CollabCreate Icon".Trim(), "");
-        if (GUILayout.Button(addContent, GUILayout.Width(130), GUILayout.Height(170)))
-        {
-            //TODO  编写添加模块的代码
-            BundleModuleConfig.ShowWindow("");
-            GUIUtility.ExitGUI();
-        }
-    }
-
+    
     public override void DrawBuildButtons()
     {
         base.DrawBuildButtons();

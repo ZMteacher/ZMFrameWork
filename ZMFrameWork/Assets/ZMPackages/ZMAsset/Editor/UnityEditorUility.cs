@@ -28,6 +28,7 @@ public class UnityEditorUility
             if (string.Equals(item.name.ToLower(), styleName.ToLower()))
             {
                 gUIStyle = item;
+                gUIStyle.font = new GUIStyle().font;
                 break;
             }
         }

@@ -140,6 +140,36 @@ public class BundleSettings : ScriptableObject
     {
         return $"{moduleEnum.ToString().ToLower()}bundleconfig{ABSUFFIX}";
     }
+    /// <summary>
+    /// 热更清单文件名称
+    /// </summary>
+    /// <param name="moduleEnum"></param>
+    /// <returns></returns>
+    public string HotManifestName(BundleModuleEnum moduleEnum)
+    {
+        return $"{moduleEnum}AssetsHotManifest_{GetPlatformName()}.json";
+    }
+
+    /// <summary>
+    /// 获取当前运行平台
+    /// </summary>
+    /// <returns></returns>
+    public string GetPlatformName()
+    {
+        string platformName = Application.platform.ToString();
+#if UNITY_ANDROID
+            platformName = "Android";
+#elif UNITY_IOS
+            platformName="iOS";
+#elif UNITY_STANDALONE_WIN
+            platformName = "Windows";
+#elif UNITY_STANDALONE_OSX
+            platformName = "MacOS";
+#elif UNITY_WEBGL
+            platformName = "WebGL";
+#endif
+        return platformName;
+    }
 }
 
 [System.Serializable,Toggle("isEncrypt")]

@@ -17,30 +17,15 @@ using UnityEngine;
 using ZM.ZMAsset;
 public class BuildHotPatchWindow : BundleBehaviour
 {
-    protected string[] buildButtonsNameArr = new string[] { "打包热更", "上传资源" };
+    protected string[] buildButtonsNameArr = new string[] { "打包热更补丁", "上传资源" };
     //热更描述 热更公告
     [HideInInspector]public string patchDes = "输入本次热更描述...";
+    //热更应用补丁版本
+    [HideInInspector] public string hotAppVersion = "1.0.0";
     //热更补丁版本
     [HideInInspector] public string hotVersion = "1";
-    public override void Initzation()
-    {
-        base.Initzation();
-    }
-
-    /// <summary>
-    /// 绘制添加资源模块的按钮
-    /// </summary>
-    public override void DrawAddModuleButton()
-    {
-        base.DrawAddModuleButton();
-
-        GUIContent addContent = EditorGUIUtility.IconContent("CollabCreate Icon".Trim(), "");
-        if (GUILayout.Button(addContent, GUILayout.Width(130), GUILayout.Height(170)))
-        {
-            //TODO  编写添加模块的代码
-        }
-    }
-
+   
+  
     public override void OGUI()
     {
         base.OGUI();
@@ -54,10 +39,14 @@ public class BuildHotPatchWindow : BundleBehaviour
         patchDes= GUILayout.TextField(patchDes,GUILayout.Width(800),GUILayout.Height(80));
         GUILayout.EndHorizontal();
 
-        GUILayout.Space(10);
+        GUILayout.Space(5);
 
         GUILayout.BeginHorizontal();
-        hotVersion = EditorGUILayout.TextField( "热更资源版本:", hotVersion, GUILayout.Width(800), GUILayout.Height(24));
+        hotAppVersion = EditorGUILayout.TextField( "生效应用版本: (0.0.0表示所有版本)", hotAppVersion, GUILayout.Width(800), GUILayout.Height(24));
+        GUILayout.EndHorizontal();
+        
+        GUILayout.BeginHorizontal();
+        hotVersion = EditorGUILayout.TextField( "热更补丁版本:", hotVersion, GUILayout.Width(800), GUILayout.Height(24));
         GUILayout.EndHorizontal();
 
         GUILayout.EndArea();
@@ -109,8 +98,7 @@ public class BuildHotPatchWindow : BundleBehaviour
         {
             if (item.isBuild)
             {
-                //TODO 
-                BuildBundleCompiler.BuildAssetBundle(item,BuildType.HotPatch,int.Parse(hotVersion), patchDes);
+                BuildBundleCompiler.BuildAssetBundle(item,BuildType.HotPatch,int.Parse(hotVersion),hotAppVersion, patchDes);
             }
         }
     }
