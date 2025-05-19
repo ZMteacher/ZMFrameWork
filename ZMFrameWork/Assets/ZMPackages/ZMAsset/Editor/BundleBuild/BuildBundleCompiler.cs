@@ -422,6 +422,10 @@ namespace ZM.ZMAsset
         /// <returns></returns>
         public static bool IsRepeatBundleFile(string path)
         {
+            if (path.EndsWith(".cs"))
+            {
+                return true;
+            }
             foreach (var item in mAllBundlePathList)
             {
                 if (string.Equals(item, path) || item.Contains(path) || path.EndsWith(".cs"))
