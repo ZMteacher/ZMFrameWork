@@ -243,10 +243,16 @@ public class GeneratorBindComponentTool : Editor
                 }
             }
         }
-        //自动保存预制体
-        PrefabUtility.ApplyPrefabInstance(selectedObject, InteractionMode.AutomatedAction);
         EditorPrefs.DeleteKey("BindDataGeneratorClassPath");
+        //自动保存预制体
+        if (AnalysisComponentDataTool.IsPrefabInstance(selectedObject))
+        {
+            PrefabUtility.ApplyPrefabInstance(selectedObject, InteractionMode.AutomatedAction);
+        }
     }
+
+   
+
     public static Array ConvertArray(object[] sourceArray, Type targetElementType)
     {
         // 创建目标数组

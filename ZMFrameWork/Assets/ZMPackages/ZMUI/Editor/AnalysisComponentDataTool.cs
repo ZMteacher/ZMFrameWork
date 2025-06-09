@@ -14,6 +14,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class AnalysisComponentDataTool  
@@ -78,5 +79,17 @@ public class AnalysisComponentDataTool
             }
             AnalysisWindowDataByTag(ref objDataList, trans.GetChild(i), WinName);
         }
+    }
+    /// <summary>
+    /// 判断对象是否是预制体
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <returns></returns>
+    public static bool IsPrefabInstance(GameObject obj)
+    {
+        var type = PrefabUtility.GetPrefabAssetType(obj);
+        var status= PrefabUtility.GetPrefabInstanceStatus(obj);
+        //是否是预制体实例
+        return status != PrefabInstanceStatus.NotAPrefab && type != PrefabAssetType.NotAPrefab;
     }
 }

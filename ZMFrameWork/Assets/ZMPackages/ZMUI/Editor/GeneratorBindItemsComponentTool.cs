@@ -335,11 +335,13 @@ public class GeneratorBindItemsComponentTool : Editor
                 }
             }
         }
-
-        // PrefabUtility.ApplyPrefabInstance(selectedObject, InteractionMode.AutomatedAction);
-        //自动保存预制体
         EditorPrefs.DeleteKey("itemGeneratorClassPath");
         PlayerPrefs.DeleteKey(GeneratorConfig.OBJDATALIST_KEY);
+        //自动保存预制体
+        if (AnalysisComponentDataTool.IsPrefabInstance(selectedObject))
+        {
+            PrefabUtility.ApplyPrefabInstance(selectedObject, InteractionMode.AutomatedAction);
+        }
         UnityEditor.EditorUtility.SetDirty(compt); // 标记对象为“脏”以刷新
         UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(compt);
     }
