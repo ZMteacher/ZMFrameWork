@@ -226,7 +226,7 @@ namespace ZM.ZMAsset
             List<GameObject> preLoadObjList = new List<GameObject>();
             for (int i = 0; i < count; i++)
             {
-                AssetsRequest request = await InstantiateAsync(path);
+                AssetsRequest request = await InstantiateAsync(path,null);
                 preLoadObjList.Add(request.obj);
                 request.Release();
             }
@@ -249,22 +249,29 @@ namespace ZM.ZMAsset
         {
             path = path.EndsWith(".prefab") ? path : path + ".prefab";
             //先从对象池中查询这个对象，如果存在就直接使用
-            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path),false);
+            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path));
             if (cacheObj != null && cacheObj.obj != null)
             {
                 GameObject poolObject = cacheObj.obj;
                 poolObject.transform.SetParent(parent);
                 //重置数据
                 SetObjectTransData(poolObject, localPoition, localScale, quaternion);
+                //尝试使用原始数据
+                TryUseOriginData(cacheObj);
                 return cacheObj.obj;
             }
             //加载该对象
             GameObject obj = LoadResource<GameObject>(path);
             if (obj != null)
             {
-                GameObject nObj = InstantiateObject(path, obj, parent);
-                SetObjectTransData(nObj, localPoition, localScale, quaternion);
-                return nObj;
+                CacheObejct nObj = InstantiateObject(path, obj, parent);
+                
+                if (ReferenceEquals(nObj.originData, null) )
+                {
+                    //重置数据
+                    SetObjectTransData(obj, localPoition, localScale, quaternion);
+                }
+                return nObj.obj;
             }
             else
             {
@@ -279,7 +286,14 @@ namespace ZM.ZMAsset
             obj.transform.localScale = localScale;
             obj.transform.rotation = quaternion;
         }
-
+        private void TryUseOriginData(CacheObejct obj)
+        {
+            //重置数据
+            if (!ReferenceEquals(obj.originData,null))
+            {
+                obj.originData.ResetOriginData();
+            }
+        }
         /// <summary>
         /// 克隆一个对象
         /// </summary>
@@ -287,7 +301,7 @@ namespace ZM.ZMAsset
         /// <param name="obj"></param>
         /// <param name="parent"></param>
         /// <returns></returns>
-        private GameObject InstantiateObject(string path, GameObject obj, Transform parent)
+        private CacheObejct InstantiateObject(string path, GameObject obj, Transform parent)
         {
             obj = GameObject.Instantiate(obj, parent, false);
             CacheObejct cacheObejct = mCacheObejctPool.Spawn();
@@ -299,13 +313,10 @@ namespace ZM.ZMAsset
                 cacheObejct.insid = obj.GetInstanceID();
                 cacheObejct.originData = obj.GetComponent<OriginData>();
                 //重置原始数据
-                if (!ReferenceEquals(cacheObejct.originData, null))
-                {
-                    cacheObejct.originData.ResetOriginData();
-                }
+                TryUseOriginData(cacheObejct);
             }
             mAllObjectDic.Add(cacheObejct.insid, cacheObejct);
-            return obj;
+            return cacheObejct;
         }
     
         /// <summary>
@@ -315,13 +326,16 @@ namespace ZM.ZMAsset
         /// <param name="loadAsync">异步加载回调</param>
         /// <param name="param1">异步加载参数1</param>
         /// <param name="param2">异步加载参数2</param>
-        public async void InstantiateAsync(string path, System.Action<GameObject, object, object> loadAsync, object param1 = null, object param2 = null)
+        public async void InstantiateAsync(string path,Transform parent, System.Action<GameObject, object, object> loadAsync, object param1 = null, object param2 = null)
         {
             path = path.EndsWith(".prefab") ? path : path + ".prefab";
             //先从对象池中查询这个对象，如果存在就直接使用
-            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path),true);
+            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path));
             if (cacheObj != null && cacheObj.obj != null)
             {
+                cacheObj.obj.transform.SetParent(parent);
+                //尝试使用原始数据
+                TryUseOriginData(cacheObj);
                 loadAsync?.Invoke(cacheObj.obj, param1, param2);
                 return;
             }
@@ -337,8 +351,8 @@ namespace ZM.ZMAsset
                 if (mAsyncLoadingTaskList.Contains(guid))
                 {
                     mAsyncLoadingTaskList.Remove(guid);
-                    GameObject nObj = InstantiateObject(path, obj, null);
-                    loadAsync?.Invoke(nObj, param1, param2);
+                    CacheObejct nObj = InstantiateObject(path, obj, parent);
+                    loadAsync?.Invoke(nObj.obj, param1, param2);
                 }
             }
             else
@@ -355,7 +369,7 @@ namespace ZM.ZMAsset
         /// <param name="loadAsync">异步加载回调</param>
         /// <param name="param1">异步加载参数1</param>
         /// <param name="param2">异步加载参数2</param>
-        public async UniTask<AssetsRequest> InstantiateAsync(string path,  object param1 = null, object param2 = null,object param3=null)
+        public async UniTask<AssetsRequest> InstantiateAsync(string path, Transform parent, object param1 = null, object param2 = null,object param3=null)
         {
             path = path.EndsWith(".prefab") ? path : path + ".prefab";
             AssetsRequest request = mAssetsRequestPool.Spawn();
@@ -363,9 +377,12 @@ namespace ZM.ZMAsset
             request.param2 = param2;
             request.param3 = param3;
             //先从对象池中查询这个对象，如果存在就直接使用
-            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path),true);
+            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path));
             if (cacheObj != null && cacheObj.obj != null)
             {
+                cacheObj.obj.transform.SetParent(parent);
+                //尝试使用原始数据
+                TryUseOriginData(cacheObj);
                 request.obj = cacheObj.obj;
                 return request;
             }
@@ -383,8 +400,8 @@ namespace ZM.ZMAsset
             if (mAsyncLoadingTaskList.Contains(guid))
             {
                 mAsyncLoadingTaskList.Remove(guid);
-                GameObject nObj = InstantiateObject(path,loadObj, null);
-                request.obj = nObj;
+                CacheObejct nObj = InstantiateObject(path,loadObj, parent);
+                request.obj = nObj.obj;
                 return request;
             }
             else
@@ -404,7 +421,7 @@ namespace ZM.ZMAsset
         /// <param name="param2"></param>
         /// <param name="moduleEnum"></param>
         /// <returns></returns>
-        public async UniTask<AssetsRequest> InstantiateAsyncFormPoolAas(string path, BundleModuleEnum moduleEnum, object param1, object param2, object param3)
+        public async UniTask<AssetsRequest> InstantiateAsyncFormPoolAas(string path, Transform parent,BundleModuleEnum moduleEnum, object param1, object param2, object param3)
         {
             path = path.EndsWith(".prefab") ? path : path + ".prefab";
             AssetsRequest request = mAssetsRequestPool.Spawn();
@@ -412,9 +429,12 @@ namespace ZM.ZMAsset
             request.param2 = param2;
             request.param3 = param3;
             //先从对象池中查询这个对象，如果存在就直接使用
-            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path),true);
+            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path));
             if (cacheObj != null && cacheObj.obj != null)
             {
+                cacheObj.obj.transform.SetParent(parent);
+                //尝试使用原始数据
+                TryUseOriginData(cacheObj);
                 request.obj = cacheObj.obj;
                 return request;
             }
@@ -426,8 +446,8 @@ namespace ZM.ZMAsset
             if (mAsyncLoadingTaskList.Contains(guid))
             {
                 mAsyncLoadingTaskList.Remove(guid);
-                GameObject nObj = InstantiateObject(path, loadObj, null);
-                request.obj = nObj;
+                CacheObejct nObj = InstantiateObject(path, loadObj, parent);
+                request.obj = nObj.obj;
                 return request;
             }
             else
@@ -445,19 +465,23 @@ namespace ZM.ZMAsset
         /// <param name="param1"></param>
         /// <param name="param2"></param>
         /// <returns></returns>
-        public long InstantiateAndLoad(string path, System.Action<GameObject, object, object> loadAsync, System.Action loading, object param1 = null, object param2 = null)
+        public long InstantiateAndLoad(string path, Transform parent, System.Action<GameObject, object, object> loadAsync, System.Action loading, object param1 = null, object param2 = null)
         {
             path = path.EndsWith(".prefab") ? path : path + ".prefab";
             //先从对象池中查询这个对象，如果存在就直接使用
-            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path),true);
+            CacheObejct cacheObj = GetCacheObjFromPools(Crc32.GetCrc32(path));
             long loadid = -1;
             if (cacheObj != null && cacheObj.obj != null)
             {
+                cacheObj.obj.transform.SetParent(parent);
+                //尝试使用原始数据
+                TryUseOriginData(cacheObj);
+                
                 loadAsync?.Invoke(cacheObj.obj, param1, param2);
                 return loadid;
             }
 
-            GameObject obj = Instantiate(path, null, Vector3.zero, Vector3.one, Quaternion.identity);
+            GameObject obj = Instantiate(path, parent, Vector3.zero, Vector3.one, Quaternion.identity);
 
             if (obj != null)
             {
@@ -485,7 +509,7 @@ namespace ZM.ZMAsset
         /// </summary>
         /// <param name="crc"></param>
         /// <returns></returns>
-        private CacheObejct GetCacheObjFromPools(uint crc,bool reSetData)
+        private CacheObejct GetCacheObjFromPools(uint crc)
         {
             mObjectPoolDic.TryGetValue(crc, out var objList);
             if (objList != null && objList.Count > 0)
@@ -493,11 +517,6 @@ namespace ZM.ZMAsset
                 //直接取对象池中的第0个对象
                 CacheObejct obj = objList[^1];
                 objList.Remove(obj);
-                //重置数据
-                if (!ReferenceEquals(obj.originData,null))
-                {
-                    obj.originData.ResetOriginData();
-                }
                 return obj;
             }
             return null;

@@ -15,8 +15,6 @@ MonoBehaviour:
   windowDataList:
   - name: ExampleWindow
     path: Assets/GameData/Hall/Prefabs/Window/ExampleWindow
-  - name: ExampleWindow1
-    path: Assets/GameData/Hall/Prefabs/Window/ExampleWindow1
   - name: ExShopWindow
     path: Assets/GameData/Hall/Prefabs/Window/ExShopWindow
   - name: HallWindow

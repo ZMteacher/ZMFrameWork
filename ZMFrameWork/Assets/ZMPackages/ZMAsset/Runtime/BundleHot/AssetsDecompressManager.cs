@@ -66,16 +66,16 @@ namespace ZM.ZMAsset
             mStreamingAssetsBundlePath = BundleSettings.Instance.GetAssetsBuiltinBundlePath(bundleModule);
             mDecompressPath = BundleSettings.Instance.GetAssetsDecompressPath(bundleModule);
             mNeedDecompressFileList.Clear();
-          
 #if UNITY_ANDROID||UNITY_ISO||UNITY_EDITOR
             //如果文件夹不存在，就进行创建
             if (!Directory.Exists(mDecompressPath))
             {
                 Directory.CreateDirectory(mDecompressPath);
             }
-
+            
             //计算需要解压的文件，以及大小
             TextAsset textAsset = Resources.Load<TextAsset>(bundleModule + "info");
+           
             if (textAsset != null)
             {
                 List<BuiltinBundleInfo> builtinBundleInfoList = JsonConvert.DeserializeObject<List<BuiltinBundleInfo>>(textAsset.text);
@@ -124,8 +124,6 @@ namespace ZM.ZMAsset
 #else
                 filePath = mStreamingAssetsBundlePath + fileName;
 #endif
-                //文件不存在
-                if (!File.Exists(filePath)) continue;
                 
                 Debug.Log("Start UnPack AssetBundle filePath:" + filePath + "\r\n UnPackPath:" + mDecompressPath);
                

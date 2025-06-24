@@ -18,9 +18,9 @@ namespace ZM.ZMAsset
         /// <param name="param2">透传参数2 (回调触发时返回)</param>
         /// <param name="param3">透传参数3 (回调触发时返回)</param>
         /// <returns></returns>
-        public static async UniTask<AssetsRequest> InstantiateAsyncFormPool(string path, BundleModuleEnum bundleModule, object param1 = null, object param2 = null, object param3 = null)
+        public static async UniTask<AssetsRequest> InstantiateAsyncFormPool(string path,Transform parent, BundleModuleEnum bundleModule, object param1 = null, object param2 = null, object param3 = null)
         {
-             return await Interface.InstantiateAsyncFormPoolAas(path, bundleModule, param1, param2, param3);
+             return await Interface.InstantiateAsyncFormPoolAas(path,parent, bundleModule, param1, param2, param3);
         }
         
         /// <summary>

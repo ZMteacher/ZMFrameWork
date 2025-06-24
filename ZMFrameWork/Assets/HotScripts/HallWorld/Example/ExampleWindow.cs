@@ -79,7 +79,7 @@ public class ExampleWindow : MonoBehaviour
         ZMAsset.Release(nObj);
 
         //异步克隆对象
-        ZMAsset.InstantiateObjectAsync(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj",(obj,param1,param2)=> {
+        ZMAsset.InstantiateObjectAsync(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj",null,(obj,param1,param2)=> {
             Debug.Log("param1:"+ param1 + "  param2:"+ param2);
             obj.transform.SetParent(InstantiateAsyncRoot);
             obj.transform.localPosition = Vector3.zero;
@@ -88,7 +88,7 @@ public class ExampleWindow : MonoBehaviour
         },123,456);
 
         //异步可等待的克隆对象
-        AssetsRequest assets = await ZMAsset.InstantiateObjectAsync(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj", 123, 456,789);
+        AssetsRequest assets = await ZMAsset.InstantiateObjectAsync(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "TestObj", null,123, 456,789);
         Debug.Log("param1:" + assets.param1 + "  param2:" + assets.param1);
         GameObject obj = assets.obj;
         obj.transform.SetParent(InstantiateAsyncRoot);

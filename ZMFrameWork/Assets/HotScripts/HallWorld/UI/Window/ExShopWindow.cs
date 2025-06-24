@@ -47,7 +47,7 @@ public class ExShopWindow : WindowBase
         //生成兑换道具列表
         foreach (var id in itemIDlist)
         {
-            AssetsRequest assets = await ZMAddressableAsset.InstantiateAsyncFormPool(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "ExShopItem", BundleModuleEnum.GameItem);
+            AssetsRequest assets = await ZMAddressableAsset.InstantiateAsyncFormPool(AssetsPathConfig.HALL_DYNAMICITEM_PATH + "ExShopItem", null,BundleModuleEnum.GameItem);
             GameObject itemObj = assets.obj;
             itemObj.transform.SetParent(dataCompt.ContentTransform, false);
             itemObj.transform.localScale = Vector3.one;

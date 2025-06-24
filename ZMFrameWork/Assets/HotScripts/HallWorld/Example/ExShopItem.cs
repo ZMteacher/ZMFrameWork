@@ -32,7 +32,7 @@ public class ExShopItem : MonoBehaviour
         m_itemAsset = itemAsset;
         ItemObjLoading();
         AssetsRequest assets = await ZMAddressableAsset.InstantiateAsyncFormPool(AssetsPathConfig.GAME_DATA_PATH + "GameItem/" + itemid + "/" + itemid,
-            BundleModuleEnum.GameItem,itemid);
+            null,BundleModuleEnum.GameItem,itemid);
         if ((int)assets.param1 == mItemId && assets.obj != null)
         {
             m_AssetsRequest = assets;

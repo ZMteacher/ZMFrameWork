@@ -206,12 +206,13 @@ namespace ZM.ZMAsset
                 Debug.Log($"*** Request AssetBundle HotAssetsMainfest Url Finish Module:{CurBundleModuleEnum} txt:{donwloadContent}");
                 //写入服务端资源热更清单到本地
                 FileHelper.WriteFileAsync(mServerHotAssetsManifestPath, donwloadContent);
+                if (!string.IsNullOrEmpty(donwloadContent) && donwloadContent.Contains("md5"))
+                    mServerHotAssetsManifest = JsonConvert.DeserializeObject<HotAssetsManifest>(donwloadContent);
             }
             catch (Exception e)
             {
                 Debug.LogError("服务端资源清单配置下载异常，文件不存在或者配置有问题，更新出错，请检查：" + e.ToString());
             }
-            mServerHotAssetsManifest = JsonConvert.DeserializeObject<HotAssetsManifest>(donwloadContent);
             webRequest.Dispose();
          }
         public void GeneratorHotAssetsManifest()

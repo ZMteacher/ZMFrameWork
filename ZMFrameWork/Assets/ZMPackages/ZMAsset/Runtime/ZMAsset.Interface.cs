@@ -61,9 +61,9 @@ namespace ZM.ZMAsset
         /// </summary>
         /// <param name="path">路径</param>
         /// <param name="loadAsync">异步加载回调</param>
-        public static void InstantiateObjectAsync(string path, System.Action<GameObject, object, object> loadAsync, object param1 = null, object param2 = null)
+        public static void InstantiateObjectAsync(string path, Transform parent,System.Action<GameObject, object, object> loadAsync, object param1 = null, object param2 = null)
         {
-            Instance.mResource.InstantiateAsync(path,loadAsync,param1,param2);
+            Instance.mResource.InstantiateAsync(path,parent,loadAsync,param1,param2);
         }
         /// <summary>
         /// 可等待异步实例化对象
@@ -72,9 +72,9 @@ namespace ZM.ZMAsset
         /// <param name="param1">透传参数1 (回调触发时返回)</param>
         /// <param name="param2">透传参数2 (回调触发时返回)</param>
         /// <param name="param3">透传参数3 (回调触发时返回)</param>
-        public static async UniTask<AssetsRequest> InstantiateObjectAsync(string path, object param1 = null, object param2 = null, object param3 = null)
+        public static async UniTask<AssetsRequest> InstantiateObjectAsync(string path,Transform parent, object param1 = null, object param2 = null, object param3 = null)
         {
-          return await Instance.mResource.InstantiateAsync(path, param1, param2, param3);
+          return await Instance.mResource.InstantiateAsync(path,parent, param1, param2, param3);
         }
      
         /// <summary>
@@ -86,9 +86,9 @@ namespace ZM.ZMAsset
         /// <param name="param1"></param>
         /// <param name="param2"></param>
         /// <returns></returns>
-        public static long InstantiateObjectAndLoad(string path, System.Action<GameObject, object, object> loadAsync, System.Action loading, object param1 = null, object param2 = null)
+        public static long InstantiateObjectAndLoad(string path, Transform parent, System.Action<GameObject, object, object> loadAsync, System.Action loading, object param1 = null, object param2 = null)
         {
-            return Instance.mResource.InstantiateAndLoad(path, loadAsync, loading, param1, param2);
+            return Instance.mResource.InstantiateAndLoad(path, parent ,loadAsync, loading, param1, param2);
         }
 
         /// <summary>

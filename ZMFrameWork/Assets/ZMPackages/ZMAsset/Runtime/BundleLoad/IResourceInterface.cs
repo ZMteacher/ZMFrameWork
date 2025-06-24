@@ -31,13 +31,11 @@ public interface IResourceInterface
 
     GameObject Instantiate(string path, Transform parent, Vector3 localPoition, Vector3 localScale, Quaternion quaternion);
 
-    void InstantiateAsync(string path, Action<GameObject, object, object> loadAsync, object param1, object param2);
+    void InstantiateAsync(string path, Transform parent, Action<GameObject, object, object> loadAsync, object param1, object param2);
 
-    UniTask<AssetsRequest> InstantiateAsync(string path,  object param1, object param21, object param2);
-
-    //Task<AssetsRequest> InstantiateAsyncFormPoolAas(string path, object param1, object param2, object param3,BundleModuleEnum moduleEnum);
-
-    long InstantiateAndLoad(string path, Action<GameObject, object, object> loadAsync, Action loading, object param1, object param2);
+    UniTask<AssetsRequest> InstantiateAsync(string path,Transform parent,  object param1, object param21, object param2);
+    
+    long InstantiateAndLoad(string path,Transform parent, Action<GameObject, object, object> loadAsync, Action loading, object param1, object param2);
     UniTask<T> LoadResourceAsync<T>(string path) where T : UnityEngine.Object;
 
     //Task<T> LoadResourceAsyncAas<T>(string path, BundleModuleEnum moduleEnum ) where T : UnityEngine.Object;

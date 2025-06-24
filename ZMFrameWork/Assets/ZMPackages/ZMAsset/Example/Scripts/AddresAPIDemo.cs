@@ -10,7 +10,7 @@ public class AddresAPIDemo : MonoBehaviour
     private async void Awake()
     {
         ZMAsset.InitFrameWork();
-        AssetsRequest asset = await ZMAddressableAsset.InstantiateAsyncFormPool(AssetsPathConfig.GAME_ITEM_PATH + "6013/6013",BundleModuleEnum.AdressAsset);
+        AssetsRequest asset = await ZMAddressableAsset.InstantiateAsyncFormPool(AssetsPathConfig.GAME_ITEM_PATH + "6013/6013",null,BundleModuleEnum.AdressAsset);
  
         asset.obj.transform.SetParent(transform.GetChild(0).GetChild(0));
 
